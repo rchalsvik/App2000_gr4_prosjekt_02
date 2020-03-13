@@ -97,10 +97,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('hasLicen') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('hasLicense') }}</label>
 
                             <div class="col-md-6">
-                                <input id="hasLicense" type="checkbox" class="form-control @error('hasLicense') is-invalid @enderror" name="hasLicense" value="{{ old('hasLicense') }}" required autocomplete="hasLicense" autofocus>
+                                <input id="hasLicense" type="checkbox" class="form-control @error('hasLicense') is-invalid @enderror" name="hasLicense" value="{{ old('hasLicense') }}" autocomplete="hasLicense" autofocus>
 
                                 @error('hasLicense')
                                     <span class="invalid-feedback" role="alert">
