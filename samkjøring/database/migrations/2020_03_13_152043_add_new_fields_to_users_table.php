@@ -14,12 +14,12 @@ class AddNewFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-          $table->string('firstname');
+          $table->renameColumn('name', 'firstname');
           $table->string('lastname');
-          //$table->char('phone', 8);
-          //$table->string('address');
-          //$table->char('zipcode', 4);
-          //$table->date('date_of_birth');
+          $table->char('phone', 8);
+          $table->string('address');
+          $table->char('zipcode', 4);
+          $table->date('date_of_birth');
           //$table->boolean('hasLicense')->nullable($value = true);
 
           //$table->index('lastname', 'firstname');
@@ -35,12 +35,12 @@ class AddNewFieldsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('firstname');
+            $table->renameColumn('firstname', 'name');
             $table->dropColumn('lastname');
-            //$table->dropColumn('phone');
-            //$table->dropColumn('address');
-            //$table->dropColumn('zipcode');
-            //$table->dropColumn('date_of_birth');
+            $table->dropColumn('phone');
+            $table->dropColumn('address');
+            $table->dropColumn('zipcode');
+            $table->dropColumn('date_of_birth');
             //$table->dropColumn('hasLicense');
         });
     }
