@@ -14,7 +14,7 @@ class AddNewFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-          //$table->string('firstname');
+          $table->string('firstname');
           $table->string('lastname');
           //$table->char('phone', 8);
           //$table->string('address');
@@ -35,7 +35,7 @@ class AddNewFieldsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //$table->dropColumn('firstname');
+            $table->dropColumn('firstname');
             $table->dropColumn('lastname');
             //$table->dropColumn('phone');
             //$table->dropColumn('address');
