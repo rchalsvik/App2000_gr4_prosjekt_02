@@ -23,7 +23,7 @@ class AddNewFieldsToUsersTable extends Migration
           $table->boolean('hasLicense')->default($value = false);
 
           $table->index('lastname', 'firstname');
-          //$table->foreign('zipcode')->references('zipcode')->on('county');
+          $table->foreign('zipcode')->references('zipcode')->on('counties');
         });
     }
 

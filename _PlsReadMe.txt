@@ -17,6 +17,11 @@
 // Lage heller en tileggs migration og legg til endringene der.
 --> php artisan make:migration add_new_fields_to_users_table
 
+// COUNTY //
+--> php artisan make:migration create_counties_table
+
+//  //
+--> php artisan make:migration create_trips_table
 
 // DB//
 // Hvis trenger denne tileggs pakken for å kunne gjøre endringer på databasen (legger til noen tileggs funksjoner).
