@@ -15,12 +15,12 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('driver_id');
+            $table->unsignedBigInteger('driver_id'); // Denne her må være en 'unsignedBigInteger'
             $table->string('start_point');
             $table->string('end_point');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
-            $table->tinyInteger('seats_available');
+            $table->unsignedTinyInteger('seats_available');
             $table->string('car_description');
             $table->string('trip_info');
             $table->boolean('pets_allowed');
