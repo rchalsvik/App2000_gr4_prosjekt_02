@@ -11,6 +11,11 @@
 --> npm run dev
 
 
+// DB//
+// Hvis trenger denne tileggs pakken for å kunne gjøre endringer på databasen (legger til noen tileggs funksjoner).
+// Dette gjøres inni i prosjekt mappen.
+--> composer require doctrine/dbal
+
 
 // USERS //
 // Det skal ikke gjøre endringer direkte på 'create_users_table'.
@@ -20,10 +25,8 @@
 // COUNTY //
 --> php artisan make:migration create_counties_table
 
-//  //
+// TRIPS //
 --> php artisan make:migration create_trips_table
 
-// DB//
-// Hvis trenger denne tileggs pakken for å kunne gjøre endringer på databasen (legger til noen tileggs funksjoner).
-// Dette gjøres inni i prosjekt mappen.
---> composer require doctrine/dbal
+// tripcontroller og model //
+php artisan make:model -rc Trip

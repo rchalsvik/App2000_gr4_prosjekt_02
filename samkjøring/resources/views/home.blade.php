@@ -15,6 +15,11 @@
                     @endif
 
                     You are logged in!
+
+                    <div id="new_trip" class="">
+                      <a href="{{ route('createTrip') }}">New Trip</a>
+                    </div>
+
                 </div>
             </div>
         </div>
