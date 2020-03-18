@@ -20,7 +20,7 @@ class CreateTripsTable extends Migration
             $table->string('end_point');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
-            $table->tinyInt('seats_available');
+            $table->tinyInteger('seats_available');
             $table->string('car_description');
             $table->string('trip_info');
             $table->bolean('pets_allowed');
