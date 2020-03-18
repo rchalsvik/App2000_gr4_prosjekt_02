@@ -26,10 +26,24 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="start_time" class="col-md-4 col-form-label text-md-right">{{ __('Start Date') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="start_time" type="date" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time') }}" required autocomplete="start_time" autofocus>
+
+                                @error('start_time')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="start_time" class="col-md-4 col-form-label text-md-right">{{ __('Start Time') }}</label>
 
                             <div class="col-md-6">
-                                <input id="start_time" type="datetime-local" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time') }}" required autocomplete="start_time" autofocus>
+                                <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time') }}" required autocomplete="start_time" autofocus>
 
                                 @error('start_time')
                                     <span class="invalid-feedback" role="alert">

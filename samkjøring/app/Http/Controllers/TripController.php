@@ -38,7 +38,7 @@ class TripController extends Controller
     {
         Trip::create($this->validateTrip());
 
-        return redirect('home');
+        return redirect('/');
     }
 
     /**
@@ -91,7 +91,8 @@ class TripController extends Controller
     {
       return request()->validate([
         'start_point' => ['required', 'string', 'max:255'],
-        'start_time' => ['required', 'date_format:Y-m-d\TH:i:sP'],
+        //'start_date' => ['required', 'date'],
+        //'start_time' => ['required', 'date_format:H:i'],
         'seats_available' => ['required', 'digits_between:1,45'],
         'car_description' => ['required', 'string', 'max:255'],
       ]);
