@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'zipcode' => ['required', 'digits:4'],
             'date_of_birth' => ['required', 'date'],
-            'hasLicense' => ['required', 'boolean'],
+            'hasLicense' => ['boolean'],
         ]);
     }
 
@@ -84,3 +84,4 @@ class RegisterController extends Controller
     ]);
   }
 }
+//

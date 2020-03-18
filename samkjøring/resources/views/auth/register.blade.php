@@ -114,7 +114,7 @@
                             <label for="hasLicense" class="col-md-4 col-form-label text-md-right">{{ __('Drivers License') }}</label>
 
                             <div class="col-md-6">
-                                <input id="hasLicense" type="checkbox" class="form-control" name="hasLicense" value="{{ old('hasLicense') }}" autocomplete="hasLicense">
+                                <input id="hasLicense" type="checkbox" class="form-control" name="hasLicense" value="{{ old('hasLicense', 1) }}" autocomplete="hasLicense">
                             </div>
                         </div>
 
