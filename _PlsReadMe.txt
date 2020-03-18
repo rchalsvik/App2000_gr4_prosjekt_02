@@ -29,4 +29,4 @@
 --> php artisan make:migration create_trips_table
 
 // tripcontroller og model //
-php artisan make:model -rc Trip
+--> php artisan make:model -rc Trip

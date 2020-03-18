@@ -15,19 +15,19 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('driver_id'); // Denne her må være en 'unsigned' for å ikke tillate minus verdier
+            //$table->unsignedBigInteger('driver_id'); // Denne her må være en 'unsigned' for å ikke tillate minus verdier
             $table->string('start_point');
-            $table->string('end_point');
+            //$table->string('end_point');
             $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            //$table->dateTime('end_time');
             $table->unsignedTinyInteger('seats_available'); // Denne her må være en 'unsigned' for å ikke tillate minus verdier
             $table->string('car_description');
-            $table->string('trip_info');
-            $table->boolean('pets_allowed');
-            $table->boolean('kids_allowed');
+            //$table->string('trip_info');
+            //$table->boolean('pets_allowed');
+            //$table->boolean('kids_allowed');
             $table->timestamps();
 
-            $table->foreign('driver_id')->references('id')->on('users');
+            //$table->foreign('driver_id')->references('id')->on('users');
         });
     }
 

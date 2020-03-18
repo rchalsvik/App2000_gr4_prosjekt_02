@@ -36,7 +36,9 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Trip::create($this->validateTrip());
+
+        return redirect('home');
     }
 
     /**
@@ -82,5 +84,16 @@ class TripController extends Controller
     public function destroy(Trip $trip)
     {
         //
+    }
+
+
+    protected function validateTrip()
+    {
+      return request()->validate([
+        'start_point' => ['required', 'string', 'max:255'],
+        'start_time' => ['required', 'date_format:Y-m-d\TH:i:sP'],
+        'seats_available' => ['required', 'digits_between:1,45'],
+        'car_description' => ['required', 'string', 'max:255'],
+      ]);
     }
 }

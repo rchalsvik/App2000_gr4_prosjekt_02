@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/trip/create', 'TripController@create')->name('createTrip');
+
+Route::post('/trip/store', 'TripController@store')->name('storeTrip');
