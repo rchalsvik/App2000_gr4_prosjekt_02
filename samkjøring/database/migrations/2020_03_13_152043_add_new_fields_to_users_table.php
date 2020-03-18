@@ -20,9 +20,9 @@ class AddNewFieldsToUsersTable extends Migration
           $table->string('address');
           $table->char('zipcode', 4);
           $table->date('date_of_birth');
-          //$table->boolean('hasLicense')->nullable($value = true);
+          $table->boolean('hasLicense')->default($value = false);
 
-          //$table->index('lastname', 'firstname');
+          $table->index('lastname', 'firstname');
           //$table->foreign('zipcode')->references('zipcode')->on('county');
         });
     }
@@ -41,7 +41,7 @@ class AddNewFieldsToUsersTable extends Migration
             $table->dropColumn('address');
             $table->dropColumn('zipcode');
             $table->dropColumn('date_of_birth');
-            //$table->dropColumn('hasLicense');
+            $table->dropColumn('hasLicense');
         });
     }
 }
