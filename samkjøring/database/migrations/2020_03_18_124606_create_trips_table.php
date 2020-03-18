@@ -23,7 +23,7 @@ class CreateTripsTable extends Migration
             $table->tinyInteger('seats_available');
             $table->string('car_description');
             $table->string('trip_info');
-            $table->bolean('pets_allowed');
+            $table->boolean('pets_allowed');
             $table->boolean('kids_allowed');
             $table->timestamps();
 
