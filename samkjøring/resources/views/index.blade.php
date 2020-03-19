@@ -38,11 +38,17 @@
             <a class="nav-link" href="/varslinger">Varslinger</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Logg inn</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/omoss">Om oss</a>
           </li>
+          @if (Route::has('login'))
+            <li class="nav-item">
+              @auth
+                <a class="nav-link" href="{{ url('home') }}">Home</a>
+              @else
+                <a class="nav-link" href="{{ route('login') }}">Logg inn</a>
+              @endauth
+            </li>
+          @endif
         </ul>
       </div>
     </div>
