@@ -18,7 +18,7 @@ class CreateTripsTable extends Migration
             //$table->unsignedBigInteger('driver_id'); // Denne her må være en 'unsigned' for å ikke tillate minus verdier
             $table->string('start_point');
             //$table->string('end_point');
-            //$table->date('start_date');
+            $table->date('start_date');
             //$table->time('start_time');
             //$table->dateTime('end_time');
             $table->unsignedTinyInteger('seats_available'); // Denne her må være en 'unsigned' for å ikke tillate minus verdier

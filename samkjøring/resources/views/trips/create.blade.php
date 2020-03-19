@@ -26,12 +26,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="start_time" class="col-md-4 col-form-label text-md-right">{{ __('Start Date') }}</label>
+                            <label for="start_date" class="col-md-4 col-form-label text-md-right">{{ __('Start Date') }}</label>
 
                             <div class="col-md-6">
-                                <input id="start_time" type="date" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time') }}" required autocomplete="start_time" autofocus>
+                                <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date', date("Y-m-d")) }}" required autocomplete="start_date" autofocus>
 
-                                @error('start_time')
+                                @error('start_date')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -43,7 +43,7 @@
                             <label for="start_time" class="col-md-4 col-form-label text-md-right">{{ __('Start Time') }}</label>
 
                             <div class="col-md-6">
-                                <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time') }}" required autocomplete="start_time" autofocus>
+                                <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time', date("h:i")) }}" required autocomplete="start_time" autofocus>
 
                                 @error('start_time')
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                             <label for="car_description" class="col-md-4 col-form-label text-md-right">{{ __('Car Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" value="{{ old('car_description') }}" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus></textarea>
+                                <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description') }}</textarea>
 
                                 @error('car_description')
                                     <span class="invalid-feedback" role="alert">

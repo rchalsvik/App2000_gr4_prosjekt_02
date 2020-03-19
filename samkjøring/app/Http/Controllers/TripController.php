@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Trip;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+//use Illuminate\Support\Carbon;
 
 class TripController extends Controller
 {
@@ -89,10 +90,16 @@ class TripController extends Controller
 
     protected function validateTrip()
     {
+      // Laravel dato mutator (date-mutator).
+      // Igjen så er det en løsning i Laravel.
+      //$dateFormat = Carbon::parse('start_point')->format('Y-m-s');
+      //$dateFormat = date("Y-m-d h:i:sa", 'start_date')
+
       return request()->validate([
         'start_point' => ['required', 'string', 'max:255'],
         //'start_date' => ['required', 'date'],
-        //'start_time' => ['required', 'date_format:H:i'],
+        'start_date' => ['required', 'date'],
+        //'start_time' => ['required', 'date'],
         'seats_available' => ['required', 'digits_between:1,45'],
         'car_description' => ['required', 'string', 'max:255'],
       ]);
