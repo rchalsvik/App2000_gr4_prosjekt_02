@@ -5,7 +5,7 @@
  */
 body {
   padding-top: 56px;
-  background-color: #D3D3D3;
+  background-color: #999;
 }
 
 /* turkis #98e6e6, gul #ffffcc blå/lilla #80aaff */
@@ -20,7 +20,7 @@ body {
   }
 
 .card-body {
-  background-color: 	  #ffff66;
+  background-color: 	  #ffffcc;
 }
 
 .card-footer{
