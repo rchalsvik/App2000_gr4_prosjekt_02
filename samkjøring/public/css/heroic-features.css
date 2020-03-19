@@ -1,0 +1,32 @@
+/*!
+ * Start Bootstrap - Heroic Features (https://startbootstrap.com/template-overviews/heroic-features)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+  background-color: #D3D3D3;
+}
+
+/* turkis #98e6e6, gul #ffffcc blå/lilla #80aaff */
+
+
+  .jumbotron {
+    background-color: #ffffcc ;
+  }
+
+  .btn-primary{
+    background-color: #80aaff;
+  }
+
+.card-body {
+  background-color: 	  #ffff66;
+}
+
+.card-footer{
+  background-color: #ffffcc;
+}
+
+.card-img-top{
+  height: 300px;
+}
