@@ -99,12 +99,18 @@ class TripController extends Controller
     {
       return request()->validate([
         'start_point' => ['required', 'string', 'max:255'],
+        'end_point' => ['required', 'string', 'max:255'],
         'start_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        'start_time' => ['required', 'date', 'after_or_equal:' . date('H:i')],
+        //'start_time' => ['required', 'date', 'after_or_equal:' . date('h:i')],
+        'start_time' => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
         'end_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        'start_time' => ['required', 'date', 'after_or_equal:' . date('H:i')],
+        //'end_time' => ['required', 'date', 'after_or_equal:' . date('h:i')],
+        'end_time' => ['required', 'date_format:H:i'],
         'seats_available' => ['required', 'digits_between:1,45'],
         'car_description' => ['required', 'string', 'max:255'],
+        'trip_info' => ['required', 'string', 'max:255'],
+        'pets_allowed' => ['required', 'boolean'],
+        'kids_allowed' => ['required', 'boolean'],
       ]);
     }
 }

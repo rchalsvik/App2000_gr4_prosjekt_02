@@ -20,10 +20,12 @@
           <div class="card h-100">
             <img class="card-img-top" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
             <div class="card-body">
-              {{-- <h4 class="card-title">Rute: {{ $trip->start_point . ' - ' . $trip->end_point }} </h4> --}}
-              <h4 class="card-title">Rute: {{ $trip->start_point }} </h4>
-              <p class="card-text">{{ $trip->start_date }}</p>
-              <p class="card-text"> 10:30-16:00</p>
+              <h4 class="card-title">Rute: {{ $trip->start_point . ' - ' . $trip->end_point }} </h4>
+              {{-- <h4 class="card-title">Rute: {{ $trip->start_point }} </h4> --}}
+              <p class="card-text">
+                {{ $trip->start_date . ' - ' . $trip->end_date }} <br />
+                {{ $trip->start_time . ' - ' . $trip->end_time }}
+             </p>
             </div>
             <div class="card-footer">
               <a href="#" class="btn btn-primary">Meld på tur</a>

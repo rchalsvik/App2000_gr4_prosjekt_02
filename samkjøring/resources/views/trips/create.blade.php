@@ -26,6 +26,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="end_point" class="col-md-4 col-form-label text-md-right">{{ __('End Point') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="end_point" type="text" class="form-control @error('end_point') is-invalid @enderror" name="end_point" value="{{ old('end_point') }}" required autocomplete="end_point" autofocus>
+
+                                @error('end_point')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="start_date" class="col-md-4 col-form-label text-md-right">{{ __('Start Date') }}</label>
 
                             <div class="col-md-6">
@@ -46,6 +60,34 @@
                                 <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time', date("h:i")) }}" required autocomplete="start_time" autofocus>
 
                                 @error('start_time')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="end_date" class="col-md-4 col-form-label text-md-right">{{ __('End Date') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="end_date" type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date', date("Y-m-d")) }}" required autocomplete="end_date" autofocus>
+
+                                @error('end_date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="end_time" class="col-md-4 col-form-label text-md-right">{{ __('End Time') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="end_time" type="time" class="form-control @error('end_time') is-invalid @enderror" name="end_time" value="{{ old('end_time', date("h:i")) }}" required autocomplete="end_time" autofocus>
+
+                                @error('end_time')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -80,6 +122,40 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="trip_info" class="col-md-4 col-form-label text-md-right">{{ __('Trip Info') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info') }}</textarea>
+
+                                @error('trip_info')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="pets_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Pets Allowed') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="hidden" name="pets_allowed" value="0">
+                                <input id="pets_allowed" type="checkbox" class="form-control" name="pets_allowed" value="{{ old('pets_allowed', 1) }}" autocomplete="pets_allowed">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="kids_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Kids Allowed') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="hidden" name="kids_allowed" value="0">
+                                <input id="kids_allowed" type="checkbox" class="form-control" name="kids_allowed" value="{{ old('kids_allowed', 1) }}" autocomplete="kids_allowed">
+                            </div>
+                        </div>
+
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

@@ -25,8 +25,8 @@ class CreateTripsTable extends Migration
             $table->unsignedTinyInteger('seats_available'); // Denne her må være en 'unsigned' for å ikke tillate minus verdier
             $table->string('car_description');
             $table->string('trip_info');
-            $table->boolean('pets_allowed')->default('false');
-            $table->boolean('kids_allowed')->default('false');
+            $table->boolean('pets_allowed')->default(false); // false uten herme/gåseteikn!
+            $table->boolean('kids_allowed')->default(false); // false uten herme/gåseteikn!
             $table->timestamps();
 
             //$table->foreign('driver_id')->references('id')->on('users');
