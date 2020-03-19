@@ -16,6 +16,14 @@
 
                     You are logged in!
 
+                    <ul>
+                      @foreach ($trips as $trip)
+                        <li>
+                          <p>{{ $trip->car_description }}</p>
+                        </li>
+                      @endforeach
+                    </ul>
+
                     <div id="new_trip" class="">
                       <a href="{{ route('createTrip') }}">New Trip</a>
                     </div>

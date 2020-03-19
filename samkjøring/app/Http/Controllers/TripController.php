@@ -16,7 +16,13 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $trips = Trip::latest()->get();
+        // DB::table('trips')->get();
+        // $trips = DB::select(select * from trips where )
+        // return view('home',['trips'=>$trips]);
+        return view('home', [
+          'home' => $trips
+        ]);
     }
 
     /**
@@ -90,15 +96,9 @@ class TripController extends Controller
 
     protected function validateTrip()
     {
-      // Laravel dato mutator (date-mutator).
-      // Igjen så er det en løsning i Laravel.
-      //$dateFormat = Carbon::parse('start_point')->format('Y-m-s');
-      //$dateFormat = date("Y-m-d h:i:sa", 'start_date')
-
       return request()->validate([
         'start_point' => ['required', 'string', 'max:255'],
-        //'start_date' => ['required', 'date'],
-        'start_date' => ['required', 'date'],
+        'start_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
         //'start_time' => ['required', 'date'],
         'seats_available' => ['required', 'digits_between:1,45'],
         'car_description' => ['required', 'string', 'max:255'],
