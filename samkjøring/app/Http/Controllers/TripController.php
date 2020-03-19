@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Trip;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,13 +17,13 @@ class TripController extends Controller
      */
     public function index()
     {
-        $trips = Trip::latest()->get();
+        //$trips = Trip::latest()->get();
         // DB::table('trips')->get();
-        // $trips = DB::select(select * from trips where )
-        // return view('home',['trips'=>$trips]);
-        return view('home', [
-          'home' => $trips
-        ]);
+        $trips = DB::select('select * from trips order by id desc limit 1');
+        return view('home',['trips'=>$trips]);
+        //return view('home', [
+        //  'home' => $trips
+        //]);
     }
 
     /**

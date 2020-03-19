@@ -16,13 +16,22 @@
 
                     You are logged in!
 
-                    <ul>
+                    <table border=1>
+                      <tr>
+                        <td>Starting Point</td>
+                        <td>Start Date</td>
+                        <td>Seats Available</td>
+                        <td>Car Description</td>
+                      </tr>
                       @foreach ($trips as $trip)
-                        <li>
-                          <p>{{ $trip->car_description }}</p>
-                        </li>
+                        <tr>
+                          <td>{{ $trip->start_point }}</td>
+                          <td>{{ $trip->start_date }}</td>
+                          <td>{{ $trip->seats_available }}</td>
+                          <td>{{ $trip->car_description }}</td>
+                        </tr>
                       @endforeach
-                    </ul>
+                    </table>
 
                     <div id="new_trip" class="">
                       <a href="{{ route('createTrip') }}">New Trip</a>
