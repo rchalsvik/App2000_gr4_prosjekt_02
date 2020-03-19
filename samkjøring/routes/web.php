@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Auth::routes();
 
@@ -28,10 +28,8 @@ Route::post('/trip/store', 'TripController@store')->name('storeTrip');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', 'IndexController@index')->name('index');
 
-Route::get('/test', function () {
-  return view('index');
-});
 Route::get('/omoss', function () {
   return view('about');
 });

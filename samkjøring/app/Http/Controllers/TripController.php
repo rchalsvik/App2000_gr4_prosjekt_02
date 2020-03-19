@@ -100,7 +100,9 @@ class TripController extends Controller
       return request()->validate([
         'start_point' => ['required', 'string', 'max:255'],
         'start_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        //'start_time' => ['required', 'date'],
+        'start_time' => ['required', 'date', 'after_or_equal:' . date('H:i')],
+        'end_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+        'start_time' => ['required', 'date', 'after_or_equal:' . date('H:i')],
         'seats_available' => ['required', 'digits_between:1,45'],
         'car_description' => ['required', 'string', 'max:255'],
       ]);

@@ -30,3 +30,8 @@
 
 // tripcontroller og model //
 --> php artisan make:model -rc Trip
+
+
+// KOMMENTARER I .BLADE //
+Bruk:
+{{-- Kommentar her! --}}
