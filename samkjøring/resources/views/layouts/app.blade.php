@@ -50,13 +50,26 @@
                 <a class="nav-link" href="/omoss">Om oss</a>
               </li>
               @if (Route::has('login'))
-                <li class="nav-item">
                   @auth
+                  <li class="nav-item">
                     <a class="nav-link" href="{{ url('home') }}">Home</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                  </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                   @else
+                  <li>
                     <a class="nav-link" href="{{ route('login') }}">Logg inn</a>
+                  </li>
                   @endauth
-                </li>
+
               @endif
             </ul>
           </div>

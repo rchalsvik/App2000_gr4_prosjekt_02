@@ -25,7 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         //return view('home');
-        $trips = DB::select('select * from trips order by id desc limit 10');
+        // auth()->user()->id;
+        $id = auth()->user()->id;
+        //  and (start_date < CURDATE and start_time < CURTIME or start_date > CURDATE)
+        $trips = DB::select('select * from trips where driver_id = ' . $id . ' and (start_date >= CURDATE() and start_time >= CURTIME() or start_date > CURDATE()) order by start_date, start_time desc limit 10');
+
+        //dd($trips);
         return view('home',['trips'=>$trips]);
     }
 }
