@@ -22,16 +22,31 @@
 // Lage heller en tileggs migration og legg til endringene der.
 --> php artisan make:migration add_new_fields_to_users_table
 
+
 // COUNTY //
 --> php artisan make:migration create_counties_table
+
 
 // TRIPS //
 --> php artisan make:migration create_trips_table
 
-// tripcontroller og model //
+
+// TRIPCONTROLLER OG MODEL //
 --> php artisan make:model -rc Trip
 
 
 // KOMMENTARER I .BLADE //
 Bruk:
 {{-- Kommentar her! --}}
+
+
+// LAG FACTORY //
+php artisan make:factory CountyFactory --model=County
+
+
+// TINKER //
+Bruk, Powershell eller CMD:
+--> php artisan tinker
+eks:
+--> $counties = factory(App\County::class, 3)->make(); // Denne bare viser
+--> $counties = factory(App\County::class, 3)->create(); // Denne skriver til DBen

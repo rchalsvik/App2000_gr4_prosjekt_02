@@ -98,6 +98,7 @@ class TripController extends Controller
     protected function validateTrip()
     {
       return request()->validate([
+        'driver_id' => ['required'],
         'start_point' => ['required', 'string', 'max:255'],
         'end_point' => ['required', 'string', 'max:255'],
         'start_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],

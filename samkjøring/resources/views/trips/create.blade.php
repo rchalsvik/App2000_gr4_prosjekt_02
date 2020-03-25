@@ -11,6 +11,8 @@
                     <form method="POST" action="{{ route('storeTrip') }}" id="tripform">
                         @csrf
 
+                        <input type="hidden" name="driver_id" value="{{ auth()->user()->id }}">
+
                         <div class="form-group row">
                             <label for="start_point" class="col-md-4 col-form-label text-md-right">{{ __('Start Point') }}</label>
 
@@ -24,6 +26,7 @@
                                 @enderror
                             </div>
                         </div>
+
 
                         <div class="form-group row">
                             <label for="end_point" class="col-md-4 col-form-label text-md-right">{{ __('End Point') }}</label>
