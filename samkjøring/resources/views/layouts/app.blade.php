@@ -38,21 +38,22 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="{{ route('index') }}">Hjem
+                <li class="nav-item {{ Request::path() === '/' ? 'active' : '' }}">
+
+                <a class="nav-link" href="{{ route('index') }}">{{ __('Home') }}
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/varslinger">Varslinger</a>
+              <li class="nav-item {{ Request::path() === '/varslinger' ? 'active' : '' }}">
+                <a class="nav-link" href="/varslinger">{{ __('Notifications') }}</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/omoss">Om oss</a>
+              <li class="nav-item {{ Request::path() === '/omoss' ? 'active' : '' }}">
+                <a class="nav-link" href="/omoss">{{ __('About us') }}</a>
               </li>
               @if (Route::has('login'))
                   @auth
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ url('home') }}">Home</a>
+                  <li class="nav-item {{ Request::path() === '/home' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('home') }}">{{ __('Profile') }}</a>
                   </li>
                   <li>
                     <a class="nav-link" href="{{ route('logout') }}"
@@ -66,7 +67,7 @@
                     </form>
                   @else
                   <li>
-                    <a class="nav-link" href="{{ route('login') }}">Logg inn</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                   </li>
                   @endauth
 

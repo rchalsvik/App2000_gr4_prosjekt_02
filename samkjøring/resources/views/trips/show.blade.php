@@ -22,11 +22,23 @@
                         <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
                         <p>{{ __('Car description') }}: {{ $trip->car_description }}</p>
                         <p>{{ __('Trip info') }}: {{ $trip->trip_info }}</p>
-                        <p>{{ __('Kids allowed') }}? {{ $trip->kids_allowed }}</p>
-                        <p>{{ __('Pets allowed') }}? {{ $trip->pets_allowed }}</p>
+                        <p>{{ __('Kids allowed') }}?
+                          @if ($trip->kids_allowed)
+                            Yes
+                          @else
+                            No
+                          @endif
+                        </p>
+                        <p>{{ __('Pets allowed') }}?
+                          @if ($trip->pets_allowed)
+                            Yes
+                          @else
+                            No
+                          @endif
+                        </p>
 
 
-
+                      {{-- @if ($trip->kids_allowed) ? 'Yes' : 'No' @endif --}}
 
 
                     <div id="new_trip" class="">
