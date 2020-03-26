@@ -145,7 +145,7 @@
 
                             <div class="col-md-6">
                                 <input type="hidden" name="pets_allowed" value="0">
-                                <input id="pets_allowed" type="checkbox" class="form-control" name="pets_allowed" value="1" autocomplete="pets_allowed" {{ @if ($trip->pets_allowed) checked @endif }}>
+                                <input id="pets_allowed" type="checkbox" class="form-control" name="pets_allowed" value="1" autocomplete="pets_allowed" @if($trip->pets_allowed) checked @endif>
                             </div>
                         </div>
 
@@ -154,7 +154,7 @@
 
                             <div class="col-md-6">
                                 <input type="hidden" name="kids_allowed" value="0">
-                                <input id="kids_allowed" type="checkbox" class="form-control" name="kids_allowed" value="1" autocomplete="kids_allowed" {{ @if ($trip->kids_allowed) checked @endif }}>
+                                <input id="kids_allowed" type="checkbox" class="form-control" name="kids_allowed" value="1" autocomplete="kids_allowed" @if($trip->kids_allowed) checked @endif>
                             </div>
                         </div>
 
