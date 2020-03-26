@@ -68,7 +68,8 @@ class TripController extends Controller
      */
     public function edit(Trip $trip)
     {
-        //
+        // Her skal det jobbes du! :P
+        return view('trips.edit', ['trip' => $trip]);
     }
 
     /**
@@ -81,6 +82,7 @@ class TripController extends Controller
     public function update(Request $request, Trip $trip)
     {
         //
+        $trip->update($this->validateTrip());
     }
 
     /**

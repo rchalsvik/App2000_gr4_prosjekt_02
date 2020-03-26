@@ -14,8 +14,6 @@
                         </div>
                     @endif
 
-
-
                         <h3>{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
                         <p>{{ __('Starts at') }}: {{ $trip->start_date }}, {{ $trip->start_time }}</p>
                         <p>{{ __('Arrives at') }}: {{ $trip->end_date }}, {{ $trip->end_time }}</p>
@@ -31,18 +29,15 @@
                         </p>
                         <p>{{ __('Pets allowed') }}?
                           @if ($trip->pets_allowed)
-                            &#x1F92A;
+                            &#x1F44D;
                           @else
-                            &#x1F92C;
+                            &#x1F44E;
                           @endif
                         </p>
 
 
-                      {{-- @if ($trip->kids_allowed) ? 'Yes' : 'No' @endif --}}
-
-
-                    <div id="new_trip" class="">
-                      <a href="{{ route('createTrip') }}">New Trip</a>
+                    <div id="edit_trip" class="">
+                      <a href="{{ URL::to('/trips/' . $trip->id . '/edit') }}">{{ __('Edit Trip') }}</a>
                     </div>
 
                 </div>
