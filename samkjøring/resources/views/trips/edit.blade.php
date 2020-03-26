@@ -61,7 +61,7 @@
                             <label for="start_time" class="col-md-4 col-form-label text-md-right">{{ __('Start Time') }}</label>
 
                             <div class="col-md-6">
-                                <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time', $trip->start_time) }}" required autocomplete="start_time" autofocus>
+                                <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time', $trip->start_time) }}" required autofocus>
 
                                 @error('start_time')
                                     <span class="invalid-feedback" role="alert">
@@ -89,7 +89,7 @@
                             <label for="end_time" class="col-md-4 col-form-label text-md-right">{{ __('End Time') }}</label>
 
                             <div class="col-md-6">
-                                <input id="end_time" type="time" class="form-control @error('end_time') is-invalid @enderror" name="end_time" value="{{ old('end_time', $trip->end_time) }}" required autocomplete="end_time" autofocus>
+                                <input id="end_time" type="time" class="form-control @error('end_time') is-invalid @enderror" name="end_time" value="{{ old('end_time', $trip->end_time) }}" required autofocus>
 
                                 @error('end_time')
                                     <span class="invalid-feedback" role="alert">
