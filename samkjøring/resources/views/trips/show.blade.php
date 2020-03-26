@@ -37,7 +37,10 @@
 
 
                     <div id="edit_trip" class="">
-                      <a href="{{ URL::to('/trips/' . $trip->id . '/edit') }}">{{ __('Edit Trip') }}</a>
+                      <a href="/trips/{{ $trip->id }}/edit">{{ __('Edit Trip') }}</a>
+
+
+
                     </div>
 
                 </div>

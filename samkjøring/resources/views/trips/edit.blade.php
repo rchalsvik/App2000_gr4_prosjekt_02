@@ -9,7 +9,8 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('updateTrip') }}" id="tripform">
-                        @csrf
+                      @csrf {{-- viktig! ellers så feiler siden --}}
+                      @method('PUT') {{-- Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
 
                         <input type="hidden" name="driver_id" value="{{ auth()->user()->id }}">
 
