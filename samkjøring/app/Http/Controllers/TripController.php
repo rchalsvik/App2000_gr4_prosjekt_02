@@ -115,7 +115,7 @@ class TripController extends Controller
         'end_time' => ['required', 'date_format:H:i'],
         'seats_available' => ['required', 'digits_between:1,45'],
         'car_description' => ['required', 'string', 'max:255'],
-        'trip_info' => ['required', 'text'],
+        'trip_info' => ['required', 'string'],
         'pets_allowed' => ['required', 'boolean'],
         'kids_allowed' => ['required', 'boolean'],
       ]);
