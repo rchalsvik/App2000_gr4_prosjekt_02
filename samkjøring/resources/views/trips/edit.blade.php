@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Edit Trip') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('storeTrip') }}" id="tripform">
+                    <form method="POST" action="{{ route('updateTrip') }}" id="tripform">
                         @csrf
 
                         <input type="hidden" name="driver_id" value="{{ auth()->user()->id }}">
@@ -116,7 +116,7 @@
                             <label for="car_description" class="col-md-4 col-form-label text-md-right">{{ __('Car Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus value="{{ old('car_description', $trip->car_description) }}"></textarea>
+                                <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description', $trip->car_description) }}</textarea>
 
                                 @error('car_description')
                                     <span class="invalid-feedback" role="alert">
@@ -130,7 +130,7 @@
                             <label for="trip_info" class="col-md-4 col-form-label text-md-right">{{ __('Trip Info') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus value="{{ old('trip_info', $trip->trip_info) }}"></textarea>
+                                <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info', $trip->trip_info) }}</textarea>
 
                                 @error('trip_info')
                                     <span class="invalid-feedback" role="alert">
@@ -163,7 +163,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Create Trip') }}
+                                    {{ __('Update Trip') }}
                                 </button>
                             </div>
                         </div>

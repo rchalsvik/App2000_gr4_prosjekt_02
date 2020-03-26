@@ -79,10 +79,11 @@ class TripController extends Controller
      * @param  \App\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trip $trip)
+    public function update(Trip $trip) // Request $request,
     {
         //
         $trip->update($this->validateTrip());
+        return view('trip.show', ['trip' => $trip]);
     }
 
     /**
