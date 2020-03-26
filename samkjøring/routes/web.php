@@ -37,7 +37,8 @@ Route::get('/varslinger', function () {
   return view('notifications');
 });
 
-
+Route::get('/trips/{trip}', 'TripController@show')->name('showTrip');
+// Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show')
 
 /*
 Route::get('/', function () {
