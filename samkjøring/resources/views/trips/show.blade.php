@@ -17,8 +17,8 @@
 
 
                         <h3>{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
-                        <p>{{ __('Start date') }}: {{ $trip->start_date }}, {{ $trip->start_time }}</p>
-                        <p>{{ __('End time') }}: {{ $trip->end_date }}, {{ $trip->end_time }}</p>
+                        <p>{{ __('Starts at') }}: {{ $trip->start_date }}, {{ $trip->start_time }}</p>
+                        <p>{{ __('Arrives at') }}: {{ $trip->end_date }}, {{ $trip->end_time }}</p>
                         <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
                         <p>{{ __('Car description') }}: {{ $trip->car_description }}</p>
                         <p>{{ __('Trip info') }}: {{ $trip->trip_info }}</p>

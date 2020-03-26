@@ -32,10 +32,10 @@ Route::get('/', 'IndexController@index')->name('index');
 
 Route::get('/omoss', function () {
   return view('about');
-});
+})->name('about');
 Route::get('/varslinger', function () {
   return view('notifications');
-});
+})->name('notification');
 
 Route::get('/trips/{trip}', 'TripController@show')->name('showTrip');
 // Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show')
