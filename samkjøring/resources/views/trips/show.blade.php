@@ -16,17 +16,14 @@
 
 
 
-                        <p>{{ $trip->start_point }}</p>
-                        <p>{{ $trip->end_point }}</p>
-                        <p>{{ $trip->start_date }}</p>
-                        <p>{{ $trip->end_date }}</p>
-                        <p>{{ $trip->start_time }}</p>
-                        <p>{{ $trip->end_time }}</p>
-                        <p>{{ $trip->seats_available }}</p>
-                        <p>{{ $trip->car_description }}</p>
-                        <p>{{ $trip->trip_info }}</p>
-                        <p>{{ $trip->kids_allowed }}</p>
-                        <p>{{ $trip->pets_allowed }}</p>
+                        <h3>{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
+                        <p>{{ __('Start date') }}: {{ $trip->start_date }}, {{ $trip->start_time }}</p>
+                        <p>{{ __('End time') }}: {{ $trip->end_date }}, {{ $trip->end_time }}</p>
+                        <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
+                        <p>{{ __('Car description') }}: {{ $trip->car_description }}</p>
+                        <p>{{ __('Trip info') }}: {{ $trip->trip_info }}</p>
+                        <p>{{ __('Kids allowed') }}? {{ $trip->kids_allowed }}</p>
+                        <p>{{ __('Pets allowed') }}? {{ $trip->pets_allowed }}</p>
 
 
 
