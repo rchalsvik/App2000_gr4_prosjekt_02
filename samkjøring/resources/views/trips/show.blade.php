@@ -15,7 +15,6 @@
                     @endif
 
 
-                    @foreach ($trip as $turenDin)
 
                         <p>{{ $trip->start_point }}</p>
                         <p>{{ $trip->end_point }}</p>
@@ -29,7 +28,7 @@
                         <p>{{ $trip->kids_allowed }}</p>
                         <p>{{ $trip->pets_allowed }}</p>
 
-                    @endforeach
+
 
 
 
