@@ -85,7 +85,7 @@ class TripController extends Controller
         //$trip->update($this->validateTrip());
         //return view('trip.show', ['trip' => $trip]);
 
-        //$trip->update($trip->validateTrip());
+        $trip->update($this->validateTrip());
         return redirect('/trips/' . $trip->id); // Dette er hvor du blir sendt etter å ha postet!
     }
 
@@ -115,7 +115,7 @@ class TripController extends Controller
         'end_time' => ['required', 'date_format:H:i'],
         'seats_available' => ['required', 'digits_between:1,45'],
         'car_description' => ['required', 'string', 'max:255'],
-        'trip_info' => ['required', 'string', 'max:255'],
+        'trip_info' => ['required', 'text'],
         'pets_allowed' => ['required', 'boolean'],
         'kids_allowed' => ['required', 'boolean'],
       ]);

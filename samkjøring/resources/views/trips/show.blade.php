@@ -20,15 +20,15 @@
                         <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
                         <p>{{ __('Car description') }}: {{ $trip->car_description }}</p>
                         <p>{{ __('Trip info') }}: {{ $trip->trip_info }}</p>
-                        <p>{{ __('Kids allowed') }}?
-                          @if ($trip->kids_allowed)
-                            &#x1F914;
-                          @else
-                            &#x1F63C;
-                          @endif
-                        </p>
                         <p>{{ __('Pets allowed') }}?
                           @if ($trip->pets_allowed)
+                            &#x1F44D;
+                          @else
+                            &#x1F44E;
+                          @endif
+                        </p>
+                        <p>{{ __('Kids allowed') }}?
+                          @if ($trip->kids_allowed)
                             &#x1F44D;
                           @else
                             &#x1F44E;

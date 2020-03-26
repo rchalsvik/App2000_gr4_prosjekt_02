@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Edit Trip') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('updateTrip') }}" id="tripform">
+                    <form method="POST" action="{{ route('updateTrip', $trip) }}" id="tripform">
                       @csrf {{-- viktig! ellers så feiler siden --}}
                       @method('PUT') {{-- Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
 
