@@ -44,15 +44,15 @@
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item {{ Request::path() === 'notification' ? 'active' : 'hest' }}">
+              <li class="nav-item {{ Request::path() === 'varslinger' ? 'active' : '' }}">
                 <a class="nav-link" href="/varslinger">{{ __('Notifications') }}</a>
               </li>
-              <li class="nav-item {{ Request::path() === 'omoss' ? 'active' : 'hest' }}">
+              <li class="nav-item {{ Request::path() === 'omoss' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('about') }}">{{ __('About us') }}</a>
               </li>
               @if (Route::has('login'))
                   @auth
-                  <li class="nav-item {{ Request::path() === '/home' ? 'active' : '' }}">
+                  <li class="nav-item {{ Request::path() === 'home' ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('home') }}">{{ __('Profile') }}</a>
                   </li>
                   <li>

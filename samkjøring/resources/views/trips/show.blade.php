@@ -24,16 +24,16 @@
                         <p>{{ __('Trip info') }}: {{ $trip->trip_info }}</p>
                         <p>{{ __('Kids allowed') }}?
                           @if ($trip->kids_allowed)
-                            Yes
+                            &#x1F914;
                           @else
-                            No
+                            &#x1F63C;
                           @endif
                         </p>
                         <p>{{ __('Pets allowed') }}?
                           @if ($trip->pets_allowed)
-                            Yes
+                            &#x1F92A;
                           @else
-                            No
+                            &#x1F92C;
                           @endif
                         </p>
 
