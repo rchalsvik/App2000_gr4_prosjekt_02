@@ -12,9 +12,9 @@ $factory->define(Passenger::class, function (Faker $faker) {
     $randRad = array_rand($legalTrips); // Velg tilfeldig rad
     $selectedTrip = $legalTrips[$randRad];
 
-    $ok = false;
+    $ok = 0;
 
-    while ($ok == false) {
+    do {
       // Sjåføren kan ikke være passasjer på egen tur
       $legalUsers = DB::select('select * from users where id <> ' . $selectedTrip->id);
       $randRad = array_rand($legalUsers); // Velg tilfeldig rad
@@ -33,7 +33,6 @@ $factory->define(Passenger::class, function (Faker $faker) {
                    ->where ('passenger_id', '=', $selectedPassenger->id)
                    ->count();
 
-      printf($alternativ);
 
       // $users = DB::table('users')->count();
       // $alternativ = DB::table('passengers')->count()->where('trip_id', '=', $selectedTrip->id, 'AND', 'passenger_id', '=', $selectedPassenger->id)->get();
@@ -59,10 +58,14 @@ $factory->define(Passenger::class, function (Faker $faker) {
 
       //dd($alternativ);
 
+      printf('Bool ' . $ok . ' - ' . $alternativ . ', ');
+
       if ($alternativ == 0) {
-        $ok = true;
+        $ok = 1;
       }
-    }
+    } while ($ok == 0);
+
+    printf('ok etter while: ' . $ok);
 
 
     // seats_requested
