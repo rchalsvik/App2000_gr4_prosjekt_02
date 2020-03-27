@@ -58,14 +58,15 @@ $factory->define(Passenger::class, function (Faker $faker) {
 
       //dd($alternativ);
 
-      printf('Bool ' . $ok . ' - ' . $alternativ . ', ');
+      //printf('Bool ' . $ok . ' - ' . $alternativ . ', ');
 
       if ($alternativ == 0) {
         $ok = 1;
       }
-    } while ($ok == 0);
 
-    printf('ok etter while: ' . $ok);
+      printf('Bool ' . $ok . ' - ' . $alternativ . ', ');
+
+    } while ($ok == 0);
 
 
     // seats_requested

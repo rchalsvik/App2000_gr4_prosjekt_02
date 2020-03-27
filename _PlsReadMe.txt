@@ -54,3 +54,5 @@ Bruk, Powershell eller CMD:
 eks:
 --> $counties = factory(App\County::class, 3)->make(); // Denne bare viser
 --> $counties = factory(App\County::class, 70)->create(); // Denne skriver til DBen
+
+--> $counties = factory(App\County::class, 30)->create( ); $users = factory(App\User::class, 100)->create( ); $trips = factory(App\Trip::class, 600)->create( ); $passengers = factory(App\Passenger::class, 1000)->create( );
