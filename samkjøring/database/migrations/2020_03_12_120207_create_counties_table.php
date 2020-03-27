@@ -19,6 +19,7 @@ class CreateCountiesTable extends Migration
             $table->timestamps();
 
             $table->primary('zipcode');
+            $table->index('county_name');
         });
     }
 

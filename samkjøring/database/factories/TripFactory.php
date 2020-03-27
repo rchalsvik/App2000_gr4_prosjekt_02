@@ -7,6 +7,7 @@ use App\Trip;
 
 $factory->define(Trip::class, function (Faker $faker) {
 
+    // dateTimeInInterval - $intervall er random opp til verdien
     $dato = $faker->dateTimeInInterval($startDate = 'now', $interval = '+153 days', $timezone = null);
     $tid = $faker->dateTimeInInterval($startDate = '-10 hours', $interval = '+12 hours', $timezone = null);
     $eDato = $faker->dateTimeInInterval($startDate = $dato, $interval = '+5 days', $timezone = null);

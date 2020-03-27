@@ -27,6 +27,10 @@
 --> php artisan make:migration create_counties_table
 
 
+// PASSENGER //
+--> php artisan make:migration create_passengers_table
+
+
 // TRIPS //
 --> php artisan make:migration create_trips_table
 
@@ -49,4 +53,4 @@ Bruk, Powershell eller CMD:
 --> php artisan tinker
 eks:
 --> $counties = factory(App\County::class, 3)->make(); // Denne bare viser
---> $counties = factory(App\County::class, 3)->create(); // Denne skriver til DBen
+--> $counties = factory(App\County::class, 70)->create(); // Denne skriver til DBen
