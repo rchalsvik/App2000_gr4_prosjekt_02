@@ -33,6 +33,7 @@ $factory->define(Passenger::class, function (Faker $faker) {
                    ->where ('passenger_id', '=', $selectedPassenger->id)
                    ->count();
 
+      dd($alternativ);
 
       // $users = DB::table('users')->count();
       // $alternativ = DB::table('passengers')->count()->where('trip_id', '=', $selectedTrip->id, 'AND', 'passenger_id', '=', $selectedPassenger->id)->get();
