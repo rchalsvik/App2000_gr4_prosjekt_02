@@ -20,7 +20,8 @@ $factory->define(Passenger::class, function (Faker $faker) {
       $randRad = array_rand($legalUsers); // Velg tilfeldig rad
       $selectedPassenger = $legalUsers[$randRad];
 
-      //$alternativ = DB::select('select count(*) from passengers where trip_id = ' . $selectedTrip->id . ' and passenger_id = ' . $selectedPassenger->id)->get();
+      // prøv denna fordi denna skrive rett count, men henge på ekstra drit so kanksje må slettast?? kanskje ikkje sia boolean va feil og??
+      //$alternativ = DB::select('select count(*) from passengers where trip_id = ' . $selectedTrip->id . ' and passenger_id = ' . $selectedPassenger->id);
 
       /*$alternativ = DB::table('passengers')
                    ->where([['trip_id', '=', $selectedTrip->id], ['passenger_id', '=', $selectedPassenger->id]])
