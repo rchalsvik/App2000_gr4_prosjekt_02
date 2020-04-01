@@ -6,6 +6,7 @@ use DB;
 use App\Trip;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 //use Illuminate\Support\Carbon;
 
 class TripController extends Controller
@@ -44,8 +45,7 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        Trip::create($this->validateTrip());
-
+        Trip::create($this->validateTrip());        
         return redirect('/');
     }
 
