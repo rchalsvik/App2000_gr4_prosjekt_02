@@ -21,20 +21,32 @@ $factory->define(Passenger::class, function (Faker $faker) {
       $selectedPassenger = $legalUsers[$randRad];
 
       // prøv denna fordi denna skrive rett count, men henge på ekstra drit so kanksje må slettast?? kanskje ikkje sia boolean va feil og??
-      //$alternativ = DB::select('select count(*) from passengers where trip_id = ' . $selectedTrip->id . ' and passenger_id = ' . $selectedPassenger->id);
+      $alternativ = DB::select('select count(*) from passengers where trip_id = ' . $selectedTrip->id . ' and passenger_id = ' . $selectedPassenger->id);
 
+
+      $alternativ = json_encode($alternativ);
+
+
+      $alternativ = substr($alternativ, -3, 1);
+
+      //dd($alternativ);
+
+
+      /*
+      $alternativ= json_decode( json_encode($alternativ), true);
+      */
       /*$alternativ = DB::table('passengers')
                    ->where([['trip_id', '=', $selectedTrip->id], ['passenger_id', '=', $selectedPassenger->id]])
                    ->count();
 
       */
 
-      $alternativ = DB::table('passengers')
+      /*$alternativ = DB::table('passengers')
                    ->where('trip_id', '=', $selectedTrip->id)
                    ->where ('passenger_id', '=', $selectedPassenger->id)
                    ->count();
+      */
 
-      dd($alternativ);
 
       // $users = DB::table('users')->count();
       // $alternativ = DB::table('passengers')->count()->where('trip_id', '=', $selectedTrip->id, 'AND', 'passenger_id', '=', $selectedPassenger->id)->get();
@@ -61,6 +73,8 @@ $factory->define(Passenger::class, function (Faker $faker) {
       //dd($alternativ);
 
       //printf('Bool ' . $ok . ' - ' . $alternativ . ', ');
+
+      printf('piss ' . $ok . ' - ' . $alternativ . ', ');
 
       if ($alternativ == 0) {
         $ok = 1;

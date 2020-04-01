@@ -25,10 +25,10 @@ $factory->define(Trip::class, function (Faker $faker) {
      // Brukere som ikke har sertifikat kan ikke lage turer //
     $legalUsers = DB::select('select * from users where haslicense = 1');
     $randRad = array_rand($legalUsers); // Velg tilfeldig rad
-    $driverId = $legalUsers[$randRad];
+    $selected_driver = $legalUsers[$randRad];
 
     return [
-        'driver_id' => $driverId->id,
+        'driver_id' => $selected_driver->id,
         'start_point' => $faker->streetName,
         'end_point' => $faker->streetName,
         'start_date' => $dato,

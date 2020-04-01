@@ -45,7 +45,7 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        Trip::create($this->validateTrip());        
+        Trip::create($this->validateTrip());
         return redirect('/');
     }
 
@@ -98,6 +98,17 @@ class TripController extends Controller
     public function destroy(Trip $trip)
     {
         //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Trip  $trip
+     * @return \Illuminate\Http\Response
+     */
+    public function seeMore(Trip $trip)
+    {
+        return view('trips.seeMore', ['trip' => $trip]);
     }
 
 

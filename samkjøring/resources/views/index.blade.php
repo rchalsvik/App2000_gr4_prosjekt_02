@@ -28,7 +28,7 @@
              </p>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary">{{ __('See more') }}</a>
+              <a href="/trips/{{ $trip->id }}/seemore" class="btn btn-primary">{{ __('See more') }}</a>
             </div>
           </div>
         </div>
