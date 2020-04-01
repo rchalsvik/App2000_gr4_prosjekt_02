@@ -17,9 +17,21 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
+// Localization //
+// Denne her må være på toppen for å funke
+Route::get('locale/{locale}', function ($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
+
+
+
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 Route::get('/trip/create', 'TripController@create')->name('createTrip');
@@ -27,6 +39,8 @@ Route::get('/trip/create', 'TripController@create')->name('createTrip');
 Route::post('/trip/store', 'TripController@store')->name('storeTrip');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 Route::get('/', 'IndexController@index')->name('index');
 
@@ -44,6 +58,10 @@ Route::get('/trips/{trip}/seemore', 'TripController@seemore')->name('seeMore');
 Route::put('/trips/{trip}', 'TripController@update')->name('updateTrip');
 //Route::get('/trips/{trip}', 'TripController@join')->name('joinTrip');
 // Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show')
+
+
+
+
 
 /*
 Route::get('/', function () {

@@ -1,0 +1,20 @@
+{
+  "_comment": "Vi trenger ikke EN så lenge HTMLen er på engelsk",
+
+  "Home": "Home",
+  "Notifications": "Notifications",
+  "About Us": "About Us",
+  "Profile": "Profile",
+  "Logout": "Logout",
+  "Login": "Login",
+
+
+  "_COMMENT":  "index.blade.php",
+  "indexIntro": "The easiest way to find someone who is going the same direction as you!",
+  "indexPhrase": "Drive smart, drive cheap, drive sustainable, Choose Samkjoering AS!",
+
+
+  "_COMMENT":  "about.blade.php",
+  "aboutTitle": "About Samkjøring AS!",
+  "aboutText": "Samkjøring AS something something 1922... small house in Rjukan... Kjell Berit Kongshavn long story... Fall 2022 found Kjell Berit internet... something about \"Gruppe4\""
+}

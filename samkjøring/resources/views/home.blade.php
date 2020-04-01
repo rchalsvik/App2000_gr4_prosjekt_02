@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,14 +14,14 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    {{ __('You are logged in!') }}
 
                     <table border=1>
                       <tr>
-                        <td>Starting Point</td>
-                        <td>Start Date</td>
-                        <td>Seats Available</td>
-                        <td>Car Description</td>
+                        <td>{{ __('StartingPoint') }}</td>
+                        <td>{{ __('Start Date') }}</td>
+                        <td>{{ __('Seats Available') }}</td>
+                        <td>{{ __('Car Description') }}</td>
                       </tr>
                       @foreach ($trips as $trip)
                         <tr>
@@ -35,7 +35,7 @@
 
 
                     <div id="new_trip" class="">
-                      <a href="{{ route('createTrip') }}">New Trip</a>
+                      <a href="{{ route('createTrip') }}">{{ __('New Trip') }}</a>
                     </div>
 
                 </div>

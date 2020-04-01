@@ -6,10 +6,10 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-      <h1 class="display-3">Velkommen til Samkjøring AS!</h1>
-      <p class="lead"><h3>Finn på en enkel måte noen som skal samme vei som deg!</h3></p>
-      <p><h3> Kjør smart, kjør billig, kjør bærekraftig, velg samkjøring AS!</h3></p>
-      <a href="{{ route('register') }}" class="btn btn-primary btn-lg">Registrer deg nå!</a>
+      <h1 class="display-3">{{ __('Welcome to Samkjoering AS!') }}</h1>
+      <p class="lead"><h3>{{ __('indexIntro') }}</h3></p>
+      <p><h3>{{ __('indexPhrase') }}</h3></p>
+      <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
     </header>
 
     <!-- Page Features -->

@@ -18,16 +18,16 @@
                         <p>{{ __('Starts at') }}: {{ $trip->start_date }}, {{ $trip->start_time }}</p>
                         <p>{{ __('Arrives at') }}: {{ $trip->end_date }}, {{ $trip->end_time }}</p>
                         <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
-                        <p>{{ __('Car description') }}: {{ $trip->car_description }}</p>
-                        <p>{{ __('Trip info') }}: {{ $trip->trip_info }}</p>
-                        <p>{{ __('Pets allowed') }}?
+                        <p>{{ __('Car Description') }}: {{ $trip->car_description }}</p>
+                        <p>{{ __('Trip Info') }}: {{ $trip->trip_info }}</p>
+                        <p>{{ __('Pets Allowed') }}?
                           @if ($trip->pets_allowed)
                             &#x1F44D;
                           @else
                             &#x1F44E;
                           @endif
                         </p>
-                        <p>{{ __('Kids allowed') }}?
+                        <p>{{ __('Kids Allowed') }}?
                           @if ($trip->kids_allowed)
                             &#x1F44D;
                           @else

@@ -1,0 +1,110 @@
+{
+  "_COMMENT": "layout.app.blade.php",
+  "Home": "Hjem",
+  "Notifications": "Meldinger",
+  "About Us": "Om oss",
+  "Profile": "Profil",
+  "Logout": "Logg ut",
+  "Login": "Logg inn",
+
+
+  "_COMMENT":  "home.blade.php",
+  "Dashboard": "Dæsjbård",
+  "You are logged in!": "Du er logget inn!",
+  "StartingPoint": "Startplass",
+  "Start Date": "Startdato",
+  "Seats Available": "Seter Tilgjengelig",
+  "Car Description": "Bil Beskrivelse",
+  "New Trip": "Ny Tur",
+
+
+  "_COMMENT":  "index.blade.php",
+  "Welcome to Samkjoering AS!": "Velkommen til Samkjøring AS!",
+  "indexIntro": "Finn på en enkel måte noen som skal samme vei som deg!",
+  "indexPhrase": "Kjør smart, kjør billig, kjør bærekraftig, velg samkjøring AS!",
+  "Join us now!": "Registrer deg nå!",
+  "See more": "Se mer",
+
+
+  "_COMMENT":  "notification.blade.php",
+  "Notifications!": "Varslinger!",
+  "Here be dragons!": "Her vil det komme varslinger!",
+
+
+  "_COMMENT":  "about.blade.php",
+  "aboutTitle": "Om Samkjøring AS!",
+  "aboutText": "Samkjøring AS starta i 1922 i et lite hjem i Rjukan, da Kjell Berit Kongshavn fikk sin første tandemsykkel. Inspirert av eksempelet satt av tandemsykkelen og samholdet i Rjukan Bedehus, starta Kjell Berit Samkjøring AS. Høsten 2022 fant Kjell Berit ut at han ville starte på internett, så da ble de profesjonelle utviklerne \"Gruppe4\" satt på saken!",
+  "Tandem-bike": "Tandem-sykkel",
+
+
+  "_COMMENT":  "trips.create.blade.php",
+  "Create Trip": "Lag En Ny Tur",
+  "Start Point": "Startsted",
+  "End Point": "Endested",
+  "Start Date": "Startdato",
+  "Start Time": "Starttid",
+  "End Date": "Sluttdato",
+  "End Time": "SluttTid",
+  "Seats Available": "Seter Tilgjengelig",
+  "Car Description": "Bil Beskrivelse",
+  "Trip Info": "Tur Beskrivelse",
+  "Pets Allowed": "Dyr Tillat",
+  "Kids Allowed": "Barn Tillat",
+  "Create Trip": "Lag Tur",
+
+
+  "_COMMENT":  "trips.create.blade.php",
+  "Edit Trip": "Endre Tur",
+  "Update Trip": "Oppdater Tur",
+
+
+  "_COMMENT":  "trips.show.blade.php",
+  "Show Trip": "Vis Tur",
+  "Starts at": "Starter",
+  "Arrives at": "Ankommer",
+
+
+  "_COMMENT":  "auth.login.blade.php",
+  "Login": "Logg inn",
+  "E-Mail Address": "Epost Adresse",
+  "Tandem-bike": "Tandem-sykkel",
+  "Password": "Passord",
+  "Remember Me": "Husk meg",
+  "Forgot Your Password?": "Glemt Passordet?",
+
+
+  "_COMMENT":  "auth.register.blade.php",
+  "Register": "Registrer",
+  "Firstname": "Fornavn",
+  "Lastname": "Etternavn",
+  "Telephone": "Telefon",
+  "Address": "Adresse",
+  "Zipcode": "Postadresse",
+  "Date of birth": "Fødselsdato",
+  "E-Mail Address": "Epost Adresse",
+  "Drivers License": "Førekort",
+  "Password": "Passord",
+  "Confirm Password": "Gjenta Passord",
+
+
+  "_COMMENT":  "auth.verify.blade.php",
+  "Verify Your Email Address": "Verifiser Epost Adressen din",
+  "A fresh verification link has been sent to your email address.": "En verifiserlink har blitt sendt til din epost adresse.",
+  "Before proceeding, please check your email for a verification link.": "Før du fortsetter, sjekk eposten din for verifiseringen",
+  "If you did not receive the email": "Hvis du ikke fikk vår epost",
+  "click here to request another": "Trykk her for å motta en ny epost",
+
+
+  "_COMMENT":  "auth.passwords.confirm.blade.php",
+  "Please confirm your password before continuing.": "Før du fortsetter, vennligst sjekk passordet",
+  "Password": "Passord",
+  "Confirm Password": "Gjenta Passord",
+  "Forgot Your Password?": "Glemt Passordet?",
+
+
+  "_COMMENT":  "auth.passwords.confirm.blade.php",
+  "_COMMENT":  "&& auth.passwords.reset.blade.php",
+  "Reset Password": "Nullstill Passord",
+  "E-Mail Address": "Epost Adresse",
+  "Send Password Reset Link": "Send Passord Nullstill Lenke"
+}
