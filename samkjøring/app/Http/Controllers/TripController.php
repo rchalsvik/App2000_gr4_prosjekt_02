@@ -45,6 +45,15 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
+        //dd(request('start_point'));
+        // Log Trip store
+        $logString = 'Ny tur: ' . request('start_point') . ' - ' . request('end_point') .
+                     ' , Start: ' . request('start_date') . ' ' . request('start_time') .
+                     ' , End: ' . request('end_date') . ' ' . request('end_time') .
+                     ' , Bruker ID' . request('driver_id');
+        Log::channel('samkjøring')->info($logString);
+
+
         Trip::create($this->validateTrip());
         return redirect('/');
     }
@@ -84,6 +93,13 @@ class TripController extends Controller
         //
         //$trip->update($this->validateTrip());
         //return view('trip.show', ['trip' => $trip]);
+
+        // Log Trip edit oppdatering
+        $logString = 'Endra tur: ' . request('start_point') . ' - ' . request('end_point') .
+                     ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
+                     ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
+                     ' , Bruker ID' . ' ' . request('driver_id');
+        Log::channel('samkjøring')->info($logString);
 
         $trip->update($this->validateTrip());
         return redirect('/trips/' . $trip->id); // Dette er hvor du blir sendt etter å ha postet!
