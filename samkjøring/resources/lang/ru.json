@@ -1,0 +1,107 @@
+{
+  "_COMMENT": "layout.app.blade.php",
+  "Home": "Дома",
+  "Notifications": "Уведомления",
+  "About Us": "Насчет нас",
+  "Profile": "Профиль",
+  "Logout": "Выйти",
+  "Login": "Авторизоваться",
+  "Language": "язык",
+
+
+  "Copyright": "Авторские права", 
+
+
+  "_COMMENT":  "home.blade.php",
+  "Dashboard": "Приборная панель",
+  "You are logged in!": "Вы вошли в систему!",
+  "StartingPoint": "Отправная точка",
+  "Start Date": "Дата начала",
+  "Seats Available": "Доступные места",
+  "Car Description": "Описание автомобиля",
+  "New Trip": "Новая поездка",
+
+
+  "_COMMENT":  "index.blade.php",
+  "Welcome to Samkjoering AS!": "Добро пожаловать в Samkjoering AS!",
+  "indexIntro": "Самый простой способ найти кого-то, кто идет в том же направлении, что и вы!",
+  "indexPhrase": "Езжай умно, езжай дешево, езжай устойчиво!",
+  "Join us now!": "Присоединяйтесь к нам сейчас!",
+  "See more": "Узнать больше",
+
+
+  "_COMMENT":  "notification.blade.php",
+  "Notifications!": "Уведомления!",
+  "Here be dragons!": "Здесь быть драконами!",
+
+
+  "_COMMENT":  "about.blade.php",
+  "aboutTitle": "Около Samkjoering AS!",
+  "aboutText": "Samkjøring AS что-то что-то 1922 года ... маленький дом в Рьюкане ... Длинная история Кьелла Берита Конгсхавна ... Осенью 2022 года был найден интернет Кьелла Берита ... что-то о \"Gruppe4\" ",
+  "Tandem-bike": "Тандем-велосипед",
+
+
+  "_COMMENT":  "trips.create.blade.php",
+  "Create Trip": "Создать поездку",
+  "Start Point": "Точка отсчета",
+  "End Point": "Конечная точка",
+  "Start Date": "Дата начала",
+  "Start Time": "Время начала",
+  "End Date": "Дата окончания",
+  "End Time": "Время окончания",
+  "Trip Info": "Информация о поездке",
+  "Pets Allowed": "Домашние животные разрешены",
+  "Kids Allowed": "Дети разрешены",
+  "Create Trip": "Создать поездку",
+
+
+  "_COMMENT":  "trips.create.blade.php",
+  "Edit Trip": "Редактировать поездку",
+  "Update Trip": "Обновление поездки",
+
+
+  "_COMMENT":  "trips.show.blade.php",
+  "Show Trip": "Показать поездку",
+  "Starts at": "Начинается в",
+  "Arrives at": "Прибывает в",
+
+  "_COMMENT":  "trips.seemore.blade.php",
+  "Join Trip": "Присоединиться к поездке",
+
+
+  "_COMMENT":  "auth.login.blade.php",
+  "E-Mail Address": "Адрес электронной почты",
+  "Password": "пароль",
+  "Remember Me": "Запомнить меня",
+  "Forgot Your Password?": "Забыли свой пароль?",
+
+
+  "_COMMENT":  "auth.register.blade.php",
+  "Register": "регистр",
+  "Firstname": "Имя",
+  "Lastname": "Фамилия",
+  "Telephone": "телефон",
+  "Address": "Адрес",
+  "Zipcode": "Почтовый Индекс",
+  "Date of birth": "Дата рождения",
+  "Drivers License": "Водительские права",
+  "Confirm Password": "Подтвердите пароль",
+
+
+  "_COMMENT":  "auth.verify.blade.php",
+  "Verify Your Email Address": "Проверьте свой адрес электронной почты",
+  "A fresh verification link has been sent to your email address.": "На ваш адрес электронной почты была отправлена новая ссылка для подтверждения.",
+  "Before proceeding, please check your email for a verification link.": "Прежде чем продолжить, проверьте свою электронную почту на наличие ссылки для подтверждения.",
+  "If you did not receive the email": "Если вы не получили письмо",
+  "click here to request another": "нажмите здесь, чтобы запросить другой",
+
+
+  "_COMMENT":  "auth.passwords.confirm.blade.php",
+  "Please confirm your password before continuing.": "Пожалуйста, подтвердите ваш пароль, прежде чем продолжить",
+
+
+  "_COMMENT":  "auth.passwords.confirm.blade.php",
+  "_COMMENT":  "&& auth.passwords.reset.blade.php",
+  "Reset Password": "Сброс пароля",
+  "Send Password Reset Link": "Отправить ссылку для сброса пароля"
+}

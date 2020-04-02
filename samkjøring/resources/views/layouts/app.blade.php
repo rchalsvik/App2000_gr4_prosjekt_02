@@ -84,6 +84,7 @@
                   <a class="dropdown-item" href="{{ url('locale/no') }}">{{ __('No') }}</a>
                   <a class="dropdown-item" href="{{ url('locale/en') }}">{{ __('En') }}</a>
                   <a class="dropdown-item" href="{{ url('locale/de') }}">{{ __('De') }}</a>
+                  <a class="dropdown-item" href="{{ url('locale/ru') }}">{{ __('Ru') }}</a>
                 </div>
               </li>
             </ul>
@@ -99,7 +100,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Grp04 2020</p>
+        <p class="m-0 text-center text-white">{{ __('Copyright') }} &copy; Grp04 2020</p>
       </div>
       <!-- /.container -->
     </footer>
