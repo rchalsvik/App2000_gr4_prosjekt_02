@@ -11,13 +11,13 @@ body {
 /* turkis #98e6e6, gul #ffffcc blå/lilla #80aaff */
 
 
-  .jumbotron {
-    background-color: #ffffcc ;
-  }
+.jumbotron {
+  background-color: #ffffcc ;
+}
 
-  .btn-primary{
-    background-color: #80aaff;
-  }
+.btn-primary{
+  background-color: #80aaff;
+}
 
 .card-body {
   background-color: 	  #ffffcc;

@@ -1,3 +1,5 @@
+{{-- Denne er fra før/rett etter at jeg, Ross, la til nedtrekks liste! --}}
+
 <!doctype html>
 {{-- <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"> --}}
 <html lang="{{ app()->getLocale() }}">
@@ -52,40 +54,56 @@
                 <a class="nav-link" href="{{ route('about') }}">{{ __('About Us') }}</a>
               </li>
               @if (Route::has('login'))
-                @auth
-                <li class="nav-item dropdown">
-                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                      {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ url('home') }}">{{ __('Profile') }}</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                  @auth
+                  <li class="nav-item {{ Request::path() === 'home' ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('home') }}">{{ __('Profile') }}</a>
+                  </li>
+                  <li>
+                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
+                  </li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                  </div>
-                </li>
-                @else
+                  @else
                   <li>
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                   </li>
-                @endauth
+                  @endauth
+
+                  <li>
+                    {{-- Endre dette til enten "flagg ikon" eller "språk navn" --}}
+                    <a class="nav-link" href="{{ url('locale/no') }}">{{ __('No') }}</a>
+                    <a class="nav-link" href="{{ url('locale/en') }}">{{ __('En') }}</a>
+                  </li>
+
               @endif
-              <li class="nav-item dropdown">
-                <a id="navbarLangDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ __('Language') }} <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  {{-- Endre dette til enten "flagg ikon" eller "språk navn" --}}
-                  <a class="dropdown-item" href="{{ url('locale/no') }}">{{ __('No') }}</a>
-                  <a class="dropdown-item" href="{{ url('locale/en') }}">{{ __('En') }}</a>
-                </div>
-              </li>
+
+              @auth
+                <li class="nav-item dropdown">
+                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                      {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span>
+                  </a>
+
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+                </li>
+              @endauth
+
             </ul>
+
           </div>
         </div>
       </nav>

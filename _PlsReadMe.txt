@@ -1,5 +1,6 @@
 // START //
-
+// NY LARAVEL PROSJEKT //
+laravel new navnHerPls
 
 // UI, BOOTSTRAP OG USERS //
 // Laravel kommer uten UI.

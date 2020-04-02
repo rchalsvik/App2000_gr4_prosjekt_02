@@ -6,6 +6,7 @@
   "Profile": "Profil",
   "Logout": "Logg ut",
   "Login": "Logg inn",
+  "Language": "Språk",
 
 
   "_COMMENT":  "home.blade.php",
@@ -62,6 +63,9 @@
   "Show Trip": "Vis Tur",
   "Starts at": "Starter",
   "Arrives at": "Ankommer",
+
+  "_COMMENT":  "trips.seemore.blade.php",
+  "Join Trip": "Meld deg på",
 
 
   "_COMMENT":  "auth.login.blade.php",

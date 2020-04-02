@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Show Trip') }}</div>
+                <div class="card-header">{{ __('Show Trip') }} - AuthID: {{ Auth::id() }}, TurEierID: {{ $trip->driver_id }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -35,19 +35,32 @@
                           @endif
                         </p>
 
+
+                        {{-- Jeg har ikke sletta det nedentil tilfelle jeg har misforstått. Men sjekk linje 58-63, stemmer det? --}}
+
+
                         {{-- Sjekk om det er Bruker som har laget turen --}}
-                        @if (Auth::id() == DB::table('trips')->where('driver_id', $trip->trip_id)->value('driver_id'))
+                        {{-- @if (Auth::id() == DB::table('trips')->where('driver_id', $trip->trip_id)->value('driver_id'))
                           <p>HEst er best!</p>
                         @endif
-
-                    {{--  <div id="join_trip" class="">
+                        <p>{{ Auth::id() . ' - ' . $trip->driver_id}}</p>
+                        @if (Auth::id() == $trip->driver_id)
+                          <p>Pest er lik Hest.</p>
+                        @endif
+                        --}}
+                        {{--  <div id="join_trip" class="">
                       <a href="/trips/{{  }}/join">{{ __('Join Trip') }}</a> --}}
 
 
 
                     </div>
-
                 </div>
+                {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
+                @if (Auth::id() != $trip->driver_id)
+                  <div class="card-footer">
+                    <a href="/trips/{{ $trip->id }}/seemore" class="btn btn-primary">{{ __('Join Trip') }}</a>
+                  </div>
+                @endif
             </div>
         </div>
     </div>
