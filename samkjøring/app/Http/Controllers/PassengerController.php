@@ -36,7 +36,15 @@ class PassengerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      /*$logString = 'Ny tur: ' . request('start_point') . ' - ' . request('end_point') .
+                   ' , Start: ' . request('start_date') . ' ' . request('start_time') .
+                   ' , End: ' . request('end_date') . ' ' . request('end_time') .
+                   ' , Bruker ID' . request('driver_id');
+      Log::channel('samkjøring')->info($logString);*/
+
+
+      Passenger::create($this->validatePassenger());
+      return redirect('/');
     }
 
     /**
@@ -82,5 +90,15 @@ class PassengerController extends Controller
     public function destroy(Passenger $passenger)
     {
         //
+    }
+
+
+    protected function validatePassenger()
+    {
+      return request()->validate([
+        'trip_id' => ['required'],
+        'passenger_id' => ['required'],
+        'seats_requested' => ['required', 'digits_between:1,45'],
+      ]);
     }
 }

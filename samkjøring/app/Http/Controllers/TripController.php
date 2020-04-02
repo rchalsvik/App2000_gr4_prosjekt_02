@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Trip;
+// use App\Passenger;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -127,6 +128,58 @@ class TripController extends Controller
         return view('trips.seeMore', ['trip' => $trip]);
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Trip  $trip
+     * @return \Illuminate\Http\Response
+     */
+    public function join(Request $request, Trip $trip) //
+    {
+        //
+        //$trip->update($this->validateTrip());
+        //return view('trip.show', ['trip' => $trip]);
+
+        // Log Trip edit oppdatering
+        /*$logString = 'Endra tur: ' . request('start_point') . ' - ' . request('end_point') .
+                     ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
+                     ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
+                     ' , Bruker ID' . ' ' . request('driver_id');
+        Log::channel('samkjøring')->info($logString);*/
+
+        /*$requestData = request()->all();
+        $requestData['seats_available'] = $trip->seats_available - request('seats_available');*/
+        //request()->replace('seats_available', $trip->seats_available - request('seats_available'));
+        request()->merge([ 'seats_available' => $trip->seats_available - request('seats_available') ]);
+
+
+
+        $validatedResults = request()->validate([
+          'seats_available' => ['required', 'digits_between:1,45'],
+        ]);
+
+        //dd(request('seats_available'));
+
+        $trip->update($validatedResults);
+
+
+
+
+
+
+
+
+
+        //dd($trip);
+
+        //$trip->update($this->validateSeats());
+        //dd($trip);
+
+        //Passenger::create($this->validatePassenger());
+        //return redirect('/');
+        return view('/trips/join', $request); // Dette er hvor du blir sendt etter å ha postet!
+    }
 
     protected function validateTrip()
     {
@@ -145,6 +198,13 @@ class TripController extends Controller
         'trip_info' => ['required', 'string'],
         'pets_allowed' => ['required', 'boolean'],
         'kids_allowed' => ['required', 'boolean'],
+      ]);
+    }
+
+    protected function validateSeats()
+    {
+      return request()->validate([
+        'seats_available' => ['required', 'digits_between:1,45'],
       ]);
     }
 }
