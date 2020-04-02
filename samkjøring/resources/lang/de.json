@@ -1,0 +1,114 @@
+{
+  "_COMMENT": "layout.app.blade.php",
+  "Home": "Schnell",
+  "Notifications": "Schnell",
+  "About Us": "Schnell Schnell",
+  "Profile": "Schnell",
+  "Logout": "Schnell Schnell",
+  "Login": "Schnell Schnell",
+  "Language": "Schnell",
+
+
+  "_COMMENT":  "home.blade.php",
+  "Dashboard": "Schnell",
+  "You are logged in!": "Schnell Schnell Schnell Schnell!",
+  "StartingPoint": "Schnell",
+  "Start Date": "Schnell",
+  "Seats Available": "Schnell Schnell",
+  "Car Description": "Schnell Schnell",
+  "New Trip": "Schnell Schnell",
+
+
+  "_COMMENT":  "index.blade.php",
+  "Welcome to Samkjoering AS!": "Schnell Schnell Schnell Schnell!",
+  "indexIntro": "Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell!",
+  "indexPhrase": "Schnell Schnell, Schnell Schnell, Schnell Schnell, Schnell Schnell Schnell!",
+  "Join us now!": "Schnell Schnell Schnell!",
+  "See more": "Schnell Schnell",
+
+
+  "_COMMENT":  "notification.blade.php",
+  "Notifications!": "Varslinger!",
+  "Here be dragons!": "Schnell Schnell Schnell Schnell Schnell!",
+
+
+  "_COMMENT":  "about.blade.php",
+  "aboutTitle": "Schnell Schnell Schnell!",
+  "aboutText": "Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell, Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell. Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell, Schnell Schnell Schnell Schnell Schnell. Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell, Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell!",
+  "Tandem-bike": "Schnell-Schnell",
+
+
+  "_COMMENT":  "trips.create.blade.php",
+  "Create Trip": "Schnell Schnell Schnell Schnell",
+  "Start Point": "Schnell",
+  "End Point": "Schnell",
+  "Start Date": "Schnell",
+  "Start Time": "Schnell",
+  "End Date": "Schnell",
+  "End Time": "Schnell",
+  "Seats Available": "Schnell Schnell",
+  "Car Description": "Schnell Schnell",
+  "Trip Info": "Schnell Schnell",
+  "Pets Allowed": "Schnell Schnell",
+  "Kids Allowed": "Schnell Schnell",
+  "Create Trip": "Schnell Schnell",
+
+
+  "_COMMENT":  "trips.create.blade.php",
+  "Edit Trip": "Schnell Schnell",
+  "Update Trip": "Schnell Schnell",
+
+
+  "_COMMENT":  "trips.show.blade.php",
+  "Show Trip": "Schnell Schnell",
+  "Starts at": "Schnell",
+  "Arrives at": "Schnell",
+
+  "_COMMENT":  "trips.seemore.blade.php",
+  "Join Trip": "Schnell Schnell Schnell",
+
+
+  "_COMMENT":  "auth.login.blade.php",
+  "Login": "Schnell Schnell",
+  "E-Mail Address": "Schnell Schnell",
+  "Tandem-bike": "Schnell-Schnell",
+  "Password": "Schnell",
+  "Remember Me": "Schnell Schnell",
+  "Forgot Your Password?": "Schnell Schnell?",
+
+
+  "_COMMENT":  "auth.register.blade.php",
+  "Register": "Schnell",
+  "Firstname": "Schnell",
+  "Lastname": "Schnell",
+  "Telephone": "Schnell",
+  "Address": "Schnell",
+  "Zipcode": "Schnell",
+  "Date of birth": "Schnell",
+  "E-Mail Address": "Schnell Schnell",
+  "Drivers License": "Schnell",
+  "Password": "Schnell",
+  "Confirm Password": "Schnell Schnell",
+
+
+  "_COMMENT":  "auth.verify.blade.php",
+  "Verify Your Email Address": "Schnell Schnell Schnell Schnell",
+  "A fresh verification link has been sent to your email address.": "Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell.",
+  "Before proceeding, please check your email for a verification link.": "Schnell Schnell Schnell, Schnell Schnell Schnell Schnell Schnell",
+  "If you did not receive the email": "Schnell Schnell Schnell Schnell Schnell Schnell",
+  "click here to request another": "Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell",
+
+
+  "_COMMENT":  "auth.passwords.confirm.blade.php",
+  "Please confirm your password before continuing.": "Schnell Schnell Schnell, Schnell Schnell Schnell",
+  "Password": "Schnell",
+  "Confirm Password": "Schnell Schnell",
+  "Forgot Your Password?": "Schnell Schnell?",
+
+
+  "_COMMENT":  "auth.passwords.confirm.blade.php",
+  "_COMMENT":  "&& auth.passwords.reset.blade.php",
+  "Reset Password": "Schnell Schnell",
+  "E-Mail Address": "Schnell Schnell",
+  "Send Password Reset Link": "Schnell Schnell Schnell Schnell"
+}

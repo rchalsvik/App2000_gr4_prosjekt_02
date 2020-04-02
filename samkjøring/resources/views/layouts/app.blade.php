@@ -83,6 +83,7 @@
                   {{-- Endre dette til enten "flagg ikon" eller "språk navn" --}}
                   <a class="dropdown-item" href="{{ url('locale/no') }}">{{ __('No') }}</a>
                   <a class="dropdown-item" href="{{ url('locale/en') }}">{{ __('En') }}</a>
+                  <a class="dropdown-item" href="{{ url('locale/de') }}">{{ __('De') }}</a>
                 </div>
               </li>
             </ul>
