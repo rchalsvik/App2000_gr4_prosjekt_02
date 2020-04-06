@@ -65,3 +65,11 @@ $alternativ = DB::select('select count(*) from passengers where trip_id = ' . $s
 $alternativ = json_encode($alternativ);
 
 $alternativ = substr($alternativ, -3, 1);
+
+
+// HVORDAN RESETTE PASSORD FORELØPIG //
+--> Når du trykker på reset knappen og får opp meldinga om at e-post er sendt, gå inn i storage/logs/laravel.log og bla helt ned (er en teoretisk mail som blir sendt)
+--> kopier reset linken og lim den inn i søkefeltet
+--> bytt ut localhost med 127.0.0.1:8000
+--> trykk enter
+--> passordet kan endres

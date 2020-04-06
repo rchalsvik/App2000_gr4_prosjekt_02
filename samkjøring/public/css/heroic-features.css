@@ -30,3 +30,20 @@ body {
 .card-img-top{
   height: 300px;
 }
+
+#navbarLangDropdown {
+  
+}
+.dropdown-item{
+  font-size: 20px;
+}
+
+.nav-item-dropdown {
+  
+}
+.dropdown-menu {
+}
+
+.lang-icon {
+  padding-right: 5%;
+}

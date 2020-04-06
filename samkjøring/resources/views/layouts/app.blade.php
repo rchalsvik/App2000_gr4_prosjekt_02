@@ -81,11 +81,11 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   {{-- Endre dette til enten "flagg ikon" eller "språk navn" --}}
-                  <a class="dropdown-item" href="{{ url('locale/no') }}">{{ __('No') }}</a>
-                  <a class="dropdown-item" href="{{ url('locale/en') }}">{{ __('En') }}</a>
-                  <a class="dropdown-item" href="{{ url('locale/de') }}">{{ __('De') }}</a>
-                  <a class="dropdown-item" href="{{ url('locale/ru') }}">{{ __('Ru') }}</a>
-                  <a class="dropdown-item" href="{{ url('locale/es') }}">{{ __('Es') }}</a>
+                  <a class="dropdown-item" href="{{ url('locale/no') }}"><img class="lang-icon" src="img/norway.png" alt="No">{{ __('Norsk')}}</a>
+                  <a class="dropdown-item" href="{{ url('locale/en') }}"><img class="lang-icon" src="img/usa.png" alt="En">{{ __('English')}}</a>
+                  <a class="dropdown-item" href="{{ url('locale/de') }}"><img class="lang-icon" src="img/germany.png" alt="De">{{ __('Deutsch')}}</a>
+                  <a class="dropdown-item" href="{{ url('locale/ru') }}"><img class="lang-icon" src="img/russia.png" alt="Ru">{{ __('русский')}}</a>
+                  <a class="dropdown-item" href="{{ url('locale/es') }}"><img class="lang-icon" src="img/spain.png" alt="Es">{{ __('Español')}}</a>
                 </div>
               </li>
             </ul>
