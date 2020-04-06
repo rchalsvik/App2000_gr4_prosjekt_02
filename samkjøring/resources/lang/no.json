@@ -24,7 +24,11 @@
   "indexIntro": "Finn på en enkel måte noen som skal samme vei som deg!",
   "indexPhrase": "Kjør smart, kjør billig, kjør bærekraftig, velg samkjøring AS!",
   "Join us now!": "Registrer deg nå!",
+  "Route": "Rute",
   "See more": "Se mer",
+  "Departure": "Avgang",
+  "Arrival": "Ankomst",
+  "Traveltime": "Reisetid",
 
 
   "_COMMENT":  "notification.blade.php",
