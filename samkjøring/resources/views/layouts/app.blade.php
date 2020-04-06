@@ -85,6 +85,7 @@
                   <a class="dropdown-item" href="{{ url('locale/en') }}">{{ __('En') }}</a>
                   <a class="dropdown-item" href="{{ url('locale/de') }}">{{ __('De') }}</a>
                   <a class="dropdown-item" href="{{ url('locale/ru') }}">{{ __('Ru') }}</a>
+                  <a class="dropdown-item" href="{{ url('locale/es') }}">{{ __('Es') }}</a>
                 </div>
               </li>
             </ul>
