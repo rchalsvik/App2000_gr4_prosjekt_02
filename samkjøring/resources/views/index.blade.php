@@ -34,30 +34,26 @@
                     $testTimeFormat = 'hh:mm';
                     $testDateTimeFormat = $testTimeFormat . ' - ' . $testDateFormat;
 
-                    // Ikke vis begge dagene hvis de er like, Ross.
-                    if ($testFrDateTime->isoFormat($testDateFormat) == $testToDateTime->isoFormat($testDateFormat))
-                    {
-                        echo '<strong>' . ucfirst($testToDateTime->isoFormat($testDateFormat)) . '</strong><br>';
-                        echo __('Departure') . ': </td>' . $testFrDateTime->isoFormat($testTimeFormat) . '</strong><br>';
-                        echo '🡫<br>';
-                        echo __('Arrival')   . ': </td>' . $testToDateTime->isoFormat($testTimeFormat) . '</strong><br>';
-
-                    } else {
-                      //echo __('Departure') . ': ' . '<strong>' . $testFrDateTime->isoFormat($testDateTimeFormat) . '</strong><br>';
-                      echo __('Departure') . ': ' . '<strong>' . $testFrDateTime->isoFormat($testTimeFormat) . '</strong><br>';
-                      echo '<strong>' . $testFrDateTime->isoFormat($testDateFormat) . '</strong><br>';
-                      echo '🡫<br>';
-                      //echo __('Arrival')  . ': ' . '<strong>' . $testToDateTime->isoFormat($testDateTimeFormat) . '</strong><br>';
-                      echo __('Arrival')  . ': ' . '<strong>' . $testToDateTime->isoFormat($testTimeFormat) . '</strong><br>';
-                      echo '<strong>' . $testToDateTime->isoFormat($testDateFormat) . '</strong><br>';
-                    }
-                    echo '<br>';
-                    // Carbon\CarbonInterface::DIFF_ABSOLUTE fjerner tilleggs tekst i diff
-                    echo __('Traveltime') . ': ' . $testFrDateTime->diffForHumans($testToDateTime, Carbon\CarbonInterface::DIFF_ABSOLUTE) . '<br>';
+                    $test1 = 'Hest er best! ';
+                    $test2 = 'Fest er ikke best.';
                   ?>
 
-                {{-- $trip->start_date . ' - ' . $trip->end_date . '<br>' --}}
-                {{-- $trip->start_time . ' - ' . $trip->end_time --}}
+                  {{-- @samTest($test1, $test2)<br> --}}
+                  {{-- @samTest2($trip->start_date, $trip->start_time)<br> --}}
+
+                  {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
+                  @if ($testFrDateTime->isoFormat($testDateFormat) == $testToDateTime->isoFormat($testDateFormat))
+                    <b>{{ ucfirst($testToDateTime->isoFormat($testDateFormat)) }}</b><br>
+                    {{ __('Departure') }}: <b>{{ $testFrDateTime->isoFormat($testTimeFormat) }}</b><br>
+                    🡫<br>
+                    {{ __('Arrival') }}: <b>{{ $testToDateTime->isoFormat($testTimeFormat) }}</b><br>
+                  @else
+                    {{ __('Departure') }}: <b>{{ $testFrDateTime->isoFormat($testTimeFormat) }}</b><br>
+                    <b>{{ $testFrDateTime->isoFormat($testDateFormat) }}</b><br>
+                    🡫<br>
+                    {{ __('Arrival') }}: <b>{{  $testToDateTime->isoFormat($testTimeFormat) }}</b><br>
+                    <b>{{ $testToDateTime->isoFormat($testDateFormat) }}</b><br>
+                  @endif
              </p>
             </div>
             <div class="card-footer">
