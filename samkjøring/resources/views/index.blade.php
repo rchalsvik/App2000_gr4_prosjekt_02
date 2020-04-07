@@ -28,7 +28,6 @@
                   {{-- @if ($testFrDateTime->isoFormat($testDateFormat) == $testToDateTime->isoFormat($testDateFormat)) --}}
 
                   @if ($trip->start_date == $trip->end_date)
-                    {{-- <b>{{ ucfirst($testToDateTime->isoFormat($testDateFormat)) }}</b><br> --}}
                     <b>@samDateFormat($trip->end_date)</b><br>
                     {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                     🡫<br>
