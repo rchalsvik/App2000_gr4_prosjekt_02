@@ -24,35 +24,20 @@
               {{-- <h4 class="card-title">{{ __('Route') }}: {{ $trip->start_point . ' - ' . $trip->end_point }} </h4> --}}
               {{-- <h4 class="card-title">Rute: {{ $trip->start_point }} </h4> --}}
               <p class="card-text">
-
-                  <?php
-                    // Bruk Carbon for tid og dato.
-                    // Ser ut som den respekterer locale(). Ross.
-                    $testFrDateTime = new Carbon\Carbon($trip->start_date . $trip->start_time);
-                    $testToDateTime = new Carbon\Carbon($trip->end_date . $trip->end_time);
-                    $testDateFormat = 'dddd DD. MMMM';
-                    $testTimeFormat = 'hh:mm';
-                    $testDateTimeFormat = $testTimeFormat . ' - ' . $testDateFormat;
-
-                    $test1 = 'Hest er best! ';
-                    $test2 = 'Fest er ikke best.';
-                  ?>
-
-                  {{-- @samTest($test1, $test2)<br> --}}
-                  {{-- @samTest2($trip->start_date, $trip->start_time)<br> --}}
-
                   {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
-                  @if ($testFrDateTime->isoFormat($testDateFormat) == $testToDateTime->isoFormat($testDateFormat))
-                    <b>{{ ucfirst($testToDateTime->isoFormat($testDateFormat)) }}</b><br>
-                    {{ __('Departure') }}: <b>{{ $testFrDateTime->isoFormat($testTimeFormat) }}</b><br>
+                  {{-- @if ($testFrDateTime->isoFormat($testDateFormat) == $testToDateTime->isoFormat($testDateFormat)) --}}
+
+                  @if ($trip->start_date == $trip->end_date)
+                    <b>@samDateFormat($trip->end_date)</b><br>
+                    {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                     🡫<br>
-                    {{ __('Arrival') }}: <b>{{ $testToDateTime->isoFormat($testTimeFormat) }}</b><br>
+                    {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                   @else
-                    {{ __('Departure') }}: <b>{{ $testFrDateTime->isoFormat($testTimeFormat) }}</b><br>
-                    <b>{{ $testFrDateTime->isoFormat($testDateFormat) }}</b><br>
+                    {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
+                    <b>@samDateFormat($trip->start_date)</b><br>
                     🡫<br>
-                    {{ __('Arrival') }}: <b>{{  $testToDateTime->isoFormat($testTimeFormat) }}</b><br>
-                    <b>{{ $testToDateTime->isoFormat($testDateFormat) }}</b><br>
+                    {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
+                    <b>@samDateFormat($trip->end_date)</b><br>
                   @endif
              </p>
             </div>
