@@ -15,8 +15,8 @@
                     @endif
 
                         <h3>{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
-                        <p>{{ __('Starts at') }}: {{ $trip->start_date }}, {{ $trip->start_time }}</p>
-                        <p>{{ __('Arrives at') }}: {{ $trip->end_date }}, {{ $trip->end_time }}</p>
+                        <p>{{ __('Starts at') }}: @samDateTimeFormat($trip->start_date, $trip->start_time)</p>
+                        <p>{{ __('Arrives at') }}: @samDateTimeFormat($trip->end_date, $trip->end_time)</p>
                         <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
                         <p>{{ __('Car Description') }}: {{ $trip->car_description }}</p>
                         <p>{{ __('Trip Info') }}: {{ $trip->trip_info }}</p>
