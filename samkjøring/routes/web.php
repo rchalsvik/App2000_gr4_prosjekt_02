@@ -58,6 +58,8 @@ Route::get('/trips/{trip}/seemore', 'TripController@seemore')->name('seeMore');
 Route::post('/trips/{trip}/', 'TripController@join')->name('joinTrip');
 Route::post('/trips/join', 'PassengerController@store')->name('storePassenger');
 Route::put('/trips/{trip}', 'TripController@update')->name('updateTrip');
+Route::get('/search', 'SearchController@index')->name('searchIndex');
+Route::get('/search/piss', 'SearchController@show')->name('searchShow');
 // Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show')
 
 

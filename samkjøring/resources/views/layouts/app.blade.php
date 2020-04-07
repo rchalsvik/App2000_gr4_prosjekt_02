@@ -88,6 +88,9 @@
                   <a class="dropdown-item" href="{{ url('locale/es') }}"><img class="lang-icon" src="img/spain.png" alt="Es">{{ __('Español')}}</a>
                 </div>
               </li>
+              <li class="nav-item {{ Request::path() === 'search' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('searchIndex') }}">{{ __('Search') }}</a>
+              </li>
             </ul>
           </div>
         </div>

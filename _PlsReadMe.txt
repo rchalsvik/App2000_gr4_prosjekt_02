@@ -40,6 +40,10 @@ laravel new navnHerPls
 --> php artisan make:model -rc Trip
 
 
+// TRIPCONTROLLER//
+--> php artisan make:controller -r TripController
+
+
 // KOMMENTARER I .BLADE //
 Bruk:
 {{-- Kommentar her! --}}
