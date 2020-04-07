@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Blade; // Denne må være her slik at vi kan bruke dette i .Blade filer. Ross.
-use Carbon\Carbon; // Trenger denne for Dato i Laravel. Ross.
 
 class AppServiceProvider extends ServiceProvider
 {
