@@ -14,8 +14,6 @@
                         </div>
                     @endif
 
-
-
                         <h3>{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
                         <p>{{ __('Starts at') }}: {{ $trip->start_date }}, {{ $trip->start_time }}</p>
                         <p>{{ __('Arrives at') }}: {{ $trip->end_date }}, {{ $trip->end_time }}</p>
@@ -52,9 +50,6 @@
                         --}}
                         {{--  <div id="join_trip" class="">
                       <a href="/trips/{{  }}/join">{{ __('Join Trip') }}</a> --}}
-
-
-
                     </div>
                 </div>
                 {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
@@ -70,26 +65,17 @@
                       <label for="seats_available" class="col-md-4 col-form-label text-md-right">{{ __('Seats requested') }}</label>
 
                       <div class="col-md-6">
-                          <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', 1) }}" required autocomplete="seats_available" autofocus>
+                        <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', 1) }}" required autocomplete="seats_available" autofocus>
 
-                          @error('seats_requested')
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $message }}</strong>
-                              </span>
-                          @enderror
-                      </div>
+                        @error('seats_requested')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
 
-                      <div class="form-group row mb-0">
-                          <div class="col-md-6 offset-md-4">
-                              <button type="submit" class="btn btn-primary">
-                                  {{ __('Join Trip') }}
-                              </button>
-                          </div>
+                        <button type="submit" class="btn btn-primary">{{ __('Join Trip') }}</button>
                       </div>
                   </form>
-
-                    {{-- <a href="/trips/{{ $trip->id }}/seemore" class="btn btn-primary">{{ __('Join Trip') }}</a> --}}
-                  </div>
                 @endif
 
                 @if (Auth::id() == $trip->driver_id)
@@ -97,6 +83,8 @@
                     <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary">{{ __('Edit Trip') }}</a>
                   </div>
                 @endif
+                </div>
+
             </div>
         </div>
     </div>

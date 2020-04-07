@@ -48,7 +48,10 @@ class SearchController extends Controller
      */
     public function show(Request $request)
     {
-      $trips = DB::select("select * from trips where start_point LIKE '%" . $request->start_point . "%'");
+      //$trips = DB::select("select * from trips where start_point LIKE '%" . $request->start_point . "%'"); // fungerer
+      //dd($request);
+      $trips = DB::select("select * from trips where start_point LIKE '%" . $request->start_point . "%' and start_date >= '" . $request->start_date . "' and end_point like '%"
+      . $request->end_point . "%' order by start_date, start_time asc");
 
 
       return view('search',['trips'=>$trips]);

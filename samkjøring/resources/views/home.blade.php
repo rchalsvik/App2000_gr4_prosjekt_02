@@ -25,7 +25,7 @@
                       </tr>
                       @foreach ($trips as $trip)
                         <tr>
-                          <td><h3><a href="{{ route('showTrip', $trip->id) }}">{{ $trip->start_point }}</a></h3></td>
+                          <td><h3><a href="{{ route('seeMore', $trip->id) }}">{{ $trip->start_point }}</a></h3></td>
                           <td>@samDateFormat($trip->start_date)</td>
                           <td>{{ $trip->seats_available }}</td>
                           <td>{{ $trip->car_description }}</td>
