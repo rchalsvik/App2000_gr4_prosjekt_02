@@ -23,6 +23,29 @@ h4,
   font-size: 1.25rem;
 }
 
+h3.margin-b {
+  margin-bottom: 1.5rem;
+}
+
+.item-container {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.item-container-margin-b {
+  margin-bottom: 1rem;
+}
+
+.item {
+  justify-content: space-between;
+}
+
+.item-padding-l {
+  padding-left: 1rem;
+}
+
+
 .jumbotron {
   background-color: #ffffcc ;
 }
@@ -33,6 +56,11 @@ h4,
 
 .card-body {
   background-color: #ffffcc;
+}
+
+.card-body-flex {
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .card-footer {

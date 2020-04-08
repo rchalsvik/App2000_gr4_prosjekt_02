@@ -7,53 +7,66 @@
             <div class="card">
                 <div class="card-header">{{ __('Show Trip') }} - AuthID: {{ Auth::id() }}, TurEierID: {{ $trip->driver_id }}</div>
 
-                <img class="card-img-top" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
+                <img class="card-img-top" src="{{URL::to('/')}}/img/brukers/essolærdal.webp" alt="">
 
-                <div class="card-body">
+                <div class="card-body card-body-flex">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    <h3>{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
-                    <p>{{ __('Departure') }}: <b>@samTimeFormat($trip->start_time) - @samDateFormat($trip->start_date)</b><br>
-                       {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time) - @samDateFormat($trip->end_date)</b></p>
-                    <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
-                    <p>{{ __('Car Description') }}: {{ $trip->car_description }}</p>
-                    <p>{{ __('Trip Info') }}: <br>
-                       {{ $trip->trip_info }}</p>
-                    <div>{{ __('Pets') }}:
-                      @if ($trip->pets_allowed)
-                        &#x1F44D;
-                      @else
-                        &#x1F44E;
-                      @endif
+                    <h3 class="margin-b">{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
+                    <div class="item-container item-container-margin-b">
+                      <div class="item">
+                        {{ __('Departure') }}:<br>
+                        {{ __('Arrival') }}:
+                      </div>
 
-                      {{ __('Children') }}:
-                      @if ($trip->kids_allowed)
-                        &#x1F44D;
-                      @else
-                        &#x1F44E;
-                      @endif
+                      <div class="item item-padding-l">
+                        <b>@samTimeFormat($trip->start_time) - @samDateFormat($trip->start_date)</b><br>
+                        <b>@samTimeFormat($trip->end_time) - @samDateFormat($trip->end_date)</b>
+                      </div>
                     </div>
-                        {{-- Jeg har ikke sletta det nedentil tilfelle jeg har misforstått. Men sjekk linje 58-63, stemmer det? --}}
 
-                        {{-- Sjekk om det er Bruker som har laget turen --}}
-                        {{-- @if (Auth::id() == DB::table('trips')->where('driver_id', $trip->trip_id)->value('driver_id'))
-                          <p>HEst er best!</p>
+
+                    <div class="item-container item-container-margin-b">
+                      {{ __('Car Description') }}: <br>
+                      {{ $trip->car_description }}
+                    </div>
+                    <div class="item-container item-container-margin-b">
+                      {{ __('Trip Info') }}: <br>
+                      {{ $trip->trip_info }}
+                    </div>
+
+                    <div class="item-container">
+                      <div class="item">
+                        {{ __('Pets') }}:
+                        @if ($trip->pets_allowed)
+                          &#x1F44D;
+                        @else
+                          &#x1F44E;
                         @endif
-                        <p>{{ Auth::id() . ' - ' . $trip->driver_id}}</p>
-                        @if (Auth::id() == $trip->driver_id)
-                          <p>Pest er lik Hest.</p>
+                      </div>
+                      <div class="item item-padding-l">
+                        {{ __('Children') }}:
+                        @if ($trip->kids_allowed)
+                          &#x1F44D;
+                        @else
+                          &#x1F44E;
                         @endif
-                        --}}
-                        {{--  <div id="join_trip" class="">
-                      <a href="/trips/{{  }}/join">{{ __('Join Trip') }}</a> </div>--}}
+                      </div>
+                    </div>
 
                 </div>
 
                 <div class="card-footer">
+                  {{-- Her må det fikses i stylene!! --}}
+                  @if($trip->seats_available > 0)
+                    <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
+                  @else
+                    <p style="text-align: center;">{{ __('Full Trip') }}</p>
+                  @endif
                 {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
                     @if (Auth::id() != $trip->driver_id && $trip->seats_available > 0)
                         <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
@@ -66,7 +79,11 @@
                           <label for="seats_available" class="col-md-4 col-form-label text-md-right">{{ __('Seats requested') }}</label>
 
                           <div class="col-md-6">
-                            <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', 1) }}" required autocomplete="seats_available" autofocus>
+                            <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}"
+                              class="form-control @error('seats_available') is-invalid @enderror"
+                              name="seats_available" value="{{ old('seats_available', 1) }}"
+                              required autocomplete="seats_available"
+                              autofocus>
 
                             @error('seats_requested')
                                 <span class="invalid-feedback" role="alert">
