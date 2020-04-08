@@ -178,7 +178,8 @@ class TripController extends Controller
 
         //Passenger::create($this->validatePassenger());
         //return redirect('/');
-        return view('/trips/join', $request); // Dette er hvor du blir sendt etter å ha postet!
+        //return view('/', $request); // Dette er hvor du blir sendt etter å ha postet!
+        return view('trips.seeMore', ['trip' => $trip]);
     }
 
     protected function validateTrip()

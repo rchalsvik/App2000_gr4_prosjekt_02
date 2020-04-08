@@ -4,13 +4,20 @@
   <!-- Page Content -->
   <div class="container">
 
+
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
+      @auth
+      <h1 class="display-3">{{ __('Hello ' . Auth::user()->firstname) . '!' }}</h1>
+      <p><h3>{{ __('indexLoginPhrase') }}</h3></p>
+      @else
       <h1 class="display-3">{{ __('Welcome to Samkjoering AS!') }}</h1>
       <p class="lead"><h3>{{ __('indexIntro') }}</h3></p>
       <p><h3>{{ __('indexPhrase') }}</h3></p>
       <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
+      @endauth
     </header>
+
 
     <!-- Page Features -->
     <div class="row text-center">
