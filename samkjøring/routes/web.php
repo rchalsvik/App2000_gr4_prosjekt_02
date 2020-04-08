@@ -60,6 +60,8 @@ Route::post('/trips/join', 'PassengerController@store')->name('storePassenger');
 Route::put('/trips/{trip}', 'TripController@update')->name('updateTrip');
 Route::get('/search', 'SearchController@index')->name('searchIndex');
 Route::get('/search/piss', 'SearchController@show')->name('searchShow');
+Route::post('/editUser', 'UserController@edit')->name('editUser');
+Route::put('/userharblittendrasoflott', 'UserController@update')->name('updateUser');
 // Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show')
 
 

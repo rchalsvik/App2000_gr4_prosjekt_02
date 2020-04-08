@@ -32,11 +32,25 @@
                         </tr>
                       @endforeach
                     </table>
-
-
                     <div id="new_trip" class="">
                       <a href="{{ route('createTrip') }}">{{ __('New Trip') }}</a>
                     </div>
+                    <form method="POST" action="{{ route('editUser', $user) }}" id="userform">
+                      @csrf {{-- viktig! ellers så feiler siden --}}
+                    {{--  @method('PUT')  Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Edit user info') }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                    {{-- <div id="edit_user" class="">
+                      <a href="{{ route('editUser', $user) }}">{{ __('Edit userinfo') }}</a>
+                    </div> --}}
 
                 </div>
             </div>

@@ -38,6 +38,7 @@ class HomeController extends Controller
         Log::channel('samkjøring')->info('Login bruker: ' . $id . '. ' . $user->firstname . ' ' . $user->lastname);
 
         //dd($trips);
-        return view('home',['trips'=>$trips]);
+        $data = ['user'=>$user, 'trips'=>$trips];
+        return view('home', ['user'=>$user, 'trips'=>$trips]);
     }
 }

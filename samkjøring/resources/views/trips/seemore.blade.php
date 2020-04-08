@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Show Trip') }} - AuthID: {{ Auth::id() }}, TurEierID: {{ $trip->driver_id }}</div>
-
+                <img class="card-img-top" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -35,7 +35,6 @@
                         &#x1F44E;
                       @endif
                     </p>
-
 
                         {{-- Jeg har ikke sletta det nedentil tilfelle jeg har misforstått. Men sjekk linje 58-63, stemmer det? --}}
 
