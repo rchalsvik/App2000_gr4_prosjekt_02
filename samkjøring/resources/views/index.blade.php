@@ -18,26 +18,30 @@
     @foreach ($trips as $trip)
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
+          <a href="/trips/{{ $trip->id }}/seemore" class="">
+            <img class="card-img-top card-img-top-interactive" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
+          </a>
           <div class="card-body">
-            <h4 class="card-title">{{ $trip->start_point . ' - ' . $trip->end_point }}</h4>
-            {{-- <h4 class="card-title">{{ __('Route') }}: {{ $trip->start_point . ' - ' . $trip->end_point }} </h4> --}}
-            {{-- <h4 class="card-title">Rute: {{ $trip->start_point }} </h4> --}}
+            <a href="/trips/{{ $trip->id }}/seemore" class="card-title-link">
+              <h4 class="card-title">{{ $trip->start_point . ' - ' . $trip->end_point }}</h4>
+            </a>
             <p class="card-text">
 
                 {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
                 @if ($trip->start_date == $trip->end_date)
-                  <b>@samDateFormat($trip->end_date)</b><br>
+                  <b>@samFullDateFormat($trip->end_date)</b><br>
                   {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
-                  {{-- &#x1F86B;<br> --}}
                   <img src="img/icons/arrow_down.svg" alt="Arrow Down"><br>
                   {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                 @else
                   {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                   <b>@samDateFormat($trip->start_date)</b><br>
+                  <b>@samYearFormat($trip->start_date)</b><br>
+
                   <img src="img/icons/arrow_down.svg" alt="Arrow Down"><br>
                   {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                   <b>@samDateFormat($trip->end_date)</b><br>
+                  <b>@samYearFormat($trip->start_date)</b><br>
                 @endif
            </p>
           </div>

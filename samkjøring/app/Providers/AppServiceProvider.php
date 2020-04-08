@@ -35,6 +35,18 @@ class AppServiceProvider extends ServiceProvider
       Blade::directive('samDateFormat', function($arg) {
         $date = $arg;
 
+        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('dddd DD. MMMM'); ?>";
+      });
+
+      Blade::directive('samYearFormat', function($arg) {
+        $date = $arg;
+
+        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('YYYY'); ?>";
+      });
+
+      Blade::directive('samFullDateFormat', function($arg) {
+        $date = $arg;
+
         return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('dddd DD. MMMM - YYYY'); ?>";
       });
 

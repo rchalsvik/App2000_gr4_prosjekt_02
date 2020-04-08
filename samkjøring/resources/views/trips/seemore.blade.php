@@ -7,6 +7,8 @@
             <div class="card">
                 <div class="card-header">{{ __('Show Trip') }} - AuthID: {{ Auth::id() }}, TurEierID: {{ $trip->driver_id }}</div>
 
+                <img class="card-img-top" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -21,20 +23,20 @@
                     <p>{{ __('Car Description') }}: {{ $trip->car_description }}</p>
                     <p>{{ __('Trip Info') }}: <br>
                        {{ $trip->trip_info }}</p>
-                    <p>{{ __('Pets Allowed') }}?
+                    <div>{{ __('Pets') }}:
                       @if ($trip->pets_allowed)
                         &#x1F44D;
                       @else
                         &#x1F44E;
                       @endif
-                    </p>
-                    <p>{{ __('Kids Allowed') }}?
+
+                      {{ __('Children') }}:
                       @if ($trip->kids_allowed)
                         &#x1F44D;
                       @else
                         &#x1F44E;
                       @endif
-                    </p>
+                    </div>
                         {{-- Jeg har ikke sletta det nedentil tilfelle jeg har misforstått. Men sjekk linje 58-63, stemmer det? --}}
 
                         {{-- Sjekk om det er Bruker som har laget turen --}}

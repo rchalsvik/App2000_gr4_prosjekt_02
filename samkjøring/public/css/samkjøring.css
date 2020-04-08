@@ -18,8 +18,9 @@ html, body {
   flex-direction: column;
 }
 
-h3 {
-  
+h4,
+.h4 {
+  font-size: 1.25rem;
 }
 
 .jumbotron {
@@ -34,15 +35,32 @@ h3 {
   background-color: #ffffcc;
 }
 
-.card-footer{
+.card-footer {
   background-color: #ffffcc;
 }
 
-.card-img-top{
+.card-img-top {
   height: 300px;
+  object-fit: cover;
+  opacity: 1;
 }
 
-.dropdown-item{
+.card-img-top-interactive:hover {
+  opacity: .6;
+  transition: .5s ease;
+}
+
+.card-title-link {
+  color: inherit;
+}
+
+.card-title-link:hover {
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.dropdown-item {
   font-size: 20px;
 }
 
