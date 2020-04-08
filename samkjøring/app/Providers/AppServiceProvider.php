@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
       Blade::directive('samDateTimeFormat', function($args) {
         list($date, $time) = explode(',', $args);
 
-        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $time)->isoFormat('hh:mm - dddd DD. MMMM YYYY'); ?>";
+        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $time)->isoFormat('HH:mm - dddd DD. MMMM YYYY'); ?>";
       });
 
       Blade::directive('samDateFormat', function($arg) {
@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
       Blade::directive('samTimeFormat', function($arg) {
         $time = $arg; // Lettere å lese $time
 
-        return "<?php echo Carbon\Carbon::createFromFormat('H:i:s', $time)->isoFormat('hh:mm'); ?>";
+        return "<?php echo Carbon\Carbon::createFromFormat('H:i:s', $time)->isoFormat('HH:mm'); ?>";
       });
 
     }

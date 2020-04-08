@@ -14,26 +14,27 @@
                         </div>
                     @endif
 
-                        <h3>{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
-                        <p>{{ __('Starts at') }}: {{ $trip->start_date }}, {{ $trip->start_time }}</p>
-                        <p>{{ __('Arrives at') }}: {{ $trip->end_date }}, {{ $trip->end_time }}</p>
-                        <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
-                        <p>{{ __('Car Description') }}: {{ $trip->car_description }}</p>
-                        <p>{{ __('Trip Info') }}: {{ $trip->trip_info }}</p>
-                        <p>{{ __('Pets Allowed') }}?
-                          @if ($trip->pets_allowed)
-                            &#x1F44D;
-                          @else
-                            &#x1F44E;
-                          @endif
-                        </p>
-                        <p>{{ __('Kids Allowed') }}?
-                          @if ($trip->kids_allowed)
-                            &#x1F44D;
-                          @else
-                            &#x1F44E;
-                          @endif
-                        </p>
+                    <h3>{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
+                    <p>{{ __('Departure') }}: <b>@samTimeFormat($trip->start_time) - @samDateFormat($trip->start_date)</b><br>
+                       {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time) - @samDateFormat($trip->end_date)</b></p>
+                    <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
+                    <p>{{ __('Car Description') }}: {{ $trip->car_description }}</p>
+                    <p>{{ __('Trip Info') }}: <br>
+                       {{ $trip->trip_info }}</p>
+                    <p>{{ __('Pets Allowed') }}?
+                      @if ($trip->pets_allowed)
+                        &#x1F44D;
+                      @else
+                        &#x1F44E;
+                      @endif
+                    </p>
+                    <p>{{ __('Kids Allowed') }}?
+                      @if ($trip->kids_allowed)
+                        &#x1F44D;
+                      @else
+                        &#x1F44E;
+                      @endif
+                    </p>
 
 
                         {{-- Jeg har ikke sletta det nedentil tilfelle jeg har misforstått. Men sjekk linje 58-63, stemmer det? --}}

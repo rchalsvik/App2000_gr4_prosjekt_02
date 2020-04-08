@@ -24,9 +24,8 @@
               {{-- <h4 class="card-title">{{ __('Route') }}: {{ $trip->start_point . ' - ' . $trip->end_point }} </h4> --}}
               {{-- <h4 class="card-title">Rute: {{ $trip->start_point }} </h4> --}}
               <p class="card-text">
-                  {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
-                  {{-- @if ($testFrDateTime->isoFormat($testDateFormat) == $testToDateTime->isoFormat($testDateFormat)) --}}
 
+                  {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
                   @if ($trip->start_date == $trip->end_date)
                     <b>@samDateFormat($trip->end_date)</b><br>
                     {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
