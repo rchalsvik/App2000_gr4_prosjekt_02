@@ -53,6 +53,7 @@
                     </div>
                 </div>
                 {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
+                @auth
                 @if (Auth::id() != $trip->driver_id && $trip->seats_available > 0)
                   <div class="card-footer">
                     <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
@@ -84,6 +85,7 @@
                   </div>
                 @endif
                 </div>
+                @endauth
 
             </div>
         </div>
