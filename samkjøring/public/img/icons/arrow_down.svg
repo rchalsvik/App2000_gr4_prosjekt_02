@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="96.099998"
+   inkscape:export-xdpi="96.099998"
+   inkscape:export-filename="C:\Users\rchal\Work Uni\Github\App2000_gr4_prosjekt_02\samkjøring\public\img\icons\arrow_down.png"
+   sodipodi:docname="arrow_down.svg"
+   inkscape:version="1.0beta2 (998e94e, 2020-02-11)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 3.96875 5.5562501"
+   height="21"
+   width="15">
+  <title
+     id="title878">arrow_down</title>
+  <defs
+     id="defs2">
+    <rect
+       id="rect12"
+       height="16.036173"
+       width="20.579754"
+       y="60.402912"
+       x="53.453907" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="-8"
+     inkscape:window-x="-8"
+     inkscape:window-height="1377"
+     inkscape:window-width="2560"
+     units="px"
+     showgrid="true"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="17.245271"
+     inkscape:cx="8.6874814"
+     inkscape:zoom="63.356767"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base">
+    <inkscape:grid
+       spacingy="0.079375"
+       spacingx="0.079375"
+       empspacing="5"
+       id="grid51"
+       type="xygrid" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>arrow_down</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:'Wingdings 3';-inkscape-font-specification:'Wingdings 3 Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect12);fill:#000000;fill-opacity:1;stroke:none;"
+       id="text10"
+       xml:space="preserve" />
+    <path
+       sodipodi:nodetypes="cccccccccc"
+       inkscape:connector-curvature="0"
+       id="path53"
+       d="m 1.5875,0 0,4.445 L 0,3.254375 V 4.0481249 L 1.984375,5.55625 3.96875,4.0481249 V 3.254375 L 2.38125,4.445 2.38125,0 Z"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>
