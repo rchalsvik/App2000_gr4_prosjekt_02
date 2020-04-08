@@ -9,7 +9,7 @@
   "Language": "язык",
 
 
-  "Copyright": "Авторские права", 
+  "Copyright": "Авторские права",
 
 
   "_COMMENT":  "home.blade.php",
@@ -50,8 +50,8 @@
   "End Date": "Дата окончания",
   "End Time": "Время окончания",
   "Trip Info": "Информация о поездке",
-  "Pets Allowed": "Домашние животные разрешены",
-  "Kids Allowed": "Дети разрешены",
+  "Pets": "животные",
+  "Children": "дети",
   "Create Trip": "Создать поездку",
 
 

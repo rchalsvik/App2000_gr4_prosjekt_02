@@ -1,0 +1,79 @@
+/*!
+* Start Bootstrap - Heroic Features (https://startbootstrap.com/template-overviews/heroic-features)
+* Copyright 2013-2019 Start Bootstrap
+* Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
+*
+* Egen css fil for samkjøring
+* Bruk denne!!
+*/
+
+body {
+  padding-top: 56px;
+  background-color: #999;
+}
+
+html, body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h4,
+.h4 {
+  font-size: 1.25rem;
+}
+
+.jumbotron {
+  background-color: #ffffcc ;
+}
+
+.btn-primary{
+  background-color: #80aaff;
+}
+
+.card-body {
+  background-color: #ffffcc;
+}
+
+.card-footer {
+  background-color: #ffffcc;
+}
+
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+  opacity: 1;
+}
+
+.card-img-top-interactive:hover {
+  opacity: .6;
+  transition: .5s ease;
+}
+
+.card-title-link {
+  color: inherit;
+}
+
+.card-title-link:hover {
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.dropdown-item {
+  font-size: 20px;
+}
+
+.nav-item-dropdown {
+
+}
+.dropdown-menu {
+}
+
+.lang-icon {
+  padding-right: 5%;
+}
+
+.mt-auto {
+  margin-top: auto;
+}

@@ -6,7 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Show Trip') }} - AuthID: {{ Auth::id() }}, TurEierID: {{ $trip->driver_id }}</div>
+
                 <img class="card-img-top" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -21,23 +23,21 @@
                     <p>{{ __('Car Description') }}: {{ $trip->car_description }}</p>
                     <p>{{ __('Trip Info') }}: <br>
                        {{ $trip->trip_info }}</p>
-                    <p>{{ __('Pets Allowed') }}?
+                    <div>{{ __('Pets') }}:
                       @if ($trip->pets_allowed)
                         &#x1F44D;
                       @else
                         &#x1F44E;
                       @endif
-                    </p>
-                    <p>{{ __('Kids Allowed') }}?
+
+                      {{ __('Children') }}:
                       @if ($trip->kids_allowed)
                         &#x1F44D;
                       @else
                         &#x1F44E;
                       @endif
-                    </p>
-
+                    </div>
                         {{-- Jeg har ikke sletta det nedentil tilfelle jeg har misforstått. Men sjekk linje 58-63, stemmer det? --}}
-
 
                         {{-- Sjekk om det er Bruker som har laget turen --}}
                         {{-- @if (Auth::id() == DB::table('trips')->where('driver_id', $trip->trip_id)->value('driver_id'))
@@ -49,43 +49,40 @@
                         @endif
                         --}}
                         {{--  <div id="join_trip" class="">
-                      <a href="/trips/{{  }}/join">{{ __('Join Trip') }}</a> --}}
-                    </div>
+                      <a href="/trips/{{  }}/join">{{ __('Join Trip') }}</a> </div>--}}
+
                 </div>
+
+                <div class="card-footer">
                 {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
-                @auth
-                @if (Auth::id() != $trip->driver_id && $trip->seats_available > 0)
-                  <div class="card-footer">
-                    <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
-                      @csrf {{-- viktig! ellers så feiler siden --}}
-                      {{-- @method('PUT')  Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater'  --}}
+                    @if (Auth::id() != $trip->driver_id && $trip->seats_available > 0)
+                        <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
+                          @csrf {{-- viktig! ellers så feiler siden --}}
+                          {{-- @method('PUT')  Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater'  --}}
 
-                      <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
-                      <input type="hidden" name="trip_id" value="{{ $trip->id }}">
+                          <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
+                          <input type="hidden" name="trip_id" value="{{ $trip->id }}">
 
-                      <label for="seats_available" class="col-md-4 col-form-label text-md-right">{{ __('Seats requested') }}</label>
+                          <label for="seats_available" class="col-md-4 col-form-label text-md-right">{{ __('Seats requested') }}</label>
 
-                      <div class="col-md-6">
-                        <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', 1) }}" required autocomplete="seats_available" autofocus>
+                          <div class="col-md-6">
+                            <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', 1) }}" required autocomplete="seats_available" autofocus>
 
-                        @error('seats_requested')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                            @error('seats_requested')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
-                        <button type="submit" class="btn btn-primary">{{ __('Join Trip') }}</button>
-                      </div>
-                  </form>
-                @endif
+                            <button type="submit" class="btn btn-primary">{{ __('Join Trip') }}</button>
+                          </div>
+                      </form>
+                    @endif
 
-                @if (Auth::id() == $trip->driver_id)
-                  <div class="card-footer">
-                    <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary">{{ __('Edit Trip') }}</a>
+                    @if (Auth::id() == $trip->driver_id)
+                        <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary">{{ __('Edit Trip') }}</a>
+                    @endif
                   </div>
-                @endif
-                </div>
-                @endauth
 
             </div>
         </div>

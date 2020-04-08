@@ -7,8 +7,8 @@
     "Logout": "Cerrar sesión",
     "Login": "Iniciar sesión",
     "Language": "Idioma",
-  
-  
+
+
     "_COMMENT":  "home.blade.php",
     "Dashboard": "Dashboard",
     "You are logged in!": "Estás conectado!",
@@ -17,27 +17,27 @@
     "Seats Available": "Asientos disponibles",
     "Car Description": "Descripción del auto",
     "New Trip": "Nuevo viaje",
-  
-  
+
+
     "_COMMENT":  "index.blade.php",
     "Welcome to Samkjoering AS!": "¡Bienvenido a Samkjøring AS!",
     "indexIntro": "¡Encuentre a alguien que vaya de la misma manera que usted de una manera simple!",
     "indexPhrase": "¡Conducir de manera inteligente, conducir barato, conducir de forma sostenible, elige Samkjøring AS!",
     "Join us now!": "¡Regístrate ahora!",
     "See more": "Ver más",
-  
-  
+
+
     "_COMMENT":  "notification.blade.php",
     "Notifications!": "¡Notificaciones!",
     "Here be dragons!": "¡Serán notificaciones aquí!",
-  
-  
+
+
     "_COMMENT":  "about.blade.php",
     "aboutTitle": "Acerca de Samkjøring AS!",
     "aboutText": "Samkjøring AS comenzó en 1922 en una casa pequeña en Rjukan, cuando Kjell Berit Kongshavn consiguió su primer bicicleta tándem. Inspirado en el ejemplo de la bicicleta tándem y la unidad en Rjukan Bedehus, Kjell Berit comenzó Samkjøring AS. ¡Otoño de 2022 descubrió que quería comezar en internet, entonces los desarrolladores profeisonales \"Gruppe4\" asignado al caso!",
     "Tandem-bike": "Bicicleta tándem",
-  
-  
+
+
     "_COMMENT":  "trips.create.blade.php",
     "Create Trip": "Crear un nuveo viaje",
     "Start Point": "Punto de partida",
@@ -49,26 +49,26 @@
     "Seats Available": "Asientos disponibles",
     "Car Description": "Descripción del auto",
     "Trip Info": "Información del viaje",
-    "Pets Allowed": "Mascotas permitidas",
-    "Kids Allowed": "Niños permitidos",
+    "Pets": "Animales",
+    "Children": "Niños",
     "Create Trip": "Crea el viaje",
-  
-  
+
+
     "_COMMENT":  "trips.create.blade.php",
     "Edit Trip": "Editar viaje",
     "Update Trip": "Actualizar el viaje",
-  
-  
+
+
     "_COMMENT":  "trips.show.blade.php",
     "Show Trip": "Muestra el viaje",
     "Starts at": "Empieza a",
     "Arrives at": "Llega a las",
-  
+
     "_COMMENT":  "trips.seemore.blade.php",
     "Seats requested": "Asientos solicitados",
     "Join Trip": "Únete al viaje",
-  
-  
+
+
     "_COMMENT":  "auth.login.blade.php",
     "Login": "Iniciar sesión",
     "E-Mail Address": "Email",
@@ -76,8 +76,8 @@
     "Password": "Contraseña",
     "Remember Me": "Recuérdame",
     "Forgot Your Password?": "¿Olvidaste tu contraseña?",
-  
-  
+
+
     "_COMMENT":  "auth.register.blade.php",
     "Register": "Registrarse",
     "Firstname": "Primer nombre",
@@ -90,27 +90,26 @@
     "Drivers License": "Licencia de conducir",
     "Password": "Contraseña",
     "Confirm Password": "Confirmar contraseña",
-  
-  
+
+
     "_COMMENT":  "auth.verify.blade.php",
     "Verify Your Email Address": "Verifique su dirección de correo electrónico",
     "A fresh verification link has been sent to your email address.": "Se ha enviado un enlace de verificación a su dirección de correo electrónico.",
     "Before proceeding, please check your email for a verification link.": "Antes de continuar, revise su correo electrónico para obtener un enlace de verificación",
     "If you did not receive the email": "Si no recibiste el correo electrónico",
     "click here to request another": "haga clic aquí para solicitar otro",
-  
-  
+
+
     "_COMMENT":  "auth.passwords.confirm.blade.php",
     "Please confirm your password before continuing.": "Por favor confirme su contraseña antes de continuar",
     "Password": "Contraseña",
     "Confirm Password": "Confirmar contraseña",
     "Forgot Your Password?": "¿Olvidaste tu contraseña?",
-  
-  
+
+
     "_COMMENT":  "auth.passwords.confirm.blade.php",
     "_COMMENT":  "&& auth.passwords.reset.blade.php",
     "Reset Password": "Restablecer la contraseña",
     "E-Mail Address": "Email",
     "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña"
   }
-  

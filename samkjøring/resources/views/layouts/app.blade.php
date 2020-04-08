@@ -24,7 +24,11 @@
     <link href="{{URL::to('/')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{URL::to('/')}}/css/heroic-features.css" rel="stylesheet">
+    {{-- <link href="{{URL::to('/')}}/css/heroic-features.css" rel="stylesheet"> --}}
+
+    <!-- Samkjøring -->
+    {{-- Bruk samkjøring css for egen utforming --}}
+    <link href="{{URL::to('/')}}/css/samkjøring.css" rel="stylesheet">
 
 </head>
 <body>
@@ -102,7 +106,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="d-flex py-5 bg-dark mt-auto">
       <div class="container">
         <p class="m-0 text-center text-white">{{ __('Copyright') }} &copy; Grp04 2020</p>
       </div>
