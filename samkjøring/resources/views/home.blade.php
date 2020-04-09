@@ -35,9 +35,9 @@
                     <div id="new_trip" class="">
                       <a href="{{ route('createTrip') }}">{{ __('New Trip') }}</a>
                     </div>
-                    <form method="POST" action="{{ route('editUser', $user) }}" id="userform">
-                      @csrf {{-- viktig! ellers så feiler siden --}}
-                    {{--  @method('PUT')  Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
+                    {{-- <form method="POST" action="{{ route('editUser', $user) }}" id="userform">
+                      @csrf
+                      @method('PUT')
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
@@ -46,11 +46,11 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> --}}
 
-                    {{-- <div id="edit_user" class="">
+                    <div id="edit_user" class="">
                       <a href="{{ route('editUser', $user) }}">{{ __('Edit userinfo') }}</a>
-                    </div> --}}
+                    </div>
 
                 </div>
             </div>

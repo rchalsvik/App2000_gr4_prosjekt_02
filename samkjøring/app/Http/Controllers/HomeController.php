@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,9 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+      // Get the currently authenticated user...
+      $user = Auth::user();
+      //dd($user);
+
         //return view('home');
         // auth()->user()->id;
-        $user = auth()->user(); // Kan vi bruke denne nedenfor??
+        //$user = auth()->user(); // Kan vi bruke denne nedenfor??
         $id = $user->id; // slik??
         //$id = auth()->user()->id;
         //  and (start_date < CURDATE and start_time < CURTIME or start_date > CURDATE)
@@ -38,7 +43,7 @@ class HomeController extends Controller
         Log::channel('samkjøring')->info('Login bruker: ' . $id . '. ' . $user->firstname . ' ' . $user->lastname);
 
         //dd($trips);
-        $data = ['user'=>$user, 'trips'=>$trips];
+        //$data = ['user'=>$user, 'trips'=>$trips];
         return view('home', ['user'=>$user, 'trips'=>$trips]);
     }
 }

@@ -67,6 +67,7 @@
                   @else
                     <p style="text-align: center;">{{ __('Full Trip') }}</p>
                   @endif
+                  @auth
                 {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
                     @if (Auth::id() != $trip->driver_id && $trip->seats_available > 0)
                         <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
@@ -99,6 +100,7 @@
                     @if (Auth::id() == $trip->driver_id)
                         <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary">{{ __('Edit Trip') }}</a>
                     @endif
+                    @endauth
                   </div>
 
             </div>

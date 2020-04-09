@@ -88,7 +88,7 @@ class UserController extends Controller
       //dd(request('seats_available'));
       //$nyuser = $user;
       //$nyuser->id = $request->id;
-      //dd(request());
+      //dd($user);
       $user->update($validatedResults);
       return redirect('/home');
     }
