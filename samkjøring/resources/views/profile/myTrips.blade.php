@@ -4,6 +4,10 @@
 <!-- Page Content -->
 <div class="container">
 
+  <!-- Jumbotron Header -->
+  <header class="jumbotron my-4">
+    <h5 class="display-3">{{ __('My trips!') }}</h5>
+  </header>
 
   <!-- Page Features -->
   <div class="row text-center">
