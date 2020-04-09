@@ -43,27 +43,29 @@
                       <div class="item">
                         {{ __('Pets') }}:
                         @if ($trip->pets_allowed)
-                          &#x1F44D;
+                          <img class="item-ok item-margin-l" src="/img/icons/v.svg" alt="ok">
                         @else
-                          &#x1F44E;
+                          <img class="item-ok item-margin-l" src="/img/icons/x.svg" alt="no">
                         @endif
                       </div>
                       <div class="item item-padding-l">
                         {{ __('Children') }}:
                         @if ($trip->kids_allowed)
-                          &#x1F44D;
+                          <img class="item-ok item-margin-l" src="/img/icons/v.svg" alt="ok">
                         @else
-                          &#x1F44E;
+                          <img class="item-ok item-margin-l" src="/img/icons/x.svg" alt="no">
                         @endif
                       </div>
                     </div>
 
                 </div>
 
+
+
                 <div class="card-footer">
                   {{-- Her må det fikses i stylene!! --}}
                   @if($trip->seats_available > 0)
-                    <p>{{ __('Seats Available') }}: {{ $trip->seats_available }}</p>
+                    <p>{{ __('Seats Available') }}: <b>{{ $trip->seats_available }}</b></p>
                   @else
                     <p style="text-align: center;">{{ __('Full Trip') }}</p>
                   @endif
@@ -77,8 +79,8 @@
                           <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
                           <input type="hidden" name="trip_id" value="{{ $trip->id }}">
 
+                          <div class="form-group row">
                           <label for="seats_available" class="col-md-4 col-form-label text-md-right">{{ __('Seats requested') }}</label>
-
                           <div class="col-md-6">
                             <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}"
                               class="form-control @error('seats_available') is-invalid @enderror"
@@ -92,8 +94,15 @@
                                 </span>
                             @enderror
 
+                          </div>
+
+                        </div>
+                        <div class="form-group row mb-0">
+                          <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary">{{ __('Join Trip') }}</button>
                           </div>
+                        </div>
+
                       </form>
                     @endif
 
@@ -102,6 +111,8 @@
                     @endif
                     @endauth
                   </div>
+
+
 
             </div>
         </div>

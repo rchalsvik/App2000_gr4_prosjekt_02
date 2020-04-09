@@ -27,6 +27,13 @@ h3.margin-b {
   margin-bottom: 1.5rem;
 }
 
+.btn-primary {
+  background-color: #ff71f0;
+  border-color: #bb2091;
+}
+
+
+
 .item-container {
   display: inline-flex;
   flex-direction: row;
@@ -43,6 +50,15 @@ h3.margin-b {
 
 .item-padding-l {
   padding-left: 1rem;
+}
+
+.item-margin-l {
+  margin-left: 0.3rem;
+}
+
+.item-ok {
+  height: 1.0rem;
+  width: 1.0rem;
 }
 
 

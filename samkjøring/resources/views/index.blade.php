@@ -31,14 +31,14 @@
                 @if ($trip->start_date == $trip->end_date)
                   <b>@samFullDateFormat($trip->end_date)</b><br>
                   {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
-                  <img src="img/icons/arrow_down.svg" alt="Arrow Down"><br>
+                  <img src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
                   {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                 @else
                   {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                   <b>@samDateFormat($trip->start_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b><br>
 
-                  <img src="img/icons/arrow_down.svg" alt="Arrow Down"><br>
+                  <img src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
                   {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                   <b>@samDateFormat($trip->end_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b><br>
