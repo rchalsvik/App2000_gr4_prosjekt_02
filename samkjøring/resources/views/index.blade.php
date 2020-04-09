@@ -19,13 +19,11 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <a href="/trips/{{ $trip->id }}/seemore" class="">
-            <?php
-              $hest = array("bra_bil.jpg", "oslolillestrøm.JPG", "bølærdal.JPG", "ambulanse.jpg", "child-unsafety-seat.jpg");
-              $ranIdx = array_rand($hest);
-             ?>
+
 
             {{--<img class="card-img-top card-img-top-interactive" src="{{URL::to('/')}}/img/bra_bil.jpg" alt="">--}}
-            <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/img/{{ $hest[$ranIdx] }}" alt="">
+            <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ randomImagesThatWeTotallyOwnFromDirectoryOnMachine() }}" alt="Trip Images">
+
           </a>
           <div class="card-body">
             <a href="/trips/{{ $trip->id }}/seemore" class="card-title-link">
@@ -48,6 +46,11 @@
                   <b>@samDateFormat($trip->end_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b>
                 @endif
+
+
+                <p>{{ jegHater("Pølse") }}</p>
+
+                <p>{{ testerMinTålmodighet() }}</p>
            </p>
 
 

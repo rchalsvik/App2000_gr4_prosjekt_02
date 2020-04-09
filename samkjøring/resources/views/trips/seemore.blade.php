@@ -7,7 +7,8 @@
             <div class="card">
                 <div class="card-header">{{ __('Show Trip') }} - AuthID: {{ Auth::id() }}, TurEierID: {{ $trip->driver_id }}</div>
 
-                <img class="card-img-top" src="{{URL::to('/')}}/img/brukers/essolærdal.webp" alt="">
+                <img class="card-img-top" src="{{URL::to('/')}}/{{ randomImagesThatWeTotallyOwnFromDirectoryOnMachine() }}" alt="">
+
 
                 <div class="card-body card-body-flex">
                     @if (session('status'))
