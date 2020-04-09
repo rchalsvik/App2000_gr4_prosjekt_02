@@ -104,7 +104,7 @@ class TripController extends Controller
         Log::channel('samkjøring')->info($logString);
 
         $trip->update($this->validateTrip());
-        return redirect('trips.seeMore', ['trip' => $trip]); // Dette er hvor du blir sendt etter å ha postet!
+        return view('trips.seeMore', ['trip' => $trip]); // Dette er hvor du blir sendt etter å ha postet!
     }
 
     /**
