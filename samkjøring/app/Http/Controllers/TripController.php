@@ -152,6 +152,16 @@ class TripController extends Controller
         /*$requestData = request()->all();
         $requestData['seats_available'] = $trip->seats_available - request('seats_available');*/
         //request()->replace('seats_available', $trip->seats_available - request('seats_available'));
+        //$pass = new \Passenger(request('trip_id'), request('passenger_id'), request('seats_available'));
+        $request->request->add(['seats_requested' => request('seats_available')]); //legge te seats_requested, DATABASEN LIKA IKKJE Å IKKJE FÅ INN ALLE FELTI MED RETT NAVN
+        $validatedPassenger = request()->validate([
+          'trip_id' => ['required', 'exists:trips,id'],
+          'passenger_id' => ['required', 'exists:users,id'],
+          'seats_requested' => ['required', 'digits_between:1,45'],
+        ]);
+
+        Passenger::create($validatedPassenger);
+
         request()->merge([ 'seats_available' => $trip->seats_available - request('seats_available') ]);
 
 
@@ -175,9 +185,10 @@ class TripController extends Controller
         //dd($trip);
 
         //$trip->update($this->validateSeats());
-        //dd($trip);
+        //dd($request);
 
-        Passenger::create($this->validatePassenger());
+
+
         //return redirect('/');
         //return view('/', $request); // Dette er hvor du blir sendt etter å ha postet!
         return view('trips.seeMore', ['trip' => $trip]);
@@ -244,6 +255,15 @@ class TripController extends Controller
         'trip_info' => ['required', 'string'],
         'pets_allowed' => ['required', 'boolean'],
         'kids_allowed' => ['required', 'boolean'],
+      ]);
+    }
+
+    protected function validatePassenger()
+    {
+      return request()->validate([
+        'trip_id' => ['required', 'exists:trips,id'],
+        'passenger_id' => ['required', 'exists:users,id'],
+        'seats_requested' => ['required', 'digits_between:1,45'],
       ]);
     }
 
