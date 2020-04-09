@@ -32,7 +32,11 @@ h3.margin-b {
   border-color: #bb2091;
 }
 
-
+.btn-primary:hover {
+    color: #fff;
+    background-color: #88037a;
+    border-color: #88037a;
+}
 
 .item-container {
   display: inline-flex;

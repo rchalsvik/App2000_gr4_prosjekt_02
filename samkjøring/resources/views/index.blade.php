@@ -19,7 +19,16 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <a href="/trips/{{ $trip->id }}/seemore" class="">
-            <img class="card-img-top card-img-top-interactive" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
+            <?php
+
+              $hest = array("bra_bil.jpg", "oslolillestrøm.JPG", "bølærdal.JPG", "ambulanse.jpg");
+              $ranIdx = array_rand($hest);
+
+              //echo $hest[$ranIdx];
+             ?>
+
+            {{--<img class="card-img-top card-img-top-interactive" src="{{URL::to('/')}}/img/bra_bil.jpg" alt="">--}}
+            <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/img/{{ $hest[$ranIdx] }}" alt="">
           </a>
           <div class="card-body">
             <a href="/trips/{{ $trip->id }}/seemore" class="card-title-link">
