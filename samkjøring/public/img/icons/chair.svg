@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="chair.svg"
+   inkscape:version="1.0beta2 (998e94e, 2020-02-11)"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 12.7 12.7"
+   height="48"
+   width="48">
+  <title
+     id="title866">chair</title>
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     inkscape:window-maximized="1"
+     inkscape:window-y="1432"
+     inkscape:window-x="327"
+     inkscape:window-height="657"
+     inkscape:window-width="1280"
+     inkscape:showpageshadow="false"
+     units="px"
+     showgrid="false"
+     inkscape:document-rotation="0"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="35.57718"
+     inkscape:cx="29.640275"
+     inkscape:zoom="2.8"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>chair</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       inkscape:connector-curvature="0"
+       d="M 6.5320695,0.33637333 0.66481315,1.133251 1.2419204,3.8616483 2.1355418,3.671516 2.8133072,6.7980725 2.1953774,6.8791581 2.4805758,7.7604769 3.2824864,7.6066936 3.6168951,12.349933 4.1129166,12.2599 4.0491664,7.5541276 4.8124914,7.4775155 5.2889402,11.645885 5.791113,11.603944 5.4718027,7.3421861 6.5113788,7.1570868 7.1874665,12.290657 7.6655931,12.251511 7.3731248,7.0922183 8.9417157,6.8853094 9.5803363,11.733681 10.225108,11.672727 9.787804,6.7013286 10.711623,6.5559336 10.60705,5.5784301 6.2166738,6.204748 5.7670669,2.9758559 7.186907,2.7404274 Z M 5.116703,3.1050337 5.4142039,6.28136 3.5190332,6.5794204 2.9458403,3.5115812 Z"
+       style="fill:#b67c39;fill-opacity:1;stroke:#000000;stroke-width:0.379673px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path10" />
+  </g>
+</svg>

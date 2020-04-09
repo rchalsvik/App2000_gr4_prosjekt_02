@@ -67,11 +67,30 @@ h3.margin-b {
 
 
 .jumbotron {
-  background-color: #ffffcc ;
+  background-color: #ffd7e6 ;
 }
 
-.card-body {
-  background-color: #ffffcc;
+.page {
+  background-color: white;
+}
+
+.card-seat-avail {
+  text-align: right;
+  padding: 0rem 1.25rem 1.0rem 0rem;
+  font-size: 1.6rem;
+}
+
+.card-seat-avail img {
+  /*width: 1.5rem;
+  height: 1.5rem;*/
+  width: 2rem;
+  height: 2rem;
+  margin-left: .3rem;
+  vertical-align: text-top;
+}
+
+.card-arrow-down {
+  padding: 0.5rem;
 }
 
 .card-body-flex {
@@ -79,7 +98,7 @@ h3.margin-b {
   flex-direction: column;
 }
 
-.card-footer {
+.card-body, .card-footer, .card-seat-avail {
   background-color: #ffffcc;
 }
 
@@ -105,7 +124,7 @@ h3.margin-b {
 }
 
 .dropdown-item {
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .nav-item-dropdown {
@@ -116,6 +135,8 @@ h3.margin-b {
 
 .lang-icon {
   padding-right: 5%;
+  vertical-align: middle;
+  padding-bottom: 4px;
 }
 
 .mt-auto {

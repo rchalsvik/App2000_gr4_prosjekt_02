@@ -20,11 +20,8 @@
         <div class="card h-100">
           <a href="/trips/{{ $trip->id }}/seemore" class="">
             <?php
-
-              $hest = array("bra_bil.jpg", "oslolillestrøm.JPG", "bølærdal.JPG", "ambulanse.jpg");
+              $hest = array("bra_bil.jpg", "oslolillestrøm.JPG", "bølærdal.JPG", "ambulanse.jpg", "child-unsafety-seat.jpg");
               $ranIdx = array_rand($hest);
-
-              //echo $hest[$ranIdx];
              ?>
 
             {{--<img class="card-img-top card-img-top-interactive" src="{{URL::to('/')}}/img/bra_bil.jpg" alt="">--}}
@@ -35,24 +32,31 @@
               <h4 class="card-title">{{ $trip->start_point . ' - ' . $trip->end_point }}</h4>
             </a>
             <p class="card-text">
-
                 {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
                 @if ($trip->start_date == $trip->end_date)
                   <b>@samFullDateFormat($trip->end_date)</b><br>
                   {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
-                  <img src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
-                  {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
+                  <img class="card-arrow-down" src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
+                  {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b>
                 @else
                   {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                   <b>@samDateFormat($trip->start_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b><br>
 
-                  <img src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
+                  <img class="card-arrow-down" src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
                   {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                   <b>@samDateFormat($trip->end_date)</b><br>
-                  <b>@samYearFormat($trip->start_date)</b><br>
+                  <b>@samYearFormat($trip->start_date)</b>
                 @endif
            </p>
+
+
+
+
+
+          </div>
+          <div class="card-seat-avail">
+             <b>{{ $trip->seats_available }}</b><img src="/img/icons/chair.svg" alt="Arrow Down">
           </div>
           <div class="card-footer">
             <a href="/trips/{{ $trip->id }}/seemore" class="btn btn-primary">{{ __('See more') }}</a>
