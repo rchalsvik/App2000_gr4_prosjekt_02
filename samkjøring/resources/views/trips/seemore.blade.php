@@ -107,6 +107,9 @@
                     @endif
 
                     @if (Auth::id() == $trip->driver_id)
+                    @foreach ($users as $user)
+                        <p>{{$user->firstname . ' ' . $user->lastname . ', '}}</p>
+                    @endforeach
                         <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary">{{ __('Edit Trip') }}</a>
                     @endif
                     @endauth
