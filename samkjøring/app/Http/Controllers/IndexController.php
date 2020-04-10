@@ -20,6 +20,8 @@ class IndexController extends Controller
         ->where('seats_available', '>', '0')
         ->whereRaw('start_date >= curdate() AND start_time >= curtime()')
         ->orWhereRaw('start_date > curdate()')
+        ->orderBy('start_date')
+        ->orderBy('start_time')
         //->get();
         ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
 
