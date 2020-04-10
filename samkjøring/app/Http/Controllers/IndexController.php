@@ -58,6 +58,8 @@ class IndexController extends Controller
      */
     public function show(Request $request) //$id
     {
+      //dd(Input\Input::get("index_search"));
+      //dd($request->query('index_search'));
       $trips = DB::table('trips')
       ->where('seats_available', '>', '0')
       ->whereRaw("start_point LIKE '%" . $request->index_search . "%'")

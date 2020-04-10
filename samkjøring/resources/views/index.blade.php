@@ -19,12 +19,11 @@
             type="text"
             class="form-control @error('index_search') is-invalid @enderror"
             name="index_search"
-            value="{{ old('index_search') }}"
+            value="@if (isset($_GET['index_search'])) {{$_GET['index_search']}} @else {{ old( 'start_point') }} @endif"
             placeholder="{{ __('Search') }}"
             autocomplete="start_point">
     </form>
   </div>
-
 
   <!-- Page Features -->
   <div class="row text-center">
@@ -71,6 +70,9 @@
         </div>
       </div>
     @endforeach
-    <p>{{ $trips->links() }}</p>
+
+    {{-- Request::except('page') henter alle verdier fra addresslinja som ikke er page=1..2..3 osv --}}
+    <p>{{ $trips->appends(Request::except('page'))->links() }}</p>
+
   </div>
 @endsection
