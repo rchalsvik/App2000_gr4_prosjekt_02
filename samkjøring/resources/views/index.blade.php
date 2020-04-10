@@ -62,7 +62,7 @@
            </p>
           </div>
           <div class="card-seat-avail">
-             <b>{{ $trip->seats_available }}</b><img src="/img/icons/chair.svg" alt="Arrow Down">
+             <b>{{ $trip->seats_available }}x </b><img src="/img/icons/chair_exotic.svg" alt="Chair">
           </div>
           <div class="card-footer">
             <a href="/trips/{{ $trip->id }}/seemore" class="btn btn-primary">{{ __('See more') }}</a>
