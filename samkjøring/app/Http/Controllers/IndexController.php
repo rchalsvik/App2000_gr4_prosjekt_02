@@ -17,9 +17,9 @@ class IndexController extends Controller
     public function index()
     {
       $trips = DB::table('trips')
-        ->where('seats_available', '>', '0')
-        ->whereRaw('start_date >= curdate() AND start_time >= curtime()')
-        ->orWhereRaw('start_date > curdate()')
+        //->where('seats_available', '>', '0')
+        ->whereRaw('seats_available > 0 AND start_date >= curdate() AND start_time >= curtime()')
+        ->orWhereRaw('seats_available > 0 AND start_date > curdate()')
         ->orderBy('start_date')
         ->orderBy('start_time')
         //->get();
