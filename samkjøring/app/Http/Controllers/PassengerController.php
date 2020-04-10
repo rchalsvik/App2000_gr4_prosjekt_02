@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Passenger;
+use App\Trip;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class PassengerController extends Controller
 {
@@ -84,12 +86,27 @@ class PassengerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Passenger  $passenger
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Passenger $passenger)
+    public function destroy(Request $request)
     {
-        //
+        $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request->trip_id . ' and passenger_id = ' . $request->passenger_id);
+        dd($passengers);
+        foreach ($passengers as $passenger) {
+
+          $trip = DB::table('trips')->whereRaw('id = ' . $passenger->trip_id);
+
+          $trip->seats_available = $trip->seats_available + $passenger->seats_requested;
+
+          $trip->save();
+
+          Passenger::destroy($passenger->passenger_id);
+        }
+
+
+        return view('trips.seeMore', ['trip' => $trip]);
     }
 
 

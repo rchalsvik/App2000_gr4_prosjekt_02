@@ -64,6 +64,7 @@ Route::get('/editUser/{user}', 'UserController@edit')->name('editUser');
 Route::put('/userharblittendrasoflott/{user}', 'UserController@update')->name('updateUser');
 Route::get('/profile/myTrips', 'TripController@myTrips')->name('myTrips');
 Route::get('/profile/myJoinedTrips', 'TripController@myJoinedTrips')->name('myJoinedTrips');
+Route::post('/destroyPassenger', 'PassengerController@destroy')->name('destroyPassenger');
 // Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show')
 
 

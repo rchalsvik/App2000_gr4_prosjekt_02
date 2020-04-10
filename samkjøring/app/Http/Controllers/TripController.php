@@ -126,8 +126,9 @@ class TripController extends Controller
      */
     public function seeMore(Trip $trip)
     {
-        $users = DB::select('select users.firstname, users.lastname from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
-        return view('trips.seeMore', ['trip' => $trip, 'users' => $users]);
+        $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
+        $piss = 0;
+        return view('trips.seeMore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
     }
 
     /**

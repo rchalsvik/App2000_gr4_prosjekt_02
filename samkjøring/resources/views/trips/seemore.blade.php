@@ -73,6 +73,12 @@
                   @auth
                 {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
                     @if (Auth::id() != $trip->driver_id && $trip->seats_available > 0)
+                    @foreach ($users as $user)
+                    @if (Auth::id() == $user->id)
+                      <input type="hidden" name="piss" value={{$piss = 1}}>
+                    @endif
+                    @endforeach
+                    @if ($piss != 1)
                         <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
                           @csrf {{-- viktig! ellers så feiler siden --}}
                           {{-- @method('PUT')  Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater'  --}}
@@ -105,6 +111,7 @@
                         </div>
 
                       </form>
+                      @endif
                     @endif
 
                     @if (Auth::id() == $trip->driver_id)
@@ -113,6 +120,21 @@
                     @endforeach
                         <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary">{{ __('Edit Trip') }}</a>
                     @endif
+
+                    @foreach ($users as $user)
+                    @if (Auth::id() == $user->id)
+                      <p>{{ __('You have already joined this trip') }}</p>
+                      <p>{{ __('You requested ') }} {{$user->seats_requested}} {{ __(' seat(s)') }}</p>
+                      <form method="POST" action="{{ route('destroyPassenger') }}" id="tripform">
+                        @csrf {{-- viktig! ellers så feiler siden --}}
+                        <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
+                        <input type="hidden" name="trip_id" value="{{ $trip->id }}">
+                      <button type="submit" class="btn btn-primary">{{ __('Leave Trip') }}</button>
+
+                      </form>
+                    @endif
+                    @endforeach
+
                     @endauth
                   </div>
 
