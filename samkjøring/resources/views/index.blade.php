@@ -58,7 +58,7 @@
                   <img class="card-arrow-down" src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
                   {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                   <b>@samDateFormat($trip->end_date)</b><br>
-                  <b>@samYearFormat($trip->start_date)</b>
+                  <b>@samYearFormat($trip->end_date)</b>
                 @endif
            </p>
           </div>

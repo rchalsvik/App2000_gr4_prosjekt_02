@@ -59,6 +59,7 @@ class IndexController extends Controller
     public function show(Request $request) //$id
     {
       $trips = DB::table('trips')
+      ->where('seats_available', '>', '0')
       ->whereRaw("start_point LIKE '%" . $request->index_search . "%'")
       //->get();
       ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
