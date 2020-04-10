@@ -12,6 +12,20 @@
     <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
   </header>
 
+  <div class="">
+    <form method="GET" action="{{ route('searchInIndex') }}" id="search_form">
+      @csrf {{-- viktig! ellers så feiler siden --}}
+          <input id="index_search"
+            type="text"
+            class="form-control @error('index_search') is-invalid @enderror"
+            name="index_search"
+            value="{{ old('index_search') }}"
+            placeholder="{{ __('Search') }}"
+            autocomplete="start_point">
+    </form>
+  </div>
+
+
   <!-- Page Features -->
   <div class="row text-center">
 
@@ -46,17 +60,7 @@
                   <b>@samDateFormat($trip->end_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b>
                 @endif
-
-
-                <p>{{ jegHater("Pølse") }}</p>
-
-                <p>{{ testerMinTålmodighet() }}</p>
            </p>
-
-
-
-
-
           </div>
           <div class="card-seat-avail">
              <b>{{ $trip->seats_available }}</b><img src="/img/icons/chair.svg" alt="Arrow Down">
@@ -67,5 +71,6 @@
         </div>
       </div>
     @endforeach
+    <p>{{ $trips->links() }}</p>
   </div>
 @endsection

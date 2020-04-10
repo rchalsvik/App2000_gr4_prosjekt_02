@@ -16,8 +16,15 @@ class IndexController extends Controller
      */
     public function index()
     {
-      $trips = DB::select('select * from trips order by id desc limit 5');
-      return view('index',['trips'=>$trips]);
+      $trips = DB::table('trips')
+        ->where('seats_available', '>', '0')
+        ->whereRaw('start_date >= curdate() AND start_time >= curtime()')
+        ->orWhereRaw('start_date > curdate()')
+        //->get();
+        ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
+
+
+      return view('index', ['trips' => $trips]);
     }
 
     /**
@@ -47,9 +54,14 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request) //$id
     {
-        //
+      $trips = DB::table('trips')
+      ->whereRaw("start_point LIKE '%" . $request->index_search . "%'")
+      //->get();
+      ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
+
+      return view('index', ['trips' => $trips]);
     }
 
     /**
