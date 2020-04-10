@@ -88,25 +88,40 @@ class PassengerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Passenger  $passenger
+     * @param  \App\Trip  $trup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request, Trip $trup)
     {
-        $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request->trip_id . ' and passenger_id = ' . $request->passenger_id);
-        dd($passengers);
+        $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request->trip_id . ' and passenger_id = ' . $request->passenger_id)->get();
         foreach ($passengers as $passenger) {
 
-          $trip = DB::table('trips')->whereRaw('id = ' . $passenger->trip_id);
+          $trips = DB::table('trips')->whereRaw('id = ' . $passenger->trip_id)->get();
+          foreach ($trips as $trip) {
 
-          $trip->seats_available = $trip->seats_available + $passenger->seats_requested;
+            //$trip->seats_available = $trip->seats_available + $passenger->seats_requested;
 
-          $trip->save();
+            //$trip->save();
 
-          Passenger::destroy($passenger->passenger_id);
+            request()->merge([ 'seats_requested' => $trip->seats_available + request('seats_requested') ]);
+
+            $request->request->add(['seats_available' => request('seats_requested')]);
+            //dd($request);
+
+            $validatedResults = request()->validate([
+              'seats_available' => ['required', 'digits_between:1,45'],
+            ]);
+
+            //dd(request('seats_available'));
+
+            $oppdatertdrit = Trip::whereRaw('id = ' . $trip->id)->update(['seats_available' => $validatedResults['seats_available']]); 
+
+            $slettadrit = Passenger::whereRaw('passenger_id = ' . $passenger->passenger_id . ' and trip_id = ' . $passenger->trip_id)->delete();
+          }
         }
 
 
-        return view('trips.seeMore', ['trip' => $trip]);
+        return view('trips.seeMore', ['trip' => $trup]);
     }
 
 

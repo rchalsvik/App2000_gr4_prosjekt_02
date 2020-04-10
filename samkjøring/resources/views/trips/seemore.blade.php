@@ -125,10 +125,11 @@
                     @if (Auth::id() == $user->id)
                       <p>{{ __('You have already joined this trip') }}</p>
                       <p>{{ __('You requested ') }} {{$user->seats_requested}} {{ __(' seat(s)') }}</p>
-                      <form method="POST" action="{{ route('destroyPassenger') }}" id="tripform">
+                      <form method="POST" action="{{ route('destroyPassenger', $trip) }}" id="tripform">
                         @csrf {{-- viktig! ellers så feiler siden --}}
                         <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
                         <input type="hidden" name="trip_id" value="{{ $trip->id }}">
+                        <input type="hidden" name="seats_requested" value="{{ $user->seats_requested }}">
                       <button type="submit" class="btn btn-primary">{{ __('Leave Trip') }}</button>
 
                       </form>
