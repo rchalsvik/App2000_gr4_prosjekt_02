@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      // Denne her må til for å ikke få en feilmelding når man migrater på Ekstern server. Ross.
+      Schema::defaultStringLength(191);
 
       // Legger til noen .Blade funksjoner. Ross.
       Blade::directive('samDateTimeFormat', function($args) {
