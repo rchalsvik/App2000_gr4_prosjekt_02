@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema; // Husk denne!!
 use Blade; // Denne må være her slik at vi kan bruke dette i .Blade filer. Ross.
 
 class AppServiceProvider extends ServiceProvider
