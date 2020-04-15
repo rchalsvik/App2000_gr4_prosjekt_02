@@ -108,7 +108,8 @@ class TripController extends Controller
 
         $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
         $piss = 0;
-        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
+        $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
+        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
     }
 
     /**
@@ -132,7 +133,8 @@ class TripController extends Controller
     {
         $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
         $piss = 0;
-        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
+        $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
+        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
     }
 
     /**
@@ -200,7 +202,8 @@ class TripController extends Controller
         //return view('trips.seemore', ['trip' => $trip]);
         $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
         $piss = 0;
-        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
+        $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
+        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
     }
 
     public function myTrips()

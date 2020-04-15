@@ -93,7 +93,7 @@ class PassengerController extends Controller
      */
     public function destroy(Request $request, Trip $trip)
     {
-        dd($trip);
+        //dd($trip);
         $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request->trip_id . ' and passenger_id = ' . $request->passenger_id)->get();
         foreach ($passengers as $passenger) {
 
@@ -118,6 +118,20 @@ class PassengerController extends Controller
             $oppdatertdrit = Trip::whereRaw('id = ' . $trup->id)->update(['seats_available' => $validatedResults['seats_available']]);
 
             $slettadrit = Passenger::whereRaw('passenger_id = ' . $passenger->passenger_id . ' and trip_id = ' . $passenger->trip_id)->delete();
+
+            $trip->id = $trup->id;
+            $trip->driver_id = $trup->driver_id;
+            $trip->start_point = $trup->start_point;
+            $trip->end_point = $trup->end_point;
+            $trip->start_date = $trup->start_date;
+            $trip->start_time = $trup->start_time;
+            $trip->end_date = $trup->end_date;
+            $trip->end_time = $trup->end_time;
+            $trip->seats_available = $validatedResults['seats_available'];
+            $trip->car_description = $trup->car_description;
+            $trip->trip_info = $trup->trip_info;
+            $trip->pets_allowed = $trup->pets_allowed;
+            $trip->kids_allowed = $trup->kids_allowed;
           }
         }
 
@@ -126,7 +140,8 @@ class PassengerController extends Controller
         //dd($trip);
         $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trup->id . ' and passenger_id = users.id and trips.id = ' . $trup->id);
         $piss = 0;
-        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
+        $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
+        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
     }
 
 
