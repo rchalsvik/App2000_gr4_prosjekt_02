@@ -14,7 +14,7 @@ class AddNewFieldBinaryToTrips extends Migration
     public function up()
     {
         Schema::table('trips', function (Blueprint $table) {
-          $table->binary('trip_image');
+          $table->binary('trip_image')->nullable($value = true);
         });
     }
 

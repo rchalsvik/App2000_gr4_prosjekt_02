@@ -12,7 +12,7 @@ class Trip extends Model
    * @var array
    */
   protected $fillable = [
-      'driver_id', 'start_point', 'end_point', 'start_date', 'start_time', 'end_date', 'end_time', 'seats_available', 'car_description', 'trip_info', 'pets_allowed', 'kids_allowed',
+      'driver_id', 'start_point', 'end_point', 'start_date', 'start_time', 'end_date', 'end_time', 'seats_available', 'car_description', 'trip_info', 'pets_allowed', 'kids_allowed', 'trip_image'
   ];
 
 }

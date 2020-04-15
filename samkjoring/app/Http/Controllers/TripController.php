@@ -267,6 +267,7 @@ class TripController extends Controller
         'trip_info' => ['required', 'string'],
         'pets_allowed' => ['required', 'boolean'],
         'kids_allowed' => ['required', 'boolean'],
+        'trip_image' => ['nullable', 'image'],
       ]);
     }
 
