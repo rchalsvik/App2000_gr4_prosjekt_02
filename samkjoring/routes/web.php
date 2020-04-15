@@ -52,7 +52,7 @@ Route::get('/varslinger', function () {
 })->name('notification');
 
 Route::get('/searchMeNowSempai', 'IndexController@show')->name('searchInIndex');
-Route::get('/trips/{trip}', 'TripController@show')->name('showTrip');
+//Route::get('/trips/{trip}', 'TripController@show')->name('showTrip');
 Route::get('/trips/{trip}/edit', 'TripController@edit')->name('editTrip');
 Route::get('/trips/{trip}/seemore', 'TripController@seemore')->name('seeMore');
 Route::post('/trips/{trip}/', 'TripController@join')->name('joinTrip');

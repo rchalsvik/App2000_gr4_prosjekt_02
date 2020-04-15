@@ -88,22 +88,23 @@ class PassengerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Passenger  $passenger
-     * @param  \App\Trip  $trup
+     * @param  \App\Trip  $trip
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Trip $trup)
+    public function destroy(Request $request, Trip $trip)
     {
+        dd($trip);
         $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request->trip_id . ' and passenger_id = ' . $request->passenger_id)->get();
         foreach ($passengers as $passenger) {
 
           $trips = DB::table('trips')->whereRaw('id = ' . $passenger->trip_id)->get();
-          foreach ($trips as $trip) {
+          foreach ($trips as $trup) {
 
             //$trip->seats_available = $trip->seats_available + $passenger->seats_requested;
 
             //$trip->save();
 
-            request()->merge([ 'seats_requested' => $trip->seats_available + request('seats_requested') ]);
+            request()->merge([ 'seats_requested' => $trup->seats_available + request('seats_requested') ]);
 
             $request->request->add(['seats_available' => request('seats_requested')]);
             //dd($request);
@@ -114,14 +115,18 @@ class PassengerController extends Controller
 
             //dd(request('seats_available'));
 
-            $oppdatertdrit = Trip::whereRaw('id = ' . $trip->id)->update(['seats_available' => $validatedResults['seats_available']]);
+            $oppdatertdrit = Trip::whereRaw('id = ' . $trup->id)->update(['seats_available' => $validatedResults['seats_available']]);
 
             $slettadrit = Passenger::whereRaw('passenger_id = ' . $passenger->passenger_id . ' and trip_id = ' . $passenger->trip_id)->delete();
           }
         }
 
 
-        return view('trips.seemore', ['trip' => $trup]);
+        //return view('trips.seemore', ['trip' => $trup]);
+        //dd($trip);
+        $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trup->id . ' and passenger_id = users.id and trips.id = ' . $trup->id);
+        $piss = 0;
+        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
     }
 
 

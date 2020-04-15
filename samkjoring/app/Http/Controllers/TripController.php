@@ -104,7 +104,11 @@ class TripController extends Controller
         Log::channel('samkjøring')->info($logString);
 
         $trip->update($this->validateTrip());
-        return redirect('/trips/' . $trip->id . '/seemore/'); // Dette er hvor du blir sendt etter å ha postet!
+        //return redirect('/trips/' . $trip->id . '/seemore/'); // Dette er hvor du blir sendt etter å ha postet!
+
+        $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
+        $piss = 0;
+        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
     }
 
     /**
@@ -193,7 +197,10 @@ class TripController extends Controller
 
         //return redirect('/');
         //return view('/', $request); // Dette er hvor du blir sendt etter å ha postet!
-        return view('trips.seemore', ['trip' => $trip]);
+        //return view('trips.seemore', ['trip' => $trip]);
+        $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
+        $piss = 0;
+        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
     }
 
     public function myTrips()
