@@ -128,7 +128,7 @@ class TripController extends Controller
     {
         $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
         $piss = 0;
-        return view('trips.seeMore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
+        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss]);
     }
 
     /**
@@ -193,7 +193,7 @@ class TripController extends Controller
 
         //return redirect('/');
         //return view('/', $request); // Dette er hvor du blir sendt etter å ha postet!
-        return view('trips.seeMore', ['trip' => $trip]);
+        return view('trips.seemore', ['trip' => $trip]);
     }
 
     public function myTrips()

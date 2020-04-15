@@ -114,14 +114,14 @@ class PassengerController extends Controller
 
             //dd(request('seats_available'));
 
-            $oppdatertdrit = Trip::whereRaw('id = ' . $trip->id)->update(['seats_available' => $validatedResults['seats_available']]); 
+            $oppdatertdrit = Trip::whereRaw('id = ' . $trip->id)->update(['seats_available' => $validatedResults['seats_available']]);
 
             $slettadrit = Passenger::whereRaw('passenger_id = ' . $passenger->passenger_id . ' and trip_id = ' . $passenger->trip_id)->delete();
           }
         }
 
 
-        return view('trips.seeMore', ['trip' => $trup]);
+        return view('trips.seemore', ['trip' => $trup]);
     }
 
 
