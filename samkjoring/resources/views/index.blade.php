@@ -12,18 +12,32 @@
     <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
   </header>
 
-  <div class="">
-    <form method="GET" action="{{ route('searchInIndex') }}" id="search_form">
-      @csrf {{-- viktig! ellers så feiler siden --}}
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form method="GET" action="{{ route('searchInIndex') }}" id="search_form">
+        @csrf {{-- viktig! ellers så feiler siden --}}
           <input id="index_search"
             type="text"
-            class="form-control @error('index_search') is-invalid @enderror"
+            class="clear @error('index_search') is-invalid @enderror"
             name="index_search"
-            value="@if (isset($_GET['index_search'])) {{$_GET['index_search']}} @else {{ old( 'start_point') }} @endif"
+            value="@if(isset($_GET['index_search'])) {{ $_GET['index_search'] }}@else{{ $_SESSION['index_search'] = false }}@endif"
             placeholder="{{ __('Search') }}"
             autocomplete="start_point">
-    </form>
+
+          <button type="search_the_index" class="btn btn-primary">
+              {{ __('Søk') }}
+          </button>
+      </form>
+      <button onclick="document.getElementById('index_search').value = ''">Clear input field</button>
+
+      <form method="GET" action="/" id="reset">
+        <button type="search_the_index" class="btn btn-primary">
+            {{ __('reset') }}
+        </button>
+      </form>
+    </div>
   </div>
+
 
   <!-- Page Features -->
   <div class="row text-center">

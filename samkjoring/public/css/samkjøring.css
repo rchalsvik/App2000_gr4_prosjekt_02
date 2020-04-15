@@ -3,7 +3,7 @@
 * Copyright 2013-2019 Start Bootstrap
 * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
 *
-* Egen css fil for samkjøring
+* Egen css fil for samkjøring grupppe 4
 * Bruk denne!!
 */
 
@@ -142,3 +142,11 @@ h3.margin-b {
 .mt-auto {
   margin-top: auto;
 }
+
+.clear {
+  background: #fff url(../img/icons/simple_x.svg) no-repeat right -10px center;
+  background-size: contain;
+  padding: 3px 18px 3px 4px;
+}
+
+.clear.x  { background-position: right 5px center; }
