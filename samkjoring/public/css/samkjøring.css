@@ -27,6 +27,12 @@ h3.margin-b {
   margin-bottom: 1.5rem;
 }
 
+.index-searchbar {
+  vertical-align: middle;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.5rem
+}
+
 .btn-primary {
   background-color: #ff71f0;
   border-color: #bb2091;

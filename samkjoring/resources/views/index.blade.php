@@ -12,11 +12,11 @@
     <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
   </header>
 
-  <div class="panel panel-default">
-    <div class="panel-body">
+  <div class="my-4">
+    <div class="">
       <form method="GET" action="{{ route('searchInIndex') }}" id="search_form">
         @csrf {{-- viktig! ellers så feiler siden --}}
-          <input id="index_search"
+          <input id="index_searchbar" class="index-searchbar"
             type="text"
             class="clear @error('index_search') is-invalid @enderror"
             name="index_search"
@@ -28,13 +28,9 @@
               {{ __('Søk') }}
           </button>
       </form>
-      <button onclick="document.getElementById('index_search').value = ''">Clear input field</button>
+      {{--<button onclick="document.getElementById('index_search').value = ''">Clear input field</button>--}}
 
-      <form method="GET" action="/" id="reset">
-        <button type="search_the_index" class="btn btn-primary">
-            {{ __('reset') }}
-        </button>
-      </form>
+      <a id="reset1" href="/">{{ __('reset') }}</a>
     </div>
   </div>
 
