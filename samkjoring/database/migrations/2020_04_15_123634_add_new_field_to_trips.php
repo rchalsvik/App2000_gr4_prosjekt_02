@@ -14,7 +14,7 @@ class AddNewFieldToTrips extends Migration
     public function up()
     {
         Schema::table('trips', function (Blueprint $table) {
-          $table->varchar('trip_image')->nullable($value = true);
+          $table->string('trip_image')->nullable($value = true);
         });
     }
 

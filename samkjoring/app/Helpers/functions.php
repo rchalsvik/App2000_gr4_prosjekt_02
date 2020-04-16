@@ -18,3 +18,17 @@
 
     return $img[$randIdx];
   }
+
+  function giMegBilde($trup) {
+    $image = $trup->trip_image;
+    if(is_null($image)) {
+      $tmp = randomImagesThatWeTotallyOwnFromDirectoryOnMachine();
+      return $tmp;
+    } else {
+      /*$img = glob('tripImage/' . $image);
+
+      return $img[0];*/
+
+      return 'tripImage/' . $image;
+    }
+  }
