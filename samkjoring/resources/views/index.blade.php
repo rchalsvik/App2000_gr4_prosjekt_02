@@ -25,12 +25,12 @@
             autocomplete="start_point">
 
           <button type="search_the_index" class="btn btn-primary">
-              {{ __('Søk') }}
+              {{ __('Search') }}
           </button>
       </form>
       {{--<button onclick="document.getElementById('index_search').value = ''">Clear input field</button>--}}
 
-      <a id="reset1" href="/">{{ __('reset') }}</a>
+      <a id="reset1" href="/">{{ __('Reset') }}</a>
     </div>
   </div>
 

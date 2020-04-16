@@ -26,7 +26,6 @@
       return $tmp;
     } else {
       /*$img = glob('tripImage/' . $image);
-
       return $img[0];*/
 
       return 'tripImage/' . $image;
