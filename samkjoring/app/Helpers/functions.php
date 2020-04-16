@@ -20,7 +20,7 @@
   }
 
   function giMegBilde($trup) {
-    $image = $trup->trip_image;
+    $image = $trup;
     if(is_null($image)) {
       $tmp = randomImagesThatWeTotallyOwnFromDirectoryOnMachine();
       return $tmp;

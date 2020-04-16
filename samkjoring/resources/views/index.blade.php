@@ -46,7 +46,7 @@
 
             {{--<img class="card-img-top card-img-top-interactive" src="{{URL::to('/')}}/img/bra_bil.jpg" alt="">--}}
             {{--<img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ randomImagesThatWeTotallyOwnFromDirectoryOnMachine() }}" alt="Trip Images">--}}
-            <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip) }}" alt="Trip Images">
+            <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip->trip_image) }}" alt="Trip Images">
 
           </a>
           <div class="card-body">

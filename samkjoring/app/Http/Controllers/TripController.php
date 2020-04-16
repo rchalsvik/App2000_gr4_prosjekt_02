@@ -76,9 +76,9 @@ class TripController extends Controller
           $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
           $files->move($destinationPath, $profileImage);
           //$insert['trip_image'] = "$profileImage";
+          $validatedResults['trip_image'] = "$profileImage";
         }
         //$check = Trip::insertGetId($insert);
-        $validatedResults['trip_image'] = "$profileImage";
         Trip::create($validatedResults);
         //Trip::create($this->validateTrip());
         return redirect('/');
@@ -127,12 +127,57 @@ class TripController extends Controller
                      ' , Bruker ID' . ' ' . request('driver_id');
         Log::channel('samkjøring')->info($logString);
 
-        $trip->update($this->validateTrip());
+        $validatedResults = request()->validate([
+          'driver_id' => ['required'],
+          'start_point' => ['required', 'string', 'max:255'],
+          'end_point' => ['required', 'string', 'max:255'],
+          'start_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+          'start_time' => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
+          'end_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+          'end_time' => ['required', 'date_format:H:i'],
+          'seats_available' => ['required', 'digits_between:1,45'],
+          'car_description' => ['required', 'string', 'max:255'],
+          'trip_info' => ['required', 'string'],
+          'pets_allowed' => ['required', 'boolean'],
+          'kids_allowed' => ['required', 'boolean'],
+          'trip_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+        ]);
+
+        if ($files = $request->file('trip_image')) {
+          $destinationPath = 'tripImage/'; // upload path
+          $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
+          $files->move($destinationPath, $profileImage);
+          //$insert['trip_image'] = "$profileImage";
+          $validatedResults['trip_image'] = "$profileImage";
+        }
+
+        $trip->update($validatedResults);
+
+        $trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
+        //foreach ($trips as $trup) { //kanskje trips[0]->id osv??
+        $trip = $trips[0];
+        /*
+          $trip->id = $trup->id;
+          $trip->driver_id = $trup->driver_id;
+          $trip->start_point = $trup->start_point;
+          $trip->end_point = $trup->end_point;
+          $trip->start_date = $trup->start_date;
+          $trip->start_time = $trup->start_time;
+          $trip->end_date = $trup->end_date;
+          $trip->end_time = $trup->end_time;
+          $trip->seats_available = $trup->seats_available;
+          $trip->car_description = $trup->car_description;
+          $trip->trip_info = $trup->trip_info;
+          $trip->pets_allowed = $trup->pets_allowed;
+          $trip->kids_allowed = $trup->kids_allowed;*/
+      //}
+
         //return redirect('/trips/' . $trip->id . '/seemore/'); // Dette er hvor du blir sendt etter å ha postet!
 
         $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
         $piss = 0;
         $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
+        //dd($trip);
         return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
     }
 

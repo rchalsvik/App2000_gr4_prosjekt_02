@@ -95,14 +95,17 @@ class PassengerController extends Controller
     {
         //dd($trip);
         $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request->trip_id . ' and passenger_id = ' . $request->passenger_id)->get();
-        foreach ($passengers as $passenger) {
+        $passenger = $passengers[0];
+        //foreach ($passengers as $passenger) {
 
           $trips = DB::table('trips')->whereRaw('id = ' . $passenger->trip_id)->get();
-          foreach ($trips as $trup) {
+          //foreach ($trips as $trup) { //kanskje trips[0]->id osv??
 
             //$trip->seats_available = $trip->seats_available + $passenger->seats_requested;
 
             //$trip->save();
+            $trup = $trips[0];
+
 
             request()->merge([ 'seats_requested' => $trup->seats_available + request('seats_requested') ]);
 
@@ -119,6 +122,9 @@ class PassengerController extends Controller
 
             $slettadrit = Passenger::whereRaw('passenger_id = ' . $passenger->passenger_id . ' and trip_id = ' . $passenger->trip_id)->delete();
 
+            //$trip = $trips[0];
+            //$trip->seats_available = $validatedResults['seats_available'];
+
             $trip->id = $trup->id;
             $trip->driver_id = $trup->driver_id;
             $trip->start_point = $trup->start_point;
@@ -132,8 +138,23 @@ class PassengerController extends Controller
             $trip->trip_info = $trup->trip_info;
             $trip->pets_allowed = $trup->pets_allowed;
             $trip->kids_allowed = $trup->kids_allowed;
-          }
-        }
+            /*
+            $trip->id = $trup->id;
+            $trip->driver_id = $trup->driver_id;
+            $trip->start_point = $trup->start_point;
+            $trip->end_point = $trup->end_point;
+            $trip->start_date = $trup->start_date;
+            $trip->start_time = $trup->start_time;
+            $trip->end_date = $trup->end_date;
+            $trip->end_time = $trup->end_time;
+            $trip->seats_available = $validatedResults['seats_available'];
+            $trip->car_description = $trup->car_description;
+            $trip->trip_info = $trup->trip_info;
+            $trip->pets_allowed = $trup->pets_allowed;
+            $trip->kids_allowed = $trup->kids_allowed;
+            */
+          //}
+        //}
 
 
         //return view('trips.seemore', ['trip' => $trup]);

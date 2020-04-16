@@ -10,7 +10,7 @@
                 {{-- <img class="card-img-top" src="{{URL::to('/')}}/{{ randomImagesThatWeTotallyOwnFromDirectoryOnMachine() }}" alt=""> --}}
 
                 {{-- <img src="data:image/jpeg;base64,{{ chunk_split(base64_encode($trip->trip_image)) }}" alt="Image"> --}}
-                <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip) }}" alt="Trip Images">
+                <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip->trip_image) }}" alt="Trip Images">
 
                 <div class="card-body card-body-flex">
                     @if (session('status'))
@@ -127,9 +127,9 @@
                     @if (Auth::id() == $user->id)
                       <p>{{ __('You have already joined this trip') }}</p>
                       <p>{{ __('You requested ') }} {{$user->seats_requested}} {{ __(' seat(s)') }}</p>
-                      @foreach ($chauffeur as $sjåfør)
-                      <p>{{ __('Driver info: ')}} {{'Name: '. $sjåfør->firstname . ' ' . $sjåfør->lastname . ', ' . 'Phone number: ' . $sjåfør->phone . ', Email: ' . $sjåfør->email}}</p>
-                      @endforeach
+                      {{--@foreach ($chauffeur as $sjåfør)--}}
+                      <p>{{ __('Driver info: ')}} {{'Name: '. $chauffeur[0]->firstname . ' ' . $chauffeur[0]->lastname . ', ' . 'Phone number: ' . $chauffeur[0]->phone . ', Email: ' . $chauffeur[0]->email}}</p>
+                      {{--@endforeach--}}
 
                       <form method="POST" onsubmit="return confirm('Do you really want to leave this trip?');" action="{{ route('destroyPassenger', $trip) }}" id="tripform">
                         @csrf {{-- viktig! ellers så feiler siden --}}

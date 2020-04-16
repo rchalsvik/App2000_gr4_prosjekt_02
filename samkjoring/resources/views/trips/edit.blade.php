@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Edit Trip') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('updateTrip', $trip) }}" id="tripform">
+                    <form method="POST" action="{{ route('updateTrip', $trip) }}" id="tripform" enctype="multipart/form-data">
                       @csrf {{-- viktig! ellers så feiler siden --}}
                       @method('PUT') {{-- Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
 
@@ -156,6 +156,20 @@
                             <div class="col-md-6">
                                 <input type="hidden" name="kids_allowed" value="0">
                                 <input id="kids_allowed" type="checkbox" class="form-control" name="kids_allowed" value="1" autocomplete="kids_allowed" @if($trip->kids_allowed) checked @endif>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="trip_image" class="col-md-4 col-form-label text-md-right">{{ __('Give Us Your Pics, or it didnt hapewqfpen!') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="trip_image" type="file" class="form-control @error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image') }}" autofocus>
+
+                                @error('trip_image')
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
+                                @enderror
                             </div>
                         </div>
 
