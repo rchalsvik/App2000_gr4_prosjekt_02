@@ -16,7 +16,7 @@
     <div class="">
       <form method="GET" action="{{ route('searchInIndex') }}" id="search_form">
         @csrf {{-- viktig! ellers så feiler siden --}}
-          <input id="index_searchbar" class="index-searchbar"
+          <input id="index_searchbar" class="form-control index-searchbar"
             type="text"
             class="clear @error('index_search') is-invalid @enderror"
             name="index_search"

@@ -29,8 +29,7 @@ h3.margin-b {
 
 .index-searchbar {
   vertical-align: middle;
-  padding: 0.2rem 0.5rem;
-  margin-right: 0.5rem
+  max-width: 100px;
 }
 
 .btn-primary {

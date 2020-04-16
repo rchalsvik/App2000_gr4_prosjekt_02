@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNewFieldBinaryToTrips extends Migration
+class AddNewFieldToTrips extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddNewFieldBinaryToTrips extends Migration
     public function up()
     {
         Schema::table('trips', function (Blueprint $table) {
-          $table->binary('trip_image')->nullable($value = true);
+          $table->varchar('trip_image')->nullable($value = true);
         });
     }
 
