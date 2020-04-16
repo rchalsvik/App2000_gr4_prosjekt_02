@@ -12,6 +12,10 @@ body {
   background-color: #999;
 }
 
+#app {
+    background-image: linear-gradient(to top, #555 5%, #888 15%, #888 80%);
+}
+
 html, body {
   height: 100vh;
   display: flex;
@@ -57,14 +61,14 @@ h3.margin-b {
 
 
 .btn-primary {
-  background-color: #ff71f0;
-  border-color: #bb2091;
+  background-color: #0095ff;
+  border-color: #005fa2;
 }
 
 .btn-primary:hover {
-    color: #fff;
-    background-color: #88037a;
-    border-color: #88037a;
+    color: #005fa2;
+    background-color: #9dd6ff;
+    border-color: #005ea0;
 }
 
 .item-container {
@@ -96,7 +100,7 @@ h3.margin-b {
 
 
 .jumbotron {
-  background-color: #ffd7e6 ;
+  background-color: #fff;
 }
 
 .page {
@@ -128,7 +132,11 @@ h3.margin-b {
 }
 
 .card-body, .card-footer, .card-seat-avail {
-  background-color: #ffffcc;
+  background-color: #fff;
+}
+
+.card-footer {
+  background-color: #eee;
 }
 
 .card-img-top {
@@ -185,4 +193,17 @@ h3.margin-b {
   justify-content: center;
   /*padding: 0 15px;*/
   width: 100%;
+}
+
+.page  {
+
+}
+
+.page img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.page-text-area {
+  padding: 2rem;
 }
