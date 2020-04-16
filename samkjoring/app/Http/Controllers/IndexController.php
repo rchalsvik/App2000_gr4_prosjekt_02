@@ -59,13 +59,13 @@ class IndexController extends Controller
     {
       //dd(Input\Input::get("index_search"));
       //dd($request->query('index_search'));
-      $trips = DB::table('trips')
-      ->where('seats_available', '>', '0')
-      ->whereRaw("start_point LIKE '%" . $request->index_search . "%'")
-      //->get();
-      ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
+        $trips = DB::table('trips')
+        ->where('seats_available', '>', '0')
+        ->whereRaw("start_point LIKE '%" . $request->index_search . "%'")
+        //->get();
+        ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
 
-      return view('index', ['trips' => $trips]);
+        return view('index', ['trips' => $trips]);
     }
 
     /**

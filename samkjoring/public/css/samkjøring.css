@@ -27,9 +27,34 @@ h3.margin-b {
   margin-bottom: 1.5rem;
 }
 
-.index-searchbar {
-
+.index-search-container {
+  display: flex;
 }
+
+.index-search-searchbar {
+  flex: 2;
+}
+
+.index-search-button {
+  flex: 0;
+}
+
+.index-reset-button {
+  padding-right: 0.75rem;
+  float: right;
+  color: #383838;
+  text-decoration: none;
+}
+
+.index-reset-button:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.index-item-height {
+  height: calc(1.6em + 0.75rem + 2px);
+}
+
 
 .btn-primary {
   background-color: #ff71f0;
@@ -154,3 +179,10 @@ h3.margin-b {
 }
 
 .clear.x  { background-position: right 5px center; }
+
+.paginator-container {
+  display: flex;
+  justify-content: center;
+  /*padding: 0 15px;*/
+  width: 100%;
+}

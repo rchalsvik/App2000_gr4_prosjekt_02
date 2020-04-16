@@ -60,7 +60,7 @@
                             <label for="start_time" class="col-md-4 col-form-label text-md-right">{{ __('Start Time') }}</label>
 
                             <div class="col-md-6">
-                                <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time', date("h:i")) }}" required autocomplete="start_time" autofocus>
+                                <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time', date("H:i")) }}" required autocomplete="start_time" autofocus>
 
                                 @error('start_time')
                                     <span class="invalid-feedback" role="alert">
@@ -88,7 +88,7 @@
                             <label for="end_time" class="col-md-4 col-form-label text-md-right">{{ __('End Time') }}</label>
 
                             <div class="col-md-6">
-                                <input id="end_time" type="time" class="form-control @error('end_time') is-invalid @enderror" name="end_time" value="{{ old('end_time', date("h:i")) }}" required autocomplete="end_time" autofocus>
+                                <input id="end_time" type="time" class="form-control @error('end_time') is-invalid @enderror" name="end_time" value="{{ old('end_time', date("H:i")) }}" required autocomplete="end_time" autofocus>
 
                                 @error('end_time')
                                     <span class="invalid-feedback" role="alert">
@@ -160,10 +160,10 @@
 
 
                         <div class="form-group row">
-                            <label for="trip_image" class="col-md-4 col-form-label text-md-right">{{ __('Give Us Your Pics, or it didnt hapewqfpen!') }}</label>
+                            <label for="trip_image" class="col-md-4 col-form-label text-md-right">{{ __('Descriptive Trip Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="trip_image" type="file" class="form-control @error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image') }}" autofocus>
+                                <input id="trip_image" type="file" class="@error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image') }}" autofocus>
 
                                 @error('trip_image')
                                   <span class="invalid-feedback" role="alert">

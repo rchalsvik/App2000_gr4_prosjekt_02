@@ -12,27 +12,29 @@
     <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
   </header>
 
-  <div class="my-4">
-    <div class="">
-      <form method="GET" action="{{ route('searchInIndex') }}" id="search_form">
-        @csrf {{-- viktig! ellers så feiler siden --}}
-          <input id="index_searchbar" class="form-control index-searchbar"
-            type="text"
-            class="clear @error('index_search') is-invalid @enderror"
-            name="index_search"
-            value="@if(isset($_GET['index_search'])) {{ $_GET['index_search'] }}@else{{ $_SESSION['index_search'] = false }}@endif"
-            placeholder="{{ __('Search') }}"
-            autocomplete="start_point">
+<div class="mb-2">
+  <form method="GET" action="{{ route('searchInIndex') }}" id="search_form" class="index-search-container">
+    @csrf {{-- viktig! ellers så feiler siden --}}
+      <div class="index-search-searchbar mr-2">
+        <input id="idx_search" class="form-control index-item-height"
+          type="text"
+          class="clear @error('index_search') is-invalid @enderror"
+          name="index_search"
+          value="@if(isset($_GET['index_search'])){{ $_GET['index_search'] }}@else{{ $_SESSION['index_search'] = false }}@endif"
+          placeholder="{{ __('Search') }}"
+          autocomplete="start_point">
 
-          <button type="search_the_index" class="btn btn-primary">
-              {{ __('Search') }}
-          </button>
-      </form>
-      {{--<button onclick="document.getElementById('index_search').value = ''">Clear input field</button>--}}
+          <a href="/" class="index-reset-button">{{ __('Reset') }}</a>
+      </div>
 
-      <a id="reset1" href="/">{{ __('Reset') }}</a>
-    </div>
-  </div>
+      <button type="search_the_index" class="btn btn-primary index-search-button index-item-height">
+      {{--<button type="search_the_index" class="index-item-2">--}}
+        {{ __('Search') }}
+      </button>
+  </form>
+  {{--<button onclick="document.getElementById('index_search').value = ''">Clear input field</button>--}}
+</div>
+
 
 
   <!-- Page Features -->
@@ -81,9 +83,10 @@
         </div>
       </div>
     @endforeach
+  </div>
 
-    {{-- Request::except('page') henter alle verdier fra addresslinja som ikke er page=1..2..3 osv --}}
-    <p>{{ $trips->appends(Request::except('page'))->links() }}</p>
-
+  {{-- Request::except('page') henter alle verdier fra addresslinja som ikke er page=1..2..3 osv --}}
+  <div class="paginator-container col">
+    {{ $trips->appends(Request::except('page'))->links() }}
   </div>
 @endsection
