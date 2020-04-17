@@ -14,7 +14,27 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{--{{ __('You are logged in!') }}--}}
+
+                    <div class="">
+                      <a href="{{ route('editUser', $user) }}">{{ __('Edit userinfo') }}</a>
+                      <a href="{{ route('myTrips') }}">{{ __('My Trips') }}</a>
+                      <a href="{{ route('myJoinedTrips') }}">{{ __('My Joined Trips, fiks detta navne i framtiden') }}</a>
+                    </div>
+
+                    @foreach ($trips as $trip)
+                    <div class="">
+                      <a href="/trips/{{ $trip->id }}/seemore" class="card-title-link">
+                        <h4>{{ __('StartingPoint') }} - {{ __('EndPoint') }}</h4>
+                      </a>
+                      <p>
+                        {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b>
+                        <b>@samDateFormat($trip->start_date)</b><b>@samYearFormat($trip->start_date)</b><br>
+                        {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b>
+                        <b>@samDateFormat($trip->end_date)</b><b>@samYearFormat($trip->end_date)</b>
+                      </p>
+                    </div>
+                    @endforeach
 
                     <table border=1>
                       <tr>

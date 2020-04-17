@@ -12,8 +12,5 @@
         <p class="lead">{{ __('aboutText') }}</p>
         <!-- <a href="/registration" class="btn btn-primary btn-lg">Registrer deg nå!</a> -->
       </div>
-
-
-
     </div>
 @endsection

@@ -53,9 +53,9 @@ Route::get('/varslinger', function () {
 
 Route::get('/searchMeNowSempai', 'IndexController@show')->name('searchInIndex');
 //Route::get('/trips/{trip}', 'TripController@show')->name('showTrip');
+Route::post('/trips/{trip}/', 'TripController@join')->name('joinTrip');
 Route::get('/trips/{trip}/edit', 'TripController@edit')->name('editTrip');
 Route::get('/trips/{trip}/seemore', 'TripController@seemore')->name('seeMore');
-Route::post('/trips/{trip}/', 'TripController@join')->name('joinTrip');
 Route::post('/trips/join', 'PassengerController@store')->name('storePassenger');
 Route::put('/trips/{trip}', 'TripController@update')->name('updateTrip');
 Route::get('/search', 'SearchController@index')->name('searchIndex');
