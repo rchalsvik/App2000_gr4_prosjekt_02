@@ -178,7 +178,9 @@ class TripController extends Controller
         $piss = 0;
         $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
         //dd($trip);
-        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        return redirect()->back();
     }
 
     /**
@@ -241,8 +243,6 @@ class TripController extends Controller
 
         request()->merge([ 'seats_available' => $trip->seats_available - request('seats_available') ]);
 
-
-
         $validatedResults = request()->validate([
           'seats_available' => ['required', 'digits_between:1,45'],
         ]);
@@ -251,20 +251,10 @@ class TripController extends Controller
 
         $trip->update($validatedResults);
 
-
-
-
-
-
-
-
-
         //dd($trip);
 
         //$trip->update($this->validateSeats());
         //dd($request);
-
-
 
         //return redirect('/');
         //return view('/', $request); // Dette er hvor du blir sendt etter å ha postet!
@@ -272,8 +262,11 @@ class TripController extends Controller
         $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
         $piss = 0;
         $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
-        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        return redirect()->back();
     }
+
 
     public function myTrips()
     {

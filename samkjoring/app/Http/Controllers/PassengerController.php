@@ -162,7 +162,9 @@ class PassengerController extends Controller
         $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trup->id . ' and passenger_id = users.id and trips.id = ' . $trup->id);
         $piss = 0;
         $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
-        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+        return redirect()->back();
     }
 
 
