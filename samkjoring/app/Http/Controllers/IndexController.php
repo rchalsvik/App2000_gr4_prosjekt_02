@@ -17,8 +17,8 @@ class IndexController extends Controller
     public function index()
     {
       $trips = DB::table('trips')
-        ->whereRaw('seats_available > 0 AND start_date >= curdate() AND start_time >= curtime()')
-        ->orWhereRaw('seats_available > 0 AND start_date > curdate()')
+        ->whereRaw('seats_available > 0 AND start_date >= curdate() AND start_time >= curtime() AND trip_active = 1')
+        ->orWhereRaw('seats_available > 0 AND start_date > curdate() AND trip_active = 1')
         ->orderBy('start_date')
         ->orderBy('start_time')
         //->get();
@@ -61,6 +61,7 @@ class IndexController extends Controller
       //dd($request->query('index_search'));
         $trips = DB::table('trips')
         ->where('seats_available', '>', '0')
+        ->where('trip_active','1')
         ->whereRaw("start_point LIKE '%" . $request->index_search . "%'")
         //->get();
         ->paginate(8); // Vi kan bruke 4, 8, 12, 16...

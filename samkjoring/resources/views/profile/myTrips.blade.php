@@ -15,8 +15,15 @@
     @foreach ($trips as $trip)
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
+          <div class="card-header">
+            @if ($trip->trip_active)
+              {{ __('Active') }}
+            @else
+              {{ __('Not active') }}
+            @endif
+          </div>
           <a href="/trips/{{ $trip->id }}/seemore" class="">
-            <img class="card-img-top card-img-top-interactive" src="{{URL::to('/')}}/img/bølærdal.jpg" alt="">
+            <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip->trip_image) }}" alt="Trip Images">
           </a>
           <div class="card-body">
             <a href="/trips/{{ $trip->id }}/seemore" class="card-title-link">

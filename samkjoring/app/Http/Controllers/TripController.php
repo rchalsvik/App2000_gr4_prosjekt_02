@@ -47,7 +47,6 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        //dd(request('start_point'));
         // Log Trip store
         $logString = 'Ny tur: ' . request('start_point') . ' - ' . request('end_point') .
                      ' , Start: ' . request('start_date') . ' ' . request('start_time') .
@@ -120,8 +119,8 @@ class TripController extends Controller
         //$trip->update($this->validateTrip());
         //return view('trip.show', ['trip' => $trip]);
 
-        // Log Trip edit oppdatering
-        $logString = 'Endra tur: ' . request('start_point') . ' - ' . request('end_point') .
+        // Log Trip oppdatering oppdatering
+        $logString = 'Oppdatert tur: ' . request('start_point') . ' - ' . request('end_point') .
                      ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
                      ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
                      ' , Bruker ID' . ' ' . request('driver_id');
@@ -191,7 +190,21 @@ class TripController extends Controller
      */
     public function destroy(Trip $trip)
     {
-        //
+      // Log at en tur er kansellert av bruker
+      $logString = 'Tur deaktivert: ' . $trip->id . ' ' .$trip->start_point . ' - ' . $trip->end_point . ' av brukerID: ' . $trip->driver_id;
+      Log::channel('samkjøring')->info($logString);
+
+
+
+        // setta turen til deaktiv
+        // kjør ned kaffe?
+        //Trip::update()
+        // fjerna passasjer???
+        $trip->trip_active = false;
+        $trip->save();
+
+        return redirect('/');
+        //return redirect(session('links')[2]); // Denne her vil sende deg 2 linker tilbake
     }
 
     /**
@@ -280,7 +293,7 @@ class TripController extends Controller
         $id = $user->id; // slik??
         //$id = auth()->user()->id;
         //  and (start_date < CURDATE and start_time < CURTIME or start_date > CURDATE)
-        $trips = DB::select('select * from trips where driver_id = ' . $id . ' and (start_date >= CURDATE() and start_time >= CURTIME() or start_date > CURDATE()) order by start_date, start_time desc');
+        $trips = DB::select('select * from trips where driver_id = ' . $id . ' and (start_date >= CURDATE() and start_time >= CURTIME() or start_date > CURDATE()) order by trip_active desc, start_date, start_time desc');
 
         // Log bruker login
         // Bør kanskje lage kortere log: "Login bruker: 5. Kari Nord"
@@ -302,7 +315,7 @@ class TripController extends Controller
         $id = $user->id; // slik??
         //$id = auth()->user()->id;
         //  and (start_date < CURDATE and start_time < CURTIME or start_date > CURDATE)
-        $trips = DB::select('select * from trips, passengers where passenger_id = ' . $id . ' and trip_id = trips.id and (start_date >= CURDATE() and start_time >= CURTIME() or start_date > CURDATE()) order by start_date, start_time desc');
+        $trips = DB::select('select * from trips, passengers where passenger_id = ' . $id . ' and trip_id = trips.id and (start_date >= CURDATE() and start_time >= CURTIME() or start_date > CURDATE()) order by trip_active desc, start_date, start_time desc');
 
         // Log bruker login
         // Bør kanskje lage kortere log: "Login bruker: 5. Kari Nord"

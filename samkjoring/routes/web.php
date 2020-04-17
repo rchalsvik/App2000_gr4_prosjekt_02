@@ -65,6 +65,7 @@ Route::put('/userharblittendrasoflott/{user}', 'UserController@update')->name('u
 Route::get('/profile/myTrips', 'TripController@myTrips')->name('myTrips');
 Route::get('/profile/myJoinedTrips', 'TripController@myJoinedTrips')->name('myJoinedTrips');
 Route::post('/destroyPassenger', 'PassengerController@destroy')->name('destroyPassenger');
+Route::post('trips/{trip}/destroyTrip', 'TripController@destroy')->name('destroyTrip');
 // Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show')
 
 

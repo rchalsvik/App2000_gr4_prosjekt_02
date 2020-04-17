@@ -5,7 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Show Trip') }} - AuthID: {{ Auth::id() }}, TurEierID: {{ $trip->driver_id }}</div>
+                <div class="card-header">
+                  @if ($trip->trip_active)
+                    {{ __('Active') }}
+                  @else
+                    {{ __('Not active') }}
+                  @endif
+                </div>
 
                 {{-- <img class="card-img-top" src="{{URL::to('/')}}/{{ randomImagesThatWeTotallyOwnFromDirectoryOnMachine() }}" alt=""> --}}
 
@@ -121,6 +127,11 @@
                         <p>{{$user->firstname . ' ' . $user->lastname . ', '}}</p>
                     @endforeach
                         <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary">{{ __('Edit Trip') }}</a>
+                        {{-- <a href="/trips/{{ $trip->id }}/destroyTrip" class="btn btn-primary">{{ __('Cancel Trip') }}</a> --}}
+                        <form method="POST" onsubmit="return confirm('Do you really want to destroy this trip?');" action="{{ route('destroyTrip', $trip) }}" id="tripform">
+                          @csrf {{-- viktig! ellers så feiler siden --}}
+                        <button type="submit" class="btn btn-primary">{{ __('Cancel Trip') }}</button>
+                        </form>
                     @endif
 
                     @foreach ($users as $user)
