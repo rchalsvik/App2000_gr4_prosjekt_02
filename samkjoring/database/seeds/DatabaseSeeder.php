@@ -12,6 +12,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+      DB::select("
+        INSERT INTO notification_types (type_name) VALUES
+        ('Trip Deleted'),
+        ('Trip Edited');
+      ");
+
         // $this->call(UsersTableSeeder::class);
 
         // KommuneSeed

@@ -12,10 +12,6 @@ body {
   background-color: #999;
 }
 
-#app {
-    background-image: linear-gradient(to top, #555 5%, #888 15%, #888 80%);
-}
-
 html, body {
   height: 100vh;
   display: flex;

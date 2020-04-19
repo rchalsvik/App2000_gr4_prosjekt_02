@@ -70,6 +70,7 @@ class TripController extends Controller
           'trip_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
+        // Tur Bilde Opplastning
         if ($files = $request->file('trip_image')) {
           $destinationPath = 'tripImage/'; // upload path
           $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
@@ -203,7 +204,12 @@ class TripController extends Controller
         $trip->trip_active = false;
         $trip->save();
 
-        return redirect('/');
+        //return redirect('/');
+
+        $trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
+        $trip = $trips[0];
+
+        return redirect()->action('NotificationController@store', ['trip' => $trip]);
         //return redirect(session('links')[2]); // Denne her vil sende deg 2 linker tilbake
     }
 

@@ -50,7 +50,7 @@
                 </a>
               </li>
               <li class="nav-item {{ Request::path() === 'varslinger' ? 'active' : '' }}">
-                <a class="nav-link" href="/varslinger">{{ __('Notifications') }}</a>
+                <a class="nav-link" href="{{ route('notifications') }}">{{ __('Notifications') }}</a>
               </li>
               <li class="nav-item {{ Request::path() === 'omoss' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('about') }}">{{ __('About Us') }}</a>

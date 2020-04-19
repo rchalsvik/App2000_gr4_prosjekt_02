@@ -47,9 +47,10 @@ Route::get('/', 'IndexController@index')->name('index');
 Route::get('/omoss', function () {
   return view('about');
 })->name('about');
-Route::get('/varslinger', function () {
-  return view('notifications');
-})->name('notification');
+
+
+Route::get('/notifications', 'NotificationController@index')->name('notifications');
+
 
 Route::get('/searchMeNowSempai', 'IndexController@show')->name('searchInIndex');
 //Route::get('/trips/{trip}', 'TripController@show')->name('showTrip');
@@ -66,6 +67,7 @@ Route::get('/profile/myTrips', 'TripController@myTrips')->name('myTrips');
 Route::get('/profile/myJoinedTrips', 'TripController@myJoinedTrips')->name('myJoinedTrips');
 Route::post('/destroyPassenger', 'PassengerController@destroy')->name('destroyPassenger');
 Route::post('trips/{trip}/destroyTrip', 'TripController@destroy')->name('destroyTrip');
+Route::get('/notification', 'NotificationController@store')->name('storeNotification');
 // Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show')
 
 
