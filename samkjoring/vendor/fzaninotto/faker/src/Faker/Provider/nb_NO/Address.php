@@ -7,14 +7,16 @@ class Address extends \Faker\Provider\Address
     protected static $buildingNumber = array('%###', '%##', '%#', '%#?', '%', '%?');
 
     protected static $streetPrefix = array(
-        "Øvre", "Nedre", "Søndre", "Gamle", "Østre", "Vestre"
+        "Øvre", "Nedre", "Søndre", "Gamle", "Østre", "Vestre", "Indre", "Nord Vestlige", "Nye",
+        "Ytre", "Sør Østlige", "Midtre", "Sør Nordlige"
     );
 
     protected static $streetSuffix = array(
         "alléen", "bakken", "berget", "bråten", "eggen", "engen", "ekra", "faret", "flata", "gata", "gjerdet", "grenda",
         "gropa", "hagen", "haugen", "havna", "holtet", "høgda", "jordet", "kollen", "kroken", "lia", "lunden", "lyngen",
-        "løkka", "marka", "moen", "myra", "plassen", "ringen", "roa", "røa", "skogen", "skrenten", "spranget", "stien",
-        "stranda", "stubben", "stykket", "svingen", "tjernet", "toppen", "tunet", "vollen", "vika", "åsen"
+        "løkka", "marka", "moen", "myra", "plassen", "ringen", "roa", "røa", "skogen", "skauen", "skrenten", "spranget", "stien",
+        "stranda", "stubben", "stykket", "svingen", "tjernet", "toppen", "tunet", "vollen", "vika", "åsen", "søkket",
+        "hølet", "dynga"
     );
 
     protected static $streetSuffixWord = array(
@@ -39,7 +41,8 @@ class Address extends \Faker\Provider\Address
         "Sandvika", "Sarpsborg", "Sauda", "Ski", "Skien", "Skudeneshavn", "Sortland", "Stathelle", "Stavanger",
         "Stavern", "Steinkjer", "Stjørdalshalsen", "Stokmarknes", "Stord", "Svelvik", "Svolvær", "Tromsø", "Trondheim",
         "Tvedestrand", "Tønsberg", "Ulsteinvik", "Vadsø", "Vardø", "Verdalsøra", "Vinstra", "Åkrehamn", "Ålesund",
-        "Åndalsnes", "Åsgårdstrand"
+        "Åndalsnes", "Åsgårdstrand", "Lærdal", "Lærdalsøyri", "Vindedalen", "Årdal", "Fodnes",
+        "Timrebekkgrovi", "Bermålsviki", "Naddvik", "Aurland", "Ljøsne", "Bjørkum", "Borgund", "Flåm", "Gudvangen"
     );
 
     protected static $cityFormats = array(

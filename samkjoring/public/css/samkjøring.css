@@ -207,3 +207,10 @@ h3.margin-b {
 .page-text-area {
   padding: 2rem;
 }
+
+.form-control-text {
+  background-color: transparent;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 0rem;
+}

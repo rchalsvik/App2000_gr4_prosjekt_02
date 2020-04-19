@@ -277,7 +277,8 @@ class Person extends \Faker\Provider\Person
         "Sivertsen", "Sletten", "Solbakken", "Solberg", "Solheim", "Solli", "Solvang", "Steen", "Stene", "Stokke",
         "Strand", "Strøm", "Sunde", "Sveen", "Svendsen", "Syversen", "Sæther", "Sætre", "Sørensen", "Sørlie", "Tangen",
         "Teigen", "Thomassen", "Thoresen", "Thorsen", "Tollefsen", "Torgersen", "Torp", "Tran", "Tveit", "Vik", "Viken",
-        "Wang", "Wiik", "Wilhelmsen", "Wold", "Ødegaard", "Ødegård", "Øien"
+        "Wang", "Wiik", "Wilhelmsen", "Wold", "Ødegaard", "Ødegård", "Øien", "Parafin", "Hæstevika", "Reinart", "Keiko-Burger",
+        "Thoresen-Værsegod-Takkskalduha"
     );
 
     /**
