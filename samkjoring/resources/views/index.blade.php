@@ -5,12 +5,15 @@
 <div class="container">
 
   <!-- Jumbotron Header -->
-  <header class="jumbotron my-4">
-    <h1 class="display-3">{{ __('Welcome to Samkjoering AS!') }}</h1>
-    <p class="lead"><h3>{{ __('indexIntro') }}</h3></p>
-    <p><h3>{{ __('indexPhrase') }}</h3></p>
-    <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
-  </header>
+
+  @guest
+    <header class="jumbotron my-4">
+      <h1 class="">{{ __('Welcome to Samkjoering AS!') }}</h1>
+      <p class=""><h3>{{ __('indexIntro') }}</h3></p>
+      <p><h3>{{ __('indexPhrase') }}</h3></p>
+      <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
+    </header>
+  @endguest
 
 <div class="mb-2">
   <form method="GET" action="{{ route('searchInIndex') }}" id="search_form" class="index-search-container">
