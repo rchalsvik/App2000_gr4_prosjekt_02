@@ -94,36 +94,38 @@
                         @endif
                       @endforeach
                       @if ($piss != 1)
-                          <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
-                            @csrf {{-- viktig! ellers så feiler siden --}}
-                            {{-- @method('PUT')  Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater'  --}}
+                        @if ($trip->trip_active)
+                            <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
+                              @csrf {{-- viktig! ellers så feiler siden --}}
+                              {{-- @method('PUT')  Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater'  --}}
 
-                            <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
-                            <input type="hidden" name="trip_id" value="{{ $trip->id }}">
+                              <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
+                              <input type="hidden" name="trip_id" value="{{ $trip->id }}">
 
-                            <div class="form-group row">
-                              <label for="seats_available" class="col-md-4 col-form-label">{{ __('Seats requested') }}</label>
-                              <div class="col-md-6">
-                                <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}"
-                                  class="form-control @error('seats_available') is-invalid @enderror"
-                                  name="seats_available" value="{{ old('seats_available', 1) }}"
-                                  required autocomplete="seats_available"
-                                  autofocus>
-                                @error('seats_requested')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                              </div>
-                          </div>
-
-                          <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                              <button type="submit" class="btn btn-primary">{{ __('Join Trip') }}</button>
+                              <div class="form-group row">
+                                <label for="seats_available" class="col-md-4 col-form-label">{{ __('Seats requested') }}</label>
+                                <div class="col-md-6">
+                                  <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}"
+                                    class="form-control @error('seats_available') is-invalid @enderror"
+                                    name="seats_available" value="{{ old('seats_available', 1) }}"
+                                    required autocomplete="seats_available"
+                                    autofocus>
+                                  @error('seats_requested')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                                </div>
                             </div>
-                          </div>
 
-                        </form>
+                            <div class="form-group row mb-0">
+                              <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">{{ __('Join Trip') }}</button>
+                              </div>
+                            </div>
+
+                          </form>
+                          @endif
                         @endif
                       @endif
 
@@ -133,12 +135,14 @@
                       @endforeach
                       <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
+                          @if ($trip->trip_active)
                           <form method="POST" onsubmit="return confirm('Do you really want to destroy this trip?');" action="{{ route('destroyTrip', $trip) }}" id="tripform">
                             <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary mb-2 mr-2">{{ __('Edit Trip') }}</a>
                             {{-- <a href="/trips/{{ $trip->id }}/destroyTrip" class="btn btn-primary">{{ __('Cancel Trip') }}</a> --}}
                             @csrf {{-- viktig! ellers så feiler siden --}}
                             <button type="submit" class="btn btn-primary mb-2 mr-2">{{ __('Cancel Trip') }}</button>
                           </form>
+                          @endif
                         </div>
                       </div>
                     @endif
@@ -159,6 +163,7 @@
                       <p>{{ __('Driver info: ')}} {{'Name: '. $chauffeur[0]->firstname . ' ' . $chauffeur[0]->lastname . ', ' . 'Phone number: ' . $chauffeur[0]->phone . ', Email: ' . $chauffeur[0]->email}}</p>
                       {{--@endforeach--}}
 
+                      @if ($trip->trip_active)
                       <form method="POST" onsubmit="return confirm('Do you really want to leave this trip?');" action="{{ route('destroyPassenger', $trip) }}" id="tripform">
                         @csrf {{-- viktig! ellers så feiler siden --}}
                         <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
@@ -166,6 +171,7 @@
                         <input type="hidden" name="seats_requested" value="{{ $user->seats_requested }}">
                       <button type="submit" class="btn btn-primary">{{ __('Leave Trip') }}</button>
                       </form>
+                      @endif
                     @endif
                     @endforeach
 

@@ -48,26 +48,26 @@ class TripController extends Controller
     public function store(Request $request)
     {
         // Log Trip store
-        $logString = 'Ny tur: ' . request('start_point') . ' - ' . request('end_point') .
+        $logString = 'Ny tur: '   . request('start_point') . ' - ' . request('end_point') .
                      ' , Start: ' . request('start_date') . ' ' . request('start_time') .
-                     ' , End: ' . request('end_date') . ' ' . request('end_time') .
+                     ' , End: '   . request('end_date') . ' ' . request('end_time') .
                      ' , Bruker ID' . request('driver_id');
         Log::channel('samkjøring')->info($logString);
 
         $validatedResults = request()->validate([
-          'driver_id' => ['required'],
+          'driver_id'   => ['required'],
           'start_point' => ['required', 'string', 'max:255'],
-          'end_point' => ['required', 'string', 'max:255'],
-          'start_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-          'start_time' => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
-          'end_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-          'end_time' => ['required', 'date_format:H:i'],
+          'end_point'   => ['required', 'string', 'max:255'],
+          'start_date'  => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+          'start_time'  => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
+          'end_date'    => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+          'end_time'    => ['required', 'date_format:H:i'],
           'seats_available' => ['required', 'digits_between:1,45'],
           'car_description' => ['required', 'string', 'max:255'],
-          'trip_info' => ['required', 'string'],
+          'trip_info'    => ['required', 'string'],
           'pets_allowed' => ['required', 'boolean'],
           'kids_allowed' => ['required', 'boolean'],
-          'trip_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+          'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
         // Tur Bilde Opplastning
@@ -128,19 +128,19 @@ class TripController extends Controller
         Log::channel('samkjøring')->info($logString);
 
         $validatedResults = request()->validate([
-          'driver_id' => ['required'],
+          'driver_id'   => ['required'],
           'start_point' => ['required', 'string', 'max:255'],
-          'end_point' => ['required', 'string', 'max:255'],
-          'start_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-          'start_time' => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
-          'end_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-          'end_time' => ['required', 'date_format:H:i'],
+          'end_point'   => ['required', 'string', 'max:255'],
+          'start_date'  => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+          'start_time'  => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
+          'end_date'    => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+          'end_time'    => ['required', 'date_format:H:i'],
           'seats_available' => ['required', 'digits_between:1,45'],
           'car_description' => ['required', 'string', 'max:255'],
-          'trip_info' => ['required', 'string'],
+          'trip_info'    => ['required', 'string'],
           'pets_allowed' => ['required', 'boolean'],
           'kids_allowed' => ['required', 'boolean'],
-          'trip_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+          'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
         if ($files = $request->file('trip_image')) {
@@ -180,7 +180,9 @@ class TripController extends Controller
         //dd($trip);
         //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
         //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
-        return redirect()->back();
+        $type = 2;
+        return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
+        //return redirect()->back();
     }
 
     /**
@@ -208,8 +210,9 @@ class TripController extends Controller
 
         $trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
         $trip = $trips[0];
+        $type = 1;
 
-        return redirect()->action('NotificationController@store', ['trip' => $trip]);
+        return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
         //return redirect(session('links')[2]); // Denne her vil sende deg 2 linker tilbake
     }
 

@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
 
       DB::select("
         INSERT INTO notification_types (type_name) VALUES
-        ('Trip Deleted'),
-        ('Trip Edited');
+        ('cancelled'),
+        ('edited');
       ");
 
         // $this->call(UsersTableSeeder::class);

@@ -52,9 +52,13 @@
                         </tr>
                       @endforeach
                     </table>
+
+                    @if (auth()->user()->hasLicense)
                     <div id="new_trip" class="">
                       <a href="{{ route('createTrip') }}">{{ __('New Trip') }}</a>
                     </div>
+                    @endif
+
                     {{-- <form method="POST" action="{{ route('editUser', $user) }}" id="userform">
                       @csrf
                       @method('PUT')
@@ -72,9 +76,11 @@
                       <a href="{{ route('editUser', $user) }}">{{ __('Edit userinfo') }}</a>
                     </div>
 
+                    @if (auth()->user()->hasLicense)
                     <div id="my_trips" class="">
                       <a href="{{ route('myTrips') }}">{{ __('My Trips') }}</a>
                     </div>
+                    @endif
 
                     <div id="my_joined_trips" class="">
                       <a href="{{ route('myJoinedTrips') }}">{{ __('My Joined Trips, fiks detta navne i framtiden') }}</a>

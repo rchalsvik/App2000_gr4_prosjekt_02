@@ -6,14 +6,31 @@
 
   <!-- Jumbotron Header -->
 
-  @guest
-    <header class="jumbotron my-4">
-      <h1 class="">{{ __('Welcome to Samkjoering AS!') }}</h1>
-      <p class=""><h3>{{ __('indexIntro') }}</h3></p>
-      <p><h3>{{ __('indexPhrase') }}</h3></p>
-      <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
-    </header>
-  @endguest
+
+      <header class="jumbotron my-4">
+      @guest
+        <header class="jumbotron my-4">
+          <h1 class="">{{ __('Welcome to Samkjoering AS!') }}</h1>
+          <h3>{{ __('indexIntro') }}</h3>
+          <h3>{{ __('indexPhrase') }}</h3>
+          <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
+        </header>
+      @endguest
+      @auth
+        <h3>{{ __('HEY PÅ MEG DU DER Frøken ') }}{{ auth()->user()->firstname }}</h3>
+        @if(auth()->user()->hasLicense)
+          <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Make a trip now!') }}</a>
+        @endif
+      @endauth
+      </header>
+
+
+
+
+
+
+
+
 
 <div class="mb-2">
   <form method="GET" action="{{ route('searchInIndex') }}" id="search_form" class="index-search-container">
@@ -24,7 +41,7 @@
           class="clear @error('index_search') is-invalid @enderror"
           name="index_search"
           value="@if(isset($_GET['index_search'])){{ $_GET['index_search'] }}@else{{ $_SESSION['index_search'] = false }}@endif"
-          placeholder="{{ __('Search') }}"
+          placeholder="{{ __('Quick Search') }}"
           autocomplete="start_point">
 
           <a href="/" class="index-reset-button">{{ __('Reset') }}</a>

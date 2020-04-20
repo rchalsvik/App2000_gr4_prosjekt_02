@@ -12,8 +12,8 @@
 
         @if (!empty($notifications))
           @foreach ($notifications as $notification)
-            <p>{{ $notification->message }}</p>
-            <p>{{ $notification->type_name }}</p>
+            <p><a href="/trips/{{$notification->trip_id}}/seemore">{{ __('Your trip from ') }} {{ $notification->start_point }}
+              {{ __(' - ') }} {{ $notification->end_point }} {{ __(' has been ') }} {{ $notification->type_name }}</a></p>
           @endforeach
         @else
           <p>{{ __('You have no messages') }}</p>

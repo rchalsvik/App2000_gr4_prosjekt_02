@@ -16,8 +16,8 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
           $table->unsignedBigInteger('trip_id');
           $table->unsignedBigInteger('user_id');
-          $table->string('message');
-          //$table->string('extra_info');
+          $table->string('start_point');
+          $table->string('end_point');
           $table->unsignedBigInteger('type_id');
           $table->timestamps();
 

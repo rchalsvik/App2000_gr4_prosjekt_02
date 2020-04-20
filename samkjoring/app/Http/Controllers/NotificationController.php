@@ -23,7 +23,13 @@ class NotificationController extends Controller
       $user = Auth::user();
       $id = $user->id; // slik??
 
-      $notifications = DB::select('select message, type_name from notifications, notification_types where notifications.user_id = ' . $id . ' and type_id = id');
+      // Legga te sånn at viss du går inn på varslingsia so blir varslingadn merka so sett
+      $usetteNotifications = DB::select('select * from notifications where notifications.user_id = ' . $id . ' and has_seen = 0');
+      foreach ($usetteNotifications as $usetteNotification) {
+        DB::update('update notifications set has_seen = 1 where trip_id = ' . $usetteNotification->trip_id . ' and user_id = ' . $usetteNotification->user_id);
+      }
+
+      $notifications = DB::select('select trip_id, start_point, end_point, type_name from notifications, notification_types where notifications.user_id = ' . $id . ' and type_id = id order by notifications.created_at desc');
 
       return view('notifications.notifications', ['notifications' => $notifications]);
     }
@@ -47,19 +53,22 @@ class NotificationController extends Controller
      */
     public function store(Request $request, Trip $trip)
     {
-      //dd($trip);
-      //dd($request['trip']['id']);
-      $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request['trip']['id'])->get();
+      $tmpReq = $request['trip'];
+      $tmpType = $request['type'];
+      $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $tmpReq['id'])->get();
 
       foreach ($passengers as $passenger) {
         // TODO: Her må det fikses med dato og tid
-        $msg = $request['trip']['id'] . ' from ' . $request['trip']['start_point'] . ' - ' . $request['trip']['end_point'] . ' is cancelled.';
+        // Message blir generert her slik at den kan legges som en beskjed i databasen.
+        // $msg = $tmpReq['id'] . ' from ' . $tmpReq['start_point'] . ' - ' . $tmpReq['end_point'] . ' has been ';
 
         $notification = [
-          'trip_id' => $request['trip']['id'],
+          'trip_id' => $tmpReq['id'],
           'user_id' => $passenger->passenger_id,
-          'message' => $msg,
-          'type_id' => 1,
+          // 'message' => $msg,
+          'start_point' => $tmpReq['start_point'],
+          'end_point' => $tmpReq['end_point'],
+          'type_id' => $tmpType,
         ];
         Notification::create($notification);
       }
