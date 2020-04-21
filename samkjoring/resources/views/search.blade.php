@@ -4,18 +4,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <h4><div class="card-header">{{ __('Search') }}</div></h4>
+            <div class="card mb-4">
+                <div class="card-header"><h4>{{ __('Search') }}</h4></div>
 
                 <div class="card-body">
                     <form method="GET" action="{{ route('searchShow') }}" id="tripform">
                       @csrf {{-- viktig! ellers så feiler siden --}}
 
                         <div class="form-group row">
-                            {{-- <label for="start_point" class="col-md-4 col-form-label text-md-right">{{ __('Find trip') }}</label> --}}
+                            <label for="start_point" class="col-md-4 col-form-label text-md-right">{{ __('Search for Startpoint:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="start_point" type="text" class="form-control @error('start_point') is-invalid @enderror" name="start_point" value="{{ old('start_point') }}" placeholder="Search for a starting point" autocomplete="start_point" autofocus>
+                                <input id="start_point" type="text" class="form-control @error('start_point') is-invalid @enderror" name="start_point" value="{{ old('start_point') }}" placeholder="Starting point" autocomplete="start_point" autofocus>
 
                                 @error('start_point')
                                     <span class="invalid-feedback" role="alert">
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="start_date" class="col-md-4 col-form-label text-md-right">{{ __('Start Date') }}</label>
+                            <label for="start_date" class="col-md-4 col-form-label text-md-right">{{ __('Start Date:') }}</label>
 
                             <div class="col-md-6">
                                 <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}" autocomplete="start_date" autofocus>
@@ -40,10 +40,10 @@
                         </div>
 
                         <div class="form-group row">
-                            {{-- <label for="end_point" class="col-md-4 col-form-label text-md-right">{{ __('Find trip') }}</label> --}}
+                            <label for="end_point" class="col-md-4 col-form-label text-md-right">{{ __('Search for Endpoint:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="end_point" type="text" class="form-control @error('end_point') is-invalid @enderror" name="end_point" value="{{ old('end_point') }}" placeholder="Search for an end point" autocomplete="end_point" autofocus>
+                                <input id="end_point" type="text" class="form-control @error('end_point') is-invalid @enderror" name="end_point" value="{{ old('end_point') }}" placeholder="End point" autocomplete="end_point" autofocus>
 
                                 @error('end_point')
                                     <span class="invalid-feedback" role="alert">
@@ -53,14 +53,12 @@
                             </div>
                         </div>
 
-
-
-
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Search') }}
-                                </button>
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Search') }}
+                        </button>
                     </form>
 
+                    {{--<!--
                     <table border=1>
                       <tr>
                         <td>{{ __('StartingPoint') }}</td>
@@ -77,10 +75,33 @@
                         </tr>
                       @endforeach
                     </table>
-
-
+                  -->--}}
                 </div>
             </div>
+
+            @foreach ($trips as $trip)
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="item-container item-c-100 item">
+                    <h4  class=""><a href="{{ route('seeMore', $trip->id) }}">{{ $trip->start_point }} - {{ $trip->end_point }} </a></h4>
+                    <div class="">
+                      @if ($trip->trip_active)
+                        Active
+                      @else
+                        Not Active
+                      @endif
+                    </div>
+                  </div>
+
+
+                  <p>@samDateTimeFormat($trip->start_date, $trip->start_time) - @samDateTimeFormat($trip->end_date, $trip->end_time)</p>
+                  <p style="text-align: right">
+                    {{ $trip->seats_available }} seats available
+                  </p>
+                </div>
+              </div>
+            @endforeach
+
         </div>
     </div>
 </div>

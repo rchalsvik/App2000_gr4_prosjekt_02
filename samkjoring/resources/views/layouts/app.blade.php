@@ -49,9 +49,7 @@
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item {{ Request::path() === 'varslinger' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('notifications') }}">{{ __('Notifications') }}</a>
-              </li>
+
               <li class="nav-item {{ Request::path() === 'omoss' ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('about') }}">{{ __('About Us') }}</a>
               </li>
@@ -63,6 +61,7 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ url('home') }}">{{ __('Profile') }}</a>
+                    <a class="dropdown-item" href="{{ route('notifications') }}">{{ __('Notifications') }}</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">

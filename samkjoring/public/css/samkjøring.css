@@ -73,11 +73,19 @@ h3.margin-b {
   justify-content: flex-start;
 }
 
+.item-c-100 {
+  width: 100%;
+}
+
 .item-container-margin-b {
   margin-bottom: 1rem;
 }
 
 .item {
+  justify-content: space-between;
+}
+
+.item-r {
   justify-content: space-between;
 }
 

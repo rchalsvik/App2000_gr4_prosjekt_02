@@ -1,7 +1,7 @@
 {
   "_COMMENT": "layout.app.blade.php",
   "Home": "Hjem",
-  "Notifications": "Meldinger",
+  "Notifications": "Varslinger",
   "About Us": "Om oss",
   "Profile": "Profil",
   "Logout": "Logg ut",
