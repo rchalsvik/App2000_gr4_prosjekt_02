@@ -8,25 +8,98 @@
                 <div class="card-header">{{ __('Edit Trip') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('updateTrip', $trip) }}" id="tripform" enctype="multipart/form-data">
-                      @csrf {{-- viktig! ellers så feiler siden --}}
-                      @method('PUT') {{-- Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
+                  <form method="POST" action="{{ route('updateTrip', $trip) }}" id="tripform" enctype="multipart/form-data">
+                    @csrf {{-- viktig! ellers så feiler siden --}}
+                    @method('PUT') {{-- Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
 
-                        <input type="hidden" name="driver_id" value="{{ auth()->user()->id }}">
+                    <input type="hidden" name="driver_id" value="{{ auth()->user()->id }}">
 
-                        <div class="form-group row">
-                            <label for="start_point" class="col-md-4 col-form-label text-md-right">{{ __('Start Point') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="start_point" type="text" class="form-control @error('start_point') is-invalid @enderror" name="start_point" value="{{ old('start_point', $trip->start_point) }}" required autocomplete="start_point" autofocus>
 
-                                @error('start_point')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                    @if ($passCount > 0)
+
+                      <input type="hidden" name="start_point" value="{{ $trip->start_point }}">
+                      <input type="hidden" name="end_point" value="{{ $trip->end_point }}">
+                      <input type="hidden" name="start_date" value="{{ $trip->start_date }}">
+                      <input type="hidden" name="start_time" value="{{ date("h:i", strtotime($trip->start_time)) }}">
+                      <input type="hidden" name="end_time" value="{{ date("h:i", strtotime($trip->end_time)) }}">
+                      <input type="hidden" name="end_date" value="{{ $trip->end_date }}">
+                      <input type="hidden" name="kids_allowed" value="{{ $trip->kids_allowed }}">
+                      <input type="hidden" name="pets_allowed" value="{{ $trip->pets_allowed }}">
+
+                      {{ __('You have atleast one passenger and therefore cannot edit certain fields like start/end point and time.') }}
+
+                      <div class="form-group row">
+                          <label for="seats_available" class="col-md-4 col-form-label text-md-right">{{ __('Seats Available') }}</label>
+
+                          <div class="col-md-6">
+                              <input id="seats_available" type="number" min="0" max="45" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', $trip->seats_available) }}" required autocomplete="seats_available" autofocus>
+
+                              @error('seats_available')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label for="car_description" class="col-md-4 col-form-label text-md-right">{{ __('Car Description') }}</label>
+
+                          <div class="col-md-6">
+                              <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description', $trip->car_description) }}</textarea>
+
+                              @error('car_description')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label for="trip_info" class="col-md-4 col-form-label text-md-right">{{ __('Trip Info') }}</label>
+
+                          <div class="col-md-6">
+                              <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info', $trip->trip_info) }}</textarea>
+
+                              @error('trip_info')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label for="trip_image" class="col-md-4 col-form-label text-md-right">{{ __('Upload an image (Optional)') }}</label>
+
+                          <div class="col-md-6">
+                              <input id="trip_image" type="file" class="form-control @error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image') }}" autofocus>
+
+                              @error('trip_image')
+                                <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                                </span>
+                              @enderror
+                          </div>
+                      </div>
+
+
+
+                    @else
+                      <div class="form-group row">
+                        <label for="start_point" class="col-md-4 col-form-label text-md-right">{{ __('Start Point') }}</label>
+                        <div class="col-md-6">
+                          <input id="start_point" type="text" class="form-control @error('start_point') is-invalid @enderror" name="start_point" value="{{ old('start_point', $trip->start_point) }}" required autocomplete="start_point" autofocus>
+
+                          @error('start_point')
+                            <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                            </span>
+                          @enderror
                         </div>
+                      </div>
 
 
                         <div class="form-group row">
@@ -50,9 +123,9 @@
                                 <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date', $trip->start_date) }}" required autocomplete="start_date" autofocus>
 
                                 @error('start_date')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                  <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                  </span>
                                 @enderror
                             </div>
                         </div>
@@ -103,7 +176,7 @@
                             <label for="seats_available" class="col-md-4 col-form-label text-md-right">{{ __('Seats Available') }}</label>
 
                             <div class="col-md-6">
-                                <input id="seats_available" type="number" min="1" max="45" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', $trip->seats_available) }}" required autocomplete="seats_available" autofocus>
+                                <input id="seats_available" type="number" min="0" max="45" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', $trip->seats_available) }}" required autocomplete="seats_available" autofocus>
 
                                 @error('seats_available')
                                     <span class="invalid-feedback" role="alert">
@@ -160,7 +233,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="trip_image" class="col-md-4 col-form-label text-md-right">{{ __('Give Us Your Pics, or it didnt hapewqfpen!') }}</label>
+                            <label for="trip_image" class="col-md-4 col-form-label text-md-right">{{ __('Upload an image (Optional)') }}</label>
 
                             <div class="col-md-6">
                                 <input id="trip_image" type="file" class="form-control @error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image') }}" autofocus>
@@ -173,16 +246,15 @@
                             </div>
                         </div>
 
-
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Update Trip') }}
-                                </button>
-                            </div>
+                    @endif
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Update Trip') }}
+                            </button>
                         </div>
-                    </form>
+                    </div>
+                  </form>
                 </div>
             </div>
         </div>

@@ -104,7 +104,8 @@ class TripController extends Controller
     public function edit(Trip $trip)
     {
         // Her skal det jobbes du! :P
-        return view('trips.edit', ['trip' => $trip]);
+        $passCount = DB::table('passengers')->where('trip_id', $trip->id)->count();
+        return view('trips.edit', ['trip' => $trip, 'passCount' => $passCount]);
     }
 
     /**
@@ -121,11 +122,13 @@ class TripController extends Controller
         //return view('trip.show', ['trip' => $trip]);
 
         // Log Trip oppdatering oppdatering
+        //dd($request);
         $logString = 'Oppdatert tur: ' . request('start_point') . ' - ' . request('end_point') .
                      ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
                      ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
                      ' , Bruker ID' . ' ' . request('driver_id');
         Log::channel('samkjøring')->info($logString);
+
 
         $validatedResults = request()->validate([
           'driver_id'   => ['required'],
@@ -143,6 +146,7 @@ class TripController extends Controller
           'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
+
         if ($files = $request->file('trip_image')) {
           $destinationPath = 'tripImage/'; // upload path
           $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
@@ -152,6 +156,8 @@ class TripController extends Controller
         }
 
         $trip->update($validatedResults);
+
+
 
         $trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
         //foreach ($trips as $trup) { //kanskje trips[0]->id osv??
