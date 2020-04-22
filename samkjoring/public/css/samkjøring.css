@@ -6,10 +6,16 @@
 * Egen css fil for samkjøring grupppe 4
 * Bruk denne!!
 */
+@import url(https://fonts.googleapis.com/css2?family=Comfortaa&display=swap);@charset "UTF-8";
+
+:root {
+  --font-family-sans-serif: 'Comfortaa', cursive;
+}
 
 body {
   padding-top: 56px;
   background-color: #999;
+  font-family: 'Comfortaa', cursive;
 }
 
 html, body {
@@ -21,6 +27,7 @@ html, body {
 h4,
 .h4 {
   font-size: 1.25rem;
+
 }
 
 h3.margin-b {
@@ -217,4 +224,26 @@ h3.margin-b {
   background-clip: padding-box;
   border: none;
   border-radius: 0rem;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.text-icon {
+  vertical-align: middle;
+}
+
+.text-active {
+  color: #2ec300;
+  vertical-align: middle;
+}
+
+.text-deactive {
+  color: #ff0000;
+  vertical-align: middle;
 }
