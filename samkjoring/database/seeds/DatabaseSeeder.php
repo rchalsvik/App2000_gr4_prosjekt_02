@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         INSERT INTO notification_types (type_name) VALUES
         ('cancelled'),
         ('edited'),
-        ('joined');
+        ('joined'),
+        ('left');
       ");
 
         // $this->call(UsersTableSeeder::class);

@@ -164,7 +164,11 @@ class PassengerController extends Controller
         $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
         //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
         //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
-        return redirect()->back();
+
+        $type = 4;
+        return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
+
+        //return redirect()->back();
     }
 
 

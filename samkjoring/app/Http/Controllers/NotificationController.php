@@ -30,7 +30,7 @@ class NotificationController extends Controller
         DB::update('update users set hasUnreadMessages = 0 where id = ' . $usetteNotification->user_id);
       }
 
-      $notifications = DB::select('select trip_id, start_point, end_point, type_name from notifications, notification_types where notifications.user_id = ' . $id . ' and type_id = id order by notifications.created_at desc');
+      $notifications = DB::select('select trip_id, start_point, end_point, type_id, type_name from notifications, notification_types where notifications.user_id = ' . $id . ' and type_id = id order by notifications.created_at desc');
 
       return view('notifications.notifications', ['notifications' => $notifications]);
     }
@@ -63,8 +63,8 @@ class NotificationController extends Controller
         // Message blir generert her slik at den kan legges som en beskjed i databasen.
         // $msg = $tmpReq['id'] . ' from ' . $tmpReq['start_point'] . ' - ' . $tmpReq['end_point'] . ' has been ';
 
-        // om det er noken so har meldt seg på ein tur for denna meldingen ska te sjåføren ikkje passasjeren so har meldt seg på for det blir berre dumt køffør ska du veta at du nettopp meldte deg på turen du nettopp meldte deg på?
-        if ($tmpType == 3) {
+        // om det er noken so har meldt seg på eller av ein tur, for denna meldingen ska te sjåføren ikkje passasjeren so har meldt seg på for det blir berre dumt køffør ska du veta at du nettopp meldte deg på turen du nettopp meldte deg på?
+        if ($tmpType == 3 || $tmpType == 4) {
           $notification = [
             'trip_id' => $tmpReq['id'],
             'user_id' => $tmpReq['driver_id'],
