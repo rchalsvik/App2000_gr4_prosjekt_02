@@ -50,9 +50,46 @@ class SearchController extends Controller
     {
       //$trips = DB::select("select * from trips where start_point LIKE '%" . $request->start_point . "%'"); // fungerer
       //dd($request);
-      $trips = DB::select("select * from trips where start_point LIKE '%" . $request->start_point . "%' and start_date >= '" . $request->start_date . "' and end_point like '%"
-      . $request->end_point . "%' order by start_date, start_time asc");
+      //dd($request->kids_allowed);
+      if ($request->seats_available == null) {
+        $request->seats_available = -1;
+      }
 
+      $msg = "select * from trips where start_point LIKE '%" . $request->start_point . "%' and start_date >= '" . $request->start_date . "' and end_point like '%"
+      . $request->end_point . "%' and seats_available > " . $request->seats_available;
+
+      $order =  " order by start_date, start_time asc";
+
+      $pets = " and pets_allowed = " . $request->pets_allowed;
+
+      $kids = " and kids_allowed = " . $request->kids_allowed;
+
+      $active = " and trip_active = " . $request->trip_active;
+
+      if ($request->pets_allowed == 1 && $request->kids_allowed == 1 && $request->trip_active == 1) {
+            $trips = DB::select($msg . $pets . $kids . $active . $order);
+          }
+          else if ($request->pets_allowed == 1 && $request->kids_allowed == 1) {
+              $trips = DB::select($msg . $pets . $kids . $order);
+          }
+          else if ($request->pets_allowed == 1 && $request->trip_active == 1) {
+            $trips = DB::select($msg . $pets . $active . $order);
+          }
+          else if ($request->kids_allowed == 1 && $request->trip_active == 1) {
+            $trips = DB::select($msg . $kids . $active . $order);
+          }
+          else if ($request->pets_allowed == 1) {
+            $trips = DB::select($msg . $pets . $order);
+          }
+          else if ($request->kids_allowed == 1) {
+            $trips = DB::select($msg . $kids . $order);
+          }
+          else if ($request->trip_active == 1) {
+            $trips = DB::select($msg . $active . $order);
+          }
+          else {
+            $trips = DB::select($msg . $order);
+          }
 
       return view('search',['trips'=>$trips]);
     }

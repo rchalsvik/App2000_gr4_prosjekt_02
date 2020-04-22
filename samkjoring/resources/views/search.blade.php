@@ -8,7 +8,7 @@
                 <div class="card-header"><h4>{{ __('Search') }}</h4></div>
 
                 <div class="card-body">
-                    <form method="GET" action="{{ route('searchShow') }}" id="tripform">
+                    <form method="POST" action="{{ route('searchShow') }}" id="tripform">
                       @csrf {{-- viktig! ellers så feiler siden --}}
 
                         <div class="form-group row">
@@ -51,6 +51,47 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="seats_available" class="col-md-4 col-form-label text-md-right">{{ __('Seats Available') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="seats_available" type="number" min="0" max="45" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available') }}" autocomplete="seats_available" autofocus>
+
+                                @error('seats_available')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="pets_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Pets Allowed') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="hidden" name="pets_allowed" value="0">
+                                <input id="pets_allowed" type="checkbox" class="form-control" name="pets_allowed" value="1" autocomplete="pets_allowed">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="kids_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Kids Allowed') }}</label>
+
+                          <div class="col-md-6">
+                            <input type="hidden" name="kids_allowed" value="0">
+                            <input id="kids_allowed" type="checkbox" class="form-control" name="kids_allowed" value="1" autocomplete="kids_allowed">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="trip_active" class="col-md-4 col-form-label text-md-right">{{ __('Trip Active') }}</label>
+
+                          <div class="col-md-6">
+                            <input type="hidden" name="trip_active" value="0">
+                            <input id="trip_active" type="checkbox" class="form-control" name="trip_active" value="1" autocomplete="trip_active">
+                          </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary">
