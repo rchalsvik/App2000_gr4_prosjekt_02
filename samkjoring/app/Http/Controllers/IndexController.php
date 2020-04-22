@@ -6,6 +6,7 @@ use DB;
 use App\Trip;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class IndexController extends Controller
 {
@@ -57,16 +58,20 @@ class IndexController extends Controller
      */
     public function show(Request $request) //$id
     {
-      //dd(Input\Input::get("index_search"));
-      //dd($request->query('index_search'));
-        $trips = DB::table('trips')
-        ->where('seats_available', '>', '0')
-        ->where('trip_active','1')
-        ->whereRaw("start_point LIKE '%" . $request->index_search . "%'")
-        //->get();
-        ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
+      $trips = DB::table('trips')
+      ->where('seats_available', '>', '0')
+      ->where('trip_active','1')
+      // Denne her grupper sammen 'OR'
+      // og 'use' sender inn argumentet $request. Ross.
+      ->where(function($query) use($request) {
+        $query->where('start_point', 'like', '%' . $request->index_search  . '%')
+              ->orWhere('end_point', 'like', '%' . $request->index_search  . '%');
+      })
+      ->orderBy('start_date')
+      ->orderBy('start_time')
+      ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
 
-        return view('index', ['trips' => $trips]);
+      return view('index', ['trips' => $trips]);
     }
 
     /**
