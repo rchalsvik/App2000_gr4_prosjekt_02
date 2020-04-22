@@ -21,6 +21,7 @@ class AddNewFieldsToUsersTable extends Migration
           $table->char('zipcode', 4);
           $table->date('date_of_birth');
           $table->boolean('hasLicense')->default($value = false);
+          $table->boolean('hasUnreadMessages')->default($value = false);
 
           $table->index('lastname', 'firstname');
           $table->foreign('zipcode')->references('zipcode')->on('counties');
