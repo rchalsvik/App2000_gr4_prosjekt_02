@@ -61,39 +61,43 @@
         <div class="card mb-1 h-100">
           <div class="card-body">
             <div class="item-container item-c-100 item">
-              <h3  class="">
-                <a href="{{ route('seeMore', $trip->id) }}">{{ $trip->start_point }} - {{ $trip->end_point }}</a>
+              <h3 class="overflow" style="width: 50%">
+                <a class="" href="{{ route('seeMore', $trip->id) }}">
+                  {{ $trip->start_point }} - <br>
+                  {{ $trip->end_point }}
+                </a>
               </h3>
 
                 @if ($trip->trip_active)
-                <div class="ml-4 font-weight-bolder text-active">{{ __('Active') }} <img class="text-icon" src="/img/icons/active.svg" alt="Active"></div>
+                  <div class="ml-4 font-weight-bolder text-active flex-row"><span class="item">{{ __('Active') }}</span> <img class="text-icon" src="/img/icons/active.svg" alt="Active"></div>
                 @else
-                <div class="ml-4 font-weight-bolder text-deactive">{{ __('Not Active') }} <img class="text-icon" src="/img/icons/deactive.svg" alt="Deactive"></div>
+                  <div class="ml-4 font-weight-bolder text-deactive flex-row"><span class="item">{{ __('Not Active') }}</span> <img class="text-icon" src="/img/icons/deactive.svg" alt="Deactive"></div>
                 @endif
 
             </div>
 
-            <div class="">
-              {{ __('Departure') }}:
-            </div>
-            <div class="font-weight-bolder">
-              @samTimeFormat($trip->start_time) -
-              @samDateFormat($trip->start_date)
-              @samYearFormat($trip->start_date)
-            </div>
+            <div class="mb-2">
 
-            <div class="">
-              {{ __('Arrival') }}:
-            </div>
-            <div class="font-weight-bolder">
-              @samTimeFormat($trip->end_time) -
-              @samDateFormat($trip->end_date)
-              @samYearFormat($trip->end_date)
-            </div>
+                <div class="font-weight-bolder">
+                  <img class="text-icon" src="/img/icons/active.svg" style="vertical-align: top" alt="Active">
+                  <img class="text-icon" src="/img/icons/active.svg" style="vertical-align: top" alt="Active">
+                  <div class="" style="display: inline-block;">
+                    @samDateShortFormat($trip->start_date) @samYearFormat($trip->start_date)<br>
+                    @samTimeFormat($trip->start_time)
+                  </div>
+                  <br><br>
+                  <img class="text-icon" src="/img/icons/deactive.svg" alt="Active">@samDateShortFormat($trip->end_date) @samYearFormat($trip->end_date)<br>
+                  @samTimeFormat($trip->end_time)
+                </div>
 
-
+            </div>
             <div class="ml-4" style="text-align: right">
-              {{ $trip->seats_available }} seats available
+              @if ($trip->trip_active)
+                {{ $trip->seats_available }} seats available
+              @else
+                &nbsp;
+              @endif
+
             </div>
           </div>
         </div>

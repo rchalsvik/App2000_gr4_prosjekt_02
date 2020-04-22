@@ -59,5 +59,16 @@ class AppServiceProvider extends ServiceProvider
         return "<?php echo Carbon\Carbon::createFromFormat('H:i:s', $time)->isoFormat('HH:mm'); ?>";
       });
 
+      Blade::directive('samDateShortFormat', function($arg) {
+        $date = $arg; // Lettere å lese $time
+
+        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('DD. MMM'); ?>";
+      });
+
+      Blade::directive('samDateYearShortFormat', function($arg) {
+        $date = $arg; // Lettere å lese $time
+
+        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('DD. MMM YYYY'); ?>";
+      });
     }
 }

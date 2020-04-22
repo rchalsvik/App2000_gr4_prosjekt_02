@@ -239,11 +239,21 @@ h3.margin-b {
 }
 
 .text-active {
+  text-align: right;
   color: #2ec300;
   vertical-align: middle;
+  width: 50%;
 }
 
 .text-deactive {
+  text-align: right;
   color: #ff0000;
   vertical-align: middle;
+  width: 50%;
+}
+
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
