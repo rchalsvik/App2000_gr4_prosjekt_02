@@ -9,7 +9,7 @@
 
   <!-- Jumbotron Header -->
   <header class="jumbotron my-4">
-    <h5 class="display-3">{{ __('My joined trips!') }}</h5>
+    <h5 class="display-3">{{ __('Joined trips!') }}</h5>
   </header>
 
   <!-- Page Features -->
@@ -37,16 +37,16 @@
                 {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
                 @if ($trip->start_date == $trip->end_date)
                   <b>@samFullDateFormat($trip->end_date)</b><br>
-                  {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
+                  {{ __('Leaving') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                   <img src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
-                  {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
+                  {{ __('Arriving') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                 @else
-                  {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
+                  {{ __('Leaving') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                   <b>@samDateFormat($trip->start_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b><br>
 
                   <img src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
-                  {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
+                  {{ __('Arriving') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                   <b>@samDateFormat($trip->end_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b><br>
                 @endif

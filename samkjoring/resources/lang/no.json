@@ -83,7 +83,8 @@
   "Pets": "Kjæledyr",
   "Kids": "Barn",
   "The trip is full": "Turen er full",
-  "Driver info:": "Sjåførinfo:",
+  "Driver info: ": "Sjåførinfo:",
+  "Name: ": "Navn: ",
 
 
 
@@ -95,6 +96,17 @@
   "seats available": "seter tilgjengelig",
   "Active": "Aktiv",
   "Not active": "Ikke aktiv",
+
+
+
+ "_COMMENT": "profile.myJoinedTrips.blade.php",
+ "Joined trips!": "Påmeldte turer!",
+
+
+
+ "_COMMENT": "profile.myJoinedTrips.blade.php",
+ "My trips!": "Mine turer!",
+ 
 
 
 
