@@ -2,7 +2,7 @@
   "_COMMENT": "layout.app.blade.php",
   "Home": "Hjem",
   "Notifications": "Varslinger",
-  "About Us": "Om oss",
+  "About us": "Om oss",
   "Profile": "Profil",
   "Logout": "Logg ut",
   "Login": "Logg inn",
@@ -34,7 +34,7 @@
   "See more": "Se mer",
   "Leaving": "Reiser",
   "Arriving": "Framme",
-  "Traveltime": "Reisetid",
+  "Travel time": "Reisetid",
   "Hello ": "Hei ",
   "Make a trip now!": "Opprett en tur nå!",
   "Quick search": "Hurtigsøk",
@@ -60,8 +60,9 @@
   "Starting point": "Startsted",
   "End point": "Stoppested",
   "Start time": "Starttid",
-  "End date": "Sluttdato",
   "End time": "Sluttid",
+  "Start date:": "Startdato:",
+  "End date": "Sluttdato",
   "Trip info": "Turinfo",
   "Pets allowed": "Kjæledyr tillat",
   "Kids allowed": "Barn tillat",
@@ -73,7 +74,7 @@
   "_COMMENT":  "trips.seemore.blade.php",
   "Seats requested": "Seter ønsket",
   "Join trip": "Meld på",
-  "Leave trip": "Forlat",
+  "Leave trip": "Forlat tur",
   "Edit trip": "Rediger tur",
   "Update trip": "Oppdater tur",
   "Cancel trip": "Kanseller tur",
@@ -90,7 +91,6 @@
 
   "_COMMENT": "search.blade.php",
   "Search for starting point:": "Søk etter et startsted:",
-  "Start date:": "Startdato:",
   "Search for ending point:": "Søk etter stoppested",
   "Active trips only": "Bare aktive turer",
   "seats available": "seter tilgjengelig",
@@ -104,9 +104,9 @@
 
 
 
- "_COMMENT": "profile.myJoinedTrips.blade.php",
+ "_COMMENT": "profile.myTrips.blade.php",
  "My trips!": "Mine turer!",
- 
+
 
 
 

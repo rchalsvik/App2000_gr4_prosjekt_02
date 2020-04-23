@@ -2,93 +2,132 @@
     "_COMMENT": "layout.app.blade.php",
     "Home": "Hogar",
     "Notifications": "Mensajes",
-    "About Us": "Acerca de",
+    "About us": "Acerca de",
     "Profile": "Perfil",
     "Logout": "Cerrar sesión",
     "Login": "Iniciar sesión",
     "Language": "Idioma",
+    "Search": "Buscar",
+
 
 
     "_COMMENT":  "home.blade.php",
-    "Dashboard": "Dashboard",
-    "You are logged in!": "Estás conectado!",
-    "StartingPoint": "Punto de partida",
-    "Start Date": "Fecha de inicio",
-    "Seats Available": "Asientos disponibles",
-    "Car Description": "Descripción del auto",
+    "You are logged in!": "¡Estás conectado!",
+    "Start date": "Fecha de inicio",
+    "Seats available": "Asientos disponibles",
+    "Car description": "Descripción del auto",
     "New Trip": "Nuevo viaje",
+    "Edit user info": "Editar información del usuario",
+    "My trips": "Mis viajes",
+    "Joined trips": "Viajes unidos",
+    "New trip": "Nuevo viaje",
+
 
 
     "_COMMENT":  "index.blade.php",
-    "Welcome to Samkjoering AS!": "¡Bienvenido a Samkjøring AS!",
+    "Welcome to HAIK!": "¡Bienvenido a HAIK!",
     "indexIntro": "¡Encuentre a alguien que vaya de la misma manera que usted de una manera simple!",
-    "indexPhrase": "¡Conducir de manera inteligente, conducir barato, conducir de forma sostenible, elige Samkjøring AS!",
+    "indexPhrase": "¡Conducir de manera inteligente, conducir barato, conducir de forma sostenible, elige HAIK!",
+    "indexLoginPhrase": "¡Encantado de verte de nuevo! ¿Quieres compartir el coche hoy?",
     "Join us now!": "¡Regístrate ahora!",
+    "Route": "Ruta",
     "See more": "Ver más",
+    "Leaving": "Salir",
+    "Arriving": "Llegar",
+    "Travel time": "Tiempo de viaje",
+    "Hello ": "Hola ",
+    "Make a trip now!": "¡Haz un viaje ahora!",
+    "Quick search": "Búsqueda rápida",
+    "Reset": "Reiniciar",
+
 
 
     "_COMMENT":  "notification.blade.php",
     "Notifications!": "¡Notificaciones!",
-    "Here be dragons!": "¡Serán notificaciones aquí!",
+    "You have no messages": "No tienes mensajes",
+
 
 
     "_COMMENT":  "about.blade.php",
-    "aboutTitle": "Acerca de Samkjøring AS!",
-    "aboutText": "Samkjøring AS comenzó en 1922 en una casa pequeña en Rjukan, cuando Kjell Berit Kongshavn consiguió su primer bicicleta tándem. Inspirado en el ejemplo de la bicicleta tándem y la unidad en Rjukan Bedehus, Kjell Berit comenzó Samkjøring AS. ¡Otoño de 2022 descubrió que quería comezar en internet, entonces los desarrolladores profeisonales \"Gruppe4\" asignado al caso!",
+    "aboutTitle": "¡Acerca de HAIK!",
+    "aboutText": "Samkjøring AS comenzó en 1922 en una casa pequeña en Rjukan, cuando Kjell Berit Kongshavn consiguió su primer bicicleta tándem. Inspirado en el ejemplo de la bicicleta tándem y la unidad en Rjukan Bedehus, Kjell Berit comenzó HAIK. ¡Otoño de 2019 descubrió que quería comezar en internet, entonces los desarrolladores profeisonales \"Gruppe4\" asignado al caso!",
     "Tandem-bike": "Bicicleta tándem",
 
 
-    "_COMMENT":  "trips.create.blade.php",
-    "Create Trip": "Crear un nuveo viaje",
-    "Start Point": "Punto de partida",
-    "End Point": "Punto de llegada",
-    "Start Date": "Fecha de inicio",
-    "Start Time": "Hora de inicio",
-    "End Date": "Fecha de llegada",
-    "End Time": "Hora de llegada",
-    "Seats Available": "Asientos disponibles",
-    "Car Description": "Descripción del auto",
-    "Trip Info": "Información del viaje",
-    "Pets": "Animales",
-    "Children": "Niños",
-    "Create Trip": "Crea el viaje",
-
 
     "_COMMENT":  "trips.create.blade.php",
-    "Edit Trip": "Editar viaje",
-    "Update Trip": "Actualizar el viaje",
+    "Create a trip": "Crear un nuveo viaje",
+    "Starting point": "Punto de partida",
+    "End point": "Punto de llegada",
+    "Start time": "Hora de inicio",
+    "End time": "Hora de llegada",
+    "Start date:": "Fecha de inicio:",
+    "End date": "Fecha de llegada",
+    "Trip info": "Información del viaje",
+    "Pets allowed": "Mascotas permitidas",
+    "Kids allowed": "Niños permitidos",
+    "Image (Optional)": "Imagen (Opcional)",
+    "Create trip": "Crear el viaje",
 
 
-    "_COMMENT":  "trips.show.blade.php",
-    "Show Trip": "Muestra el viaje",
-    "Starts at": "Empieza a",
-    "Arrives at": "Llega a las",
 
     "_COMMENT":  "trips.seemore.blade.php",
     "Seats requested": "Asientos solicitados",
-    "Join Trip": "Únete al viaje",
+    "Join trip": "Únete al viaje",
+    "Leave trip": "Dejar el viaje",
+    "Edit trip": "Edita el viaje",
+    "Update trip": "Actualiza el viaje",
+    "Cancel trip": "Cancelar el viaje",
+    "Show trip": "Muestra el viaje",
+    "Starts at": "Empieza a",
+    "Arrives at": "Llega a las",
+    "Pets": "Mascotas",
+    "Kids": "Niños",
+    "The trip is full": "El viaje esta lleno",
+    "Driver info: ": "Información del chofer",
+    "Name: ": "Nombre",
+
+
+
+    "_COMMENT": "search.blade.php",
+    "Search for starting point:": "Buscar punto de partida:",
+    "Search for ending point:": "Buscar un punto final:",
+    "Active trips only": "Solo viajes activos",
+    "seats available": "asientos disponibles",
+    "Active": "Activo",
+    "Not active": "No activo",
+
+
+
+    "_COMMENT": "profile.myJoinedTrips.blade.php",
+    "Joined trips!": "¡Viajes unidos!",
+
+
+
+    "_COMMENT": "profile.myTrips.blade.php",
+    "My trips!": "¡Mis viajes!",
+
+
 
 
     "_COMMENT":  "auth.login.blade.php",
-    "Login": "Iniciar sesión",
-    "E-Mail Address": "Email",
-    "Tandem-bike": "Bicicleta tándem",
+    "E-mail address": "Correo electrónico",
     "Password": "Contraseña",
-    "Remember Me": "Recuérdame",
-    "Forgot Your Password?": "¿Olvidaste tu contraseña?",
+    "Remember me": "Recuérdame",
+    "Forgot your password?": "¿Olvidaste tu contraseña?",
+    "New here? Click here to register!": "¿Nuevo aquí? ¡Pulse aquí para registrarse!",
+    "These credentials do not match our records.": "Correo electrónico y contraseña no coinciden.",
 
 
     "_COMMENT":  "auth.register.blade.php",
     "Register": "Registrarse",
     "Firstname": "Primer nombre",
     "Lastname": "Apellido",
-    "Telephone": "Número de teléfono",
+    "Phone": "Número de teléfono",
     "Address": "Dirección",
     "Zipcode": "Código postal",
     "Date of birth": "Fecha de nacimiento",
-    "E-Mail Address": "Email",
     "Drivers License": "Licencia de conducir",
-    "Password": "Contraseña",
     "Confirm Password": "Confirmar contraseña",
 
 
@@ -102,14 +141,11 @@
 
     "_COMMENT":  "auth.passwords.confirm.blade.php",
     "Please confirm your password before continuing.": "Por favor confirme su contraseña antes de continuar",
-    "Password": "Contraseña",
-    "Confirm Password": "Confirmar contraseña",
-    "Forgot Your Password?": "¿Olvidaste tu contraseña?",
+
 
 
     "_COMMENT":  "auth.passwords.confirm.blade.php",
     "_COMMENT":  "&& auth.passwords.reset.blade.php",
     "Reset Password": "Restablecer la contraseña",
-    "E-Mail Address": "Email",
     "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña"
   }

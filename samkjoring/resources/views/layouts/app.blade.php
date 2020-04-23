@@ -54,7 +54,7 @@
               </li>
 
               <li class="nav-item {{ Request::path() === 'omoss' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('about') }}">{{ __('About Us') }}</a>
+                <a class="nav-link" href="{{ route('about') }}">{{ __('About us') }}</a>
               </li>
               @if (Route::has('login'))
                 @auth
