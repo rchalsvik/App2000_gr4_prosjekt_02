@@ -13,16 +13,16 @@ class CreatePassengersTable extends Migration
      */
     public function up()
     {
-        Schema::create('passengers', function (Blueprint $table) {
-            $table->unsignedBigInteger('trip_id');
-            $table->unsignedBigInteger('passenger_id');
-            $table->unsignedTinyInteger('seats_requested');
-            $table->timestamps();
+      Schema::create('passengers', function (Blueprint $table) {
+        $table->unsignedBigInteger('trip_id');
+        $table->unsignedBigInteger('passenger_id');
+        $table->unsignedTinyInteger('seats_requested');
+        $table->timestamps();
 
-            $table->primary(['trip_id', 'passenger_id']);
-            $table->foreign('trip_id')->references('id')->on('trips');
-            $table->foreign('passenger_id')->references('id')->on('users');
-        });
+        $table->primary(['trip_id', 'passenger_id']);
+        $table->foreign('trip_id')->references('id')->on('trips');
+        $table->foreign('passenger_id')->references('id')->on('users');
+      });
     }
 
     /**

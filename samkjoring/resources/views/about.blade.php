@@ -1,8 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-
-
   <div class="container">
     <div class="page card my-4">
       <img id="tandem" src="img/tandem.jpg" alt="tandemsykkel">
