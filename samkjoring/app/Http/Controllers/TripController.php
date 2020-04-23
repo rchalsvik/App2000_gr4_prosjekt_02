@@ -308,23 +308,26 @@ class TripController extends Controller
     {
       // Get the currently authenticated user...
       $user = Auth::user();
-      //dd($user);
+      $id = $user->id;
+      //$trips = DB::select('select * from trips where driver_id = ' . $id . ' and (start_date >= CURDATE() and start_time >= CURTIME() or start_date > CURDATE()) order by trip_active desc, start_date, start_time desc');
+      $trips = DB::table('trips')
+        ->where('driver_id', $id)
+        // Denne her grupper sammen 'OR'
+        // og 'use' sender inn argumentet $request. Ross.
+        ->where(function($query) {
+          $query->whereDate('start_date', '>=', date('Y-m-d'))
+                ->whereTime('start_time', '>=', date('H:i:s'))
+                ->orWhere('start_date', '>', date('Y-m-d'));
+        })
+        ->orderByDesc('trip_active')
+        ->orderBy    ('start_date')
+        ->orderByDesc('start_time')
+        //->get();
+        ->paginate(CARD_AMOUNT); // Vi kan bruke 4, 8, 12, 16... sjekk config/globalVars.php
 
-        //return view('home');
-        // auth()->user()->id;
-        //$user = auth()->user(); // Kan vi bruke denne nedenfor??
-        $id = $user->id; // slik??
-        //$id = auth()->user()->id;
-        //  and (start_date < CURDATE and start_time < CURTIME or start_date > CURDATE)
-        $trips = DB::select('select * from trips where driver_id = ' . $id . ' and (start_date >= CURDATE() and start_time >= CURTIME() or start_date > CURDATE()) order by trip_active desc, start_date, start_time desc');
-
-        // Log bruker login
-        // Bør kanskje lage kortere log: "Login bruker: 5. Kari Nord"
-        // Log::channel('samkjøring')->info('Login bruker: ' . $id . '. ' . $user->firstname . ' ' . $user->lastname);
-
-
-        return view('profile/myTrips', ['trips'=>$trips]);
+      return view('profile/myTrips', ['trips'=>$trips]);
     }
+    
 
     public function myJoinedTrips()
     {

@@ -23,7 +23,7 @@ class IndexController extends Controller
         ->orderBy('start_date')
         ->orderBy('start_time')
         //->get();
-        ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
+        ->paginate(CARD_AMOUNT); // Vi kan bruke 4, 8, 12, 16... sjekk config/globalVars.php
 
 
       return view('index', ['trips' => $trips]);
@@ -59,17 +59,17 @@ class IndexController extends Controller
     public function show(Request $request) //$id
     {
       $trips = DB::table('trips')
-      ->where('seats_available', '>', '0')
-      ->where('trip_active','1')
-      // Denne her grupper sammen 'OR'
-      // og 'use' sender inn argumentet $request. Ross.
-      ->where(function($query) use($request) {
-        $query->where('start_point', 'like', '%' . $request->index_search  . '%')
-              ->orWhere('end_point', 'like', '%' . $request->index_search  . '%');
-      })
-      ->orderBy('start_date')
-      ->orderBy('start_time')
-      ->paginate(8); // Vi kan bruke 4, 8, 12, 16...
+        ->where('seats_available', '>', '0')
+        ->where('trip_active','1')
+        // Denne her grupper sammen 'OR'
+        // og 'use' sender inn argumentet $request. Ross.
+        ->where(function($query) use($request) {
+          $query->where('start_point', 'like', '%' . $request->index_search  . '%')
+                ->orWhere('end_point', 'like', '%' . $request->index_search  . '%');
+        })
+        ->orderBy('start_date')
+        ->orderBy('start_time')
+        ->paginate(CARD_AMOUNT); // Vi kan bruke 4, 8, 12, 16... sjekk config/globalVars.php
 
       return view('index', ['trips' => $trips]);
     }
