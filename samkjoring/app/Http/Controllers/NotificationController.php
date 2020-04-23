@@ -30,7 +30,7 @@ class NotificationController extends Controller
         DB::update('update users set hasUnreadMessages = 0 where id = ' . $usetteNotification->user_id);
       }
 
-      $notifications = DB::select('select trip_id, start_point, end_point, type_id, type_name from notifications, notification_types where notifications.user_id = ' . $id . ' and type_id = id order by notifications.created_at desc');
+      $notifications = DB::select('select trip_id, start_point, end_point, type_id, type_name from notifications, notification_types where notifications.user_id = ' . $id . ' and type_id = notification_types.id order by notifications.created_at desc');
 
       return view('notifications.notifications', ['notifications' => $notifications]);
     }
