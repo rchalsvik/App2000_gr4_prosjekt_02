@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telephone') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="tel" pattern="[0-9]{8}" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -111,7 +111,7 @@
 
 
                         <div class="form-group row">
-                            <label for="hasLicense" class="col-md-4 col-form-label text-md-right">{{ __('Drivers License') }}</label>
+                            <label for="hasLicense" class="col-md-4 col-form-label text-md-right">{{ __('Drivers license') }}</label>
 
                             <div class="col-md-6">
                                 <input type="hidden" name="hasLicense" value="0">

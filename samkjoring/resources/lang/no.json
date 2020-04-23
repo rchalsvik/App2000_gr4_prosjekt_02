@@ -7,94 +7,118 @@
   "Logout": "Logg ut",
   "Login": "Logg inn",
   "Language": "Språk",
+  "Search": "Søk",
+
 
 
   "_COMMENT":  "home.blade.php",
-  "Dashboard": "Dæsjbård",
   "You are logged in!": "Du er logget inn!",
-  "StartingPoint": "Startplass",
-  "Start Date": "Startdato",
-  "Seats Available": "Seter Tilgjengelig",
-  "Car Description": "Bil Beskrivelse",
-  "New Trip": "Ny Tur",
+  "Start date": "Startdato",
+  "Seats available": "Seter tilgjengelig",
+  "Car description": "Bilbeskrivelse",
+  "New Trip": "Ny tur",
+  "Edit user info": "Rediger brukerinformasjon",
+  "My trips": "Mine turer",
+  "Joined trips": "Påmeldte turer",
+  "New trip": "Ny tur",
+
 
 
   "_COMMENT":  "index.blade.php",
-  "Welcome to Samkjoering AS!": "Velkommen til Samkjøring AS!",
+  "Welcome to HAIK!": "Velkommen til HAIK!",
   "indexIntro": "Finn på en enkel måte noen som skal samme vei som deg!",
-  "indexPhrase": "Kjør smart, kjør billig, kjør bærekraftig, velg samkjøring AS!",
+  "indexPhrase": "Kjør smart, kjør billig, kjør bærekraftig, velg HAIK!",
   "indexLoginPhrase": "Hyggelig å se deg igjen! Ønsker du å samkjøre i dag?",
   "Join us now!": "Registrer deg nå!",
   "Route": "Rute",
   "See more": "Se mer",
-  "Departure": "Avgang",
-  "Arrival": "Ankomst",
+  "Leaving": "Reiser",
+  "Arriving": "Framme",
   "Traveltime": "Reisetid",
+  "Hello ": "Hei ",
+  "Make a trip now!": "Opprett en tur nå!",
+  "Quick search": "Hurtigsøk",
+  "Reset": "Nullstill",
+
 
 
   "_COMMENT":  "notification.blade.php",
   "Notifications!": "Varslinger!",
-  "Here be dragons!": "Her vil det komme varslinger!",
+  "You have no messages": "Du har ingen meldinger",
+
 
 
   "_COMMENT":  "about.blade.php",
-  "aboutTitle": "Om Samkjøring AS!",
-  "aboutText": "Samkjøring AS starta i 1922 i et lite hjem i Rjukan, da Kjell Berit Kongshavn fikk sin første tandemsykkel. Inspirert av eksempelet satt av tandemsykkelen og samholdet i Rjukan Bedehus, starta Kjell Berit Samkjøring AS. Høsten 2022 fant Kjell Berit ut at han ville starte på internett, så da ble de profesjonelle utviklerne \"Gruppe4\" satt på saken!",
+  "aboutTitle": "Om HAIK!",
+  "aboutText": "HAIK starta i 1922 i et lite hjem i Rjukan, da Kjell Berit Kongshavn fikk sin første tandemsykkel. Inspirert av eksempelet satt av tandemsykkelen og samholdet i Rjukan Bedehus, starta Kjell Berit Samkjøring AS. Høsten 2019 fant Kjell Berit ut at han ville starte på internett, så da ble de profesjonelle utviklerne \"Gruppe4\" satt på saken!",
   "Tandem-bike": "Tandem-sykkel",
 
 
-  "_COMMENT":  "trips.create.blade.php",
-  "Create Trip": "Lag En Ny Tur",
-  "Start Point": "Startsted",
-  "End Point": "Endested",
-  "Start Date": "Startdato",
-  "Start Time": "Starttid",
-  "End Date": "Sluttdato",
-  "End Time": "SluttTid",
-  "Seats Available": "Seter Tilgjengelig",
-  "Car Description": "Bil Beskrivelse",
-  "Trip Info": "Tur Beskrivelse",
-  "Pets": "Dyr",
-  "Children": "Barn",
-  "Create Trip": "Lag Tur",
-
 
   "_COMMENT":  "trips.create.blade.php",
-  "Edit Trip": "Endre Tur",
-  "Update Trip": "Oppdater Tur",
+  "Create a trip": "Lag en ny tur",
+  "Starting point": "Startsted",
+  "End point": "Stoppested",
+  "Start time": "Starttid",
+  "End date": "Sluttdato",
+  "End time": "Sluttid",
+  "Trip info": "Turinfo",
+  "Pets allowed": "Kjæledyr tillat",
+  "Kids allowed": "Barn tillat",
+  "Image (Optional)": "Bilde (Valgfritt)",
+  "Create trip": "Opprett tur",
 
 
-  "_COMMENT":  "trips.show.blade.php",
-  "Show Trip": "Vis Tur",
-  "Starts at": "Starter",
-  "Arrives at": "Ankommer",
 
   "_COMMENT":  "trips.seemore.blade.php",
   "Seats requested": "Seter ønsket",
-  "Join Trip": "Meld deg på",
+  "Join trip": "Meld på",
+  "Leave trip": "Forlat",
+  "Edit trip": "Rediger tur",
+  "Update trip": "Oppdater tur",
+  "Cancel trip": "Kanseller tur",
+  "Show Trip": "Vis tur",
+  "Starts at": "Starter",
+  "Arrives at": "Ankommer",
+  "Pets": "Kjæledyr",
+  "Kids": "Barn",
+  "The trip is full": "Turen er full",
+  "Driver info:": "Sjåførinfo:",
+
+
+
+  "_COMMENT": "search.blade.php",
+  "Search for starting point:": "Søk etter et startsted:",
+  "Start date:": "Startdato:",
+  "Search for ending point:": "Søk etter stoppested",
+  "Active trips only": "Bare aktive turer",
+  "seats available": "seter tilgjengelig",
+  "Active": "Aktiv",
+  "Not active": "Ikke aktiv",
+
 
 
   "_COMMENT":  "auth.login.blade.php",
-  "Login": "Logg inn",
-  "E-Mail Address": "Epost Adresse",
-  "Tandem-bike": "Tandem-sykkel",
+  "E-mail address": "E-post",
   "Password": "Passord",
-  "Remember Me": "Husk meg",
-  "Forgot Your Password?": "Glemt Passordet?",
+  "Remember me": "Husk meg",
+  "Forgot your password?": "Glemt Passordet?",
+  "New here? Click here to register!": "Ny her? Klikk her for å registrere deg!",
+  "These credentials do not match our records.": "E-post og passord samsvarer ikke.",
+
 
 
   "_COMMENT":  "auth.register.blade.php",
   "Register": "Registrer",
   "Firstname": "Fornavn",
   "Lastname": "Etternavn",
-  "Telephone": "Telefon",
+  "Phone": "Telefon",
   "Address": "Adresse",
-  "Zipcode": "Postadresse",
+  "Zipcode": "Postnummer",
   "Date of birth": "Fødselsdato",
-  "E-Mail Address": "Epost Adresse",
-  "Drivers License": "Førekort",
-  "Password": "Passord",
+  "Drivers license": "Førekort",
   "Confirm Password": "Gjenta Passord",
+
 
 
   "_COMMENT":  "auth.verify.blade.php",
@@ -105,16 +129,14 @@
   "click here to request another": "Trykk her for å motta en ny epost",
 
 
+
   "_COMMENT":  "auth.passwords.confirm.blade.php",
   "Please confirm your password before continuing.": "Før du fortsetter, vennligst sjekk passordet",
-  "Password": "Passord",
-  "Confirm Password": "Gjenta Passord",
-  "Forgot Your Password?": "Glemt Passordet?",
+
 
 
   "_COMMENT":  "auth.passwords.confirm.blade.php",
   "_COMMENT":  "&& auth.passwords.reset.blade.php",
   "Reset Password": "Nullstill Passord",
-  "E-Mail Address": "Epost Adresse",
-  "Send Password Reset Link": "Send Passord Nullstill Lenke"
+  "Send Password Reset Link": "Send passord-nullstillingslenke"
 }
