@@ -14,6 +14,7 @@ class CreateNotificationsTable extends Migration
     public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
+          $table->id();
           $table->unsignedBigInteger('trip_id');
           $table->unsignedBigInteger('user_id');
           $table->string('start_point');
@@ -22,7 +23,7 @@ class CreateNotificationsTable extends Migration
           $table->timestamps();
 
 
-          $table->primary(['trip_id', 'user_id']);
+          //$table->primary(['trip_id', 'user_id']);
           $table->foreign('trip_id')->references('id')->on('trips');
           $table->foreign('user_id')->references('id')->on('users');
           $table->foreign('type_id')->references('id')->on('notification_types');
