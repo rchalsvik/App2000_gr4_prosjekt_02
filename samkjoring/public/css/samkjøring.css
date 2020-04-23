@@ -109,7 +109,6 @@ h3.margin-b {
   width: 1.0rem;
 }
 
-
 .jumbotron {
   background-color: #fff;
 }
@@ -125,10 +124,10 @@ h3.margin-b {
 }
 
 .card-seat-avail img {
-  /*width: 1.5rem;
-  height: 1.5rem;*/
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  /*width: 2rem;
+  height: 2rem;*/
   margin-left: .3rem;
   vertical-align: text-top;
 }
@@ -142,8 +141,12 @@ h3.margin-b {
   flex-direction: column;
 }
 
-.card-body, .card-footer, .card-seat-avail {
+.card, .card-seat-avail {
   background-color: #fff;
+}
+
+.card-deactive {
+  background-color: #d8d8d8;
 }
 
 .card-footer {
@@ -170,6 +173,8 @@ h3.margin-b {
   color: inherit;
   text-decoration: none;
 }
+
+
 
 .dropdown-item {
   font-size: 1rem;
@@ -226,34 +231,61 @@ h3.margin-b {
   border-radius: 0rem;
 }
 
-.flex-column {
-  flex-direction: column;
+.flex {
+  display: flex;
 }
 
-.flex-row {
-  flex-direction: row;
+.flex-jc-r {
+  justify-content: flex-end;
 }
 
-.text-icon {
-  vertical-align: middle;
+.flex-jc-sb {
+  justify-content: space-between;
 }
 
 .text-active {
   text-align: right;
   color: #2ec300;
   vertical-align: middle;
-  width: 50%;
 }
 
 .text-deactive {
   text-align: right;
   color: #ff0000;
   vertical-align: middle;
-  width: 50%;
 }
 
 .overflow {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.mt-n-1 {
+  margin-top: 0.1rem;
+}
+
+.mb-n-1 {
+  margin-bottom: 0.1rem;
+}
+
+
+
+/* Flex text */
+.sam-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding inherit 0;
+}
+
+.sam-item {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.sam-icon-list {
+
 }
