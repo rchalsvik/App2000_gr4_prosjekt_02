@@ -71,7 +71,7 @@
                 @if ($trip->trip_active)
                   <div class="ml-4 font-weight-bolder text-active flex-row"><span class="item">{{ __('Active') }}</span> <img class="text-icon" src="/img/icons/active.svg" alt="Active"></div>
                 @else
-                  <div class="ml-4 font-weight-bolder text-deactive flex-row"><span class="item">{{ __('Not Active') }}</span> <img class="text-icon" src="/img/icons/deactive.svg" alt="Deactive"></div>
+                  <div class="ml-4 font-weight-bolder text-deactive flex-row"><span class="item">{{ __('Not active') }}</span> <img class="text-icon" src="/img/icons/deactive.svg" alt="Deactive"></div>
                 @endif
 
             </div>
@@ -93,7 +93,7 @@
             </div>
             <div class="ml-4" style="text-align: right">
               @if ($trip->trip_active)
-                {{ $trip->seats_available }} seats available
+                {{ $trip->seats_available }} {{ __('seats available') }}
               @else
                 &nbsp;
               @endif
