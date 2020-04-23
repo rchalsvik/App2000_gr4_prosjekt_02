@@ -5,11 +5,13 @@
 <div class="container">
 
   <!-- Jumbotron Header -->
+  {{-- Jumbotron uch --}}
   <header class="jumbotron my-4">
     <h5 class="display-3">{{ __('My trips!') }}</h5>
   </header>
 
   <!-- Page Features -->
+  {{-- Sida begynner her du --}}
   <div class="row text-left">
 
     @foreach ($trips as $trip)
@@ -63,17 +65,27 @@
             <div class="item-container item-c-100 item">
               <h3 class="overflow" style="width: 50%">
                 <a class="" href="{{ route('seeMore', $trip->id) }}">
+          <div class="card-body @if(!$trip->trip_active) card-deactive @endif">
+
+            {{-- Timetabell tekst --}}
+            <div class="item-container flex-jc-sb item-c-100 mb-3">
+              <h3 class="overflow">
+                <a href="{{ route('seeMore', $trip->id) }}">
                   {{ $trip->start_point }} - <br>
                   {{ $trip->end_point }}
                 </a>
               </h3>
 
+              <div class="ml-4 font-weight-bolder flex     @if($trip->trip_active) text-active @else text-deactive @endif  ">
                 @if ($trip->trip_active)
                   <div class="ml-4 font-weight-bolder text-active flex-row"><span class="item">{{ __('Active') }}</span> <img class="text-icon" src="/img/icons/active.svg" alt="Active"></div>
+                  <div class="item">{{ __('Active') }}<img class="text-icon ml-2 mb-n-1" src="/img/icons/active.svg" alt="Active"></div>
                 @else
                   <div class="ml-4 font-weight-bolder text-deactive flex-row"><span class="item">{{ __('Not Active') }}</span> <img class="text-icon" src="/img/icons/deactive.svg" alt="Deactive"></div>
+                  <div class="item">{{ __('Not Active') }}<img class="text-icon ml-2 mb-n-1" src="/img/icons/deactive.svg" alt="Deactive"></div>
                 @endif
 
+              </div>
             </div>
 
             <div class="mb-2">
@@ -84,14 +96,49 @@
                   <div class="" style="display: inline-block;">
                     @samDateShortFormat($trip->start_date) @samYearFormat($trip->start_date)<br>
                     @samTimeFormat($trip->start_time)
+            {{-- Timetabell tekst --}}
+            <div class="container sam-container p-0">
+              {{-- Departure --}}
+              <div class="mb-3 mr-4 sam-item flex">
+                <div class="mr-1 flex flex-column">
+                  <div class="mb-2 flex flex-jc-r">
+                    <img class="text-icon mr-3 mt-n-1" src="/img/icons/departure.svg" alt="Departure">
+                    <img class="text-icon mr-1 mt-n-1" src="/img/icons/date.svg" alt="Date">
+                  </div>
+                  <div class="mb-2 flex flex-jc-r">
+                    <img class="text-icon mr-1 mt-n-1" src="/img/icons/time.svg" alt="Time">
                   </div>
                   <br><br>
                   <img class="text-icon" src="/img/icons/deactive.svg" alt="Active">@samDateShortFormat($trip->end_date) @samYearFormat($trip->end_date)<br>
                   @samTimeFormat($trip->end_time)
                 </div>
 
+                <div class="font-weight-bold">
+                  <div>@samDateShortFormat($trip->start_date) @samYearFormat($trip->start_date)</div>
+                  <div>@samTimeFormat($trip->start_time)</div>
+                </div>
+              </div>
+              {{-- Arrival --}}
+              <div class="mb-3 sam-item flex">
+                <div class="mr-1 flex flex-column flex-jc-r">
+                  <div class="mb-2 flex flex-jc-r">
+                    <img class="text-icon mr-3 mt-n-1" src="/img/icons/arrival.svg" alt="Arrival">
+                    <img class="text-icon mr-1 mt-n-1" src="/img/icons/date.svg" alt="Date">
+                  </div>
+                  <div class="mb-2 flex flex-jc-r">
+                    <img class="text-icon mr-1 mt-n-1" src="/img/icons/time.svg" alt="Time">
+                  </div>
+                </div>
+                <div class="font-weight-bold">
+                  <div>@samDateShortFormat($trip->end_date) @samYearFormat($trip->end_date)</div>
+                  <div>@samTimeFormat($trip->end_time)</div>
+                </div>
+              </div>
             </div>
             <div class="ml-4" style="text-align: right">
+
+            {{-- Seats tilgjengelig --}}
+            <div class="flex flex-jc-r">
               @if ($trip->trip_active)
                 {{ $trip->seats_available }} seats available
               @else
@@ -99,6 +146,7 @@
               @endif
 
             </div>
+
           </div>
         </div>
       </div>
