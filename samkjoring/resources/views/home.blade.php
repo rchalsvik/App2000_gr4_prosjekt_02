@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Profile') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,9 +17,9 @@
                     {{--{{ __('You are logged in!') }}--}}
 
                     <div class="">
-                      <a href="{{ route('editUser', $user) }}">{{ __('Edit userinfo') }}</a>
-                      <a href="{{ route('myTrips') }}">{{ __('My Trips') }}</a>
-                      <a href="{{ route('myJoinedTrips') }}">{{ __('My Joined Trips, fiks detta navne i framtiden') }}</a>
+                      <a href="{{ route('editUser', $user) }}">{{ __('Edit user info') }}</a>
+                      <a href="{{ route('myTrips') }}">{{ __('My trips') }}</a>
+                      <a href="{{ route('myJoinedTrips') }}">{{ __('Joined trips') }}</a>
                     </div>
 
                     @foreach ($trips as $trip)
@@ -38,10 +38,10 @@
 
                     <table border=1>
                       <tr>
-                        <td>{{ __('StartingPoint') }}</td>
-                        <td>{{ __('Start Date') }}</td>
-                        <td>{{ __('Seats Available') }}</td>
-                        <td>{{ __('Car Description') }}</td>
+                        <td>{{ __('Starting point') }}</td>
+                        <td>{{ __('Start date') }}</td>
+                        <td>{{ __('Seats available') }}</td>
+                        <td>{{ __('Car description') }}</td>
                       </tr>
                       @foreach ($trips as $trip)
                         <tr>
@@ -73,17 +73,17 @@
                 </form> --}}
 
                     <div id="edit_user" class="">
-                      <a href="{{ route('editUser', $user) }}">{{ __('Edit userinfo') }}</a>
+                      <a href="{{ route('editUser', $user) }}">{{ __('Edit user info') }}</a>
                     </div>
 
                     @if (auth()->user()->hasLicense)
                     <div id="my_trips" class="">
-                      <a href="{{ route('myTrips') }}">{{ __('My Trips') }}</a>
+                      <a href="{{ route('myTrips') }}">{{ __('My trips') }}</a>
                     </div>
                     @endif
 
                     <div id="my_joined_trips" class="">
-                      <a href="{{ route('myJoinedTrips') }}">{{ __('My Joined Trips, fiks detta navne i framtiden') }}</a>
+                      <a href="{{ route('myJoinedTrips') }}">{{ __('Joined trips') }}</a>
                     </div>
 
                 </div>

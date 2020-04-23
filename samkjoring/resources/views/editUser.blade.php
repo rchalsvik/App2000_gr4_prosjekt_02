@@ -21,7 +21,7 @@
                         <input type="hidden" name="password" value="{{ auth()->user()->password }}">
 
                         <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telephone') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone', $user->phone) }}" required autocomplete="phone" autofocus>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="hasLicense" class="col-md-4 col-form-label text-md-right">{{ __('Drivers licence') }}</label>
+                            <label for="hasLicense" class="col-md-4 col-form-label text-md-right">{{ __('Drivers license') }}</label>
 
                             <div class="col-md-6">
                                 <input type="hidden" name="hasLicense" value="0">

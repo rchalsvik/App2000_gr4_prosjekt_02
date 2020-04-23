@@ -28,8 +28,8 @@
                     <h3 class="margin-b">{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
                     <div class="item-container item-container-margin-b">
                       <div class="item">
-                        {{ __('Departure') }}:<br>
-                        {{ __('Arrival') }}:
+                        {{ __('Leaving') }}:<br>
+                        {{ __('Arriving') }}:
                       </div>
 
                       <div class="item item-padding-l">
@@ -40,16 +40,24 @@
 
 
                     <div class="item-container item-container-margin-b">
-                      {{ __('Car Description') }}: <br>
+                      {{ __('Car description') }}: <br>
                       {{ $trip->car_description }}
                     </div>
                     <div class="item-container item-container-margin-b">
-                      {{ __('Trip Info') }}: <br>
+                      {{ __('Trip info') }}: <br>
                       {{ $trip->trip_info }}
                     </div>
 
                     <div class="item-container">
                       <div class="item">
+                        {{ __('Kids') }}:
+                        @if ($trip->kids_allowed)
+                          <img class="item-ok item-margin-l" src="/img/icons/v.svg" alt="ok">
+                        @else
+                          <img class="item-ok item-margin-l" src="/img/icons/x.svg" alt="no">
+                        @endif
+                      </div>
+                      <div class="item item-padding-l">
                         {{ __('Pets') }}:
                         @if ($trip->pets_allowed)
                           <img class="item-ok item-margin-l" src="/img/icons/v.svg" alt="ok">
@@ -57,16 +65,7 @@
                           <img class="item-ok item-margin-l" src="/img/icons/x.svg" alt="no">
                         @endif
                       </div>
-                      <div class="item item-padding-l">
-                        {{ __('Children') }}:
-                        @if ($trip->kids_allowed)
-                          <img class="item-ok item-margin-l" src="/img/icons/v.svg" alt="ok">
-                        @else
-                          <img class="item-ok item-margin-l" src="/img/icons/x.svg" alt="no">
-                        @endif
-                      </div>
                     </div>
-
                 </div>
 
 
@@ -75,7 +74,7 @@
                   {{-- Her må det fikses i stylene!! --}}
                   @if($trip->seats_available > 0)
                   <div class="form-group row">
-                      <div class="col-md-4 col-form-label">{{ __('Seats Available') }}: </div>
+                      <div class="col-md-4 col-form-label">{{ __('Seats available') }}: </div>
                       <div class="col-md-6">
                         <div class="col-md-4 form-control form-control-text">
                           {{ $trip->seats_available }}
@@ -83,7 +82,7 @@
                       </div>
                   </div>
                   @else
-                    <p style="text-align: center;">{{ __('Full Trip') }}</p>
+                    <p style="text-align: center;">{{ __('The trip is full') }}</p>
                   @endif
                   @auth
                   {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
@@ -120,7 +119,7 @@
 
                             <div class="form-group row mb-0">
                               <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">{{ __('Join Trip') }}</button>
+                                <button type="submit" class="btn btn-primary">{{ __('Join trip') }}</button>
                               </div>
                             </div>
 
@@ -137,10 +136,10 @@
                         <div class="col-md-6 offset-md-4">
                           @if ($trip->trip_active)
                           <form method="POST" onsubmit="return confirm('Do you really want to destroy this trip?');" action="{{ route('destroyTrip', $trip) }}" id="tripform">
-                            <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary mb-2 mr-2">{{ __('Edit Trip') }}</a>
-                            {{-- <a href="/trips/{{ $trip->id }}/destroyTrip" class="btn btn-primary">{{ __('Cancel Trip') }}</a> --}}
+                            <a href="/trips/{{ $trip->id }}/edit" class="btn btn-primary mb-2 mr-2">{{ __('Edit trip') }}</a>
+                            {{-- <a href="/trips/{{ $trip->id }}/destroyTrip" class="btn btn-primary">{{ __('Cancel trip') }}</a> --}}
                             @csrf {{-- viktig! ellers så feiler siden --}}
-                            <button type="submit" class="btn btn-primary mb-2 mr-2">{{ __('Cancel Trip') }}</button>
+                            <button type="submit" class="btn btn-primary mb-2 mr-2">{{ __('Cancel trip') }}</button>
                           </form>
                           @endif
                         </div>
@@ -151,7 +150,7 @@
                     @if (Auth::id() == $user->id)
                       {{--<p>{{ __('You have already joined this trip') }}</p>--}}
                       <div class="form-group row">
-                          <div class="col-md-4 col-form-label">{{ __('Seats requested ') }}</div>
+                          <div class="col-md-4 col-form-label">{{ __('Seats requested') }}</div>
                           <div class="col-md-6">
                             <div class="col-md-4 form-control form-control-text">
                               {{$user->seats_requested}}
@@ -169,7 +168,7 @@
                         <input type="hidden" name="passenger_id" value="{{ auth()->user()->id }}">
                         <input type="hidden" name="trip_id" value="{{ $trip->id }}">
                         <input type="hidden" name="seats_requested" value="{{ $user->seats_requested }}">
-                      <button type="submit" class="btn btn-primary">{{ __('Leave Trip') }}</button>
+                      <button type="submit" class="btn btn-primary">{{ __('Leave trip') }}</button>
                       </form>
                       @endif
                     @endif

@@ -10,14 +10,14 @@
       <header class="jumbotron my-4">
       @guest
         <header class="jumbotron my-4">
-          <h1 class="">{{ __('Welcome to Samkjoering AS!') }}</h1>
+          <h1 class="">{{ __('Welcome to HAIK!') }}</h1>
           <h3>{{ __('indexIntro') }}</h3>
           <h3>{{ __('indexPhrase') }}</h3>
           <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
         </header>
       @endguest
       @auth
-        <h3>{{ __('HEY PÅ MEG DU DER Frøken ') }}{{ auth()->user()->firstname }}</h3>
+        <h3>{{ __('Hello ') }}{{ auth()->user()->firstname }}{{ __('!') }}</h3>
         @if(auth()->user()->hasLicense)
           <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Make a trip now!') }}</a>
         @endif
@@ -41,7 +41,7 @@
           class="clear @error('index_search') is-invalid @enderror"
           name="index_search"
           value="@if(isset($_GET['index_search'])){{ $_GET['index_search'] }}@else{{ $_SESSION['index_search'] = false }}@endif"
-          placeholder="{{ __('Quick Search') }}"
+          placeholder="{{ __('Quick search') }}"
           autocomplete="start_point">
 
           <a href="/" class="index-reset-button">{{ __('Reset') }}</a>
@@ -79,16 +79,16 @@
                 {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
                 @if ($trip->start_date == $trip->end_date)
                   <b>@samFullDateFormat($trip->end_date)</b><br>
-                  {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
+                  {{ __('Leaving') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                   <img class="card-arrow-down" src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
-                  {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b>
+                  {{ __('Arriving') }}: <b>@samTimeFormat($trip->end_time)</b>
                 @else
-                  {{ __('Departure') }}: <b>@samTimeFormat($trip->start_time)</b><br>
+                  {{ __('Leaving') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                   <b>@samDateFormat($trip->start_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b><br>
 
                   <img class="card-arrow-down" src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
-                  {{ __('Arrival') }}: <b>@samTimeFormat($trip->end_time)</b><br>
+                  {{ __('Arriving') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                   <b>@samDateFormat($trip->end_date)</b><br>
                   <b>@samYearFormat($trip->end_date)</b>
                 @endif

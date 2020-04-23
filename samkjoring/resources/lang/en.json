@@ -11,11 +11,11 @@
 
   "_COMMENT":  "index.blade.php",
   "indexIntro": "The easiest way to find someone who is going the same direction as you!",
-  "indexPhrase": "Drive smart, drive cheap, drive sustainable, Choose Samkjoering AS!",
+  "indexPhrase": "Drive smart, drive cheap, drive sustainable, choose HAIK!",
   "indexLoginPhrase": "Nice to see you again! Do you want to save the enviroment and lower traffic today?",
 
 
   "_COMMENT":  "about.blade.php",
-  "aboutTitle": "About Samkjøring AS!",
-  "aboutText": "Samkjøring AS something something 1922... small house in Rjukan... Kjell Berit Kongshavn long story... Fall 2022 found Kjell Berit internet... something about \"Gruppe4\""
+  "aboutTitle": "About HAIK!",
+  "aboutText": "HAIK started in 1922 in a small house in Rjukan when Kjell Berit Kongshavn got his first tandem bike. Inspired by the example set by the tandem bike and the togetherness in Rjukan Bedehus, Kjell Berit started HAIK. During fall 2019 Kjell Berit found out that he wanted to expand his buisness to the internet. Then the proffesional developers \"Gruppe4\" were put to the case!"
 }
