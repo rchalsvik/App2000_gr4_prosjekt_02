@@ -55,7 +55,7 @@
 
                     @if (auth()->user()->hasLicense)
                     <div id="new_trip" class="">
-                      <a href="{{ route('createTrip') }}">{{ __('New Trip') }}</a>
+                      <a href="{{ route('createTrip') }}">{{ __('New trip') }}</a>
                     </div>
                     @endif
 
