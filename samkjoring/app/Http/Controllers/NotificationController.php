@@ -58,7 +58,7 @@ class NotificationController extends Controller
       $tmpType = $request['type'];
       $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $tmpReq['id'])->get();
 
-      if ($tmpType == 3) {
+      if ($tmpType == 3 || $tmpType == 4) {
         $notification = [
           'trip_id' => $tmpReq['id'],
           'user_id' => $tmpReq['driver_id'],
@@ -72,23 +72,8 @@ class NotificationController extends Controller
 
         Notification::create($notification);
       }
-      else if ($tmpType == 4) {
-        $notification = [
-          'trip_id' => $tmpReq['id'],
-          'user_id' => $tmpReq['driver_id'],
-          // 'message' => $msg,
-          'start_point' => $tmpReq['start_point'],
-          'end_point' => $tmpReq['end_point'],
-          'type_id' => $tmpType,
-        ];
-
-        DB::update('update users set hasUnreadMessages = 1 where id = ' . $tmpReq['driver_id']);
-
-        Notification::create($notification);
-      }
-
       else {
-      foreach ($passengers as $passenger) {
+        foreach ($passengers as $passenger) {
         // TODO: Her må det fikses med dato og tid
 
         // om det er noken so har meldt seg på eller av ein tur, for denna meldingen ska te sjåføren ikkje passasjeren so har meldt seg på for det blir berre dumt køffør ska du veta at du nettopp meldte deg på turen du nettopp meldte deg på?
