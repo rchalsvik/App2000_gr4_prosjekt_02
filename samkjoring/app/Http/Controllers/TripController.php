@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use DB;
@@ -20,14 +19,14 @@ class TripController extends Controller
      */
     public function index()
     {
-        //$trips = Trip::latest()->get();
-        // DB::table('trips')->get();
-        $trips = DB::select('select * from trips order by id desc limit 1');
-        return view('home',['trips'=>$trips]);
-        //return view('home', [
-        //  'home' => $trips
-        //]);
+      $trips = DB::select('select * from trips order by id desc limit 1');
+      $trips = DB::table('trips')
+        ->orderByDesc('id')
+        ->first(); // Leverer et resultat.
+
+      return view('home',['trips'=>$trips]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,8 +35,9 @@ class TripController extends Controller
      */
     public function create()
     {
-        return view('trips.create');
+      return view('trips.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -47,42 +47,57 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        // Log Trip store
-        $logString = 'Ny tur: '   . request('start_point') . ' - ' . request('end_point') .
-                     ' , Start: ' . request('start_date') . ' ' . request('start_time') .
-                     ' , End: '   . request('end_date') . ' ' . request('end_time') .
-                     ' , Bruker ID' . request('driver_id');
-        Log::channel('samkjøring')->info($logString);
+      $validatedResults = request()->validate([
+        'driver_id'   => ['required'],
+        'start_point' => ['required', 'string', 'max:255'],
+        'end_point'   => ['required', 'string', 'max:255'],
+        'start_date'  => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+        'start_time'  => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
+        'end_date'    => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+        'end_time'    => ['required', 'date_format:H:i'],
+        'seats_available' => ['required', 'digits_between:1,45'],
+        'car_description' => ['required', 'string', 'max:255'],
+        'trip_info'    => ['required', 'string'],
+        'pets_allowed' => ['required', 'boolean'],
+        'kids_allowed' => ['required', 'boolean'],
+        'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+      ]);
 
-        $validatedResults = request()->validate([
-          'driver_id'   => ['required'],
-          'start_point' => ['required', 'string', 'max:255'],
-          'end_point'   => ['required', 'string', 'max:255'],
-          'start_date'  => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-          'start_time'  => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
-          'end_date'    => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-          'end_time'    => ['required', 'date_format:H:i'],
-          'seats_available' => ['required', 'digits_between:1,45'],
-          'car_description' => ['required', 'string', 'max:255'],
-          'trip_info'    => ['required', 'string'],
-          'pets_allowed' => ['required', 'boolean'],
-          'kids_allowed' => ['required', 'boolean'],
-          'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
-        ]);
+      // Tur Bilde Opplastning
+      if ($files = $request->file('trip_image')) {
+        $destinationPath = 'tripImage/'; // upload path
+        $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
+        $files->move($destinationPath, $profileImage);
+        //$insert['trip_image'] = "$profileImage";
+        $validatedResults['trip_image'] = "$profileImage";
+      }
 
-        // Tur Bilde Opplastning
-        if ($files = $request->file('trip_image')) {
-          $destinationPath = 'tripImage/'; // upload path
-          $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
-          $files->move($destinationPath, $profileImage);
-          //$insert['trip_image'] = "$profileImage";
-          $validatedResults['trip_image'] = "$profileImage";
-        }
-        //$check = Trip::insertGetId($insert);
-        Trip::create($validatedResults);
-        //Trip::create($this->validateTrip());
-        return redirect('/');
+      //$check = Trip::insertGetId($insert);
+      Trip::create($validatedResults);
+      //Trip::create($this->validateTrip());
+
+      $owner = DB::table('users')
+        ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
+        ->select('users.id', 'users.firstname', 'users.lastname')
+        ->where('users.id', request('driver_id'))
+        ->first();
+
+      // Log Trip store
+      $logString = LOG_CODES['createTrip'] . ' [' .
+                   'USER: ' .
+                   $owner->id . '. ' . $owner->firstname . ' ' . $owner->lastname . '] ==> [' .
+                   'TRIP: ' .
+                   request('start_point') . '-->' . request('end_point') . '], [' .
+                   'STIM: ' .
+                   request('start_time') . ' - ' . request('start_date') . ' --> ' .
+                   'ETIM: ' .
+                   request('end_time') . ' - ' . request('end_date') . ']';
+
+      Log::channel('samkjøring')->info($logString);
+
+      return redirect('/');
     }
+
 
     /**
      * Display the specified resource.
@@ -95,6 +110,7 @@ class TripController extends Controller
         return view('trips.show', ['trip' => $trip]);
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -103,10 +119,14 @@ class TripController extends Controller
      */
     public function edit(Trip $trip)
     {
-        // Her skal det jobbes du! :P
-        $passCount = DB::table('passengers')->where('trip_id', $trip->id)->count();
-        return view('trips.edit', ['trip' => $trip, 'passCount' => $passCount]);
+      // Her skal det jobbes du! :P
+      $passCount = DB::table('passengers')
+        ->where('trip_id', $trip->id)
+        ->count();
+
+      return view('trips.edit', ['trip' => $trip, 'passCount' => $passCount]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -117,51 +137,46 @@ class TripController extends Controller
      */
     public function update(Request $request, Trip $trip) //
     {
-        //
-        //$trip->update($this->validateTrip());
-        //return view('trip.show', ['trip' => $trip]);
+      // Log Trip oppdatering oppdatering
+      $logString = 'Oppdatert tur: ' . request('start_point') . ' - ' . request('end_point') .
+                   ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
+                   ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
+                   ' , Bruker ID' . ' ' . request('driver_id');
+      Log::channel('samkjøring')->info($logString);
 
-        // Log Trip oppdatering oppdatering
-        //dd($request);
-        $logString = 'Oppdatert tur: ' . request('start_point') . ' - ' . request('end_point') .
-                     ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
-                     ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
-                     ' , Bruker ID' . ' ' . request('driver_id');
-        Log::channel('samkjøring')->info($logString);
+      $validatedResults = request()->validate([
+        'driver_id'   => ['required'],
+        'start_point' => ['required', 'string', 'max:255'],
+        'end_point'   => ['required', 'string', 'max:255'],
+        'start_date'  => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+        'start_time'  => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
+        'end_date'    => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
+        'end_time'    => ['required', 'date_format:H:i'],
+        'seats_available' => ['required', 'digits_between:1,45'],
+        'car_description' => ['required', 'string', 'max:255'],
+        'trip_info'    => ['required', 'string'],
+        'pets_allowed' => ['required', 'boolean'],
+        'kids_allowed' => ['required', 'boolean'],
+        'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
+      ]);
 
+      if ($files = $request->file('trip_image')) {
+        $destinationPath = 'tripImage/'; // upload path
+        $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
+        $files->move($destinationPath, $profileImage);
+        //$insert['trip_image'] = "$profileImage";
+        $validatedResults['trip_image'] = "$profileImage";
+      }
 
-        $validatedResults = request()->validate([
-          'driver_id'   => ['required'],
-          'start_point' => ['required', 'string', 'max:255'],
-          'end_point'   => ['required', 'string', 'max:255'],
-          'start_date'  => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-          'start_time'  => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
-          'end_date'    => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-          'end_time'    => ['required', 'date_format:H:i'],
-          'seats_available' => ['required', 'digits_between:1,45'],
-          'car_description' => ['required', 'string', 'max:255'],
-          'trip_info'    => ['required', 'string'],
-          'pets_allowed' => ['required', 'boolean'],
-          'kids_allowed' => ['required', 'boolean'],
-          'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
-        ]);
+      $trip->update($validatedResults);
 
+      //$trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
+      $trips = DB::table('trips')
+        ->where('id', $trip->id)
+        ->get();
 
-        if ($files = $request->file('trip_image')) {
-          $destinationPath = 'tripImage/'; // upload path
-          $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
-          $files->move($destinationPath, $profileImage);
-          //$insert['trip_image'] = "$profileImage";
-          $validatedResults['trip_image'] = "$profileImage";
-        }
-
-        $trip->update($validatedResults);
-
-
-
-        $trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
-        //foreach ($trips as $trup) { //kanskje trips[0]->id osv??
-        $trip = $trips[0];
+      //foreach ($trips as $trup) { //kanskje trips[0]->id osv??
+      $trip = $trips[0];
         /*
           $trip->id = $trup->id;
           $trip->driver_id = $trup->driver_id;
@@ -177,19 +192,29 @@ class TripController extends Controller
           $trip->pets_allowed = $trup->pets_allowed;
           $trip->kids_allowed = $trup->kids_allowed;*/
       //}
+      //return redirect('/trips/' . $trip->id . '/seemore/'); // Dette er hvor du blir sendt etter å ha postet!
+      //$users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested    from users, trips, passengers     where passengers.trip_id = ' . $trip->id . '    and passenger_id = users.id       and trips.id = ' . $trip->id);
 
-        //return redirect('/trips/' . $trip->id . '/seemore/'); // Dette er hvor du blir sendt etter å ha postet!
+      $users = DB::table('users')
+        ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
+        ->join('trips', 'passengers.trip_id', '=', 'trips.id')
+        ->select('passengers.seats_requested', 'users.id', 'users.firstname', 'users.lastname')
+        ->where('trips.id', $trip->id)
+        ->get();
 
-        $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
-        $piss = 0;
-        $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
-        //dd($trip);
-        //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
-        //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
-        $type = 2;
-        return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
-        //return redirect()->back();
+      $piss = 0;
+      //$chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
+      $chauffeur = DB::table('users')
+        ->where('users.id', $trip->driver_id)
+        ->get();
+      //dd($trip);
+      //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+      //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+      $type = 2;
+
+      return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -203,24 +228,21 @@ class TripController extends Controller
       $logString = 'Tur deaktivert: ' . $trip->id . ' ' .$trip->start_point . ' - ' . $trip->end_point . ' av brukerID: ' . $trip->driver_id;
       Log::channel('samkjøring')->info($logString);
 
+      // Setta turen til deaktiv
+      $trip->trip_active = false;
+      $trip->save();
 
+      $trips = DB::table('trips')
+        //->whereRaw('id = ' . $trip->id)
+        ->where('trips.id', $trip->id)
+        ->get();
 
-        // setta turen til deaktiv
-        // kjør ned kaffe?
-        //Trip::update()
-        // fjerna passasjer???
-        $trip->trip_active = false;
-        $trip->save();
+      $trip = $trips[0];
+      $type = 1;
 
-        //return redirect('/');
-
-        $trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
-        $trip = $trips[0];
-        $type = 1;
-
-        return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
-        //return redirect(session('links')[2]); // Denne her vil sende deg 2 linker tilbake
+      return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
     }
+
 
     /**
      * Display the specified resource.
@@ -230,11 +252,24 @@ class TripController extends Controller
      */
     public function seeMore(Trip $trip)
     {
-        $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
-        $piss = 0;
-        $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
-        return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+      //$users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
+      $users = DB::table('users')
+        ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
+        ->join('trips', 'passengers.trip_id', '=', 'trips.id')
+        ->select('passengers.seats_requested', 'users.id', 'users.firstname', 'users.lastname')
+        ->where('trips.id', $trip->id)
+        ->get();
+
+      $piss = 0;
+
+      //$chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
+      $chauffeur = DB::table('users')
+        ->where('users.id', $trip->driver_id)
+        ->get();
+
+      return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -245,62 +280,83 @@ class TripController extends Controller
      */
     public function join(Request $request, Trip $trip) //
     {
-        //
-        //$trip->update($this->validateTrip());
-        //return view('trip.show', ['trip' => $trip]);
+      //$trip->update($this->validateTrip());
+      //return view('trip.show', ['trip' => $trip]);
+      /*$requestData = request()->all();
+      $requestData['seats_available'] = $trip->seats_available - request('seats_available');*/
+      //request()->replace('seats_available', $trip->seats_available - request('seats_available'));
+      //$pass = new \Passenger(request('trip_id'), request('passenger_id'), request('seats_available'));
+      $request->request->add(['seats_requested' => request('seats_available')]); //legge te seats_requested, DATABASEN LIKA IKKJE Å IKKJE FÅ INN ALLE FELTI MED RETT NAVN
+      $validatedPassenger = request()->validate([
+        'trip_id' => ['required', 'exists:trips,id'],
+        'passenger_id' => ['required', 'exists:users,id'],
+        'seats_requested' => ['required', 'digits_between:1,45'],
+      ]);
 
-        // Log Trip edit oppdatering
-        /*$logString = 'Endra tur: ' . request('start_point') . ' - ' . request('end_point') .
-                     ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
-                     ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
-                     ' , Bruker ID' . ' ' . request('driver_id');
-        Log::channel('samkjøring')->info($logString);*/
+      Passenger::create($validatedPassenger);
 
-        /*$requestData = request()->all();
-        $requestData['seats_available'] = $trip->seats_available - request('seats_available');*/
-        //request()->replace('seats_available', $trip->seats_available - request('seats_available'));
-        //$pass = new \Passenger(request('trip_id'), request('passenger_id'), request('seats_available'));
-        $request->request->add(['seats_requested' => request('seats_available')]); //legge te seats_requested, DATABASEN LIKA IKKJE Å IKKJE FÅ INN ALLE FELTI MED RETT NAVN
-        $validatedPassenger = request()->validate([
-          'trip_id' => ['required', 'exists:trips,id'],
-          'passenger_id' => ['required', 'exists:users,id'],
-          'seats_requested' => ['required', 'digits_between:1,45'],
-        ]);
+      request()->merge([ 'seats_available' => $trip->seats_available - request('seats_available') ]);
 
-        Passenger::create($validatedPassenger);
+      $validatedResults = request()->validate([
+        'seats_available' => ['required', 'digits_between:1,45'],
+      ]);
 
-        request()->merge([ 'seats_available' => $trip->seats_available - request('seats_available') ]);
+      //dd(request('seats_available'));
+      $trip->update($validatedResults);
 
-        $validatedResults = request()->validate([
-          'seats_available' => ['required', 'digits_between:1,45'],
-        ]);
+      //dd($trip);
+      //$trip->update($this->validateSeats());
+      //dd($request);
+      //return redirect('/');
+      //return view('/', $request); // Dette er hvor du blir sendt etter å ha postet!
+      //return view('trips.seemore', ['trip' => $trip]);
+      //$users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
+      $users = DB::table('users')
+        ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
+        ->join('trips', 'passengers.trip_id', '=', 'trips.id')
+        ->select('passengers.seats_requested', 'users.id', 'users.firstname', 'users.lastname')
+        ->where('trips.id', $trip->id)
+        ->get();
 
-        //dd(request('seats_available'));
+      //$chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
+      $chauffeur = DB::table('users')
+        ->where('users.id', $trip->driver_id)
+        ->first(); // Vet det leveres bare 1 verdi, men tilfelle rottefelle. Ross.
 
-        $trip->update($validatedResults);
+      $trip = DB::table('trips')
+        ->where('trips.id', $trip->id)
+        //->whereRaw('id = ' . $trip->id)
+        ->first();
 
-        //dd($trip);
+      //$trip = $trips[0];
+      $piss = 0; // BRUKES DENNE HER????
+      $type = 3;
 
-        //$trip->update($this->validateSeats());
-        //dd($request);
+      // Log Trip edit oppdatering
+      // Bruker: 82 Inger Jansen meldt seg på tur: 02 Seljord-Vika
+      $currPassenger = DB::table('users')
+        ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
+        ->select('users.id', 'users.firstname', 'users.lastname')
+        ->where('users.id', request('passenger_id'))
+        ->first();
 
-        //return redirect('/');
-        //return view('/', $request); // Dette er hvor du blir sendt etter å ha postet!
-        //return view('trips.seemore', ['trip' => $trip]);
-        $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trip->id . ' and passenger_id = users.id and trips.id = ' . $trip->id);
-        $piss = 0;
-        $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
-        //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
-        //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+      $logString = LOG_CODES['joinTrip'] . ' [' .
+                   'USER: ' .
+                   $currPassenger->id . '. ' .
+                   $currPassenger->firstname . ' ' .
+                   $currPassenger->lastname . '] ==> [' .
+                   'TRIP: ' .
+                   $trip->id . '. ' .
+                   $trip->start_point . '->' . $trip->end_point . '], [' .
+                   'TIME: ' .
+                   $trip->start_time . ' - ' . $trip->start_date . ']'; // . request('passenger_id');
 
+      Log::channel('samkjøring')->info($logString);
 
-        $trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
-        $trip = $trips[0];
-        $type = 3;
-
-        return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
-
-        //return redirect()->back();
+      return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
+      //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+      //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
+      //return redirect()->back();
     }
 
 
