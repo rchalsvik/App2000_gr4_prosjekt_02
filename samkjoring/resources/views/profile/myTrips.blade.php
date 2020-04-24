@@ -71,7 +71,7 @@
             {{-- Seats tilgjengelig --}}
             <div class="flex flex-jc-r">
               @if ($trip->trip_active)
-                {{ $trip->seats_available }} seats available
+                {{ $trip->seats_available }} {{ __('seats available') }}
                 <img class="ml-2 mb-n-1" src="/img/icons/chair_line.svg" alt="Seat">
               @else
                 &nbsp;
