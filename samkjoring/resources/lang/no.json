@@ -8,6 +8,7 @@
   "Login": "Logg inn",
   "Language": "Språk",
   "Search": "Søk",
+  "Copyright": "Opphavsrett",
 
 
 
@@ -24,9 +25,9 @@
 
 
   "_COMMENT":  "index.blade.php",
-  "Welcome to HAIK!": "Velkommen til HAIK!",
+  "Welcome to Haik!": "Velkommen til Haik!",
   "indexIntro": "Finn på en enkel måte noen som skal samme vei som deg!",
-  "indexPhrase": "Kjør smart, kjør billig, kjør bærekraftig, velg HAIK!",
+  "indexPhrase": "Kjør smart, kjør billig, kjør bærekraftig, velg Haik!",
   "indexLoginPhrase": "Hyggelig å se deg igjen! Ønsker du å samkjøre i dag?",
   "Join us now!": "Registrer deg nå!",
   "Route": "Rute",
@@ -44,13 +45,16 @@
   "_COMMENT":  "notification.blade.php",
   "Notifications!": "Varslinger!",
   "You have no messages": "Du har ingen meldinger",
+  "Someone has ": "Noen har",
+  "joined ": "meldt seg på",
+  "your trip from ": "turen din fra ",
 
 
 
   "_COMMENT":  "about.blade.php",
-  "aboutTitle": "Om HAIK!",
-  "aboutText": "HAIK starta i 1922 i et lite hjem i Rjukan, da Kjell Berit Kongshavn fikk sin første tandemsykkel. Inspirert av eksempelet satt av tandemsykkelen og samholdet i Rjukan Bedehus, starta Kjell Berit Samkjøring AS. Høsten 2019 fant Kjell Berit ut at han ville starte på internett, så da ble de profesjonelle utviklerne \"Gruppe4\" satt på saken!",
-  "Tandem-bike": "Tandem-sykkel",
+  "aboutTitle": "Om Haik!",
+  "aboutText": "Haik starta i 1922 i et lite hjem i Rjukan, da Kjell Berit Kongshavn fikk sin første tandemsykkel. Inspirert av eksempelet satt av tandemsykkelen og samholdet i Rjukan Bedehus, starta Kjell Berit Haik. Høsten 2019 fant Kjell Berit ut at han ville starte på internett, så da ble de profesjonelle utviklerne \"Gruppe4\" satt på saken!",
+  "Tandem-bike": "Tandemsykkel",
 
 
 
@@ -87,9 +91,14 @@
 
 
 
+  "_COMMENT":  "trips.edit.blade.php",
+  "You have atleast one passenger and therefore cannot edit certain fields like start/end point and time.": "Du har minst én passasjer og kan derfor ikke redigere visse felt, som start/sluttsted og tid.",
+
+
+
   "_COMMENT": "search.blade.php",
-  "Search for starting point:": "Søk etter et startsted:",
-  "Search for ending point:": "Søk etter stoppested",
+  "Search for starting point": "Søk etter et startsted",
+  "Search for ending point": "Søk etter stoppested",
   "Active trips only": "Bare aktive turer",
   "seats available": "seter tilgjengelig",
   "Active": "Aktiv",
@@ -126,7 +135,7 @@
   "Zipcode": "Postnummer",
   "Date of birth": "Fødselsdato",
   "Drivers license": "Førekort",
-  "Confirm Password": "Gjenta Passord",
+  "Confirm password": "Gjenta Passord",
 
 
 

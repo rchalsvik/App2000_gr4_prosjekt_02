@@ -8,6 +8,7 @@
   "Login": "Anmeldung",
   "Language": "Sprache",
   "Search": "Suche",
+  "Copyright": "Urheberrechte",
 
 
 
@@ -24,9 +25,9 @@
 
 
   "_COMMENT":  "index.blade.php",
-  "Welcome to HAIK!": "Willkommen bei HAIK!",
+  "Welcome to Haik!": "Willkommen bei Haik!",
   "indexIntro": "Der einfachste Weg, jemanden zu finden, der in die gleiche Richtung geht wie Sie!",
-  "indexPhrase": "Fahren Sie intelligent, billig fahren, nachhaltig fahren, wähle HAIK!",
+  "indexPhrase": "Fahren Sie intelligent, billig fahren, nachhaltig fahren, wähle Haik!",
   "indexLoginPhrase": "Schön dich wieder zu sehen! Möchten Sie heute Fahrgemeinschaften bilden?",
   "Join us now!": "Mach jetzt mit!",
   "Route": "Route",
@@ -48,8 +49,8 @@
 
 
   "_COMMENT":  "about.blade.php",
-  "aboutTitle": "Über HAIK!",
-  "aboutText": "HAIK startete 1922 in einem kleinen Haus in Rjukan, als Kjell Berit Kongshavn sein erstes Tandemfahrrad. Inspiriert von dem Beispiel des Tandemfahrrad und der Zweisamkeit in Rjukan Bedehus startete Kjell Berit HAIK. Im Herbst 2019 fand Kjell Berit heraus, dass er sein Geschäft auf das Internet ausweiten wollte. Dann wurden die professionellen Entwickler \"Gruppe4\" auf den Fall gebracht! ",
+  "aboutTitle": "Über Haik!",
+  "aboutText": "Haik startete 1922 in einem kleinen Haus in Rjukan, als Kjell Berit Kongshavn sein erstes Tandemfahrrad. Inspiriert von dem Beispiel des Tandemfahrrad und der Zweisamkeit in Rjukan Bedehus startete Kjell Berit Haik. Im Herbst 2019 fand Kjell Berit heraus, dass er sein Geschäft auf das Internet ausweiten wollte. Dann wurden die professionellen Entwickler \"Gruppe4\" auf den Fall gebracht! ",
   "Tandem-bike": "Tandemfahrrad",
 
 
@@ -87,9 +88,14 @@
 
 
 
+  "_COMMENT":  "trips.edit.blade.php",
+  "You have atleast one passenger and therefore cannot edit certain fields like start/end point and time.": "Sie haben mindestens einen Passagier und können daher bestimmte Informationen wie Start- / Endpunkt und Uhrzeit nicht bearbeiten.",
+
+
+
   "_COMMENT": "search.blade.php",
-  "Search for starting point:": "Suche nach Ausgangspunkt:",
-  "Search for ending point:": "Suche nach Endpunkt",
+  "Search for starting point": "Suche nach Ausgangspunkt",
+  "Search for ending point": "Suche nach Endpunkt",
   "Active trips only": "Nur aktive Reisen",
   "seats available": "Sitzplätze verfügbar",
   "Active": "Aktiv",
@@ -108,40 +114,49 @@
 
 
   "_COMMENT":  "auth.login.blade.php",
-  "E-mail address": "E-post",
-  "Password": "Passord",
-  "Remember me": "Husk meg",
-  "Forgot your password?": "Glemt Passordet?",
-  "New here? Click here to register!": "Ny her? Klikk her for å registrere deg!",
-  "These credentials do not match our records.": "E-post og passord samsvarer ikke.",
+  "E-mail address": "E-mail",
+  "Password": "Passwort",
+  "Remember me": "Erinnere dich an mich",
+  "Forgot your password?": "Passwort vergessen?",
+  "New here? Click here to register!": "Neu hier? Klicken Sie hier, um sich zu registrieren!",
+  "These credentials do not match our records.": "Diese Anmeldeinformationen stimmen nicht mit unseren Aufzeichnungen überein.",
+
 
 
   "_COMMENT":  "auth.register.blade.php",
-  "Register": "Schnell",
-  "Firstname": "Schnell",
-  "Lastname": "Schnell",
-  "Telephone": "Schnell",
-  "Address": "Schnell",
-  "Zipcode": "Schnell",
-  "Date of birth": "Schnell",
-  "Drivers License": "Schnell",
-  "Confirm Password": "Schnell Schnell",
+  "Register": "Registrieren",
+  "Firstname": "Vorname",
+  "Lastname": "Nachname",
+  "Phone": "Telefon",
+  "Address": "Adresse",
+  "Zipcode": "Postleitzahl",
+  "Date of birth": "Geburtsdatum",
+  "Drivers license": "Führerschein",
+  "Confirm password": "Kennwort bestätigen",
+
 
 
   "_COMMENT":  "auth.verify.blade.php",
-  "Verify Your Email Address": "Schnell Schnell Schnell Schnell",
-  "A fresh verification link has been sent to your email address.": "Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell.",
-  "Before proceeding, please check your email for a verification link.": "Schnell Schnell Schnell, Schnell Schnell Schnell Schnell Schnell",
-  "If you did not receive the email": "Schnell Schnell Schnell Schnell Schnell Schnell",
-  "click here to request another": "Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell",
+  "Verify Your Email Address": "Bestätige deine Email-Adresse",
+  "A fresh verification link has been sent to your email address.": "Ein neuer Bestätigungslink wurde an Ihre E-Mail-Adresse gesendet.",
+  "Before proceeding, please check your email for a verification link.": "Bevor Sie fortfahren, überprüfen Sie bitte Ihre E-Mails auf einen Bestätigungslink.",
+  "If you did not receive the email": "Wenn Sie die E-Mail nicht erhalten haben",
+  "click here to request another": "Klicken Sie hier, um einen anderen anzufordern.",
+
 
 
   "_COMMENT":  "auth.passwords.confirm.blade.php",
-  "Please confirm your password before continuing.": "Schnell Schnell Schnell, Schnell Schnell Schnell",
+  "Please confirm your password before continuing.": "Bitte bestätigen Sie Ihr Passwort, bevor Sie fortfahren.",
+
 
 
   "_COMMENT":  "auth.passwords.confirm.blade.php",
   "_COMMENT":  "&& auth.passwords.reset.blade.php",
-  "Reset Password": "Schnell Schnell",
-  "Send Password Reset Link": "Schnell Schnell Schnell Schnell"
+  "Reset Password": "Passwort zurücksetzen",
+  "Send Password Reset Link": "Link zum Zurücksetzen des Passworts senden",
+
+
+
+  "_COMMENT":  "editUser.blade.php",
+  "Save": "Speichern"
 }

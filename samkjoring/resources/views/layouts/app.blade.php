@@ -61,7 +61,7 @@
                 <li class="nav-item dropdown">
                   @if (Auth::user()->hasUnreadMessages == 1)
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                      {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} HEI DU HA MELDINGA <span class="caret"></span>
+                      {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} &#x2757 <span class="caret"></span>
                   </a>
                   @else
                   <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -71,7 +71,7 @@
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ url('home') }}">{{ __('Profile') }}</a>
                     @if (Auth::user()->hasUnreadMessages == 1)
-                    <a class="dropdown-item" href="{{ route('notifications') }}">{{ __('LES MELDINGAN DINE FOR FAEN') }}</a>
+                    <a class="dropdown-item" href="{{ route('notifications') }}">{{ __('Notifications') }} &#x2757</a>
                     @else
                     <a class="dropdown-item" href="{{ route('notifications') }}">{{ __('Notifications') }}</a>
                     @endif

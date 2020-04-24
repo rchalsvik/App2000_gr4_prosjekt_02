@@ -12,7 +12,7 @@
                       @csrf {{-- viktig! ellers så feiler siden --}}
 
                         <div class="form-group row">
-                            <label for="start_point" class="col-md-4 col-form-label text-md-right">{{ __('Search for starting point:') }}</label>
+                            <label for="start_point" class="col-md-4 col-form-label text-md-right">{{ __('Search for starting point') }}</label>
 
                             <div class="col-md-6">
                                 <input id="start_point" type="text" class="form-control @error('start_point') is-invalid @enderror" name="start_point" value="{{ old('start_point') }}" placeholder="{{ __('Starting point') }}" autocomplete="start_point" autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="start_date" class="col-md-4 col-form-label text-md-right">{{ __('Start date:') }}</label>
+                            <label for="start_date" class="col-md-4 col-form-label text-md-right">{{ __('Start date') }}</label>
 
                             <div class="col-md-6">
                                 <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}" autocomplete="start_date" autofocus>
@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="end_point" class="col-md-4 col-form-label text-md-right">{{ __('Search for ending point:') }}</label>
+                            <label for="end_point" class="col-md-4 col-form-label text-md-right">{{ __('Search for ending point') }}</label>
 
                             <div class="col-md-6">
                                 <input id="end_point" type="text" class="form-control @error('end_point') is-invalid @enderror" name="end_point" value="{{ old('end_point') }}" placeholder="{{ __('End point') }}" autocomplete="end_point" autofocus>

@@ -8,6 +8,7 @@
     "Login": "Iniciar sesión",
     "Language": "Idioma",
     "Search": "Buscar",
+    "Copyright": "Derechos de autor",
 
 
 
@@ -24,9 +25,9 @@
 
 
     "_COMMENT":  "index.blade.php",
-    "Welcome to HAIK!": "¡Bienvenido a HAIK!",
+    "Welcome to Haik!": "¡Bienvenido a Haik!",
     "indexIntro": "¡Encuentre a alguien que vaya de la misma manera que usted de una manera simple!",
-    "indexPhrase": "¡Conducir de manera inteligente, conducir barato, conducir de forma sostenible, elige HAIK!",
+    "indexPhrase": "¡Conducir de manera inteligente, conducir barato, conducir de forma sostenible, elige Haik!",
     "indexLoginPhrase": "¡Encantado de verte de nuevo! ¿Quieres compartir el coche hoy?",
     "Join us now!": "¡Regístrate ahora!",
     "Route": "Ruta",
@@ -48,8 +49,8 @@
 
 
     "_COMMENT":  "about.blade.php",
-    "aboutTitle": "¡Acerca de HAIK!",
-    "aboutText": "Samkjøring AS comenzó en 1922 en una casa pequeña en Rjukan, cuando Kjell Berit Kongshavn consiguió su primer bicicleta tándem. Inspirado en el ejemplo de la bicicleta tándem y la unidad en Rjukan Bedehus, Kjell Berit comenzó HAIK. ¡Otoño de 2019 descubrió que quería comezar en internet, entonces los desarrolladores profeisonales \"Gruppe4\" asignado al caso!",
+    "aboutTitle": "¡Acerca de Haik!",
+    "aboutText": "Haik comenzó en 1922 en una casa pequeña en Rjukan, cuando Kjell Berit Kongshavn consiguió su primer bicicleta tándem. Inspirado en el ejemplo de la bicicleta tándem y la unidad en Rjukan Bedehus, Kjell Berit comenzó Haik. ¡Otoño de 2019 descubrió que quería comezar en internet, entonces los desarrolladores profeisonales \"Gruppe4\" asignado al caso!",
     "Tandem-bike": "Bicicleta tándem",
 
 
@@ -87,10 +88,14 @@
     "Name: ": "Nombre",
 
 
+    "_COMMENT":  "trips.edit.blade.php",
+    "You have atleast one passenger and therefore cannot edit certain fields like start/end point and time.": "Tienes al menos un pasajero y, por lo tanto, no puede editar cierta información, como el punto de inicio / finalización y la hora.",
+
+
 
     "_COMMENT": "search.blade.php",
-    "Search for starting point:": "Buscar punto de partida:",
-    "Search for ending point:": "Buscar un punto final:",
+    "Search for starting point": "Buscar punto de partida",
+    "Search for ending point": "Buscar un punto final",
     "Active trips only": "Solo viajes activos",
     "seats available": "asientos disponibles",
     "Active": "Activo",
@@ -127,7 +132,7 @@
     "Zipcode": "Código postal",
     "Date of birth": "Fecha de nacimiento",
     "Drivers license": "Licencia de conducir",
-    "Confirm Password": "Confirmar contraseña",
+    "Confirm password": "Confirmar contraseña",
 
 
     "_COMMENT":  "auth.verify.blade.php",
