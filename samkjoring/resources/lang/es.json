@@ -126,7 +126,7 @@
     "Address": "Dirección",
     "Zipcode": "Código postal",
     "Date of birth": "Fecha de nacimiento",
-    "Drivers License": "Licencia de conducir",
+    "Drivers license": "Licencia de conducir",
     "Confirm Password": "Confirmar contraseña",
 
 
@@ -146,5 +146,10 @@
     "_COMMENT":  "auth.passwords.confirm.blade.php",
     "_COMMENT":  "&& auth.passwords.reset.blade.php",
     "Reset Password": "Restablecer la contraseña",
-    "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña"
+    "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña",
+
+
+
+    "_COMMENT":  "editUser.blade.php",
+    "Save": "Salvar"
   }

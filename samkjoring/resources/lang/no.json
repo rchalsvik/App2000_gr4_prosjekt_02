@@ -60,7 +60,6 @@
   "End point": "Stoppested",
   "Start time": "Starttid",
   "End time": "Sluttid",
-  "Start date:": "Startdato:",
   "End date": "Sluttdato",
   "Trip info": "Turinfo",
   "Pets allowed": "Kjæledyr tillat",
@@ -73,7 +72,7 @@
   "_COMMENT":  "trips.seemore.blade.php",
   "Seats requested": "Seter ønsket",
   "Join trip": "Meld på",
-  "Leave trip": "Forlat tur",
+  "Leave trip": "Meld av",
   "Edit trip": "Rediger tur",
   "Update trip": "Oppdater tur",
   "Cancel trip": "Kanseller tur",
@@ -83,7 +82,7 @@
   "Pets": "Kjæledyr",
   "Kids": "Barn",
   "The trip is full": "Turen er full",
-  "Driver info: ": "Sjåførinfo:",
+  "Driver info: ": "Sjåførinfo: ",
   "Name: ": "Navn: ",
 
 
@@ -105,7 +104,6 @@
 
  "_COMMENT": "profile.myTrips.blade.php",
  "My trips!": "Mine turer!",
-
 
 
 
@@ -149,5 +147,10 @@
   "_COMMENT":  "auth.passwords.confirm.blade.php",
   "_COMMENT":  "&& auth.passwords.reset.blade.php",
   "Reset Password": "Nullstill Passord",
-  "Send Password Reset Link": "Send passord-nullstillingslenke"
+  "Send Password Reset Link": "Send passord-nullstillingslenke",
+
+
+
+  "_COMMENT":  "editUser.blade.php",
+  "Save": "Lagre"
 }

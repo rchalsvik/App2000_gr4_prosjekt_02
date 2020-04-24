@@ -1,80 +1,119 @@
 {
   "_COMMENT": "layout.app.blade.php",
-  "Home": "Schnell",
-  "Notifications": "Schnell",
-  "About Us": "Schnell Schnell",
-  "Profile": "Schnell",
-  "Logout": "Schnell Schnell",
-  "Login": "Schnell Schnell",
-  "Language": "Schnell",
+  "Home": "Zuhause",
+  "Notifications": "Benachrichtigungen",
+  "About us": "Über uns",
+  "Profile": "Profil",
+  "Logout": "Ausloggen",
+  "Login": "Anmeldung",
+  "Language": "Sprache",
+  "Search": "Suche",
+
 
 
   "_COMMENT":  "home.blade.php",
-  "Dashboard": "Schnell",
-  "You are logged in!": "Schnell Schnell Schnell Schnell!",
-  "StartingPoint": "Schnell",
-  "Start Date": "Schnell",
-  "Seats Available": "Schnell Schnell",
-  "Car Description": "Schnell Schnell",
-  "New Trip": "Schnell Schnell",
+  "You are logged in!": "Du bist eingeloggt!",
+  "Start date": "Anfangsdatum",
+  "Seats available": "Sitzplätze verfügbar",
+  "Car description": "Fahrzeugbeschreibung",
+  "Edit user info": "Benutzerinformationen bearbeiten",
+  "My trips": "Meine Reisen",
+  "Joined trips": "Verbundene Reisen",
+  "New trip": "Neue Reise",
+  
 
 
   "_COMMENT":  "index.blade.php",
-  "Welcome to Samkjoering AS!": "Schnell Schnell Schnell Schnell!",
-  "indexIntro": "Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell!",
-  "indexPhrase": "Schnell Schnell, Schnell Schnell, Schnell Schnell, Schnell Schnell Schnell!",
-  "Join us now!": "Schnell Schnell Schnell!",
-  "See more": "Schnell Schnell",
+  "Welcome to HAIK!": "Willkommen bei HAIK!",
+  "indexIntro": "Der einfachste Weg, jemanden zu finden, der in die gleiche Richtung geht wie Sie!",
+  "indexPhrase": "Fahren Sie intelligent, billig fahren, nachhaltig fahren, wähle HAIK!",
+  "indexLoginPhrase": "Schön dich wieder zu sehen! Möchten Sie heute Fahrgemeinschaften bilden?",
+  "Join us now!": "Mach jetzt mit!",
+  "Route": "Route",
+  "See more": "Mehr sehen",
+  "Leaving": "Verlassen",
+  "Arriving": "Ankommen",
+  "Travel time": "Reisezeit",
+  "Hello ": "Hallo ",
+  "Make a trip now!": "Machen Sie jetzt eine Reise!",
+  "Quick search": "Schnelle Suche",
+  "Reset": "Zurücksetzen",
+
 
 
   "_COMMENT":  "notification.blade.php",
-  "Notifications!": "Varslinger!",
-  "Here be dragons!": "Schnell Schnell Schnell Schnell Schnell!",
+  "Notifications!": "Benachrichtigungen!",
+  "You have no messages": "Du hast keine Nachrichten",
+
 
 
   "_COMMENT":  "about.blade.php",
-  "aboutTitle": "Schnell Schnell Schnell!",
-  "aboutText": "Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell, Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell. Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell, Schnell Schnell Schnell Schnell Schnell. Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell, Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell Schnell!",
-  "Tandem-bike": "Schnell-Schnell",
+  "aboutTitle": "Über HAIK!",
+  "aboutText": "HAIK startete 1922 in einem kleinen Haus in Rjukan, als Kjell Berit Kongshavn sein erstes Tandemfahrrad. Inspiriert von dem Beispiel des Tandemfahrrad und der Zweisamkeit in Rjukan Bedehus startete Kjell Berit HAIK. Im Herbst 2019 fand Kjell Berit heraus, dass er sein Geschäft auf das Internet ausweiten wollte. Dann wurden die professionellen Entwickler \"Gruppe4\" auf den Fall gebracht! ",
+  "Tandem-bike": "Tandemfahrrad",
 
-
-  "_COMMENT":  "trips.create.blade.php",
-  "Create Trip": "Schnell Schnell Schnell Schnell",
-  "Start Point": "Schnell",
-  "End Point": "Schnell",
-  "Start Date": "Schnell",
-  "Start Time": "Schnell",
-  "End Date": "Schnell",
-  "End Time": "Schnell",
-  "Seats Available": "Schnell Schnell",
-  "Car Description": "Schnell Schnell",
-  "Trip Info": "Schnell Schnell",
-  "Pets": "Tiere",
-  "Children": "Kinder",
-  "Create Trip": "Schnell Schnell",
 
 
   "_COMMENT":  "trips.create.blade.php",
-  "Edit Trip": "Schnell Schnell",
-  "Update Trip": "Schnell Schnell",
+  "Create a trip": "Erstellen Sie eine Reise",
+  "Starting point": "Startpunkt",
+  "End point": "Endpunkt",
+  "Start time": "Startzeit",
+  "End time": "Endzeit",
+  "End date": "Endtermin",
+  "Trip info": "Reiseinformationen",
+  "Kids allowed": "Kinder erlaubt",
+  "Pets allowed": "Haustiere erlaubt",
+  "Image (Optional)": "Bild (Optional)",
+  "Create trip": "Reise erstellen",
 
 
-  "_COMMENT":  "trips.show.blade.php",
-  "Show Trip": "Schnell Schnell",
-  "Starts at": "Schnell",
-  "Arrives at": "Schnell",
 
   "_COMMENT":  "trips.seemore.blade.php",
-  "Join Trip": "Schnell Schnell Schnell",
+  "Seats requested": "Sitzplätze angefordert",
+  "Join trip": "Reise mitmachen",
+  "Leave trip": "Reise verlassen",
+  "Edit trip": "Reise bearbeiten",
+  "Update trip": "Reise aktualisieren",
+  "Cancel trip": "Reise abbrechen",
+  "Show Trip": "Reise zeigen",
+  "Starts at": "Startet um",
+  "Arrives at": "Kommt an um",
+  "Pets": "Haustiere",
+  "Kids": "Kinder",
+  "The trip is full": "Die Reise ist voll",
+  "Driver info: ": "Treiberinfo: ",
+  "Name: ": "Name: ",
+
+
+
+  "_COMMENT": "search.blade.php",
+  "Search for starting point:": "Suche nach Ausgangspunkt:",
+  "Search for ending point:": "Suche nach Endpunkt",
+  "Active trips only": "Nur aktive Reisen",
+  "seats available": "Sitzplätze verfügbar",
+  "Active": "Aktiv",
+  "Not active": "Nicht aktiv",
+
+
+
+  "_COMMENT": "profile.myJoinedTrips.blade.php",
+  "Joined trips!": "Verbundene Reisen!",
+
+
+
+  "_COMMENT": "profile.myTrips.blade.php",
+  "My trips!": "Meine Reisen!",
+
 
 
   "_COMMENT":  "auth.login.blade.php",
-  "Login": "Schnell Schnell",
-  "E-Mail Address": "Schnell Schnell",
-  "Tandem-bike": "Schnell-Schnell",
-  "Password": "Schnell",
-  "Remember Me": "Schnell Schnell",
-  "Forgot Your Password?": "Schnell Schnell?",
+  "E-mail address": "E-post",
+  "Password": "Passord",
+  "Remember me": "Husk meg",
+  "Forgot your password?": "Glemt Passordet?",
+  "New here? Click here to register!": "Ny her? Klikk her for å registrere deg!",
+  "These credentials do not match our records.": "E-post og passord samsvarer ikke.",
 
 
   "_COMMENT":  "auth.register.blade.php",
@@ -85,9 +124,7 @@
   "Address": "Schnell",
   "Zipcode": "Schnell",
   "Date of birth": "Schnell",
-  "E-Mail Address": "Schnell Schnell",
   "Drivers License": "Schnell",
-  "Password": "Schnell",
   "Confirm Password": "Schnell Schnell",
 
 
@@ -101,14 +138,10 @@
 
   "_COMMENT":  "auth.passwords.confirm.blade.php",
   "Please confirm your password before continuing.": "Schnell Schnell Schnell, Schnell Schnell Schnell",
-  "Password": "Schnell",
-  "Confirm Password": "Schnell Schnell",
-  "Forgot Your Password?": "Schnell Schnell?",
 
 
   "_COMMENT":  "auth.passwords.confirm.blade.php",
   "_COMMENT":  "&& auth.passwords.reset.blade.php",
   "Reset Password": "Schnell Schnell",
-  "E-Mail Address": "Schnell Schnell",
   "Send Password Reset Link": "Schnell Schnell Schnell Schnell"
 }
