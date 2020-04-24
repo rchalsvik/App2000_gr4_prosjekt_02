@@ -40,7 +40,7 @@
         @endforeach
       @else
         <p>{{ __('You have no messages') }}</p>
-        <p class="lead">{{ __('Here be dragons!') }}</p>
+        {{--<p class="lead">{{ __('Here be dragons!') }}</p>--}}
       @endif
     </header>
 

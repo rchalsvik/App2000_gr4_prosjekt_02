@@ -7,7 +7,7 @@
 <header class="jumbotron my-4">
 @guest
   <header class="jumbotron my-4">
-    <h1 class="">{{ __('Welcome to HAIK!') }}</h1>
+    <h1 class="">{{ __('Welcome to Haik!') }}</h1>
     <h3>{{ __('indexIntro') }}</h3>
     <h3>{{ __('indexPhrase') }}</h3>
     <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
