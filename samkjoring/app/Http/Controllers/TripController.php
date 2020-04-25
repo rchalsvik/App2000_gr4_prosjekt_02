@@ -76,13 +76,13 @@ class TripController extends Controller
       Trip::create($validatedResults);
       //Trip::create($this->validateTrip());
 
+      // Log Trip store
       $owner = DB::table('users')
         ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
         ->select('users.id', 'users.firstname', 'users.lastname')
         ->where('users.id', request('driver_id'))
         ->first();
 
-      // Log Trip store
       $logString = LOG_CODES['createTrip'] . ' [' .
                    'USER: ' .
                    $owner->id . '. ' . $owner->firstname . ' ' . $owner->lastname . '] ==> [' .
@@ -92,7 +92,6 @@ class TripController extends Controller
                    request('start_time') . ' - ' . request('start_date') . ' --> ' .
                    'ETIM: ' .
                    request('end_time') . ' - ' . request('end_date') . ']';
-
       Log::channel('samkjøring')->info($logString);
 
       return redirect('/');
@@ -224,21 +223,34 @@ class TripController extends Controller
      */
     public function destroy(Trip $trip)
     {
-      // Log at en tur er kansellert av bruker
-      $logString = 'Tur deaktivert: ' . $trip->id . ' ' .$trip->start_point . ' - ' . $trip->end_point . ' av brukerID: ' . $trip->driver_id;
-      Log::channel('samkjøring')->info($logString);
-
       // Setta turen til deaktiv
       $trip->trip_active = false;
       $trip->save();
 
-      $trips = DB::table('trips')
+      $trip = DB::table('trips')
         //->whereRaw('id = ' . $trip->id)
         ->where('trips.id', $trip->id)
-        ->get();
+        ->first();
 
-      $trip = $trips[0];
+      //$trip = $trips[0];
       $type = 1;
+
+      // Log at en tur er kansellert av bruker
+      $currUsr = DB::table('users')
+        ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
+        ->select('users.id', 'users.firstname', 'users.lastname')
+        ->where('users.id', $trip->driver_id)
+        ->first();
+
+      $logString = LOG_CODES['cancelTrip'] . ' [' .
+                   'TRIP: ' .
+                   $trip->id . '. ' .
+                   $trip->start_point . '->' . $trip->end_point . '] ==> [' .
+                   'BY_USER: ' .
+                   $currUsr->id . '. ' .
+                   $currUsr->firstname . ' ' .
+                   $currUsr->lastname . ']'; // . request('passenger_id');
+      Log::channel('samkjøring')->info($logString);
 
       return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
     }
@@ -349,8 +361,8 @@ class TripController extends Controller
                    $trip->id . '. ' .
                    $trip->start_point . '->' . $trip->end_point . '], [' .
                    'TIME: ' .
-                   $trip->start_time . ' - ' . $trip->start_date . ']'; // . request('passenger_id');
-
+                   $trip->start_time . ' - ' . $trip->start_date . '], [' .
+                   'REQ_SEAT(S): ' . request('seats_requested') . ']'; // . request('passenger_id');
       Log::channel('samkjøring')->info($logString);
 
       return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);

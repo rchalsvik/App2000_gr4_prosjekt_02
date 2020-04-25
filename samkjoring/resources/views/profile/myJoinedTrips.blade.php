@@ -27,11 +27,11 @@
                   {{ $trip->end_point }}
                 </a>
               </h3>
-              <div class="ml-4 font-weight-bolder flex     @if($trip->trip_active) text-active @else text-deactive @endif  ">
+              <div class="ml-4 font-weight-bolder flex align-items-start    @if($trip->trip_active) text-active @else text-deactive @endif  ">
                 @if ($trip->trip_active)
-                  <div class="item">{{ __('Active') }}<img class="ml-2 mb-n-1" src="/img/icons/active.svg" alt="Active"></div>
+                  {{ __('Active') }}<img class="ml-2 mt-n-1" src="/img/icons/active.svg" alt="{{ __('Active') }}">
                 @else
-                  <div class="item">{{ __('Not Active') }}<img class="ml-2 mb-n-1" src="/img/icons/deactive.svg" alt="Deactive"></div>
+                  {{ __('Not Active') }}<img class="ml-2 mt-n-1" src="/img/icons/deactive.svg" alt="{{ __('Not Active') }}">
                 @endif
               </div>
             </div>

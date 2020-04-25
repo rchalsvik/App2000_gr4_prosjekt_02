@@ -289,3 +289,10 @@ h3.margin-b {
 .sam-icon-list {
 
 }
+
+.sam-col {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}

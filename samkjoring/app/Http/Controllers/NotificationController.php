@@ -56,7 +56,10 @@ class NotificationController extends Controller
     {
       $tmpReq = $request['trip'];
       $tmpType = $request['type'];
-      $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $tmpReq['id'])->get();
+      $passengers = DB::table('passengers')
+        //->whereRaw('trip_id = ' . $tmpReq['id'])
+        ->where('trip_id', $tmpReq['id'])
+        ->get();
 
       if ($tmpType == 3 || $tmpType == 4) {
         $notification = [
@@ -94,11 +97,6 @@ class NotificationController extends Controller
         }
 
       }
-
-
-
-
-
       return redirect()->action('TripController@myTrips');
     }
 

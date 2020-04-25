@@ -29,6 +29,7 @@ class IndexController extends Controller
       return view('index', ['trips' => $trips]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -38,6 +39,7 @@ class IndexController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -49,6 +51,7 @@ class IndexController extends Controller
     {
         //
     }
+
 
     /**
      * Display the specified resource.
@@ -73,6 +76,7 @@ class IndexController extends Controller
 
       return view('index', ['trips' => $trips]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

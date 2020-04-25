@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -38,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+      $this->middleware('guest');
     }
 
     /**
@@ -49,19 +50,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        //dd($data);
-        return Validator::make($data, [
-            'firstname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'digits:8'],
-            'address' => ['required', 'string', 'max:255'],
-            'zipcode' => ['required', 'digits:4', 'exists:counties,zipcode'], //ikkje mellomrom etter komma i exists
-            'date_of_birth' => ['required', 'date'],
-            'hasLicense' => ['boolean'],
-        ]);
+      return Validator::make($data, [
+        'firstname'     => ['required', 'string', 'max:255'],
+        'email'         => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password'      => ['required', 'string', 'min:8', 'confirmed'],
+        'lastname'      => ['required', 'string', 'max:255'],
+        'phone'         => ['required', 'digits:8'],
+        'address'       => ['required', 'string', 'max:255'],
+        'zipcode'       => ['required', 'digits:4', 'exists:counties,zipcode'], //ikkje mellomrom etter komma i exists
+        'date_of_birth' => ['required', 'date'],
+        'hasLicense'    => ['boolean'],
+      ]);
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -71,16 +72,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'firstname' => $data['firstname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'lastname' => $data['lastname'],
-            'phone' => $data['phone'],
-            'address' => $data['address'],
-            'zipcode' => $data['zipcode'],
-            'date_of_birth' => $data['date_of_birth'],
-            'hasLicense' => $data['hasLicense'],
-        ]);
+       $usr = User::create([
+        'firstname'     => $data['firstname'],
+        'email'         => $data['email'],
+        'password'      => Hash::make($data['password']),
+        'lastname'      => $data['lastname'],
+        'phone'         => $data['phone'],
+        'address'       => $data['address'],
+        'zipcode'       => $data['zipcode'],
+        'date_of_birth' => $data['date_of_birth'],
+        'hasLicense'    => $data['hasLicense'],
+      ]);
+
+      /*
+      // Logge ny bruker
+      $logString = LOG_CODES['newUser'] . ' [' .
+      'USER: ' . $usr->firstname . ' ' . $usr->lastname . ', ' .
+      'LICENCE: ' . $usr->hasLicense . ']';
+      Log::channel('samkjøring')->info($logString);
+      */
+
+      return $usr;
     }
+
 }

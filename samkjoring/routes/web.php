@@ -40,8 +40,6 @@ Route::post('/trip/store', 'TripController@store')->name('storeTrip');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
 Route::get('/', 'IndexController@index')->name('index');
 
 Route::get('/omoss', function () {

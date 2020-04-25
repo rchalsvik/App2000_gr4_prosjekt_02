@@ -9,6 +9,7 @@
 
   // Logging
   define('LOG_CODES', [
+    'testing'    => 'TESTN',
     'login'      => 'LOGIN',
     'logout'     => 'LOGOT',
     'newUser'    => 'NWUSR',

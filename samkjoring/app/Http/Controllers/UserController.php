@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Log;
 use DB;
 
 class UserController extends Controller
@@ -19,6 +20,7 @@ class UserController extends Controller
         //
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,6 +30,7 @@ class UserController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -40,6 +43,7 @@ class UserController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -50,6 +54,7 @@ class UserController extends Controller
     {
         //
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -62,6 +67,7 @@ class UserController extends Controller
         return view('editUser', ['user' => $user]);
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -71,11 +77,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-      /* $logString = 'Endra tur: ' . request('start_point') . ' - ' . request('end_point') .
-                   ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
-                   ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
-                   ' , Bruker ID' . ' ' . request('driver_id');
-      Log::channel('samkjøring')->info($logString); */
       $validatedResults = request()->validate([
         'phone' => ['required', 'digits:8'],
         'address' => ['required', 'string', 'max:255'],
@@ -83,13 +84,13 @@ class UserController extends Controller
         'hasLicense' => ['boolean'],
       ]);
 
-      //dd($validatedResults);
-
-      //dd(request('seats_available'));
-      //$nyuser = $user;
-      //$nyuser->id = $request->id;
-      //dd($user);
       $user->update($validatedResults);
+
+      // Logge endring av| bruker
+      $logString = LOG_CODES['editUser'] . ' [' .
+      'USER: ' . $user->id . ' ' . $user->firstname . ' ' . $user->lastname . ']';
+      Log::channel('samkjøring')->info($logString);
+
       return redirect('/home');
     }
 
@@ -108,16 +109,15 @@ class UserController extends Controller
      protected function validateUser()
      {
        return request()->validate([
-            'firstname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'digits:8'],
-            'address' => ['required', 'string', 'max:255'],
-            'zipcode' => ['required', 'digits:4', 'exists:counties,zipcode'], //ikkje mellomrom etter komma i exists
-            'date_of_birth' => ['required', 'date'],
-            'hasLicense' => ['boolean'],
-        ]);
+        'firstname' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'lastname' => ['required', 'string', 'max:255'],
+        'phone' => ['required', 'digits:8'],
+        'address' => ['required', 'string', 'max:255'],
+        'zipcode' => ['required', 'digits:4', 'exists:counties,zipcode'], //ikkje mellomrom etter komma i exists
+        'date_of_birth' => ['required', 'date'],
+        'hasLicense' => ['boolean'],
+      ]);
     }
-
 }

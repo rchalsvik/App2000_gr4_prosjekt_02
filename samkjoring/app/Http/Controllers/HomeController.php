@@ -40,7 +40,7 @@ class HomeController extends Controller
 
         // Log bruker login
         // Bør kanskje lage kortere log: "Login bruker: 5. Kari Nord"
-        Log::channel('samkjøring')->info('Login bruker: ' . $id . '. ' . $user->firstname . ' ' . $user->lastname);
+        //Log::channel('samkjøring')->info('Login bruker: ' . $id . '. ' . $user->firstname . ' ' . $user->lastname);
 
         //dd($trips);
         //$data = ['user'=>$user, 'trips'=>$trips];
