@@ -62,16 +62,32 @@ h3.margin-b {
   height: calc(1.6em + 0.75rem + 2px);
 }
 
-
-.btn-primary {
-  background-color: #0095ff;
-  border-color: #005fa2;
+.btn-primary, .page-item.active .page-link {
+  background-color: #00a2ce;
+  border-color: #588dc5;
 }
 
-.btn-primary:hover {
-    color: #005fa2;
-    background-color: #9dd6ff;
-    border-color: #005ea0;
+.btn-primary {
+  border-color: #004152;
+}
+
+.btn-primary:hover, .page-link:hover {
+  /*color: #004152;
+  background-color: #d2dce6;
+  background-color: #fff2bb;
+  border-color: #004152;*/
+  color: #588dc5;
+  text-decoration: none;
+  background-color: #d9ecff;
+  border-color: #588dc5;
+}
+
+.page-link {
+  color: #004152;
+}
+
+.page-link:hover {
+  color: #00a2ce;
 }
 
 .item-container {
@@ -209,15 +225,20 @@ h3.margin-b {
 
 .clear.x  { background-position: right 5px center; }
 
+.btn-group-toggle {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+ul.pagination {
+  margin-bottom: 0rem;
+}
+
 .paginator-container {
   display: flex;
   justify-content: center;
   /*padding: 0 15px;*/
   width: 100%;
-}
-
-.page  {
-
 }
 
 .page img {

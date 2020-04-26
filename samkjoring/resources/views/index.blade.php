@@ -17,15 +17,15 @@
   <h3>{{ __('Hello') }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>
   {{--<h3>{{ __(heyheyGenerator(true)) }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>--}}
   @if(auth()->user()->hasLicense)
-    <a href="{{ route('createTrip') }}" class="btn btn-primary btn-lg">{{ __('Make a trip now!') }}</a>
-    <a href="{{ route('myTrips') }}" class="btn btn-primary btn-lg">{{ __('My trips') }}</a>
-    <a href="{{ route('myJoinedTrips') }}" class="btn btn-primary btn-lg">{{ __('Joined trips') }}</a>
+    <a href="{{ route('createTrip') }}" class="btn btn-secondary btn-lg">{{ __('Make a trip now!') }}</a>
+    <a href="{{ route('myTrips') }}" class="btn btn-secondary btn-lg">{{ __('My trips') }}</a>
+    <a href="{{ route('myJoinedTrips') }}" class="btn btn-secondary btn-lg">{{ __('Joined trips') }}</a>
   @endif
 @endauth
 </header>
 
 {{--Hurtigsøkefelt--}}
-<div class="mb-2">
+<div class="mb-4">
   <form method="GET" action="{{ route('searchInIndex') }}" id="search_form" class="index-search-container">
     @csrf {{-- viktig! ellers så feiler siden --}}
     <div class="index-search-searchbar mr-2">

@@ -48,14 +48,15 @@ class TripController extends Controller
       $validatedResults = TripController::validateTrip();
 
       // Tur Bilde Opplastning
-      $img = '';
+      /*$img = '';
       if ($file = $request->file('trip_image')) {
         $img = pakkSammenBilde($file);
       } else {
         $img = randomImagesThatWeTotallyOwnFromDirectoryOnMachine();
         //$img = basename($img);
       }
-      $validatedResults['trip_image'] = $img;
+      $validatedResults['trip_image'] = $img;*/
+      $validatedResults['trip_image'] = TripController::selectImage($request); //$img;
 
       //$check = Trip::insertGetId($insert);
       Trip::create($validatedResults);
@@ -124,14 +125,14 @@ class TripController extends Controller
       $validatedResults = TripController::validateTrip();
 
       // Tur Bilde Opplastning
-      $img = '';
+      /*$img = '';
       if ($file = $request->file('trip_image')) {
         $img = pakkSammenBilde($file);
       } else {
         $img = randomImagesThatWeTotallyOwnFromDirectoryOnMachine();
         //$img = basename($img);
-      }
-      $validatedResults['trip_image'] = $img;
+      }*/
+      $validatedResults['trip_image'] = TripController::selectImage($request); //$img;
 
       $trip->update($validatedResults);
 
@@ -406,11 +407,28 @@ class TripController extends Controller
         ->orderByDesc('trip_active')
         ->orderBy    ('start_date')
         ->orderByDesc('start_time')
-        //->get();
         ->paginate(CARD_AMOUNT); // Vi kan bruke 4, 8, 12, 16... sjekk config/globalVars.php
 
       return view('profile/myJoinedTrips', ['trips'=>$trips]);
     }
+
+
+
+
+    /*
+     * Alle funksjoner her pls.
+     */
+    protected function selectImage(Request $request) {
+      $img = '';
+      if ($file = $request->file('trip_image')) {
+        $img = pakkSammenBilde($file);
+      } else {
+        $img = randomImagesThatWeTotallyOwnFromDirectoryOnMachine();
+      }
+
+      return $img;
+    }
+
 
     protected function validateTrip()
     {
@@ -419,10 +437,8 @@ class TripController extends Controller
         'start_point' => ['required', 'string', 'max:255'],
         'end_point' => ['required', 'string', 'max:255'],
         'start_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        //'start_time' => ['required', 'date', 'after_or_equal:' . date('h:i')],
-        'start_time' => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
+        'start_time' => ['required', 'date_format:H:i'],
         'end_date' => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        //'end_time' => ['required', 'date', 'after_or_equal:' . date('h:i')],
         'end_time' => ['required', 'date_format:H:i'],
         'seats_available' => ['required', 'digits_between:1,45'],
         'car_description' => ['required', 'string', 'max:255'],
@@ -433,6 +449,7 @@ class TripController extends Controller
       ]);
     }
 
+
     protected function validatePassenger()
     {
       return request()->validate([
@@ -441,6 +458,7 @@ class TripController extends Controller
         'seats_requested' => ['required', 'digits_between:1,45'],
       ]);
     }
+
 
     protected function validateSeats()
     {

@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-4">
-            <div class="card mb-4">
+        <div class="col-md-8 mt-4 mb-4">
+            <div class="card">
                 <div class="card-header"><h4>{{ __('Search') }}</h4></div>
 
                 <div class="card-body">
@@ -70,27 +70,27 @@
                         <div class="form-group row">
                             <label for="pets_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Pets allowed') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 flex flex align-items-center">
                                 <input type="hidden" name="pets_allowed" value="0">
-                                <input id="pets_allowed" type="checkbox" class="form-control" name="pets_allowed" value="1" autocomplete="pets_allowed">
+                                <input id="pets_allowed" type="checkbox" class="btn-group-toggle" name="pets_allowed" value="1" autocomplete="pets_allowed">
                             </div>
                         </div>
 
                         <div class="form-group row">
                           <label for="kids_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Kids allowed') }}</label>
 
-                          <div class="col-md-6">
+                          <div class="col-md-6 flex flex align-items-center">
                             <input type="hidden" name="kids_allowed" value="0">
-                            <input id="kids_allowed" type="checkbox" class="form-control" name="kids_allowed" value="1" autocomplete="kids_allowed">
+                            <input id="kids_allowed" type="checkbox" class="btn-group-toggle" name="kids_allowed" value="1" autocomplete="kids_allowed">
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <label for="trip_active" class="col-md-4 col-form-label text-md-right">{{ __('Active trips only') }}</label>
 
-                          <div class="col-md-6">
+                          <div class="col-md-6 flex flex align-items-center">
                             <input type="hidden" name="trip_active" value="0">
-                            <input id="trip_active" type="checkbox" class="form-control" name="trip_active" value="1" autocomplete="trip_active">
+                            <input id="trip_active" type="checkbox" class="btn-group-toggle" name="trip_active" value="1" autocomplete="trip_active">
                           </div>
                         </div>
 
