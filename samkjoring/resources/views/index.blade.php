@@ -14,9 +14,12 @@
   </header>
 @endguest
 @auth
-  <h3>{{ __('Hello ') }}{{ auth()->user()->firstname }}{{ __('!') }}</h3>
+  <h3>{{ __('Hello') }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>
+  {{--<h3>{{ __(heyheyGenerator(true)) }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>--}}
   @if(auth()->user()->hasLicense)
-    <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Make a trip now!') }}</a>
+    <a href="{{ route('createTrip') }}" class="btn btn-primary btn-lg">{{ __('Make a trip now!') }}</a>
+    <a href="{{ route('myTrips') }}" class="btn btn-primary btn-lg">{{ __('My trips') }}</a>
+    <a href="{{ route('myJoinedTrips') }}" class="btn btn-primary btn-lg">{{ __('Joined trips') }}</a>
   @endif
 @endauth
 </header>
@@ -49,9 +52,10 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <a href="/trips/{{ $trip->id }}/seemore" class="">
-            {{--<img class="card-img-top card-img-top-interactive" src="{{URL::to('/')}}/img/bra_bil.jpg" alt="">--}}
+            {{--<img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/img/bra_bil.jpg" alt="">--}}
             {{--<img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ randomImagesThatWeTotallyOwnFromDirectoryOnMachine() }}" alt="Trip Images">--}}
-            <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip->trip_image) }}" alt="Trip Images">
+            {{--<img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip->trip_image) }}" alt="Trip Images">--}}
+            <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}{{ giMegBilde($trip->trip_image) }}" alt="{{ __('Trip Images') }}">
           </a>
 
           <div class="card-body">
@@ -80,9 +84,9 @@
             </div>
 
             {{-- Seter tilgjengelig --}}
-            <div class="mt-4">
+            <div class="mt-4 card-seats-avail">
               {{ $trip->seats_available }} {{ __('seats available') }}
-              <img class="ml-2 mb-n-1" src="/img/icons/chair_line.svg" alt="Seat">
+              <img class="ml-2 mb-n-1" src="/img/icons/chair_exotic.svg" alt="Seat">
             </div>
 
           </div>

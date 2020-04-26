@@ -98,13 +98,16 @@ class PassengerController extends Controller
         $passenger = $passengers[0];
         //foreach ($passengers as $passenger) {
 
-          $trips = DB::table('trips')->whereRaw('id = ' . $passenger->trip_id)->get();
+          //$trips = DB::table('trips')->whereRaw('id = ' . $passenger->trip_id)->get();
+          $trup = DB::table('trips')
+            ->where('id', $passenger->trip_id)
+            ->first();
           //foreach ($trips as $trup) { //kanskje trips[0]->id osv??
 
             //$trip->seats_available = $trip->seats_available + $passenger->seats_requested;
 
             //$trip->save();
-            $trup = $trips[0];
+            //$trup = $trips[0];
 
 
             request()->merge([ 'seats_requested' => $trup->seats_available + request('seats_requested') ]);
@@ -165,10 +168,12 @@ class PassengerController extends Controller
         //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
         //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
 
-        $trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
-        $trip = $trips[0];
+        $trip = DB::table('trips')
+          ->where('id', $trip->id)
+          ->first();
+
         $type = 4;
-        
+
         return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
 
         //return redirect()->back();

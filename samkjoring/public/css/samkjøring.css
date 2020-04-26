@@ -175,6 +175,11 @@ h3.margin-b {
 }
 
 
+.card-seats-avail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .dropdown-item {
   font-size: 1rem;

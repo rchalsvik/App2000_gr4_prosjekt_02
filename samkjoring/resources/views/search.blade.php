@@ -8,7 +8,7 @@
                 <div class="card-header"><h4>{{ __('Search') }}</h4></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('searchShow') }}" id="tripform">
+                    <form method="GET" action="{{ route('searchShow') }}" id="tripform">
                       @csrf {{-- viktig! ellers så feiler siden --}}
 
                         <div class="form-group row">
@@ -221,9 +221,9 @@
 
               {{-- Request::except('page') henter alle verdier fra addresslinja som ikke er page=1..2..3 osv --}}
               <div class="paginator-container">
-                {{ $trips->links() }}
+                {{ $trips->appends(Request::except('page'))->links() }}
               </div>
-              
+
         </div>
     </div>
 </div>

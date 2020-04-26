@@ -16,7 +16,8 @@
                 {{-- <img class="card-img-top" src="{{URL::to('/')}}/{{ randomImagesThatWeTotallyOwnFromDirectoryOnMachine() }}" alt=""> --}}
 
                 {{-- <img src="data:image/jpeg;base64,{{ chunk_split(base64_encode($trip->trip_image)) }}" alt="Image"> --}}
-                <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip->trip_image) }}" alt="Trip Images">
+                {{--<img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip->trip_image) }}" alt="Trip Images">--}}
+                <img class="card-img-top" src="{{ URL::to('/') }}{{ giMegBilde($trip->trip_image) }}" alt="{{ __('Trip Images') }}">
 
                 <div class="card-body card-body-flex">
                     @if (session('status'))

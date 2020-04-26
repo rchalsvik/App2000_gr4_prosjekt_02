@@ -7,7 +7,6 @@ use App\Passenger;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-//use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class TripController extends Controller
@@ -38,7 +37,6 @@ class TripController extends Controller
       return view('trips.create');
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -47,30 +45,17 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-      $validatedResults = request()->validate([
-        'driver_id'   => ['required'],
-        'start_point' => ['required', 'string', 'max:255'],
-        'end_point'   => ['required', 'string', 'max:255'],
-        'start_date'  => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        'start_time'  => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
-        'end_date'    => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        'end_time'    => ['required', 'date_format:H:i'],
-        'seats_available' => ['required', 'digits_between:1,45'],
-        'car_description' => ['required', 'string', 'max:255'],
-        'trip_info'    => ['required', 'string'],
-        'pets_allowed' => ['required', 'boolean'],
-        'kids_allowed' => ['required', 'boolean'],
-        'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
-      ]);
+      $validatedResults = TripController::validateTrip();
 
       // Tur Bilde Opplastning
-      if ($files = $request->file('trip_image')) {
-        $destinationPath = 'tripImage/'; // upload path
-        $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
-        $files->move($destinationPath, $profileImage);
-        //$insert['trip_image'] = "$profileImage";
-        $validatedResults['trip_image'] = "$profileImage";
+      $img = '';
+      if ($file = $request->file('trip_image')) {
+        $img = pakkSammenBilde($file);
+      } else {
+        $img = randomImagesThatWeTotallyOwnFromDirectoryOnMachine();
+        //$img = basename($img);
       }
+      $validatedResults['trip_image'] = $img;
 
       //$check = Trip::insertGetId($insert);
       Trip::create($validatedResults);
@@ -136,46 +121,27 @@ class TripController extends Controller
      */
     public function update(Request $request, Trip $trip) //
     {
-      // Log Trip oppdatering oppdatering
-      $logString = 'Oppdatert tur: ' . request('start_point') . ' - ' . request('end_point') .
-                   ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
-                   ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
-                   ' , Bruker ID' . ' ' . request('driver_id');
-      Log::channel('samkjøring')->info($logString);
+      $validatedResults = TripController::validateTrip();
 
-      $validatedResults = request()->validate([
-        'driver_id'   => ['required'],
-        'start_point' => ['required', 'string', 'max:255'],
-        'end_point'   => ['required', 'string', 'max:255'],
-        'start_date'  => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        'start_time'  => ['required', 'date_format:H:i'], //må ha date_format på tid!!!!!!!!!!!!!!!!!!!
-        'end_date'    => ['required', 'date', 'after_or_equal:' . date('Y-m-d')],
-        'end_time'    => ['required', 'date_format:H:i'],
-        'seats_available' => ['required', 'digits_between:1,45'],
-        'car_description' => ['required', 'string', 'max:255'],
-        'trip_info'    => ['required', 'string'],
-        'pets_allowed' => ['required', 'boolean'],
-        'kids_allowed' => ['required', 'boolean'],
-        'trip_image'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
-      ]);
-
-      if ($files = $request->file('trip_image')) {
-        $destinationPath = 'tripImage/'; // upload path
-        $profileImage = 'image'. '_' . date('YmdHis') . "." . $files->getClientOriginalExtension();
-        $files->move($destinationPath, $profileImage);
-        //$insert['trip_image'] = "$profileImage";
-        $validatedResults['trip_image'] = "$profileImage";
+      // Tur Bilde Opplastning
+      $img = '';
+      if ($file = $request->file('trip_image')) {
+        $img = pakkSammenBilde($file);
+      } else {
+        $img = randomImagesThatWeTotallyOwnFromDirectoryOnMachine();
+        //$img = basename($img);
       }
+      $validatedResults['trip_image'] = $img;
 
       $trip->update($validatedResults);
 
       //$trips = DB::table('trips')->whereRaw('id = ' . $trip->id)->get();
-      $trips = DB::table('trips')
+      $trip = DB::table('trips')
         ->where('id', $trip->id)
-        ->get();
+        ->first();
 
       //foreach ($trips as $trup) { //kanskje trips[0]->id osv??
-      $trip = $trips[0];
+      //$trip = $trips[0];
         /*
           $trip->id = $trup->id;
           $trip->driver_id = $trup->driver_id;
@@ -210,6 +176,13 @@ class TripController extends Controller
       //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
       //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
       $type = 2;
+
+      // Log Trip oppdatering oppdatering
+      $logString = 'Oppdatert tur: ' . request('start_point') . ' - ' . request('end_point') .
+                   ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
+                   ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
+                   ' , Bruker ID' . ' ' . request('driver_id');
+      Log::channel('samkjøring')->info($logString);
 
       return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
     }
