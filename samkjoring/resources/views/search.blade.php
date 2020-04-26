@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 mt-4 mb-4">
-            <div class="card">
+        <div class="col-md-8 mt-4">
+            <div class="card mb-4">
                 <div class="card-header"><h4>{{ __('Search') }}</h4></div>
 
                 <div class="card-body">
@@ -93,10 +93,13 @@
                             <input id="trip_active" type="checkbox" class="btn-group-toggle" name="trip_active" value="1" autocomplete="trip_active">
                           </div>
                         </div>
-
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Search') }}
-                        </button>
+                        <div class="form-group row mb-0">
+                          <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Search') }}
+                            </button>
+                          </div>
+                      </div>
                     </form>
 
                     {{--<!--

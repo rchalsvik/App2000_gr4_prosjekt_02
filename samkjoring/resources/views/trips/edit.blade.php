@@ -47,7 +47,7 @@
                           <label for="car_description" class="col-md-4 col-form-label text-md-right">{{ __('Car description') }}</label>
 
                           <div class="col-md-6">
-                              <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description', $trip->car_description) }}</textarea>
+                              <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="4" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description', $trip->car_description) }}</textarea>
 
                               @error('car_description')
                                   <span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
                           <label for="trip_info" class="col-md-4 col-form-label text-md-right">{{ __('Trip info') }}</label>
 
                           <div class="col-md-6">
-                              <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info', $trip->trip_info) }}</textarea>
+                              <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="4" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info', $trip->trip_info) }}</textarea>
 
                               @error('trip_info')
                                   <span class="invalid-feedback" role="alert">
@@ -103,17 +103,17 @@
 
 
                         <div class="form-group row">
-                            <label for="end_point" class="col-md-4 col-form-label text-md-right">{{ __('End point') }}</label>
+                          <label for="end_point" class="col-md-4 col-form-label text-md-right">{{ __('End point') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="end_point" type="text" class="form-control @error('end_point') is-invalid @enderror" name="end_point" value="{{ old('end_point', $trip->end_point) }}" required autocomplete="end_point" autofocus>
+                          <div class="col-md-6">
+                            <input id="end_point" type="text" class="form-control @error('end_point') is-invalid @enderror" name="end_point" value="{{ old('end_point', $trip->end_point) }}" required autocomplete="end_point" autofocus>
 
-                                @error('end_point')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            @error('end_point')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                            @enderror
+                          </div>
                         </div>
 
                         <div class="form-group row">
@@ -190,7 +190,7 @@
                             <label for="car_description" class="col-md-4 col-form-label text-md-right">{{ __('Car description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description', $trip->car_description) }}</textarea>
+                                <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="2" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description', $trip->car_description) }}</textarea>
 
                                 @error('car_description')
                                     <span class="invalid-feedback" role="alert">
@@ -204,7 +204,7 @@
                             <label for="trip_info" class="col-md-4 col-form-label text-md-right">{{ __('Trip info') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="8" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info', $trip->trip_info) }}</textarea>
+                                <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="4" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info', $trip->trip_info) }}</textarea>
 
                                 @error('trip_info')
                                     <span class="invalid-feedback" role="alert">
@@ -215,28 +215,28 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="pets_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Pets allowed') }}</label>
+                          <label for="pets_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Pets allowed') }}</label>
 
-                            <div class="col-md-6">
-                                <input type="hidden" name="pets_allowed" value="0">
-                                <input id="pets_allowed" type="checkbox" class="form-control" name="pets_allowed" value="1" autocomplete="pets_allowed" @if($trip->pets_allowed) checked @endif>
-                            </div>
+                          <div class="col-md-6 flex flex align-items-center">
+                            <input type="hidden" name="pets_allowed" value="0">
+                            <input id="pets_allowed" type="checkbox" class="btn-group-toggle" name="pets_allowed" value="1" autocomplete="pets_allowed" @if($trip->pets_allowed) checked @endif>
+                          </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="kids_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Kids allowed') }}</label>
+                          <label for="kids_allowed" class="col-md-4 col-form-label text-md-right">{{ __('Kids allowed') }}</label>
 
-                            <div class="col-md-6">
-                                <input type="hidden" name="kids_allowed" value="0">
-                                <input id="kids_allowed" type="checkbox" class="form-control" name="kids_allowed" value="1" autocomplete="kids_allowed" @if($trip->kids_allowed) checked @endif>
-                            </div>
+                          <div class="col-md-6 flex flex align-items-center">
+                            <input type="hidden" name="kids_allowed" value="0">
+                            <input id="kids_allowed" type="checkbox" class="btn-group-toggle" name="kids_allowed" value="1" autocomplete="kids_allowed" @if($trip->kids_allowed) checked @endif>
+                          </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="trip_image" class="col-md-4 col-form-label text-md-right">{{ __('Image (Optional)') }}</label>
 
                             <div class="col-md-6">
-                                <input id="trip_image" type="file" class="form-control @error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image') }}" autofocus>
+                                <input id="trip_image" type="file" class="form-control form-control-choose-file @error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image') }}" autofocus>
 
                                 @error('trip_image')
                                   <span class="invalid-feedback" role="alert">

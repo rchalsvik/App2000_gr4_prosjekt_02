@@ -257,6 +257,13 @@ ul.pagination {
   border-radius: 0rem;
 }
 
+.form-control-choose-file {
+  height: auto;
+  border: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .flex {
   display: flex;
 }
