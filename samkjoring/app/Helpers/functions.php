@@ -1,4 +1,5 @@
 <?php
+
   // Funksjoner //
   function jegHater($alt) {
     return "Jeg hater " . $alt;
@@ -58,5 +59,4 @@
     } else {
       return 'Hello';
     }
-
   }

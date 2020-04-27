@@ -59,12 +59,11 @@ class TripController extends Controller
       $validatedResults['trip_image'] = TripController::selectImage($request); //$img;
 
       //$check = Trip::insertGetId($insert);
-      Trip::create($validatedResults);
+      $trip = Trip::create($validatedResults);
       //Trip::create($this->validateTrip());
 
       // Log Trip store
       $owner = DB::table('users')
-        ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
         ->select('users.id', 'users.firstname', 'users.lastname')
         ->where('users.id', request('driver_id'))
         ->first();
@@ -80,7 +79,14 @@ class TripController extends Controller
                    request('end_time') . ' - ' . request('end_date') . ']';
       Log::channel('samkjøring')->info($logString);
 
-      return redirect('/');
+      // Skal til den nyopprettet turen
+
+
+      //dd($trip->id);
+      //return redirect('/');
+
+      // Med 'route'en -> trip/{trip}/seemore
+      return redirect()->route('seeMore', ['trip' => $trip->id]);
     }
 
 
@@ -178,11 +184,21 @@ class TripController extends Controller
       //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
       $type = 2;
 
-      // Log Trip oppdatering oppdatering
-      $logString = 'Oppdatert tur: ' . request('start_point') . ' - ' . request('end_point') .
-                   ' , Ny Start: ' . request('start_date') . ' ' . request('start_time') .
-                   ' , Ny End: ' . request('end_date') . ' ' . request('end_time') .
-                   ' , Bruker ID' . ' ' . request('driver_id');
+      // Log Trip store
+      $owner = DB::table('users')
+        ->select('users.id', 'users.firstname', 'users.lastname')
+        ->where('users.id', request('driver_id'))
+        ->first();
+
+      $logString = LOG_CODES['editTrip'] . ' [' .
+                   'USER: ' .
+                   $owner->id . '. ' . $owner->firstname . ' ' . $owner->lastname . '] ==> [' .
+                   'TRIP: ' .
+                   request('start_point') . '-->' . request('end_point') . '], [' .
+                   'STIM: ' .
+                   request('start_time') . ' - ' . request('start_date') . ' --> ' .
+                   'ETIM: ' .
+                   request('end_time') . ' - ' . request('end_date') . ']';
       Log::channel('samkjøring')->info($logString);
 
       return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
@@ -211,7 +227,6 @@ class TripController extends Controller
 
       // Log at en tur er kansellert av bruker
       $currUsr = DB::table('users')
-        ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
         ->select('users.id', 'users.firstname', 'users.lastname')
         ->where('users.id', $trip->driver_id)
         ->first();

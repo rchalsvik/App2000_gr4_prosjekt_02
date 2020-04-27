@@ -6,7 +6,6 @@ use App\Notification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Trip;
-//use App\Passenger;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,8 +76,6 @@ class NotificationController extends Controller
       }
       else {
         foreach ($passengers as $passenger) {
-        // TODO: Her må det fikses med dato og tid
-
         // om det er noken so har meldt seg på eller av ein tur, for denna meldingen ska te sjåføren ikkje passasjeren so har meldt seg på for det blir berre dumt køffør ska du veta at du nettopp meldte deg på turen du nettopp meldte deg på?
 
 

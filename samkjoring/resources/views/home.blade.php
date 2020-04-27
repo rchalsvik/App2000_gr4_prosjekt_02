@@ -9,24 +9,24 @@
         <div class="card-body">
           @if (session('status'))
             <div class="alert alert-success" role="alert">
-                {{ session('status') }}
+              {{ session('status') }}
             </div>
           @endif
 
           @if (auth()->user()->hasLicense)
-          <div id="new_trip" class="profile-row">
-            <a href="{{ route('createTrip') }}">
-              <img src="/img/icons/pro_new_trip.svg" alt="{{ __('New trip') }}">
-            </a>
-            <a href="{{ route('createTrip') }}">{{ __('New trip') }}</a>
-          </div>
+            <div id="new_trip" class="profile-row">
+              <a href="{{ route('createTrip') }}">
+                <img src="/img/icons/pro_new_trip.svg" alt="{{ __('New trip') }}">
+              </a>
+              <a href="{{ route('createTrip') }}">{{ __('New trip') }}</a>
+            </div>
 
-          <div id="my_trips" class="profile-row">
-            <a href="{{ route('myTrips') }}">
-              <img src="/img/icons/pro_my_trips.svg" alt="{{ __('My trips') }}">
-            </a>
-            <a href="{{ route('myTrips') }}">{{ __('My trips') }}</a>
-          </div>
+            <div id="my_trips" class="profile-row">
+              <a href="{{ route('myTrips') }}">
+                <img src="/img/icons/pro_my_trips.svg" alt="{{ __('My trips') }}">
+              </a>
+              <a href="{{ route('myTrips') }}">{{ __('My trips') }}</a>
+            </div>
           @endif
 
           <div id="my_joined_trips" class="profile-row">

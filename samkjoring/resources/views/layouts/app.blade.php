@@ -62,11 +62,12 @@
               @auth
 
                 {{-- Melding på Navbar --}}
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown align-items-start {{ Request::path() === 'home' ? 'active' : '' }}">
                   @if (Auth::user()->hasUnreadMessages == 1)
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} &#x2757; <span class="caret"></span>
+                        {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} &#x2757;<span class="caret"></span> {{--&#x2757;--}}
                     </a>
+
                   @else
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span>
