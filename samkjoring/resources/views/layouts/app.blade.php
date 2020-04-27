@@ -77,14 +77,16 @@
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                     {{-- Arbeidsmeny --}}
-                    {{-- Ny tur --}}
-                    <a class="dropdown-item" href="{{ route('createTrip') }}">{{ __('New trip') }}</a>
-                    {{-- Mine turer --}}
-                    <a class="dropdown-item" href="{{ route('myTrips') }}">{{ __('My trips') }}</a>
-                    {{-- Meldt på turer --}}
-                    <a class="dropdown-item" href="{{ route('myJoinedTrips') }}">{{ __('Joined trips') }}</a>
+                    @if (auth()->user()->hasLicense)
+                      {{-- Ny tur --}}
+                      <a class="dropdown-item" href="{{ route('createTrip') }}">{{ __('New trip') }}</a>
+                      {{-- Mine turer --}}
+                      <a class="dropdown-item" href="{{ route('myTrips') }}">{{ __('My trips') }}</a>
+                      {{-- Meldt på turer --}}
+                      <a class="dropdown-item" href="{{ route('myJoinedTrips') }}">{{ __('Joined trips') }}</a>
 
-                    <hr>
+                      <hr>
+                    @endif
 
                     {{-- Person --}}
                     <a class="dropdown-item" href="{{ url('home') }}">{{ __('Profile') }}</a>

@@ -200,6 +200,28 @@ h3.margin-b {
   justify-content: center;
 }
 
+/* Er ment for en knapprad (flere knapper enn 1) */
+.card-center-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .card-center-buttons {
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .card-center-buttons .btn-primary {
+    width: 100%;
+  }
+}
+
 .dropdown-item {
   font-size: 1rem;
 }
