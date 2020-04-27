@@ -60,7 +60,9 @@ class NotificationController extends Controller
         ->where('trip_id', $tmpReq['id'])
         ->get();
 
+      // om det er noken so har meldt seg på eller av ein tur, for denna meldingen ska te sjåføren ikkje passasjeren so har meldt seg på for det blir berre dumt køffør ska du veta at du nettopp meldte deg på turen du nettopp meldte deg på?
       if ($tmpType == 3 || $tmpType == 4) {
+
         $notification = [
           'trip_id' => $tmpReq['id'],
           'user_id' => $tmpReq['driver_id'],
@@ -73,11 +75,12 @@ class NotificationController extends Controller
         DB::update('update users set hasUnreadMessages = 1 where id = ' . $tmpReq['driver_id']);
 
         Notification::create($notification);
+        return redirect()->action('TripController@myJoinedTrips');
       }
-      else {
-        foreach ($passengers as $passenger) {
-        // om det er noken so har meldt seg på eller av ein tur, for denna meldingen ska te sjåføren ikkje passasjeren so har meldt seg på for det blir berre dumt køffør ska du veta at du nettopp meldte deg på turen du nettopp meldte deg på?
 
+      else {
+
+        foreach ($passengers as $passenger) {
 
           $notification = [
             'trip_id' => $tmpReq['id'],
@@ -93,7 +96,11 @@ class NotificationController extends Controller
           Notification::create($notification);
         }
 
+        return redirect()->action('TripController@myTrips');
+
       }
+
+      //ska aldri slå te! men er der i filtelle
       return redirect()->action('TripController@myTrips');
     }
 
