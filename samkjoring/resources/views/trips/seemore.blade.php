@@ -35,6 +35,31 @@
             </div>
           </div>
 
+          {{-- Hvis Bruker er eier av turen --}}
+          @if (Auth::id() == $trip->driver_id)
+            <div class="item-container item-container-margin-b flex-column">
+              <div class="">{{ __('Passengers: ') }}</div>
+              @foreach ($users as $user)
+                <div class="ml-4">
+                  {{ $user->firstname . ' ' . $user->lastname }}
+                </div>
+              @endforeach
+            </div>
+          @endif
+
+          {{-- Hvis Bruker er passasjer --}}
+          @foreach ($users as $user)
+            @if (Auth::id() == $user->id)
+              <div class="item-container item-container-margin-b flex-column">
+                <div class="">{{ __('Driver info: ') }}</div>
+                <div class="ml-4">
+                  Name:  <b>{{ $chauffeur[0]->firstname . ' ' . $chauffeur[0]->lastname }}</b><br>
+                  Phone: <b>number: {{ $chauffeur[0]->phone }}</b><br>
+                  Email: <b>{{ $chauffeur[0]->email }}</b><br>
+                </div>
+              </div>
+            @endif
+          @endforeach
 
           <div class="item-container item-container-margin-b">
             {{ __('Car description') }}: <br>
@@ -69,14 +94,14 @@
         <div class="card-footer">
           {{-- Her må det fikses i stylene!! --}}
           @if($trip->seats_available > 0)
-          <div class="form-group row">
-            <div class="col-md-4 col-form-label">{{ __('Seats available') }}: </div>
-            <div class="col-md-6">
-              <div class="col-md-4 form-control form-control-text">
-                {{ $trip->seats_available }}
+            <div class="form-group row">
+              <div class="col-md-4 col-form-label">{{ __('Seats available') }}: </div>
+              <div class="col-md-6">
+                <div class="col-md-4 form-control form-control-text">
+                  {{ $trip->seats_available }}
+                </div>
               </div>
             </div>
-          </div>
           @else
             <p style="text-align: center;">{{ __('The trip is full') }}</p>
           @endif
@@ -100,7 +125,7 @@
                       <input type="hidden" name="trip_id" value="{{ $trip->id }}">
 
                       <div class="form-group row">
-                        <label for="seats_available" class="col-md-4 col-form-label">{{ __('Seats requested') }}</label>
+                        <label for="seats_available" class="col-md-4 col-form-label">{{ __('Seats requested') }}: </label>
                         <div class="col-md-6">
                           <input id="seats_available" type="number" min="1" max="{{ $trip->seats_available }}"
                             class="form-control @error('seats_available') is-invalid @enderror"
@@ -127,9 +152,11 @@
 
               {{-- Hvis Bruker er eier av turen --}}
               @if (Auth::id() == $trip->driver_id)
+              {{--
                 @foreach ($users as $user)
-                  <p>{{$user->firstname . ' ' . $user->lastname . ', '}}</p> {{-- Denne må fikses! --}}
+                  <p>{{$user->firstname . ' ' . $user->lastname . ', '}}</p>
                 @endforeach
+              --}}
                 <div class="form-group row mb-0">
                   @if ($trip->trip_active)
                     <form method="POST" onsubmit="return confirm('Do you really want to destroy this trip?');" class="card-center-buttons" action="{{ route('destroyTrip', $trip) }}" id="tripform">
@@ -145,7 +172,7 @@
               @foreach ($users as $user)
                 @if (Auth::id() == $user->id)
                   <div class="form-group row">
-                    <div class="col-md-4 col-form-label">{{ __('Seats requested') }}</div>
+                    <div class="col-md-4 col-form-label">{{ __('Seats requested') }}: </div>
                     <div class="col-md-6">
                       <div class="col-md-4 form-control form-control-text">
                         {{ $user->seats_requested }}
@@ -153,13 +180,15 @@
                     </div>
                   </div>
 
-                  <p>
-                    {{ __('Driver info: ') }}
-                    {{ 'Name: '. $chauffeur[0]->firstname . ' ' . $chauffeur[0]->lastname . ', ' .
-                      'Phone number: ' . $chauffeur[0]->phone . ', Email: ' .
-                      $chauffeur[0]->email
-                    }}
-                  </p>
+                  {{--
+                    <p>
+                      {{ __('Driver info: ') }}
+                      {{ 'Name: '. $chauffeur[0]->firstname . ' ' . $chauffeur[0]->lastname . ', ' .
+                        'Phone number: ' . $chauffeur[0]->phone . ', Email: ' .
+                        $chauffeur[0]->email
+                      }}
+                    </p>
+                  --}}
 
                   {{-- Forlat Tur Knapp --}}
                   @if ($trip->trip_active)
