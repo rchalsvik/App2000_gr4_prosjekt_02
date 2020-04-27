@@ -132,6 +132,9 @@ h3.margin-b {
 .page {
   background-color: white;
 }
+.card > hr {
+  margin: 0;
+}
 
 .card-seat-avail {
   text-align: right;
@@ -303,6 +306,38 @@ ul.pagination {
 }
 
 
+/* Profil sida */
+.profile-row {
+  /*flex-flow: column nowrap;*/
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  /*flex-direction: column;
+  flex-wrap: wrap;*/
+  margin: 0 0 1rem;
+}
+
+.profile-row img {
+  margin-right: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.profile-row a {
+  display: inline-flex;
+}
+
+@media (max-width: 575.98px) {
+  .profile-row {
+    flex-flow: column nowrap;
+    align-items: flex-start;
+  }
+
+  .profile-row > p {
+    width: 100%;
+  }
+}
+
 
 /* Flex text */
 .sam-container {
@@ -328,4 +363,48 @@ ul.pagination {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+}
+
+
+
+
+/* Sånn derre pynteting */
+.sånnDerKontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 1.5rem 4rem 0 2rem;
+}
+
+.sånnDerBy, .sånnDerSted, .sånnDerBil, .sånnDerKloss {
+  display: inline-flex;
+  background-repeat: no-repeat;
+  padding: 4px 4px 0;
+}
+
+.sånnDerBy {
+  background-image: url('/img/icons/jumbo_city.svg');
+  height: 60px;
+  width: 80px;
+  flex: 3 1 auto;
+}
+
+.sånnDerSted {
+  background-image: url('/img/icons/jumbo_place.svg');
+  height: 40px;
+  width: 60px;
+  flex: 1 1 auto;
+}
+
+.sånnDerBil {
+  background-image: url('/img/icons/jumbo_car.svg');
+  height: 20px;
+  width: 30px;
+  flex: 1 1 auto;
+}
+
+.sånnDerKloss {
+  background-color: white;
+  height: 2rem;
+  width: 2rem;
 }

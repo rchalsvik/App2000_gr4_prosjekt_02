@@ -4,22 +4,25 @@
 <div class="container">
 
 {{-- Forbanna Jumbotron --}}
-<header class="jumbotron my-4">
+@auth
+  <div class="sånnDerKontainer">
+    <div class="sånnDerBy"></div>
+    <div class="sånnDerBil"></div>
+    <div class="sånnDerSted"></div>
+  </div>
+@endauth
+<header class="jumbotron @guest my-4 @endguest">
 @guest
-  <header class="jumbotron my-4">
-    <h1 class="">{{ __('Welcome to Haik!') }}</h1>
-    <h3>{{ __('indexIntro') }}</h3>
-    <h3>{{ __('indexPhrase') }}</h3>
-    <a href="{{ route('register') }}" class="btn btn-primary btn-lg">{{ __('Join us now!') }}</a>
-  </header>
+  <h1 class="">{{ __('Welcome to Haik!') }}</h1>
+  <h3>{{ __('indexIntro') }}</h3>
+  <h3>{{ __('indexPhrase') }}</h3>
+  <a href="{{ route('register') }}" class="btn btn-primary btn-lg mt-4">{{ __('Join us now!') }}</a>
 @endguest
 @auth
   <h3>{{ __('Hello') }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>
   {{--<h3>{{ __(heyheyGenerator(true)) }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>--}}
   @if(auth()->user()->hasLicense)
-    <a href="{{ route('createTrip') }}" class="btn btn-secondary btn-lg">{{ __('Make a trip now!') }}</a>
-    <a href="{{ route('myTrips') }}" class="btn btn-secondary btn-lg">{{ __('My trips') }}</a>
-    <a href="{{ route('myJoinedTrips') }}" class="btn btn-secondary btn-lg">{{ __('Joined trips') }}</a>
+    <a href="{{ route('createTrip') }}" class="btn btn-primary btn-lg mt-4">{{ __('Make a trip now!') }}</a>
   @endif
 @endauth
 </header>

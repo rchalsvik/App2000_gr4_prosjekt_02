@@ -35,49 +35,71 @@
 
 </head>
 <body>
-    <div id="app">
+  <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{{ route('index') }}">{{--HÆIK Avd. Lærdal AS--}}<img src="/img/haik_logo_01.svg" alt="hackaik logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
 
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="{{ route('index') }}">{{--HÆIK Avd. Lærdal AS--}}<img src="/img/haik_logo_01.svg" alt="hackaik logo" width="40%"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item {{ Request::path() === '/' ? 'active' : '' }}">
+            {{-- INDEX --}}
+            <li class="nav-item {{ Request::path() === '/' ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('index') }}">{{ __('Home') }}
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
 
-                <a class="nav-link" href="{{ route('index') }}">{{ __('Home') }}
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
+            {{-- About Us --}}
+            <li class="nav-item {{ Request::path() === 'omoss' ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('about') }}">{{ __('About us') }}</a>
+            </li>
 
-              <li class="nav-item {{ Request::path() === 'omoss' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('about') }}">{{ __('About us') }}</a>
-              </li>
-              @if (Route::has('login'))
-                @auth
+            {{-- Drop Down Personlig Meny --}}
+            @if (Route::has('login'))
+              @auth
+
+                {{-- Melding på Navbar --}}
                 <li class="nav-item dropdown">
                   @if (Auth::user()->hasUnreadMessages == 1)
-                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                      {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} &#x2757 <span class="caret"></span>
-                  </a>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} &#x2757; <span class="caret"></span>
+                    </a>
                   @else
-                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                      {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span>
-                  </a>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span>
+                    </a>
                   @endif
+
+                  {{-- Dæsjbård --}}
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                    {{-- Arbeidsmeny --}}
+                    {{-- Ny tur --}}
+                    <a class="dropdown-item" href="{{ route('createTrip') }}">{{ __('New trip') }}</a>
+                    {{-- Mine turer --}}
+                    <a class="dropdown-item" href="{{ route('myTrips') }}">{{ __('My trips') }}</a>
+                    {{-- Meldt på turer --}}
+                    <a class="dropdown-item" href="{{ route('myJoinedTrips') }}">{{ __('Joined trips') }}</a>
+
+                    <hr>
+
+                    {{-- Person --}}
                     <a class="dropdown-item" href="{{ url('home') }}">{{ __('Profile') }}</a>
+
+                    {{-- Notifications --}}
                     @if (Auth::user()->hasUnreadMessages == 1)
-                    <a class="dropdown-item" href="{{ route('notifications') }}">{{ __('Notifications') }} &#x2757</a>
+                      <a class="dropdown-item" href="{{ route('notifications') }}">{{ __('Notifications') }} &#x2757;</a>
                     @else
-                    <a class="dropdown-item" href="{{ route('notifications') }}">{{ __('Notifications') }}</a>
+                      <a class="dropdown-item" href="{{ route('notifications') }}">{{ __('Notifications') }}</a>
                     @endif
+
+                    {{-- LOGOUT --}}
                     <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
+                      onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -85,48 +107,52 @@
                     </form>
                   </div>
                 </li>
-                @else
-                  <li>
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                  </li>
-                @endauth
-              @endif
-              <li class="nav-item dropdown">
-                <a id="navbarLangDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ __('Language') }} <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  {{-- Endre dette til enten "flagg ikon" eller "språk navn" --}}
-                  <a class="dropdown-item" href="{{ url('locale/no') }}"><img class="lang-icon" src="/img/flags/norway.png" alt="No">{{ __('Norsk')}}</a>
-                  <a class="dropdown-item" href="{{ url('locale/en') }}"><img class="lang-icon" src="/img/flags/usa.png" alt="En">{{ __('English')}}</a>
-                  <a class="dropdown-item" href="{{ url('locale/de') }}"><img class="lang-icon" src="/img/flags/germany.png" alt="De">{{ __('Deutsch')}}</a>
-                  <a class="dropdown-item" href="{{ url('locale/ru') }}"><img class="lang-icon" src="/img/flags/russia.png" alt="Ru">{{ __('Pусский')}}</a>
-                  <a class="dropdown-item" href="{{ url('locale/es') }}"><img class="lang-icon" src="/img/flags/spain.png" alt="Es">{{ __('Español')}}</a>
-                </div>
-              </li>
-              <li class="nav-item {{ Request::path() === 'search' ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('searchIndex') }}">{{ __('Search') }}</a>
-              </li>
-            </ul>
-          </div>
+              @else
+                <li>
+                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+              @endauth
+            @endif
+
+            {{-- Språk --}}
+            <li class="nav-item dropdown">
+              <a id="navbarLangDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ __('Language') }} <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                {{-- Endre dette til enten "flagg ikon" eller "språk navn" --}}
+                <a class="dropdown-item" href="{{ url('locale/no') }}"><img class="lang-icon" src="/img/flags/norway.png" alt="No">{{ __('Norsk')}}</a>
+                <a class="dropdown-item" href="{{ url('locale/en') }}"><img class="lang-icon" src="/img/flags/usa.png" alt="En">{{ __('English')}}</a>
+                <a class="dropdown-item" href="{{ url('locale/de') }}"><img class="lang-icon" src="/img/flags/germany.png" alt="De">{{ __('Deutsch')}}</a>
+                <a class="dropdown-item" href="{{ url('locale/ru') }}"><img class="lang-icon" src="/img/flags/russia.png" alt="Ru">{{ __('Pусский')}}</a>
+                <a class="dropdown-item" href="{{ url('locale/es') }}"><img class="lang-icon" src="/img/flags/spain.png" alt="Es">{{ __('Español')}}</a>
+              </div>
+            </li>
+
+            {{-- Søk --}}
+            <li class="nav-item {{ Request::path() === 'search' ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('searchIndex') }}">{{ __('Search') }}</a>
+            </li>
+          </ul>
         </div>
-      </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-
-    <!-- Footer -->
-    <footer class="d-flex py-5 bg-dark mt-auto">
-      <div class="container">
-        <p class="m-0 text-center text-white">{{ __('Copyright') }} &copy; Grp04 2020</p>
       </div>
-      <!-- /.container -->
-    </footer>
+    </nav>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{URL::to('/')}}vendor/jquery/jquery.min.js"></script>
-    <script src="{{URL::to('/')}}vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <main class="py-4">
+          @yield('content')
+      </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="d-flex py-5 bg-dark mt-auto">
+    <div class="container">
+      <p class="m-0 text-center text-white">{{ __('Copyright') }} &copy; Grp04 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{URL::to('/')}}vendor/jquery/jquery.min.js"></script>
+  <script src="{{URL::to('/')}}vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

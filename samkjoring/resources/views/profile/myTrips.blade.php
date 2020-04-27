@@ -8,7 +8,7 @@
     <h5 class="display-3">{{ __('My trips!') }}</h5>
     @auth
       @if(auth()->user()->hasLicense)
-        <a href="{{ route('createTrip') }}" class="btn btn-primary btn-lg">{{ __('New trip') }}</a>
+        <a href="{{ route('createTrip') }}" class="btn btn-primary btn-lg mt-4">{{ __('New trip') }}</a>
       @endif
     @endauth
   </header>
