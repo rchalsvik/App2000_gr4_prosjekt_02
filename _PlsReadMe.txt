@@ -62,7 +62,8 @@ eks:
 
 0. old, ikke bruk! --> $counties = factory(App\County::class, 30)->create( ); $users = factory(App\User::class, 100)->create( ); $trips = factory(App\Trip::class, 600)->create( ); $passengers = factory(App\Passenger::class, 1000)->create( );
 1. Først!! --> php artisan db:seed
-2. Og så--> $users = factory(App\User::class, 100)->create( ); $trips = factory(App\Trip::class, 600)->create( ); $passengers = factory(App\Passenger::class, 1000)->create( );
+2. Og så --> $users = factory(App\User::class, 100)->create( ); $trips = factory(App\Trip::class, 600)->create( ); $passengers = factory(App\Passenger::class, 1000)->create( );
+   Eller --> $users = factory(App\User::class, 200)->create( ); $trips = factory(App\Trip::class, 1200)->create( ); $passengers = factory(App\Passenger::class, 1000)->create( );
 
 // PHP FÅ EIN STRING UT AV DATABASE, KONVERTER FRA STDCLASS //
 $alternativ = DB::select('select count(*) from passengers where trip_id = ' . $selectedTrip->id . ' and passenger_id = ' . $selectedPassenger->id);
