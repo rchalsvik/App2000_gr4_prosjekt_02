@@ -57,7 +57,7 @@
               <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}{{ giMegBilde($trip->trip_image) }}" alt="{{ __('Trip Images') }}">
             </a>
 
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
               <h4 class="card-title">
                 <a href="/trips/{{ $trip->id }}/seemore" class="card-title-link">
                   {{ $trip->start_point . ' - ' . $trip->end_point }}
@@ -83,7 +83,7 @@
               </div>
 
               {{-- Seter tilgjengelig --}}
-              <div class="mt-4 card-seats-avail">
+              <div class="card-seats-avail mt-auto">
                 {{ $trip->seats_available }} {{ __('seats available') }}
                 <img class="ml-2 mb-n-1" src="/img/icons/chair_exotic.svg" alt="Seat">
               </div>

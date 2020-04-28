@@ -125,7 +125,7 @@
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 {{-- Endre dette til enten "flagg ikon" eller "språk navn" --}}
                 <a class="dropdown-item" href="{{ url('locale/no') }}"><img class="lang-icon" src="/img/flags/norway.png" alt="No">{{ __('Norsk')}}</a>
-                <a class="dropdown-item" href="{{ url('locale/en') }}"><img class="lang-icon" src="/img/flags/usa.png" alt="En">{{ __('English')}}</a>
+                <a class="dropdown-item" href="{{ url('locale/en') }}"><img class="lang-icon" src="/img/flags/gb.png" alt="En">{{ __('English')}}</a>
                 <a class="dropdown-item" href="{{ url('locale/de') }}"><img class="lang-icon" src="/img/flags/germany.png" alt="De">{{ __('Deutsch')}}</a>
                 <a class="dropdown-item" href="{{ url('locale/ru') }}"><img class="lang-icon" src="/img/flags/russia.png" alt="Ru">{{ __('Pусский')}}</a>
                 <a class="dropdown-item" href="{{ url('locale/es') }}"><img class="lang-icon" src="/img/flags/spain.png" alt="Es">{{ __('Español')}}</a>
