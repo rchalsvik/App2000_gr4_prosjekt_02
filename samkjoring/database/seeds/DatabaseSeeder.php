@@ -21,11 +21,8 @@ class DatabaseSeeder extends Seeder
         ('left');
       ");
 
-        // $this->call(UsersTableSeeder::class);
-
         // KommuneSeed
         //
-        //DB::table('counties');
         DB::select("
           INSERT INTO `counties` (`zipcode`,`county_name`) VALUES
             ('0001','OSLO'),
@@ -5122,5 +5119,164 @@ class DatabaseSeeder extends Seeder
             ('9990','BÅTSFJORD'),
             ('9991','BÅTSFJORD');
         ");
+
+        /*
+         * Bjørn og sensor kontoer
+         */
+         DB::table('users')->insert([
+           'firstname'         => 'Bjørn',
+           'lastname'          => 'Kristoffersen',
+           'email'             => 'bjorn@grp04.no',
+           'password'          => Hash::make('password'),
+           'phone'             => '90909090',
+           'address'           => 'Univegen 1',
+           'zipcode'           => '3800',
+           'date_of_birth'     => '1920-01-01',
+           'hasLicense'        => 1,
+           'hasUnreadMessages' => 0,
+           'remember_token'    => Str::random(10),
+           'email_verified_at' => date("Y-m-d H:i:s"),
+           'created_at'        => date("Y-m-d H:i:s"),
+           'updated_at'        => date("Y-m-d H:i:s"),
+         ]);
+
+         DB::table('users')->insert([
+           'firstname'         => 'Vidar',
+           'lastname'          => 'Sensor',
+           'email'             => 'vidar@grp04.no',
+           'password'          => Hash::make('password'),
+           'phone'             => '90909090',
+           'address'           => 'Univegen 1',
+           'zipcode'           => '3800',
+           'date_of_birth'     => '1920-01-01',
+           'hasLicense'        => 1,
+           'hasUnreadMessages' => 0,
+           'remember_token'    => Str::random(10),
+           'email_verified_at' => date("Y-m-d H:i:s"),
+           'created_at'        => date("Y-m-d H:i:s"),
+           'updated_at'        => date("Y-m-d H:i:s"),
+         ]);
+
+         DB::table('users')->insert([
+           'firstname'         => 'Leif',
+           'lastname'          => 'Sensor',
+           'email'             => 'leif@grp04.no',
+           'password'          => Hash::make('password'),
+           'phone'             => '90909090',
+           'address'           => 'Univegen 1',
+           'zipcode'           => '3800',
+           'date_of_birth'     => '1920-01-01',
+           'hasLicense'        => 1,
+           'hasUnreadMessages' => 0,
+           'remember_token'    => Str::random(10),
+           'email_verified_at' => date("Y-m-d H:i:s"),
+           'created_at'        => date("Y-m-d H:i:s"),
+           'updated_at'        => date("Y-m-d H:i:s"),
+         ]);
+
+         DB::table('users')->insert([
+           'firstname'         => 'Arne',
+           'lastname'          => 'Sensor',
+           'email'             => 'arne@grp04.no',
+           'password'          => Hash::make('password'),
+           'phone'             => '90909090',
+           'address'           => 'Univegen 1',
+           'zipcode'           => '3800',
+           'date_of_birth'     => '1920-01-01',
+           'hasLicense'        => 1,
+           'hasUnreadMessages' => 0,
+           'remember_token'    => Str::random(10),
+           'email_verified_at' => date("Y-m-d H:i:s"),
+           'created_at'        => date("Y-m-d H:i:s"),
+           'updated_at'        => date("Y-m-d H:i:s"),
+         ]);
+
+        /*
+         * GRP04 kontoer
+         */
+        DB::table('users')->insert([
+          'firstname'         => 'Joachim',
+          'lastname'          => 'Hagheim',
+          'email'             => 'joachim@grp04.no',
+          'password'          => Hash::make('password'),
+          'phone'             => '90170025',
+          'address'           => 'Borgundvegen 1',
+          'zipcode'           => '6888',
+          'date_of_birth'     => '1995-01-01',
+          'hasLicense'        => 1,
+          'hasUnreadMessages' => 0,
+          'remember_token'    => Str::random(10),
+          'email_verified_at' => date("Y-m-d H:i:s"),
+          'created_at'        => date("Y-m-d H:i:s"),
+          'updated_at'        => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('users')->insert([
+          'firstname'         => 'Joakim',
+          'lastname'          => 'Hafredal',
+          'email'             => 'joakim@grp04.no',
+          'password'          => Hash::make('password'),
+          'phone'             => '90170025',
+          'address'           => 'Havbunnen 172m',
+          'zipcode'           => '3791',
+          'date_of_birth'     => '1995-01-01',
+          'hasLicense'        => 1,
+          'hasUnreadMessages' => 0,
+          'remember_token'    => Str::random(10),
+          'email_verified_at' => date("Y-m-d H:i:s"),
+          'created_at'        => date("Y-m-d H:i:s"),
+          'updated_at'        => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('users')->insert([
+          'firstname'         => 'Henrik',
+          'lastname'          => 'Nilssen',
+          'email'             => 'henrik@grp04.no',
+          'password'          => Hash::make('password'),
+          'phone'             => '92216893',
+          'address'           => 'Åkern 1',
+          'zipcode'           => '3701',
+          'date_of_birth'     => '1995-01-01',
+          'hasLicense'        => 1,
+          'hasUnreadMessages' => 0,
+          'remember_token'    => Str::random(10),
+          'email_verified_at' => date("Y-m-d H:i:s"),
+          'created_at'        => date("Y-m-d H:i:s"),
+          'updated_at'        => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('users')->insert([
+          'firstname'         => 'Sugal',
+          'lastname'          => 'Aden',
+          'email'             => 'sugal@grp04.no',
+          'password'          => Hash::make('password'),
+          'phone'             => '40072841',
+          'address'           => 'Østsidagata 4',
+          'zipcode'           => '3701',
+          'date_of_birth'     => '1995-01-01',
+          'hasLicense'        => 1,
+          'hasUnreadMessages' => 0,
+          'remember_token'    => Str::random(10),
+          'email_verified_at' => date("Y-m-d H:i:s"),
+          'created_at'        => date("Y-m-d H:i:s"),
+          'updated_at'        => date("Y-m-d H:i:s"),
+        ]);
+
+        DB::table('users')->insert([
+          'firstname'         => 'Ross',
+          'lastname'          => 'Halsvik',
+          'email'             => 'ross@grp04.no',
+          'password'          => Hash::make('password'),
+          'phone'             => '90885897',
+          'address'           => 'Hestevegen 21',
+          'zipcode'           => '3800',
+          'date_of_birth'     => '1980-08-07',
+          'hasLicense'        => 1,
+          'hasUnreadMessages' => 0,
+          'remember_token'    => Str::random(10),
+          'email_verified_at' => date("Y-m-d H:i:s"),
+          'created_at'        => date("Y-m-d H:i:s"),
+          'updated_at'        => date("Y-m-d H:i:s"),
+        ]);
     }
 }

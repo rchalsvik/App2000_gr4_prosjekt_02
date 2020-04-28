@@ -53,10 +53,7 @@
       @foreach ($trips as $trip)
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card h-100">
-            <a href="/trips/{{ $trip->id }}/seemore" class="">
-              {{--<img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/img/bra_bil.jpg" alt="">--}}
-              {{--<img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ randomImagesThatWeTotallyOwnFromDirectoryOnMachine() }}" alt="Trip Images">--}}
-              {{--<img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}/{{ giMegBilde($trip->trip_image) }}" alt="Trip Images">--}}
+            <a href="/trips/{{ $trip->id }}/seemore">
               <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}{{ giMegBilde($trip->trip_image) }}" alt="{{ __('Trip Images') }}">
             </a>
 

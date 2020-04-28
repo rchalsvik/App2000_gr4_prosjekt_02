@@ -16,7 +16,7 @@ $factory->define(Passenger::class, function (Faker $faker) {
 
     do {
       // Sjåføren kan ikke være passasjer på egen tur
-      $legalUsers = DB::select('select * from users where id <> ' . $selectedTrip->id);
+      $legalUsers = DB::select('select * from users where id <> ' . $selectedTrip->driver_id);
       $randRad = array_rand($legalUsers); // Velg tilfeldig rad
       $selectedPassenger = $legalUsers[$randRad];
 

@@ -36,7 +36,7 @@
           </div>
 
           {{-- Hvis Bruker er eier av turen --}}
-          @if (Auth::id() == $trip->driver_id)
+          @if (Auth::id() == $trip->driver_id && sizeOf($users) > 0)
             <div class="item-container item-container-margin-b flex-column">
               <div class="">{{ __('Passengers: ') }}</div>
               @foreach ($users as $user)
