@@ -83,7 +83,7 @@
               </div>
 
               {{-- Seter tilgjengelig --}}
-              <div class="card-seats-avail mt-auto">
+              <div class="card-seats-avail pt-4 mt-auto">
                 {{ $trip->seats_available }} {{ __('seats available') }}
                 <img class="ml-2 mb-n-1" src="/img/icons/chair_exotic.svg" alt="Seat">
               </div>

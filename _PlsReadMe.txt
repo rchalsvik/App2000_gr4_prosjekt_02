@@ -64,6 +64,7 @@ eks:
 1. Først!! --> php artisan db:seed
 2. Og så --> $users = factory(App\User::class, 100)->create( ); $trips = factory(App\Trip::class, 600)->create( ); $passengers = factory(App\Passenger::class, 1000)->create( );
    Eller --> $users = factory(App\User::class, 200)->create( ); $trips = factory(App\Trip::class, 1200)->create( ); $passengers = factory(App\Passenger::class, 1000)->create( );
+   Eller --> $users = factory(App\User::class, 200)->create( ); $trips = factory(App\Trip::class, 1800)->create( ); $passengers = factory(App\Passenger::class, 1200)->create( );
 
 // PHP FÅ EIN STRING UT AV DATABASE, KONVERTER FRA STDCLASS //
 $alternativ = DB::select('select count(*) from passengers where trip_id = ' . $selectedTrip->id . ' and passenger_id = ' . $selectedPassenger->id);
