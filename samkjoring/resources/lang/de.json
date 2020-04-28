@@ -35,7 +35,7 @@
   "Leaving": "Verlassen",
   "Arriving": "Ankommen",
   "Travel time": "Reisezeit",
-  "Hello ": "Hallo ",
+  "Hello": "Hallo",
   "Make a trip now!": "Machen Sie jetzt eine Reise!",
   "Quick search": "Schnelle Suche",
   "Reset": "Zurücksetzen",
@@ -85,6 +85,7 @@
   "The trip is full": "Die Reise ist voll",
   "Driver info: ": "Treiberinfo: ",
   "Name: ": "Name: ",
+  "Passengers: ": "Passagiere: ",
 
 
 

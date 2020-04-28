@@ -9,7 +9,7 @@
 
   <!-- Jumbotron Header -->
   <header class="jumbotron my-4">
-    <h5 class="display-3">{{ __('My joined trips!') }}</h5>
+    <h5 class="display-3">{{ __('Joined trips!') }}</h5>
   </header>
 
   {{-- Sida begynner her du --}}
