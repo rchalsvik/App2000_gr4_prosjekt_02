@@ -12,11 +12,12 @@ $factory->define(Trip::class, function (Faker $faker) {
      * Bilbeskrivelse generatoren!
      */
     $colour         = ['Grønn', 'Rød', 'Hvit', 'Sort', 'Brun', 'Gul', 'Blå', 'Beige', 'Egghvit', 'Sølv', 'Metallic'];
-    $vehicle        = ['Bil', 'Van', 'Kjerre', 'Minibuss', 'Stasjonsvogn', 'Kasse med hjul'];
+    $vehicle        = ['Bil', 'Van', 'Kjerre', 'Minibuss', 'Stasjonsvogn', 'Kasse med hjul', 'Gul Bil',];
     $extraInfo      = ['Har hengefeste', 'Romslig bakseter', 'Plass til mange', 'Trangt for alle',
                       'Koppholder', 'Ødelagt airconditioner', 'Lekker fra vinduer', 'Varmeanlegg ødlagt, fort kaldt',
                       'Varmeanlegget kan ikke stilles, maks varme på full guffe',
-                      'Masse plass til bagasje', 'Liten til ingenplass til bagasje', 'Baksetene er til pynt',];
+                      'Masse plass til bagasje', 'Liten til ingen plass til bagasje', 'Baksetene er til pynt', 'Sigaretthull i setene',
+                      'Lekkert tigerdesign på innsiden',];
     $extraExtraInfo = ['Viduviskerene er slitt, satser på at det ikke blir regn ;) ',
                        'Radioen er desverre kilt på maks volum og jeg greier ikke å slå den av',
                        'Batteriet er tomt, må desverre dyttes igang', 'Det ene bakvinduet er kilt åpen',
@@ -36,7 +37,8 @@ $factory->define(Trip::class, function (Faker $faker) {
     $turInfo        = ['Håper å finne folk som skal samme vei', 'Tur til hu mor', 'Søndagstur med fremmede',
                       'Kjøre flyttelass for venner', 'Besøke venner', 'Besøke famile', 'Min første biltur, nettopp tatt lappen',
                       'Skal bare på tur', 'Skilt lag med partneren, skal til mitt nye hjem', 'Nye dekk som må slites inn',
-                      'Bytta bremser selv for første gang, ut på en test tur'];
+                      'Bytta bremser selv for første gang, ut på en test tur', 'Kan være vi må ta en kjapp tur over grensa',
+                      'Trenger hjelp med buisness transakjson, må se ut som det er mer enn en person i bilen. Alt du trenger å gjøre er å være til stede',];
     $extraInfo      = ['Deler gjerne på kjøringa', 'Vil at noen andre skal kjøre, jeg trenger søvn',
                       'Har hastverk', 'Kan bli litt trangt i baksetet',
                       'Har rotter(kjæledyr) i bur i baksetet, regner med at det ikke er noe problem'];
