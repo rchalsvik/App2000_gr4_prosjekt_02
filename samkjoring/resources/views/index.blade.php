@@ -31,7 +31,7 @@
     <form method="GET" action="{{ route('searchInIndex') }}" id="search_form" class="index-search-container">
       @csrf {{-- viktig! ellers så feiler siden --}}
       <div class="index-search-searchbar mr-2">
-        <input id="idx_search" class="form-control index-item-height mb-1"
+        <input id="index_search" class="form-control index-item-height mb-1"
           type="text"
           class="clear @error('index_search') is-invalid @enderror"
           name="index_search"
