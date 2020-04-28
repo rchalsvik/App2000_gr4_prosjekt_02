@@ -129,6 +129,7 @@
                 <a class="dropdown-item" href="{{ url('locale/de') }}"><img class="lang-icon" src="/img/flags/germany.png" alt="De">{{ __('Deutsch')}}</a>
                 <a class="dropdown-item" href="{{ url('locale/ru') }}"><img class="lang-icon" src="/img/flags/russia.png" alt="Ru">{{ __('Pусский')}}</a>
                 <a class="dropdown-item" href="{{ url('locale/es') }}"><img class="lang-icon" src="/img/flags/spain.png" alt="Es">{{ __('Español')}}</a>
+                <a class="dropdown-item" href="{{ url('locale/fr') }}"><img class="lang-icon" src="/img/flags/france.png" alt="Es">{{ __('Français')}}</a>
               </div>
             </li>
 

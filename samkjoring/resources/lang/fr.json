@@ -1,0 +1,162 @@
+{
+  "_COMMENT": "layout.app.blade.php",
+  "Home": "Maison",
+  "Notifications": "Notifications",
+  "About us": "À propos de nous",
+  "Profile": "Profil",
+  "Logout": "Se déconnecter",
+  "Login": "Se connecter",
+  "Language": "Langue",
+  "Search": "Rechercher",
+  "Copyright": "Droits d'auteur",
+
+
+
+  "_COMMENT":  "home.blade.php",
+  "You are logged in!": "Tu es connecté!",
+  "Start date": "Date de début",
+  "Seats available": "Sièges disponibles",
+  "Car description": "Description de la voiture",
+  "Edit user info": "Modifier les informations utilisateur",
+  "My trips": "Mes excursions",
+  "Joined trips": "Voyages joints",
+  "New trip": "Nouveau voyage",
+
+
+
+  "_COMMENT":  "index.blade.php",
+  "Welcome to Haik!": "Bienvenue à Haik",
+  "indexIntro": "Trouvez facilement quelqu'un qui va dans le même sens que vous!",
+  "indexPhrase": "Conduisez intelligemment, conduisez pas cher, conduisez durablement, choisissez Haik",
+  "indexLoginPhrase": "Ravi de vous revoir! Voulez-vous coordonner aujourd'hui?",
+  "Join us now!": "Inscrivez-vous maintenant!",
+  "Route": "Route",
+  "See more": "Voir plus",
+  "Leaving": "Départ",
+  "Arriving": "En arrivant",
+  "Travel time": "Temps de voyage",
+  "Hello ": "Bonjour ",
+  "Make a trip now!": "Faites un voyage maintenant!",
+  "Quick search": "Recherche rapide",
+  "Reset": "Réinitialiser",
+
+
+
+  "_COMMENT":  "notification.blade.php",
+  "Notifications!": "Notifications",
+  "You have no messages": "Vous n'avez pas de messages",
+
+
+
+  "_COMMENT":  "about.blade.php",
+  "aboutTitle": "À propos de Haik!",
+  "aboutText": "Haik a commencé en 1922 dans une petite maison à Rjukan, lorsque Kjell Berit Kongshavn a obtenu son premier vélo tandem. Inspiré par l'exemple donné par le vélo tandem et l'unité à Rjukan Bedehus, Kjell Berit Haik a commencé. À l'automne 2019, Kjell Berit a découvert qu'il voulait commencer sur Internet, alors les développeurs professionnels \"Group4\" ont été mis sur l'affaire!",
+  "Tandem-bike": "Vélo tandem",
+
+
+
+  "_COMMENT":  "trips.create.blade.php",
+  "Create a trip": "Créer un voyage",
+  "Starting point": "Point de départ",
+  "End point": "Point final",
+  "Start time": "Heure de départ",
+  "End time": "Heure de fin",
+  "End date": "Date de fin",
+  "Trip info": "Info voyage",
+  "Pets allowed": "Animaux acceptés",
+  "Kids allowed": "Enfants acceptés",
+  "Image (Optional)": "Image (facultatif)",
+  "Create trip": "Créer un voyage",
+
+
+
+  "_COMMENT":  "trips.seemore.blade.php",
+  "Seats requested": "Sièges demandés",
+  "Join trip": "Rejoignez le voyage",
+  "Leave trip": "Quitter le voyage",
+  "Edit trip": "Modifier le voyage",
+  "Update trip": "Mettre à jour le voyage",
+  "Cancel trip": "Annuler le voyage",
+  "Show Trip": "Afficher le voyage",
+  "Starts at": "Commence à",
+  "Arrives at": "Arrive à",
+  "Pets": "Animaux domestiques",
+  "Kids": "Enfants",
+  "The trip is full": "Le voyage est plein",
+  "Driver info: ": "Informations sur le conducteur: ",
+  "Name: ": "Nom: ",
+
+
+
+  "_COMMENT":  "trips.edit.blade.php",
+  "You have atleast one passenger and therefore cannot edit certain fields like start/end point and time.": "Vous avez au moins un passager et ne pouvez donc pas modifier certains champs comme le point de départ / d'arrivée et l'heure.",
+
+
+
+  "_COMMENT": "search.blade.php",
+  "Search for starting point": "Rechercher un point de départ",
+  "Search for ending point": "Rechercher un point d'arrivée",
+  "Active trips only": "Voyages actifs uniquement",
+  "seats available": "sièges disponibles",
+  "Active": "Actif",
+  "Not active": "Pas actif",
+
+
+
+ "_COMMENT": "profile.myJoinedTrips.blade.php",
+ "Joined trips!": "Voyages joints!",
+
+
+
+ "_COMMENT": "profile.myTrips.blade.php",
+ "My trips!": "Mes excursions!",
+
+
+
+  "_COMMENT":  "auth.login.blade.php",
+  "E-mail address": "Adresse électronique",
+  "Password": "Mot de passe",
+  "Remember me": "Souviens-toi de moi",
+  "Forgot your password?": "Mot de passe oublié?",
+  "New here? Click here to register!": "Nouveau ici? Cliquez ici pour vous inscrire!",
+  "These credentials do not match our records.": "Ces informations d'identification ne correspondent pas à nos enregistrements.",
+
+
+
+  "_COMMENT":  "auth.register.blade.php",
+  "Register": "S'inscrire",
+  "Firstname": "Prénom",
+  "Lastname": "Nom de famille",
+  "Phone": "Téléphone",
+  "Address": "Adresse",
+  "Zipcode": "Code postal",
+  "Date of birth": "Date de naissance",
+  "Drivers license": "Permis de conduire",
+  "Confirm password": "Confirmez le mot de passe",
+
+
+
+  "_COMMENT":  "auth.verify.blade.php",
+  "Verify Your Email Address": "Vérifiez votre adresse e-mail",
+  "A fresh verification link has been sent to your email address.": "Un nouveau lien de vérification a été envoyé à votre adresse e-mail.",
+  "Before proceeding, please check your email for a verification link.": "Avant de continuer, veuillez vérifier votre e-mail pour un lien de vérification.",
+  "If you did not receive the email": "Si vous n'avez pas reçu l'e-mail",
+  "click here to request another": "cliquez ici pour en demander un autre",
+
+
+
+  "_COMMENT":  "auth.passwords.confirm.blade.php",
+  "Please confirm your password before continuing.": "Veuillez confirmer votre mot de passe avant de continuer.",
+
+
+
+  "_COMMENT":  "auth.passwords.confirm.blade.php",
+  "_COMMENT":  "&& auth.passwords.reset.blade.php",
+  "Reset Password": "Réinitialiser le mot de passe",
+  "Send Password Reset Link": "Envoyer Password Reset Lien",
+
+
+
+  "_COMMENT":  "editUser.blade.php",
+  "Save": "Sauver"
+}
