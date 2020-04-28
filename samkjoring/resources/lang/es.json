@@ -35,7 +35,7 @@
     "Leaving": "Salir",
     "Arriving": "Llegar",
     "Travel time": "Tiempo de viaje",
-    "Hello ": "Hola ",
+    "Hello": "¡Hola",
     "Make a trip now!": "¡Haz un viaje ahora!",
     "Quick search": "Búsqueda rápida",
     "Reset": "Reiniciar",
@@ -86,6 +86,7 @@
     "The trip is full": "El viaje esta lleno",
     "Driver info: ": "Información del chofer",
     "Name: ": "Nombre",
+    "Passengers: ": "Pasajeros: ",
 
 
     "_COMMENT":  "trips.edit.blade.php",
