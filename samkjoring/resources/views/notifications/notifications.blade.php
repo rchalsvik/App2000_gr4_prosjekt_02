@@ -7,9 +7,10 @@
       <div class="page-text-area">
         <h3 class="display-3">{{ __('Notifications!') }}</h3>
 
-        
+        {{-- hvis du har varslinger, skriv de. ellers skiv du hakke beskjeder --}}
         @if (!empty($notifications))
           @foreach ($notifications as $notification)
+            {{-- skriver litt annen beskjed avhengig av varslingstype --}}
             @if ($notification->type_id == 3 || $notification->type_id == 4)
             <p><a href="/trips/{{$notification->trip_id}}/seemore">
               {{ __('Someone has ') }} {{ $notification->type_name }} {{ __('your trip from ') }} {{ $notification->start_point }}
