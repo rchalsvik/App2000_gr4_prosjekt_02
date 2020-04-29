@@ -12,6 +12,7 @@ use App\Trip;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Log;
 
 class PassengerController extends Controller
 {
@@ -44,6 +45,28 @@ class PassengerController extends Controller
         $validatedResults = request()->validate([
           'seats_available' => ['required', 'digits_between:1,45'],
         ]);
+
+        // logger sletting av passajser
+        $currPassenger = DB::table('users')
+          ->join('passengers', 'users.id', '=', 'passengers.passenger_id')
+          ->select('users.id', 'users.firstname', 'users.lastname')
+          ->where('users.id', request('passenger_id'))
+          ->first();
+
+        $logString = LOG_CODES['leaveTrip'] . ' [' .
+                     'USER: ' .
+                     $currPassenger->id . '. ' .
+                     $currPassenger->firstname . ' ' .
+                     $currPassenger->lastname . '] ==> [' .
+                     'TRIP: ' .
+                     $trup->id . '. ' .
+                     $trup->start_point . '->' . $trup->end_point . '], [' .
+                     'TIME: ' .
+                     $trup->start_time . ' - ' . $trup->start_date . '], [' .
+                     'REQ_SEAT(S): ' . request('seats_requested') . ']'; // . request('passenger_id');
+        Log::channel('samkjøring')->info($logString);
+        //sluttlogg
+
 
         //oppdaterer setene
         // aner ikke om dette trenger å bli lagt inn i en variabel,
