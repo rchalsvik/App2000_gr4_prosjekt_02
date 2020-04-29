@@ -24,6 +24,8 @@
                     placeholder="{{ __('Starting point') }}"
                     autocomplete="start_point" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('start_point')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -42,7 +44,9 @@
                     name="start_date"
                     value="@if(isset($_GET['start_date'])){{ $_GET['start_date'] }}@else{{ $_SESSION['start_date'] = false }}@endif"
                     autocomplete="start_date" autofocus>
-
+                    
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('start_date')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -62,7 +66,9 @@
                     value="@if(isset($_GET['end_point'])){{ $_GET['end_point'] }}@else{{ $_SESSION['end_point'] = false }}@endif"
                     placeholder="{{ __('End point') }}"
                     autocomplete="end_point" autofocus>
-
+                    
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('end_point')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -82,6 +88,8 @@
                     value="@if(isset($_GET['seats_available'])){{ $_GET['seats_available'] }}@else{{ $_SESSION['seats_available'] = false . 1 }}@endif"
                     autocomplete="seats_available" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('seats_available')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -195,6 +203,7 @@
                           </div>
                         </div>
                         <div class="font-weight-bold">
+                        {{-- For forklaring på dato- og tidsformatene under gå til app>ProvidersAppServiceProvider.php --}}
                           <div>@samDateShortFormat($trip->start_date) @samYearFormat($trip->start_date)</div>
                           <div>@samTimeFormat($trip->start_time)</div>
                         </div>
@@ -212,6 +221,7 @@
                           </div>
                         </div>
                         <div class="font-weight-bold">
+                        {{-- For forklaring på dato- og tidsformatene under gå til app>ProvidersAppServiceProvider.php --}}
                           <div>@samDateShortFormat($trip->end_date) @samYearFormat($trip->end_date)</div>
                           <div>@samTimeFormat($trip->end_time)</div>
                         </div>
