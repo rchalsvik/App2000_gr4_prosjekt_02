@@ -15,7 +15,9 @@
 
               <input type="hidden" name="driver_id" value="{{ auth()->user()->id }}">
 
+              {{-- Hvis noen er meldt på, gi mindre muligheter til å endre --}}
               @if ($passCount > 0)
+                {-- Verdier som ikke skal endres, men som skal sendes med videre, kunne vært løst på en bedre måte --}
                 <input type="hidden" name="start_point" value="{{ $trip->start_point }}">
                 <input type="hidden" name="end_point" value="{{ $trip->end_point }}">
                 <input type="hidden" name="start_date" value="{{ $trip->start_date }}">
@@ -33,6 +35,8 @@
                   <div class="col-md-6">
                     <input id="seats_available" type="number" min="0" max="45" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', $trip->seats_available) }}" required autocomplete="seats_available" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('seats_available')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -47,6 +51,8 @@
                   <div class="col-md-6">
                     <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="4" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description', $trip->car_description) }}</textarea>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('car_description')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
@@ -61,6 +67,8 @@
                   <div class="col-md-6">
                     <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="4" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info', $trip->trip_info) }}</textarea>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('trip_info')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -75,6 +83,8 @@
                   <div class="col-md-6">
                     <input id="trip_image" type="file" class="form-control @error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image, $trip->trip_image') }}" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('trip_image')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -89,6 +99,8 @@
                   <div class="col-md-6">
                     <input id="start_point" type="text" class="form-control @error('start_point') is-invalid @enderror" name="start_point" value="{{ old('start_point', $trip->start_point) }}" required autocomplete="start_point" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('start_point')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -103,6 +115,8 @@
                   <div class="col-md-6">
                     <input id="end_point" type="text" class="form-control @error('end_point') is-invalid @enderror" name="end_point" value="{{ old('end_point', $trip->end_point) }}" required autocomplete="end_point" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('end_point')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -117,6 +131,8 @@
                   <div class="col-md-6">
                     <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date', $trip->start_date) }}" required autocomplete="start_date" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('start_date')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -131,6 +147,8 @@
                   <div class="col-md-6">
                     <input id="start_time" type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time', date("H:i", strtotime($trip->start_time))) }}" required autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('start_time')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -145,6 +163,8 @@
                   <div class="col-md-6">
                     <input id="end_date" type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date', $trip->end_date) }}" required autocomplete="end_date" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('end_date')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -159,6 +179,8 @@
                   <div class="col-md-6">
                     <input id="end_time" type="time" class="form-control @error('end_time') is-invalid @enderror" name="end_time" value="{{ old('end_time', date("H:i", strtotime($trip->end_time))) }}" required autocomplete="end_time" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('end_time')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -173,6 +195,8 @@
                   <div class="col-md-6">
                     <input id="seats_available" type="number" min="0" max="45" class="form-control @error('seats_available') is-invalid @enderror" name="seats_available" value="{{ old('seats_available', $trip->seats_available) }}" required autocomplete="seats_available" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('seats_available')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -187,6 +211,8 @@
                   <div class="col-md-6">
                     <textarea id="car_description" class="form-control @error('car_description') is-invalid @enderror" name="car_description" rows="2" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="car_description" autofocus>{{ old('car_description', $trip->car_description) }}</textarea>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('car_description')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -201,6 +227,8 @@
                   <div class="col-md-6">
                     <textarea id="trip_info" class="form-control @error('trip_info') is-invalid @enderror" name="trip_info" rows="4" cols="44" form="tripform" maxlength="255" wrap="hard" required autocomplete="trip_info" autofocus>{{ old('trip_info', $trip->trip_info) }}</textarea>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('trip_info')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -233,6 +261,8 @@
                   <div class="col-md-6">
                     <input id="trip_image" type="file" class="form-control form-control-choose-file @error('trip_image') is-invalid @enderror" name="trip_image" value="{{ old('trip_image, $trip->trip_image') }}" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('trip_image')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

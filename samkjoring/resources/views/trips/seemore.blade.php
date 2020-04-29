@@ -20,11 +20,6 @@
             alt="{{ __('Trip Images') }}">
 
           <div class="card-body card-body-flex">
-            @if (session('status'))
-              <div class="alert alert-success" role="alert">
-                  {{ session('status') }}
-              </div>
-            @endif
 
             <h3 class="margin-b">{{ $trip->start_point }} - {{ $trip->end_point }}</h3>
             <div class="item-container item-container-margin-b">
@@ -33,6 +28,7 @@
                 {{ __('Arriving') }}:
               </div>
 
+              {{-- Se AppServiceProvider.php i app\providers mappa, for samTimeFormat --}}
               <div class="item item-padding-l">
                 <b>@samTimeFormat($trip->start_time) - @samDateFormat($trip->start_date)</b><br>
                 <b>@samTimeFormat($trip->end_time) - @samDateFormat($trip->end_date)</b>
@@ -107,13 +103,13 @@
                 </div>
               </div>
             @else
-              <p style="text-align: center;">{{ __('The trip is full') }}</p>
+              <p class="text-center">{{ __('The trip is full') }}</p>
             @endif
 
             @auth
               {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
               @if (Auth::id() != $trip->driver_id && $trip->seats_available > 0)
-                {{-- Passasjerer kan ikke melde seg på samme turen to ganger --}}
+                {{-- Passasjerer kan ikke melde seg på samme turen to ganger! --}}
                 @foreach ($users as $user)
                   @if (Auth::id() == $user->id)
                     <input type="hidden" name="erDuPassasjer" value={{$erDuPassasjer = 1}}>
@@ -139,6 +135,8 @@
                             name="seats_available" value="{{ old('seats_available', 1) }}"
                             required autocomplete="seats_available"
                             autofocus>
+                          {{-- Hvis valideringen i Kontrolleren feiler
+                          blir vi kastet tilbake her med melding --}}
                           @error('seats_requested')
                             <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
