@@ -7,6 +7,7 @@
       <div class="page-text-area">
         <h3 class="display-3">{{ __('Notifications!') }}</h3>
 
+        
         @if (!empty($notifications))
           @foreach ($notifications as $notification)
             @if ($notification->type_id == 3 || $notification->type_id == 4)
