@@ -15,13 +15,13 @@
   @endauth
   <header class="jumbotron @guest my-4 @endguest">
   @guest
-    <h1 class="">{{ __('Welcome to Haik!') }}</h1>
-    <h3 class="display-3">{{ __('indexIntro') }}</h3>
-    <h3 class="display-3">{{ __('indexPhrase') }}</h3>
+    <h1>{{ __('Welcome to Haik!') }}</h1>
+    <h3>{{ __('indexIntro') }}</h3>
+    <h3>{{ __('indexPhrase') }}</h3>
     <a href="{{ route('register') }}" class="btn btn-primary btn-lg mt-4">{{ __('Join us now!') }}</a>
   @endguest
   @auth
-    <h4 class="display-4">{{ __('Hello') }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>
+    <h2>{{ __('Hello') }} {{ auth()->user()->firstname }}{{ __('!') }}</h2>
     @if(auth()->user()->hasLicense)
       <a href="{{ route('createTrip') }}" class="btn btn-primary btn-lg mt-4">{{ __('Make a trip now!') }}</a>
     @endif
