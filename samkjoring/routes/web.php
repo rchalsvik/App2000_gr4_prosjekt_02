@@ -31,7 +31,7 @@ Route::get('/omoss', function () {
   return view('about');
 })->name('about');
 Route::get('/notifications', 'NotificationController@index')->name('notifications');
-Route::get('/searchMeNowSempai', 'IndexController@show')->name('searchInIndex');
+Route::get('/quicksearch', 'IndexController@show')->name('searchInIndex');
 
 Route::post('/trips/{trip}/', 'TripController@join')->name('joinTrip');
 Route::get('/trips/{trip}/edit', 'TripController@edit')->name('editTrip');
@@ -39,7 +39,7 @@ Route::get('/trips/{trip}/seemore', 'TripController@seemore')->name('seeMore');
 // Route::post('/trips/join', 'PassengerController@store')->name('storePassenger');
 Route::put('/trips/{trip}', 'TripController@update')->name('updateTrip');
 Route::get('/search', 'SearchController@index')->name('searchIndex');
-Route::get('/search/piss', 'SearchController@show')->name('searchShow');
+Route::get('/search/adv', 'SearchController@show')->name('searchShow');
 Route::get('/editUser/{user}', 'UserController@edit')->name('editUser');
 Route::put('/userharblittendrasoflott/{user}', 'UserController@update')->name('updateUser');
 Route::get('/profile/myTrips', 'TripController@myTrips')->name('myTrips');
