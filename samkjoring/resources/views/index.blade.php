@@ -5,6 +5,7 @@
   <div class="container">
 
   {{-- Jumbotron --}}
+  {{--Forskjellig JumboTr. til gjest og bruker --}}
   @auth
     <div class="sånnDerKontainer">
       <div class="sånnDerBy"></div>
@@ -49,15 +50,17 @@
     </form>
   </div>
 
-
     {{-- Kjøttet --}}
     <div class="row text-center">
 
+      {{-- Presenter Turene --}}
       @foreach ($trips as $trip)
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card h-100">
             <a href="/trips/{{ $trip->id }}/seemore">
-              <img class="card-img-top card-img-top-interactive" src="{{ URL::to('/') }}{{ giMegBilde($trip->trip_image) }}" alt="{{ __('Trip Images') }}">
+              <img class="card-img-top card-img-top-interactive"
+                src="{{ URL::to('/') }}{{ giMegBilde($trip->trip_image) }}"
+                alt="{{ __('Trip Images') }}">
             </a>
 
             <div class="card-body d-flex flex-column">
@@ -77,7 +80,6 @@
                   {{ __('Leaving') }}: <b>@samTimeFormat($trip->start_time)</b><br>
                   <b>@samDateFormat($trip->start_date)</b><br>
                   <b>@samYearFormat($trip->start_date)</b><br>
-
                   <img class="card-arrow-down" src="/img/icons/arrow_down.svg" alt="Arrow Down"><br>
                   {{ __('Arriving') }}: <b>@samTimeFormat($trip->end_time)</b><br>
                   <b>@samDateFormat($trip->end_date)</b><br>
@@ -90,12 +92,7 @@
                 {{ $trip->seats_available }} {{ __('seats available') }}
                 <img class="ml-2 mb-n-1" src="/img/icons/chair_exotic.svg" alt="Seat">
               </div>
-
             </div>
-
-            {{--<div class="card-seat-avail">
-               <b>{{ $trip->seats_available }}x </b><img src="/img/icons/chair_line.svg" alt="Chair">
-            </div>--}}
 
             <div class="card-footer">
               <a href="/trips/{{ $trip->id }}/seemore" class="btn btn-primary">{{ __('See more') }}</a>

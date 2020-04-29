@@ -1,11 +1,8 @@
 /*!
-* Start Bootstrap - Heroic Features (https://startbootstrap.com/template-overviews/heroic-features)
-* Copyright 2013-2019 Start Bootstrap
-* Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
-*
-* Egen css fil for samkjøring grupppe 4
-* Bruk denne!!
-*/
+ * Skrevet av Grp04
+ * Egen css fil for samkjøring grupppe 4
+ * Bruk denne!!
+ */
 @import url(https://fonts.googleapis.com/css2?family=Comfortaa&display=swap);@charset "UTF-8";
 
 :root {
@@ -72,10 +69,6 @@ h3.margin-b {
 }
 
 .btn-primary:hover, .page-link:hover {
-  /*color: #004152;
-  background-color: #d2dce6;
-  background-color: #fff2bb;
-  border-color: #004152;*/
   color: #588dc5;
   text-decoration: none;
   background-color: #d9ecff;
@@ -331,13 +324,10 @@ ul.pagination {
 
 /* Profil sida */
 .profile-row {
-  /*flex-flow: column nowrap;*/
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
-  /*flex-direction: column;
-  flex-wrap: wrap;*/
   margin: 0 0 1rem;
 }
 
@@ -362,7 +352,9 @@ ul.pagination {
 }
 
 
-/* Flex text */
+/* Flex text
+ * Brukes litt overalt
+ */
 .sam-container {
   display: flex;
   flex-direction: row;
@@ -377,10 +369,6 @@ ul.pagination {
   padding: 0;
 }
 
-.sam-icon-list {
-
-}
-
 .sam-col {
   position: relative;
   width: 100%;
@@ -389,9 +377,9 @@ ul.pagination {
 }
 
 
-
-
-/* Sånn derre pynteting */
+/* Sånn derre pynteting
+ * Jumbotron pyntelandskap på index.blade
+ */
 .sånnDerKontainer {
   display: flex;
   justify-content: space-between;
