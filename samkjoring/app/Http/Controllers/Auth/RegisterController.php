@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
+// Denne her er endra litt på av gruppa, men en del av den kom med Laravel
 class RegisterController extends Controller
 {
     /*
@@ -48,6 +49,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+     // la til ekstra/endra gamle felt her
     protected function validator(array $data)
     {
       return Validator::make($data, [
@@ -70,6 +72,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+     // igjen la til ekstra/endra gamle felt
     protected function create(array $data)
     {
        $usr = User::create([
