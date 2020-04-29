@@ -1,8 +1,10 @@
+{{-- Endret av Grp04 --}}
+
 @extends('layouts.app')
 @section('content')
   <div class="container">
 
-  {{-- Forbanna Jumbotron --}}
+  {{-- Jumbotron --}}
   @auth
     <div class="sånnDerKontainer">
       <div class="sånnDerBy"></div>

@@ -8,67 +8,118 @@ use Blade; // Denne må være her slik at vi kan bruke dette i .Blade filer. Ros
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+  /**
+   * Register any application services.
+   *
+   * @return void
+   */
+  public function register()
+  {
+      //
+  }
+
+  /**
+   * Bootstrap any application services.
+   *
+   * @return void
+   */
+  public function boot()
+  {
+    // Denne her må til for å ikke få en feilmelding når man
+    // migrater på Ekstern server. Ross.
+    Schema::defaultStringLength(191);
+
 
     /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-      // Denne her må til for å ikke få en feilmelding når man migrater på Ekstern server. Ross.
-      Schema::defaultStringLength(191);
+    * Formaterer DatoTid.
+    * Brukes i .blade filene:
+    * @samDateTimeFormat([$args])
+    *
+    * @param  [$arg1, $arg2]
+    * @return \Illuminate\Http\Response
+    */
+    Blade::directive('samDateTimeFormat', function($args) {
+      list($date, $time) = explode(',', $args);
 
-      // Legger til noen .Blade funksjoner. Ross.
-      Blade::directive('samDateTimeFormat', function($args) {
-        list($date, $time) = explode(',', $args);
+      return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $time)->isoFormat('HH:mm - dddd DD. MMMM YYYY'); ?>";
+    });
 
-        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $time)->isoFormat('HH:mm - dddd DD. MMMM YYYY'); ?>";
-      });
 
-      Blade::directive('samDateFormat', function($arg) {
-        $date = $arg;
+    /**
+    * Formaterer Dato Uten År.
+    * Brukes i .blade filene:
+    * @samDateFormat($arg)
+    *
+    * @param  $arg
+    * @return \Illuminate\Http\Response
+    */
+    Blade::directive('samDateFormat', function($arg) {
+      return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $arg)->isoFormat('dddd DD. MMMM'); ?>";
+    });
 
-        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('dddd DD. MMMM'); ?>";
-      });
 
-      Blade::directive('samYearFormat', function($arg) {
-        $date = $arg;
+    /**
+    * Formaterer År.
+    * Brukes i .blade filene:
+    * @samYearFormat($arg)
+    *
+    * @param  $arg
+    * @return \Illuminate\Http\Response
+    */
+    Blade::directive('samYearFormat', function($arg) {
+      return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $arg)->isoFormat('YYYY'); ?>";
+    });
 
-        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('YYYY'); ?>";
-      });
 
-      Blade::directive('samFullDateFormat', function($arg) {
-        $date = $arg;
+    /**
+    * Formaterer Full Dato.
+    * Brukes i .blade filene:
+    * @samFullDateFormat($arg)
+    *
+    * @param  $arg
+    * @return \Illuminate\Http\Response
+    */
+    Blade::directive('samFullDateFormat', function($arg) {
+      return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $arg)->isoFormat('dddd DD. MMMM - YYYY'); ?>";
+    });
 
-        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('dddd DD. MMMM - YYYY'); ?>";
-      });
 
-      Blade::directive('samTimeFormat', function($arg) {
-        $time = $arg; // Lettere å lese $time
+    /**
+    * Formaterer Tid.
+    * Brukes i .blade filene:
+    * @samTimeFormat($arg)
+    *
+    * @param  $arg
+    * @return \Illuminate\Http\Response
+    */
+    Blade::directive('samTimeFormat', function($arg) {
+      return "<?php echo Carbon\Carbon::createFromFormat('H:i:s', $arg)->isoFormat('HH:mm'); ?>";
+    });
 
-        return "<?php echo Carbon\Carbon::createFromFormat('H:i:s', $time)->isoFormat('HH:mm'); ?>";
-      });
 
-      Blade::directive('samDateShortFormat', function($arg) {
-        $date = $arg; // Lettere å lese $time
+    /**
+    * Formaterer Dato i kortformat.
+    * Brukes i .blade filene:
+    * @samDateShortFormat($arg)
+    *
+    * @param  $arg
+    * @return \Illuminate\Http\Response
+    */
+    Blade::directive('samDateShortFormat', function($arg) {
+      return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $arg)->isoFormat('DD. MMM'); ?>";
+    });
 
-        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('DD. MMM'); ?>";
-      });
 
-      Blade::directive('samDateYearShortFormat', function($arg) {
-        $date = $arg; // Lettere å lese $time
-
-        return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $date)->isoFormat('DD. MMM YYYY'); ?>";
-      });
-    }
+    /**
+    * Formaterer Dato m/år i kortformat. År er i full-lengde.
+    * Brukes i .blade filene:
+    * @samDateYearShortFormat($arg)
+    *
+    * @param  $arg
+    * @return \Illuminate\Http\Response
+    */
+    Blade::directive('samDateYearShortFormat', function($arg) {
+      return "<?php echo Carbon\Carbon::createFromFormat('Y-m-d', $arg)->isoFormat('DD. MMM YYYY'); ?>";
+    });
+  }
 }

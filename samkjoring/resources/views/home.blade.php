@@ -1,3 +1,5 @@
+{{-- Endret av Grp04 --}}
+
 @extends('layouts.app')
 @section('content')
 <div class="container">
@@ -13,6 +15,7 @@
             </div>
           @endif
 
+          {{-- Sjekker om personen som er logget inn har førerkort --}}
           @if (auth()->user()->hasLicense)
             <div id="new_trip" class="profile-row">
               <a href="{{ route('createTrip') }}">
@@ -41,11 +44,9 @@
 
         <div class="card-body">
           <div id="edit_user" class="profile-row">
-            {{--<a href="{{ route('editUser', $user) }}">--}}
             <a href="{{ route('editUser', auth()->user()) }}">
               <img src="/img/icons/pro_profile.svg" alt="{{ __('Edit user info') }}">
             </a>
-            {{--<a href="{{ route('editUser', $user) }}">{{ __('Edit user info') }}</a>--}}
             <a href="{{ route('editUser', auth()->user()) }}">{{ __('Edit user info') }}</a>
           </div>
         </div>
