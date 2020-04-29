@@ -16,7 +16,6 @@ class SearchController extends Controller
      */
     public function index()
     {
-      //$trips = DB::select('select * from trips order by id desc limit 5');
       $trips = DB::table('trips')
         ->orderBy('start_date')
         ->orderBy('start_time')

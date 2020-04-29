@@ -19,12 +19,12 @@
   @endguest
   @auth
     <h3>{{ __('Hello') }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>
-    {{--<h3>{{ __(heyheyGenerator(true)) }} {{ auth()->user()->firstname }}{{ __('!') }}</h3>--}}
     @if(auth()->user()->hasLicense)
       <a href="{{ route('createTrip') }}" class="btn btn-primary btn-lg mt-4">{{ __('Make a trip now!') }}</a>
     @endif
   @endauth
   </header>
+
 
   {{--Hurtigsøkefelt--}}
   <div class="mb-4">
@@ -46,6 +46,7 @@
       </button>
     </form>
   </div>
+
 
     {{-- Kjøttet --}}
     <div class="row text-center">

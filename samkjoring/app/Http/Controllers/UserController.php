@@ -1,4 +1,9 @@
 <?php
+/**
+ * Alle kommenterte klasser, funksjoner og kode er
+ * skrevet av alle i Grp04. 2020
+ *
+ */
 
 namespace App\Http\Controllers;
 
@@ -11,65 +16,21 @@ use DB;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
+     * Endre Brukerinformasjon Siden.
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
     {
-        return view('editUser', ['user' => $user]);
+      return view('editUser', ['user' => $user]);
     }
 
 
     /**
-     * Update the specified resource in storage.
+     * Oppdaterer og Validerer editert Brukerinformasjon.
+     * For når brukeren har gjort endringer av egen
+     * informasjon og trykker "gjør endring".
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\User  $user
@@ -84,28 +45,20 @@ class UserController extends Controller
         'hasLicense' => ['boolean'],
       ]);
 
+      // Hvis valideringen lykkes så oppdaters DB
+      // ellers så sendes man tilbake til HTML siden med ERROR.
       $user->update($validatedResults);
 
-      // Logge endring av| bruker
+      // Logge endring av bruker.
       $logString = LOG_CODES['editUser'] . ' [' .
-      'USER: ' . $user->id . ' ' . $user->firstname . ' ' . $user->lastname . ']';
+        'USER: ' . $user->id . ' ' . $user->firstname . ' ' . $user->lastname . ']';
       Log::channel('samkjøring')->info($logString);
 
-      return redirect('/home');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+      return redirect('/home'); // Sendes tilbake til profil siden.
     }
 
 
+    // Validering hjelpe funksjon
      protected function validateUser()
      {
        return request()->validate([
