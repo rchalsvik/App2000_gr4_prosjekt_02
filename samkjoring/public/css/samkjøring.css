@@ -3,7 +3,7 @@
  * Egen css fil for samkjøring grupppe 4
  * Bruk denne!!
  */
-@import url(https://fonts.googleapis.com/css2?family=Comfortaa&display=swap);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap);@charset "UTF-8";
 
 :root {
   --font-family-sans-serif: 'Comfortaa', cursive;
@@ -12,7 +12,7 @@
 body {
   padding-top: 56px;
   background-color: #999;
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Montserrat', sans-serif;
 }
 
 html, body {
