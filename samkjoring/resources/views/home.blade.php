@@ -41,10 +41,12 @@
 
         <div class="card-body">
           <div id="edit_user" class="profile-row">
-            <a href="{{ route('editUser', $user) }}">
+            {{--<a href="{{ route('editUser', $user) }}">--}}
+            <a href="{{ route('editUser', auth()->user) }}">
               <img src="/img/icons/pro_profile.svg" alt="{{ __('Edit user info') }}">
             </a>
-            <a href="{{ route('editUser', $user) }}">{{ __('Edit user info') }}</a>
+            {{--<a href="{{ route('editUser', $user) }}">{{ __('Edit user info') }}</a>--}}
+            <a href="{{ route('editUser', auth()->user) }}">{{ __('Edit user info') }}</a>
           </div>
         </div>
 
