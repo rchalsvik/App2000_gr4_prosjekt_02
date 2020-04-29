@@ -109,13 +109,15 @@
           @auth
             {{-- En bruker kan ikke bli med som passasjer på sin egen tur! --}}
               @if (Auth::id() != $trip->driver_id && $trip->seats_available > 0)
+
+              {{-- Passasjerer kan ikke melde seg på samme turen to ganger --}}
                 @foreach ($users as $user)
                   @if (Auth::id() == $user->id)
-                    <input type="hidden" name="piss" value={{$piss = 1}}>
+                    <input type="hidden" name="erDuPassasjer" value={{$erDuPassasjer = 1}}>
                   @endif
                 @endforeach
 
-                @if ($piss != 1)
+                @if ($erDuPassasjer != 1)
                   @if ($trip->trip_active)
                     <form method="POST" action="{{ route('joinTrip', $trip) }}" id="tripform">
                       @csrf {{-- viktig! ellers så feiler siden --}}
