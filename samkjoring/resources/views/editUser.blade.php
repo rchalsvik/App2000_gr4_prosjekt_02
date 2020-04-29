@@ -13,7 +13,7 @@
               @csrf {{-- viktig! ellers så feiler siden --}}
               @method('PUT') {{-- Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
 
-              {-- Verdier som ikke skal endres, men som skal sendes med videre, kunne vært løst på en bedre måte --}
+              {{-- Verdier som ikke skal endres, men som skal sendes med videre, kunne vært løst på en bedre måte --}}
               <input type="hidden" name="id" value="{{ auth()->user()->id }}">
               <input type="hidden" name="firstname" value="{{ auth()->user()->firstname }}">
               <input type="hidden" name="lastname" value="{{ auth()->user()->lastname }}">
