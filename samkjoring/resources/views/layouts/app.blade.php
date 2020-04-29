@@ -16,6 +16,7 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
 
   {{-- Fonts --}}
+  {{-- Bruker fonter fra Google --}}
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   {{--<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">--}}
   {{--<link href="https://fonts.googleapis.com/css2?family=Scope+One&display=swap" rel="stylesheet">--}}
@@ -28,10 +29,11 @@
   <link href="{{URL::to('/')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   {{-- Custom styles for this template --}}
+  {{-- Bruker ikke denne --}}
   {{-- <link href="{{URL::to('/')}}/css/heroic-features.css" rel="stylesheet"> --}}
 
   {{-- Samkjøring --}}
-  {{-- Bruk samkjøring css for egen utforming --}}
+  {{-- Bruker samkjøring css for egen utforming --}}
   <link href="{{URL::to('/')}}/css/samkjøring.css" rel="stylesheet">
 
 </head>
@@ -39,10 +41,12 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
+        {{-- Logo --}}
         <a class="navbar-brand" href="{{ route('index') }}">
           {{--HÆIK Avd. Lærdal AS--}}
           <img src="/img/haik_logo_01.svg" alt="hackaik logo">
         </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarResponsive" aria-controls="navbarResponsive"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -67,29 +71,31 @@
             </li>
 
             {{-- Drop Down Personlig Meny --}}
+            {{-- Sjekker om login finnes i Route --}}
             @if (Route::has('login'))
+              {{-- Sjekker om om klient er logget inn --}}
               @auth
                 {{-- Melding på Navbar --}}
                 <li class="nav-item dropdown align-items-start {{ Request::path() === 'home' ? 'active' : '' }}">
-                  @if (Auth::user()->hasUnreadMessages == 1)
+                  {{-- Sjekker om om logget inn bruker har uleste beskjeder (bool felt i user DBen) --}}
+
                     <a id="navbarDropdown" class="nav-link dropdown-toggle"
                       href="#" role="button" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} &#x2757;<span class="caret"></span>
-                    </a>
 
-                  @else
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle"
-                      href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false" v-pre>
-                        {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span>
+                        {{-- Henter navn/etternavn av logget inn bruker --}}
+                        {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}
+
+                        {{-- Sleng inn en "!" når bruker har melding --}}
+                        @if (Auth::user()->hasUnreadMessages == 1) &#x2757;@endif
+                        <span class="caret"></span>
                     </a>
-                  @endif
 
                   {{-- Dæsjbård --}}
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                     {{-- Arbeidsmeny --}}
+                    {{--Logga inn bruker har førerkort --}}
                     @if (auth()->user()->hasLicense)
                       {{-- Ny tur --}}
                       <a class="dropdown-item" href="{{ route('createTrip') }}">
@@ -112,15 +118,13 @@
                     </a>
 
                     {{-- Notifications --}}
-                    @if (Auth::user()->hasUnreadMessages == 1)
-                      <a class="dropdown-item" href="{{ route('notifications') }}">
-                        {{ __('Notifications') }} &#x2757;
-                      </a>
-                    @else
-                      <a class="dropdown-item" href="{{ route('notifications') }}">
-                        {{ __('Notifications') }}
-                      </a>
-                    @endif
+                    {{-- Sleng inn en "!" når bruker har melding --}}
+                    <a class="dropdown-item" href="{{ route('notifications') }}">
+                      {{ __('Notifications') }}
+                      @if (Auth::user()->hasUnreadMessages == 1)
+                         &#x2757;
+                      @endif
+                    </a>
 
                     {{-- LOGOUT --}}
                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -142,6 +146,7 @@
             @endif
 
             {{-- Språk --}}
+            {{-- Valg av språk --}}
             <li class="nav-item dropdown">
               <a id="navbarLangDropdown" class="nav-link dropdown-toggle" href="#"
                 role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -188,9 +193,9 @@
       </div>
     </nav>
 
-      <main class="py-4">
-          @yield('content')
-      </main>
+    <main class="py-4">
+      @yield('content')
+    </main>
   </div>
 
   {{-- Footer --}}

@@ -1,3 +1,4 @@
+{{-- Denne filen ble generert av Laravel --}}
 @extends('layouts.app')
 
 @section('content')
