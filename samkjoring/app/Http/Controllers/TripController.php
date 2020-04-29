@@ -375,22 +375,4 @@ class TripController extends Controller
         'trip_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
       ]);
     }
-
-    // brukes denne??????
-    protected function validatePassenger()
-    {
-      return request()->validate([
-        'trip_id' => ['required', 'exists:trips,id'],
-        'passenger_id' => ['required', 'exists:users,id'],
-        'seats_requested' => ['required', 'digits_between:1,45'],
-      ]);
-    }
-
-    // brukes denne?????
-    protected function validateSeats()
-    {
-      return request()->validate([
-        'seats_available' => ['required', 'digits_between:1,45'],
-      ]);
-    }
 }
