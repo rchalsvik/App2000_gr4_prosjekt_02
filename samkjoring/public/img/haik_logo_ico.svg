@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   viewBox="0 0 12.7 12.7"
+   version="1.1"
+   id="svg8"
+   inkscape:export-filename="C:\Users\rchal\Desktop\haik_logo.png"
+   inkscape:export-xdpi="95.5"
+   inkscape:export-ydpi="95.5"
+   inkscape:version="1.0beta2 (998e94e, 2020-02-11)"
+   sodipodi:docname="haik_logo_ico.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="40.465489"
+     inkscape:cy="32.816417"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer9"
+     inkscape:document-rotation="0"
+     showgrid="true"
+     units="px"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       originy="1.3229167"
+       originx="3.9890736e-08"
+       type="xygrid"
+       id="grid833" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(3.9890736e-8,1.3229167)"
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="bkgr"
+     style="display:inline">
+    <rect
+       style="fill:#313131;fill-opacity:1;stroke:none;stroke-width:2.64583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1869"
+       width="12.7"
+       height="12.7"
+       x="-3.8295109e-08"
+       y="-1.3229167" />
+  </g>
+  <g
+     transform="translate(3.9890736e-8,1.3229167)"
+     inkscape:groupmode="layer"
+     id="layer8"
+     inkscape:label="logo"
+     style="display:inline">
+    <g
+       transform="matrix(0.53571426,0,0,0.53571426,5.0554314,-40.679685)"
+       id="g1802"
+       style="fill:#000000;fill-opacity:1;stroke-width:1.86667">
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.493888px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -2.9658528,73.465973 3.19314286,-1e-6 -3.90676246,23.706664 h -3.3866667 z"
+         id="path1693"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccc" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.541027px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -1.3088054,81.932639 -0.3386667,3.048 h 8.8053336 l 0.6773334,-3.048 z"
+         id="path1695"
+         inkscape:connector-curvature="0" />
+      <path
+         sodipodi:nodetypes="ccccc"
+         inkscape:connector-curvature="0"
+         id="path1693-1"
+         d="M 8.5125277,73.465971 H 11.899194 L 8.1375757,97.172636 H 4.7871943 Z"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.493888px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>

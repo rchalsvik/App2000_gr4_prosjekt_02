@@ -10,6 +10,7 @@
   {{-- CSRF Token --}}
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <link rel="shortcut icon" href="/img/haik_logo.ico" />
   <title>{{ config('name', 'Haik') }}</title>
 
   {{-- Scripts --}}
