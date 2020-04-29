@@ -25,7 +25,7 @@ Auth::routes();
 
 Route::get('/trip/create', 'TripController@create')->name('createTrip');
 Route::post('/trip/store', 'TripController@store')->name('storeTrip');
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/omoss', function () {
   return view('about');

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Alle kommenterte klasser, funksjoner og kode er
+ * skrevet av alle i Grp04. 2020
+ *
+ */
 
 namespace App\Http\Controllers;
 
@@ -22,20 +27,13 @@ class HomeController extends Controller
 
 
   /**
-   * Show the application dashboard.
+   * Denne er ikke så mye i bruk lenger som den var i
+   * begynnelsen av prosjektet.
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
   public function index()
   {
-    // Get the currently authenticated user...
-    $user = Auth::user();
-    $id = $user->id; // slik??
-
-    // Log bruker login
-    // Bør kanskje lage kortere log: "Login bruker: 5. Kari Nord"
-    //Log::channel('samkjøring')->info('Login bruker: ' . $id . '. ' . $user->firstname . ' ' . $user->lastname);
-
-    return view('home', ['user'=>$user]);
+    return view('home');
   }
 }
