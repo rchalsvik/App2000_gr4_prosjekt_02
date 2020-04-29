@@ -50,7 +50,7 @@
 
   "_COMMENT":  "about.blade.php",
   "aboutTitle": "À propos de Haik!",
-  "aboutText": "Haik a commencé en 1922 dans une petite maison à Rjukan, lorsque Kjell Berit Kongshavn a obtenu son premier vélo tandem. Inspiré par l'exemple donné par le vélo tandem et l'unité à Rjukan Bedehus, Kjell Berit Haik a commencé. À l'automne 2019, Kjell Berit a découvert qu'il voulait commencer sur Internet, alors les développeurs professionnels \"Group4\" ont été mis sur l'affaire!",
+  "aboutText": "La raison de notre projet est que de nombreuses personnes conduisent seules au travail ou à l'école, entre autres, alors que l'utilisation des transports publics est relativement faible (bien qu'elle ait progressivement augmenté ces dernières années (Statistics Norway, 2019)) ou lorsque l'offre de les transports publics sont réduits. Il y a aussi beaucoup de prise de conscience sur la question climatique en ce moment, et nous pensons que cela peut être une mesure pour améliorer l'environnement. C'est pourquoi nous voulons créer une application qui permettra aux gens d'organiser l'interconnexion plus facilement s'ils vont dans le même sens.",
   "Tandem-bike": "Vélo tandem",
 
 

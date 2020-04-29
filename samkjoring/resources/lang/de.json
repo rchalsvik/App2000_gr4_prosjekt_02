@@ -21,7 +21,7 @@
   "My trips": "Meine Reisen",
   "Joined trips": "Verbundene Reisen",
   "New trip": "Neue Reise",
-  
+
 
 
   "_COMMENT":  "index.blade.php",
@@ -50,7 +50,7 @@
 
   "_COMMENT":  "about.blade.php",
   "aboutTitle": "Über Haik!",
-  "aboutText": "Haik startete 1922 in einem kleinen Haus in Rjukan, als Kjell Berit Kongshavn sein erstes Tandemfahrrad. Inspiriert von dem Beispiel des Tandemfahrrad und der Zweisamkeit in Rjukan Bedehus startete Kjell Berit Haik. Im Herbst 2019 fand Kjell Berit heraus, dass er sein Geschäft auf das Internet ausweiten wollte. Dann wurden die professionellen Entwickler \"Gruppe4\" auf den Fall gebracht! ",
+  "aboutText": "Der Grund für unser Projekt ist, dass viele Menschen unter anderem alleine zur Arbeit oder zur Schule fahren, während die Nutzung öffentlicher Verkehrsmittel relativ gering ist (obwohl sie in den letzten Jahren allmählich zugenommen hat (Statistik Norwegen, 2019)) oder wo das Angebot von Der öffentliche Verkehr ist reduziert. Derzeit gibt es auch ein großes Bewusstsein für das Klimaproblem, und wir glauben, dass dies eine Maßnahme zur Verbesserung der Umwelt sein kann. Aus diesem Grund möchten wir eine Anwendung erstellen, die es den Menschen erleichtert, die Verbindung herzustellen, wenn sie den gleichen Weg gehen.",
   "Tandem-bike": "Tandemfahrrad",
 
 
