@@ -52,6 +52,7 @@
                     </div>
                   </div>
                   <div class="font-weight-bold">
+                  {{-- For forklaring på @ i divene under gå til app>ProvidersAppServiceProvider.php --}}
                     <div>@samDateShortFormat($trip->start_date) @samYearFormat($trip->start_date)</div>
                     <div>@samTimeFormat($trip->start_time)</div>
                   </div>
@@ -68,6 +69,7 @@
                     </div>
                   </div>
                   <div class="font-weight-bold">
+                  {{-- For forklaring på @ i divene under gå til app>ProvidersAppServiceProvider.php --}}
                     <div>@samDateShortFormat($trip->end_date) @samYearFormat($trip->end_date)</div>
                     <div>@samTimeFormat($trip->end_time)</div>
                   </div>

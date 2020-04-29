@@ -70,7 +70,8 @@
                 </a>
               </h4>
               <div class="card-text">
-                {{-- Ikke vis begge dagene hvis de er like, Ross. --}}
+                {{-- Ikke vis begge dagene hvis de er like --}}
+                {{-- For forklaring på dato- og tidsformatene under gå til app>ProvidersAppServiceProvider.php --}}
                 @if ($trip->start_date == $trip->end_date)
                   <b>@samFullDateFormat($trip->end_date)</b><br>
                   {{ __('Leaving') }}: <b>@samTimeFormat($trip->start_time)</b><br>

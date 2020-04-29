@@ -4,12 +4,12 @@
 @section('content')
   <div class="container">
 
-    {{-- Jumbotron uch --}}
+    {{-- Jumbotron --}}
     <header class="jumbotron my-4">
       <h5 class="display-3">{{ __('Joined trips!') }}</h5>
     </header>
 
-    {{-- Sida begynner her du --}}
+    {{-- Sida begynner her  --}}
     <div class="row text-left">
       @foreach ($trips as $trip)
         <div class="col-lg-6 col-md-6 mb-4">
@@ -52,6 +52,7 @@
                     </div>
                   </div>
                   <div class="font-weight-bold">
+                  {{-- For forklaring på @ i divene under gå til app>ProvidersAppServiceProvider.php --}}
                     <div>@samDateShortFormat($trip->start_date) @samYearFormat($trip->start_date)</div>
                     <div>@samTimeFormat($trip->start_time)</div>
                   </div>
@@ -68,13 +69,14 @@
                     </div>
                   </div>
                   <div class="font-weight-bold">
+                  {{-- For forklaring på @ i divene under gå til app>ProvidersAppServiceProvider.php --}}
                     <div>@samDateShortFormat($trip->end_date) @samYearFormat($trip->end_date)</div>
                     <div>@samTimeFormat($trip->end_time)</div>
                   </div>
                 </div>
               </div>
 
-              {{-- Seats tilgjengelig --}}
+              {{-- Seter tilgjengelig --}}
               <div class="flex flex-jc-r">
                 @if ($trip->trip_active)
                   {{ $trip->seats_available }} {{ __('seats available') }}

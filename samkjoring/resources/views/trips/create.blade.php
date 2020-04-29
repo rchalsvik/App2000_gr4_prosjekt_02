@@ -19,6 +19,8 @@
                 <div class="col-md-6">
                   <input id="start_point" type="text" class="form-control @error('start_point') is-invalid @enderror" name="start_point" value="{{ old('start_point') }}" required autocomplete="start_point" autofocus>
 
+                  {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('start_point')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -37,6 +39,8 @@
                     name="end_point" value="{{ old('end_point') }}"
                     required autocomplete="end_point" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('end_point')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -55,6 +59,8 @@
                     name="start_date" value="{{ old('start_date', date("Y-m-d")) }}"
                     required autocomplete="start_date" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('start_date')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -73,6 +79,8 @@
                   name="start_time" value="{{ old('start_time', date("H:i")) }}"
                   required autocomplete="start_time" autofocus>
 
+                  {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('start_time')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -91,6 +99,8 @@
                     name="end_date" value="{{ old('end_date', date("Y-m-d")) }}"
                     required autocomplete="end_date" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('end_date')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -109,6 +119,8 @@
                     name="end_time" value="{{ old('end_time', date("H:i")) }}"
                     required autocomplete="end_time" autofocus>
 
+                    {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('end_time')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -127,6 +139,8 @@
                       name="seats_available" value="{{ old('seats_available', 1) }}"
                       required autocomplete="seats_available" autofocus>
 
+                      {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('seats_available')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -147,7 +161,9 @@
                     autocomplete="car_description" autofocus>
                       {{ old('car_description') }}
                   </textarea>
-
+                  
+                  {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('car_description')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -167,7 +183,9 @@
                     wrap="hard" required autocomplete="trip_info" autofocus>
                       {{ old('trip_info') }}
                   </textarea>
-
+                  
+                  {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('trip_info')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -209,6 +227,8 @@
                       class="@error('trip_image') is-invalid @enderror"
                       name="trip_image" value="{{ old('trip_image') }}" autofocus>
 
+                      {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                     @error('trip_image')
                       <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

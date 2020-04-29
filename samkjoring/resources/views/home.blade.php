@@ -9,12 +9,6 @@
           <div class="card-header">{{ __('Profile') }}</div>
 
           <div class="card-body">
-            @if (session('status'))
-              <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-              </div>
-            @endif
-
             {{-- Sjekker om personen som er logget inn har førerkort --}}
             @if (auth()->user()->hasLicense)
               <div id="new_trip" class="profile-row">

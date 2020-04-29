@@ -13,6 +13,7 @@
               @csrf {{-- viktig! ellers så feiler siden --}}
               @method('PUT') {{-- Forteller Laravel at jeg ønsker POST å være en PUT. PUT som i 'oppdater' --}}
 
+              {-- Verdier som ikke skal endres, men som skal sendes med videre, kunne vært løst på en bedre måte --}
               <input type="hidden" name="id" value="{{ auth()->user()->id }}">
               <input type="hidden" name="firstname" value="{{ auth()->user()->firstname }}">
               <input type="hidden" name="lastname" value="{{ auth()->user()->lastname }}">
@@ -25,6 +26,8 @@
                 <div class="col-md-6">
                   <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone', $user->phone) }}" required autocomplete="phone" autofocus>
 
+                  {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('phone')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -38,6 +41,8 @@
                 <div class="col-md-6">
                   <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address', $user->address) }}" required autocomplete="address" autofocus>
 
+                  {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}  
                   @error('address')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -50,7 +55,9 @@
                 <label for="zipcode" class="col-md-4 col-form-label text-md-right">{{ __('Zipcode') }}</label>
                 <div class="col-md-6">
                   <input id="zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror" name="zipcode" value="{{ old('zipcode', $user->zipcode) }}" required autocomplete="zipcode" autofocus>
-
+                  
+                  {{-- Hvis valideringen i Kontrolleren feiler
+                       blir vi kastet tilbake her med melding --}}
                   @error('zipcode')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
