@@ -14,6 +14,11 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * Alle kommenterte klasser, funksjoner og kode er
+ * skrevet av alle i Grp04. 2020
+ *
+ */
 class PassengerController extends Controller
 {
     /**
@@ -31,8 +36,7 @@ class PassengerController extends Controller
         $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request->trip_id . ' and passenger_id = ' . $request->passenger_id)->get();
         $passenger = $passengers[0];
 
-        // henter turen, hvorfor?
-        // uansett er det et eksempel på at det ovenfor kunne vært gjort bedre
+        // her er det et eksempel på at det ovenfor kunne vært gjort bedre
         $trup = DB::table('trips')
           ->where('id', $passenger->trip_id)
           ->first();
@@ -65,15 +69,13 @@ class PassengerController extends Controller
                      $trup->start_time . ' - ' . $trup->start_date . '], [' .
                      'REQ_SEAT(S): ' . request('seats_requested') . ']'; // . request('passenger_id');
         Log::channel('samkjøring')->info($logString);
-        //sluttlogg
+        // sluttlogg
 
 
-        //oppdaterer setene
-        // aner ikke om dette trenger å bli lagt inn i en variabel,
-        // men det blir den
+        // oppdaterer setene
         $oppdatert = Trip::whereRaw('id = ' . $trup->id)->update(['seats_available' => $validatedResults['seats_available']]);
 
-        // samme her, sletter passasjeren
+        // sletter passasjeren
         $sletta = Passenger::whereRaw('passenger_id = ' . $passenger->passenger_id . ' and trip_id = ' . $passenger->trip_id)->delete();
 
         // ja

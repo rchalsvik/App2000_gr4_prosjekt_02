@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
-// Denne her er endra litt på av gruppa, men en del av den kom med Laravel
+// Denne her er endra på av gruppa, men en del av den kom med Laravel
 class RegisterController extends Controller
 {
     /*
