@@ -15,120 +15,53 @@ use DB;
 
 class PassengerController extends Controller
 {
-
-  public function store(Request $request)
-  {
-    /*$logString = 'Ny tur: ' . request('start_point') . ' - ' . request('end_point') .
-                 ' , Start: ' . request('start_date') . ' ' . request('start_time') .
-                 ' , End: ' . request('end_date') . ' ' . request('end_time') .
-                 ' , Bruker ID' . request('driver_id');
-    Log::channel('samkjøring')->info($logString);*/
-
-
-    Passenger::create($this->validatePassenger());
-    return redirect('/');
-  }
-
-
-
-
-
-
-
     /**
-     * Remove the specified resource from storage.
+     * Sletter en passasjer.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Passenger  $passenger
      * @param  \App\Trip  $trip
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Trip $trip)
     {
-        //dd($trip);
+
+        // henter passasjeren som skal slettes, dette kunne vært gjort på en
+        // bedre måte. $passengers får en tabell med en rad.
         $passengers = DB::table('passengers')->whereRaw('trip_id = ' . $request->trip_id . ' and passenger_id = ' . $request->passenger_id)->get();
         $passenger = $passengers[0];
-        //foreach ($passengers as $passenger) {
 
-          //$trips = DB::table('trips')->whereRaw('id = ' . $passenger->trip_id)->get();
-          $trup = DB::table('trips')
-            ->where('id', $passenger->trip_id)
-            ->first();
-          //foreach ($trips as $trup) { //kanskje trips[0]->id osv??
-
-            //$trip->seats_available = $trip->seats_available + $passenger->seats_requested;
-
-            //$trip->save();
-            //$trup = $trips[0];
-
-
-            request()->merge([ 'seats_requested' => $trup->seats_available + request('seats_requested') ]);
-
-            $request->request->add(['seats_available' => request('seats_requested')]);
-            //dd($request);
-
-            $validatedResults = request()->validate([
-              'seats_available' => ['required', 'digits_between:1,45'],
-            ]);
-
-            //dd(request('seats_available'));
-
-            $oppdatertdrit = Trip::whereRaw('id = ' . $trup->id)->update(['seats_available' => $validatedResults['seats_available']]);
-
-            $slettadrit = Passenger::whereRaw('passenger_id = ' . $passenger->passenger_id . ' and trip_id = ' . $passenger->trip_id)->delete();
-
-            //$trip = $trips[0];
-            //$trip->seats_available = $validatedResults['seats_available'];
-
-            $trip->id = $trup->id;
-            $trip->driver_id = $trup->driver_id;
-            $trip->start_point = $trup->start_point;
-            $trip->end_point = $trup->end_point;
-            $trip->start_date = $trup->start_date;
-            $trip->start_time = $trup->start_time;
-            $trip->end_date = $trup->end_date;
-            $trip->end_time = $trup->end_time;
-            $trip->seats_available = $validatedResults['seats_available'];
-            $trip->car_description = $trup->car_description;
-            $trip->trip_info = $trup->trip_info;
-            $trip->pets_allowed = $trup->pets_allowed;
-            $trip->kids_allowed = $trup->kids_allowed;
-            /*
-            $trip->id = $trup->id;
-            $trip->driver_id = $trup->driver_id;
-            $trip->start_point = $trup->start_point;
-            $trip->end_point = $trup->end_point;
-            $trip->start_date = $trup->start_date;
-            $trip->start_time = $trup->start_time;
-            $trip->end_date = $trup->end_date;
-            $trip->end_time = $trup->end_time;
-            $trip->seats_available = $validatedResults['seats_available'];
-            $trip->car_description = $trup->car_description;
-            $trip->trip_info = $trup->trip_info;
-            $trip->pets_allowed = $trup->pets_allowed;
-            $trip->kids_allowed = $trup->kids_allowed;
-            */
-          //}
-        //}
-
-
-        //return view('trips.seemore', ['trip' => $trup]);
-        //dd($trip);
-        $users = DB::select('select users.firstname, users.lastname, users.id, passengers.seats_requested from users, trips, passengers where passengers.trip_id = ' . $trup->id . ' and passenger_id = users.id and trips.id = ' . $trup->id);
-        $piss = 0;
-        $chauffeur = DB::select('select * from users where users.id = ' . $trip->driver_id);
-        //return view('trips.seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
-        //return redirect()->action('TripController@seemore', ['trip' => $trip, 'users' => $users, 'piss' => $piss, 'chauffeur' => $chauffeur]);
-
-        $trip = DB::table('trips')
-          ->where('id', $trip->id)
+        // henter turen, hvorfor?
+        // uansett er det et eksempel på at det ovenfor kunne vært gjort bedre
+        $trup = DB::table('trips')
+          ->where('id', $passenger->trip_id)
           ->first();
 
+        // seats requested må bli oppdatert siden passasjeren melder seg av
+        request()->merge([ 'seats_requested' => $trup->seats_available + request('seats_requested') ]);
+
+        $request->request->add(['seats_available' => request('seats_requested')]);
+
+        $validatedResults = request()->validate([
+          'seats_available' => ['required', 'digits_between:1,45'],
+        ]);
+
+        //oppdaterer setene
+        // aner ikke om dette trenger å bli lagt inn i en variabel,
+        // men det blir den
+        $oppdatert = Trip::whereRaw('id = ' . $trup->id)->update(['seats_available' => $validatedResults['seats_available']]);
+
+        // samme her, sletter passasjeren
+        $sletta = Passenger::whereRaw('passenger_id = ' . $passenger->passenger_id . ' and trip_id = ' . $passenger->trip_id)->delete();
+
+        // ja
+        $trip = $trup;
+
+        // sendes til store funksjonen i NotificationController'en, forteller
+        // hvilken type varsling det gjelder
         $type = 4;
 
+        // sender varsling til sjåføren om at noen har meldt seg av turen hans
         return redirect()->action('NotificationController@store', ['trip' => $trip, 'type' => $type]);
-
-        //return redirect()->back();
     }
 
 
