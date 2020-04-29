@@ -1,4 +1,10 @@
 <?php
+/**
+ * Alle kommenterte klasser, funksjoner og kode er
+ * skrevet av alle i Grp04. 2020
+ *
+ * Globale funksjoner
+ */
 
 namespace App\Providers;
 
