@@ -115,7 +115,7 @@
 
 
   "_COMMENT":  "auth.login.blade.php",
-  "E-Mail Address": "Адрес электронной почты",
+  "E-mail address": "Адрес электронной почты",
   "Password": "пароль",
   "Remember me": "Запомнить меня",
   "Forgot your password?": "Забыли свой пароль?",

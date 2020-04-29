@@ -162,7 +162,7 @@
                 <div class="form-group row mb-0">
                   @if ($trip->trip_active)
                     <form method="POST"
-                      onsubmit="return confirm('Do you really want to destroy this trip?');"
+                      onsubmit="return confirm('Do you really want to cancel this trip?');"
                       class="card-center-buttons"
                       action="{{ route('destroyTrip', $trip) }}" id="tripform">
                       @csrf {{-- viktig! ellers så feiler siden --}}
