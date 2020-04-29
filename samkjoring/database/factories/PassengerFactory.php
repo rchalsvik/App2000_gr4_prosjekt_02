@@ -75,10 +75,12 @@ $factory->define(Passenger::class, function (Faker $faker) {
       //printf('Bool ' . $ok . ' - ' . $alternativ . ', ');
 
 
+
       if ($alternativ == 0) {
         $ok = 1;
       }
 
+      printf('passasjer, ');
 
     } while ($ok == 0);
 
